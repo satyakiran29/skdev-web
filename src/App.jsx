@@ -30,7 +30,10 @@ import {
   Copy, 
   Check, 
   Bitcoin,
-  Activity
+  Activity,
+  Palette,
+  Gamepad2,
+  Brush
 } from 'lucide-react';
 
 // --- Configuration & Links ---
@@ -41,39 +44,28 @@ const LINKS = {
   youtube: "https://youtube.com",
   discord: "https://discord.com",
   telegram: "https://telegram.org",
-  paypal: "https://paypal.me/satyakiran29",
+  paypal: "https://paypal.me/",
   upi: "satyakiran29@upi", 
-  email: "mailto:satyakiran29@gmail.com",
-  crypto: {
-    btc: "bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh",
-    eth: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F"
-  }
+  email: "mailto:satyakiran29@gmail.com", // Updated based on review response
+  playStoreDev: "https://play.google.com/store/apps/dev?id=ReyDevStuffs",
 };
 
 // --- DATA CONSTANTS ---
 
 const RECENT_SUPPORTERS = [
-    { name: "Alex CodeRunner", amount: "Coffee" },
-    { name: "SarahDev_99", amount: "Server Fund" },
-    { name: "Marcus J.", amount: "Coffee" },
-    { name: "Anonymous User", amount: "Generous Gift" },
-    { name: "PixelArtist22", amount: "Coffee" },
-    { name: "David K.", amount: "Server Fund" },
-    { name: "TechNinja", amount: "Coffee" },
-    { name: "Maria Rodriguez", amount: "Coffee" }
+    { name: "Seonbaeyakuza", amount: "Play Store Review" },
 ];
 
 const DEV_STATS = {
-    nextBuildDate: "2025-11-30", 
-    lastBuild: "Oct 6th",
-    version: "Tech Update",
-    overallProgress: 86,
-    totalTasks: 670,
+    nextBuildDate: "2026-01-30", 
+    lastBuild: "Dec 27 Alpha bulid", // From "What's New"
+    version: "unannounced project",
+    overallProgress: 60,
+    totalTasks: 150,
     categories: [
-        { name: "Art", completed: 196, total: 197, color: "bg-[#6b7c34]" }, 
-        { name: "Posing", completed: 119, total: 131, color: "bg-[#c23b22]" }, 
-        { name: "Writing", completed: 84, total: 87, color: "bg-[#d4af37]" }, 
-        { name: "Code", completed: 181, total: 255, color: "bg-[#4682b4]" }, 
+        { name: "Widgets Design", completed: 20, total: 30, color: "bg-[#e91e63]" }, 
+        { name: "App Support", completed: 15, total: 30, color: "bg-[#4caf50]" },  
+        { name: "Code (React/Kotlin)", completed: 20, total: 100, color: "bg-[#4682b4]" }, 
         { name: "Bugs/Issues", completed: 0, total: 0, color: "bg-[#4b0082]" } 
     ]
 };
@@ -81,10 +73,11 @@ const DEV_STATS = {
 const TEAM_MEMBERS = [
   { 
     name: 'Satyakiran', 
-    role: 'Studio Head & Lead Developer', 
+    role: 'Lead Developer & Designer', 
+    alias: '(aka ReyDevStuffs)',
     icon: <Terminal className="w-8 h-8" />, 
     color: 'text-cyan-400',
-    bio: 'The sole mind behind skdev. Architecting the entire ecosystem from backend infrastructure to frontend design.',
+    bio: 'The sole mind behind skdev and ReyDevStuffs. Architecting the entire ecosystem from backend infrastructure to frontend design and Android customization.',
     socials: {
       github: LINKS.github,
       twitter: LINKS.twitter,
@@ -93,85 +86,82 @@ const TEAM_MEMBERS = [
   }
 ];
 
+// Updated with Real Reviews from Play Store
 const TESTIMONIALS = [
   {
     id: 1,
-    name: "Alex Rivera",
-    role: "Senior Frontend Arch",
-    content: "The attention to detail in Project: NEON is unlike anything I've seen in mobile dev. Smooth, responsive, and truly offline-first. It completely changed my daily workflow.",
+    name: "Seonbaeyakuza",
+    role: "Verified User (Feb 8)",
+    content: "This widget is best in Play Store and it's a game-changer! It's sleek, customizable, and makes app discovery and management a breeze. The developer support is top-notch.",
     rating: 5
   },
   {
     id: 2,
-    name: "Sarah Chen",
-    role: "Product Manager",
-    content: "skdev Hub unified our entire team's resource management. The SSO integration was seamless and the dark mode sync is a subtle but brilliant touch.",
+    name: "Gaurav Kumar",
+    role: "Long-term User",
+    content: "Using it since one year and really like its widgets. And developer thank you for your efforts.",
     rating: 5
   },
   {
     id: 3,
-    name: "Marcus J.",
-    role: "Indie Developer",
-    content: "I've been following Satyakiran's work for years. The code quality is always top-tier. I can't wait to see what the unannounced title turns out to be.",
-    rating: 5
+    name: "Nate Westby",
+    role: "Verified User",
+    content: "Great widget and wall set. Only found 1 locked widget (I hate those). Gonna keep.",
+    rating: 4
   }
 ];
 
-
-
 const PROJECTS = [
   {
-    id: 'skdev-hub', 
-    title: 'skdev Hub',
+    id: 'aniset', 
+    title: 'Aniset',
     type: 'Released',
-    tag: 'Web Platform',
-    description: 'The central ecosystem for all skdev projects. A unified platform connecting users to our suite of tools and applications.',
-    longDescription: 'skdev Hub is the cornerstone of our digital suite. It serves as a centralized identity and resource management platform, allowing users to access all skdev services with a single account. Built with scalability in mind, it features real-time notifications, cloud synchronization for user settings, and a marketplace for community extensions.',
+    tag: 'Anime Customization',
+    description: 'Transform your Android Home Screen with Anime Kwgt Widgets & Klwp. Rated 4.8 Stars.',
+    longDescription: 'Elevate your device customization to a whole new level. Aniset brings the vibrant and dynamic world of anime to your Android home screen. Immerse yourself in the captivating aesthetics of your favorite characters. Features extensive customization options for colors, fonts, and layouts.',
     features: [
-      'Single Sign-On (SSO) for all skdev apps',
-      'Real-time WebSocket notifications',
-      'Community Marketplace',
-      'Dark/Light mode sync across devices'
+      '9 New Widgets Added (v4.8)',
+      'Android 16 Support',
+      'Curated 4K Wallpaper Section',
+      'Seamless KWGT & KLWP Integration'
     ],
-    imagePlaceholder: 'bg-gradient-to-br from-cyan-900 to-blue-900',
-    banner: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop', 
-    icon: <Globe className="w-12 h-12 text-cyan-400/50" />,
-    action: 'Launch Platform',
+    imagePlaceholder: 'bg-gradient-to-br from-pink-600 to-purple-900',
+    banner: 'https://images.unsplash.com/photo-1630713815144-d8d2122da2ee?q=80&w=2070&auto=format&fit=crop', // Anime/Abstract vibe
+    icon: <Brush className="w-12 h-12 text-pink-400" />,
+    action: 'Get on Play Store',
     active: true,
-    url: 'https://google.com',
-    playStoreUrl: 'https://play.google.com/store/apps/details?id=com.skdev.aniset&hl=en_IN',
-    githubUrl: 'https://github.com',
-    extraLink: {
-        label: "Read Documentation",
-        url: "https://docs.google.com" 
-    }
+    url: 'https://play.google.com/store/apps/details?id=com.reydevstuffs.aniset',
+    playStoreUrl: 'https://play.google.com/store/apps/details?id=com.reydevstuffs.aniset',
+    githubUrl: null,
+    // extraLink: {
+    //     label: "More by ReyDevStuffs",
+    //     url: LINKS.playStoreDev
+    // }
   },
   {
-    id: 'neon', 
-    title: 'Project: NEON',
-    type: 'In Development',
-    tag: 'Mobile Utility',
-    description: 'A next-generation mobile tool designed to streamline digital workflows. Currently in alpha testing with select community members.',
-    longDescription: 'Project: NEON represents a shift in how we handle mobile productivity. By leveraging local-first architecture, NEON ensures your data is always available, even offline. The interface is designed for "thumb-first" navigation, making complex workflows accessible with one hand.',
+    id: 'gwalls', 
+    title: 'Gwalls',
+    type: 'Released',
+    tag: 'Wallpaper Utility',
+    description: 'A premium wallpaper application focusing on high-quality, curated aesthetics for Android devices.',
+    longDescription: 'Gwalls offers a hand-picked selection of wallpapers designed to make your home screen pop. With a focus on quality over quantity, every image is optimized for high-DPI displays. Features cloud-based syncing and daily updates.',
     features: [
-      'Offline-first Architecture',
-      'Biometric Security Integration',
-      'Customizable Gesture Controls',
-      'Cross-platform Sync (iOS & Android)'
+      'High-Res Cloud Gallery',
+      'Daily Updates',
+      'Material You Design',
+      'Simple, Ad-free Experience'
     ],
-    imagePlaceholder: 'bg-gradient-to-br from-purple-900 to-slate-900',
-    banner: 'https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?q=80&w=2070&auto=format&fit=crop',
-    icon: <Smartphone className="w-12 h-12 text-purple-500/50" />,
-    action: 'View Roadmap',
+    imagePlaceholder: 'bg-gradient-to-br from-green-600 to-teal-900',
+    banner: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2064&auto=format&fit=crop',
+    icon: <Palette className="w-12 h-12 text-green-400" />,
+    action: 'View App',
     active: true,
-    url: 'https://github.com/features/issues',
-    playStoreUrl: 'https://play.google.com/store',
-    githubUrl: 'https://github.com',
-    extraLink: {
-        label: "Visit Website",
-        url: "https://example.com"
-    }
+    url: LINKS.playStoreDev, // General dev link as fallback
+    playStoreUrl: LINKS.playStoreDev,
+    githubUrl: null,
+    extraLink: null
   },
+
   {
     id: 'unannounced',
     title: 'Unannounced Title',
@@ -315,7 +305,7 @@ const DevStatus = ({ onBack }) => {
                 <div className="bg-[#1a1a2e] border border-gray-700 rounded-lg p-6 shadow-2xl shadow-black/50">
                     
                     <div className="flex justify-between items-end mb-2 text-gray-200 font-bold font-sans">
-                        <span className="text-lg">{daysLeft} days until next preview build</span>
+                        <span className="text-lg">{daysLeft} days until next major build</span>
                         <span className="text-lg text-cyan-400">{targetDateFormatted}</span>
                     </div>
 
@@ -324,11 +314,11 @@ const DevStatus = ({ onBack }) => {
                     </div>
                     
                     <div className="text-xs text-gray-500 font-mono mb-8">
-                        Last build: {DEV_STATS.lastBuild}
+                        Last build: {DEV_STATS.lastBuild} ({DEV_STATS.version})
                     </div>
 
                     <div className="flex justify-between items-center mb-2 text-white font-bold text-xl">
-                        <span>{DEV_STATS.version} - {DEV_STATS.overallProgress}%</span>
+                        <span>Overall Progress: {DEV_STATS.overallProgress}%</span>
                         <span>{DEV_STATS.totalTasks} Tasks</span>
                     </div>
 
@@ -392,7 +382,7 @@ const Donations = ({ onBack }) => {
                         Support the <span className="text-cyan-500">Mission</span>
                     </h1>
                     <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-                        Every contribution directly funds server costs, asset licensing, and the caffeine required to build the future. 
+                        Every contribution directly funds server costs, asset licensing for Aniset, and the caffeine required to build the future. 
                     </p>
                 </div>
 
@@ -446,43 +436,6 @@ const Donations = ({ onBack }) => {
                             </button>
                         </div>
                     </div>
-
-                    {/* Crypto Card */}
-                    <div className="md:col-span-2 bg-gray-900/50 border border-gray-800 rounded-2xl p-8 hover:border-yellow-500/50 transition-colors">
-                        <div className="flex items-center mb-6">
-                            <div className="w-12 h-12 bg-yellow-600 rounded-full flex items-center justify-center text-white mr-4">
-                                <Bitcoin className="w-6 h-6" />
-                            </div>
-                            <h2 className="text-2xl font-bold text-white">Crypto</h2>
-                        </div>
-                        
-                        <div className="space-y-4">
-                            <div>
-                                <label className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2 block">Bitcoin (BTC)</label>
-                                <div className="flex items-center bg-black rounded-lg p-4 border border-gray-700">
-                                    <code className="flex-1 text-gray-300 font-mono text-xs sm:text-sm break-all">{LINKS.crypto.btc}</code>
-                                    <button 
-                                        onClick={() => handleCopy(LINKS.crypto.btc, 'btc')}
-                                        className="ml-4 text-gray-400 hover:text-white"
-                                    >
-                                        {copied === 'btc' ? <Check className="w-5 h-5 text-green-500" /> : <Copy className="w-5 h-5" />}
-                                    </button>
-                                </div>
-                            </div>
-                            <div>
-                                <label className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2 block">Ethereum (ETH)</label>
-                                <div className="flex items-center bg-black rounded-lg p-4 border border-gray-700">
-                                    <code className="flex-1 text-gray-300 font-mono text-xs sm:text-sm break-all">{LINKS.crypto.eth}</code>
-                                    <button 
-                                        onClick={() => handleCopy(LINKS.crypto.eth, 'eth')}
-                                        className="ml-4 text-gray-400 hover:text-white"
-                                    >
-                                        {copied === 'eth' ? <Check className="w-5 h-5 text-green-500" /> : <Copy className="w-5 h-5" />}
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 {/* --- RECENT SUPPORTERS SECTION --- */}
@@ -502,7 +455,7 @@ const Donations = ({ onBack }) => {
                                 </div>
                                 <div>
                                     <div className="text-white font-bold font-mono text-sm">{donor.name}</div>
-                                    <div className="text-xs text-gray-500">Donated: <span className="text-cyan-600">{donor.amount}</span></div>
+                                    <div className="text-xs text-gray-500">Action: <span className="text-cyan-600">{donor.amount}</span></div>
                                 </div>
                             </div>
                         ))}
@@ -540,8 +493,8 @@ const Hero = ({ onNavigate }) => (
       </h1>
       
       <p className="mt-4 max-w-2xl mx-auto text-xl text-gray-400 font-light">
-        The digital project studio of <span className="text-white font-semibold">Satyakiran</span>. 
-        Crafting immersive applications and web experiences.
+        The digital project studio of <span className="text-white font-semibold">Satyakiran</span> (aka ReyDevStuffs). 
+        Crafting immersive applications, widgets, and web experiences.
       </p>
       
       <div className="mt-12 flex flex-col sm:flex-row justify-center gap-6">
@@ -639,8 +592,8 @@ const Testimonials = () => (
     <section id="testimonials" className="py-24 bg-black border-t border-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-           <h2 className="text-3xl font-black text-white uppercase tracking-widest mb-4">Community <span className="text-cyan-500">Voices</span></h2>
-           <p className="text-gray-500 font-mono">Feedback from the network.</p>
+           <h2 className="text-3xl font-black text-white uppercase tracking-widest mb-4">Play Store <span className="text-cyan-500">Reviews</span></h2>
+           <p className="text-gray-500 font-mono">Feedback from the Aniset community.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -655,7 +608,7 @@ const Testimonials = () => (
                 </div>
 
                 <p className="text-gray-300 text-lg italic mb-6 leading-relaxed">
-                   "{item.content}"
+                    "{item.content}"
                 </p>
 
                 <div className="flex items-center">
@@ -756,7 +709,7 @@ const ProjectDetail = ({ project, onBack }) => {
 
           {/* Sidebar / Actions */}
           <div className="space-y-8">
-             <div className="bg-black rounded-xl p-6 border border-gray-800 sticky top-28">
+              <div className="bg-black rounded-xl p-6 border border-gray-800 sticky top-28">
                 <h3 className="text-lg font-bold text-white mb-4">Project Actions</h3>
                 
                 {project.playStoreUrl && (
@@ -777,7 +730,7 @@ const ProjectDetail = ({ project, onBack }) => {
                     rel="noopener noreferrer"
                     className="w-full py-4 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-lg transition-colors flex items-center justify-center mb-4 shadow-lg shadow-cyan-900/20"
                   >
-                    Launch Application <ExternalLink className="w-4 h-4 ml-2" />
+                    Launch / View <ExternalLink className="w-4 h-4 ml-2" />
                   </a>
                 ) : (
                   <div className="w-full py-4 bg-gray-800 text-gray-500 font-bold rounded-lg flex items-center justify-center mb-4 cursor-not-allowed border border-gray-700">
@@ -825,7 +778,7 @@ const Support = ({ onNavigate }) => (
         </div>
         <h2 className="text-3xl font-bold text-white mb-4">Fuel the Projects</h2>
         <p className="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
-          skdev is an independent project studio. Your support directly funds server costs, assets, and coffee required to keep building unannounced titles.
+          skdev (ReyDevStuffs) is an independent project studio. Your support directly funds server costs, assets, and coffee required to keep building updates for Aniset and future titles.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           <a href={LINKS.upi} target="_blank" rel="noopener noreferrer" className="px-8 py-3 bg-orange-600 text-white font-bold rounded-lg hover:bg-orange-500 transition-colors shadow-lg flex items-center justify-center gap-2">
@@ -858,6 +811,7 @@ const Studio = () => (
               {member.icon}
             </div>
             <h3 className="text-3xl font-bold text-white mb-2">{member.name}</h3>
+            <p className="text-cyan-400 font-mono text-sm mb-4">{member.alias}</p>
             <div className="inline-block px-3 py-1 bg-gray-900 rounded text-xs font-mono text-cyan-400 mb-6 border border-gray-800">
               {member.role}
             </div>
@@ -881,7 +835,7 @@ const Feedback = () => (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h2 className="text-3xl font-black text-white uppercase tracking-widest mb-6">Join the <span className="text-cyan-500">Hub</span></h2>
       <p className="text-gray-400 text-lg mb-12 leading-relaxed">
-         Connect with the developer, get instant updates on new projects, <br className="hidden md:block"/>and become part of the skdev ecosystem.
+          Connect with the developer, get instant updates on new projects like Aniset, <br className="hidden md:block"/>and become part of the ecosystem.
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="bg-black rounded-2xl p-8 border border-gray-800 hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-1 flex flex-col items-center">
@@ -945,8 +899,8 @@ const Footer = ({ onNavigate }) => (
         <div>
           <h4 className="text-white font-bold uppercase tracking-wider mb-6 text-sm">Community</h4>
           <ul className="space-y-4 text-sm">
+            <li><a href={LINKS.playStoreDev} target="_blank" rel="noopener noreferrer" className="bg-transparent border-none cursor-pointer text-gray-500 hover:text-cyan-400 transition-colors flex items-center p-0"><Play className="w-4 h-4 mr-2" /> Play Store</a></li>
             <li><a href={LINKS.discord} target="_blank" rel="noopener noreferrer" className="bg-transparent border-none cursor-pointer text-gray-500 hover:text-cyan-400 transition-colors flex items-center p-0"><Disc className="w-4 h-4 mr-2" /> Discord</a></li>
-            <li><a href={LINKS.telegram} target="_blank" rel="noopener noreferrer" className="bg-transparent border-none cursor-pointer text-gray-500 hover:text-cyan-400 transition-colors flex items-center p-0"><Send className="w-4 h-4 mr-2" /> Telegram</a></li>
             <li><a href={LINKS.twitter} target="_blank" rel="noopener noreferrer" className="bg-transparent border-none cursor-pointer text-gray-500 hover:text-cyan-400 transition-colors flex items-center p-0"><Twitter className="w-4 h-4 mr-2" /> Twitter</a></li>
             <li>
                 <button onClick={() => onNavigate('donate')} className="bg-transparent border-none cursor-pointer text-gray-500 hover:text-cyan-400 transition-colors flex items-center p-0">
@@ -957,7 +911,7 @@ const Footer = ({ onNavigate }) => (
         </div>
       </div>
       <div className="border-t border-gray-900 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600">
-        <p>© 2025 skdev Studio. All rights reserved.</p>
+        <p>© 2025 skdev Studio (ReyDevStuffs). All rights reserved.</p>
         <p className="mt-2 md:mt-0 font-mono">DESIGNED BY SATYAKIRAN</p>
       </div>
     </div>
