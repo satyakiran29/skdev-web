@@ -37,15 +37,15 @@ import {
 // --- Configuration & Links ---
 
 const LINKS = {
-  github: "https://github.com",
+  github: "https://github.com/satyakiran29",
   twitter: "https://twitter.com",
   youtube: "https://youtube.com",
   discord: "https://discord.com",
   telegram: "https://telegram.org",
   paypal: "https://paypal.me/",
-  upi: "satyakiran29@upi", 
-  email: "mailto:satyakiran29@gmail.com", // Updated based on review response
-  playStoreDev: "https://play.google.com/store/apps/dev?id=ReyDevStuffs",
+  upi: "@upi", 
+  email: "mailto:satyakiran296@gmail.com",
+  playStoreDev: "https://play.google.com/store/apps/dev?id=",
 };
 
 // --- DATA CONSTANTS ---
@@ -56,7 +56,7 @@ const RECENT_SUPPORTERS = [
 
 const DEV_STATS = {
     nextBuildDate: "2026-01-30", 
-    lastBuild: "Dec 27 Alpha bulid", // From "What's New"
+    lastBuild: "Dec 27 Alpha bulid",
     version: "unannounced project",
     overallProgress: 60,
     totalTasks: 150,
@@ -75,7 +75,7 @@ const TEAM_MEMBERS = [
     alias: '(aka Skdev)',
     icon: <Terminal className="w-8 h-8" />, 
     color: 'text-cyan-400',
-    bio: 'The sole mind behind skdev and ReyDevStuffs. Architecting the entire ecosystem from backend infrastructure to frontend design and Android customization.',
+    bio: 'The sole mind behind skdev. Architecting the entire ecosystem from backend infrastructure to frontend design and Android customization.',
     socials: {
       github: LINKS.github,
       twitter: LINKS.twitter,
@@ -84,7 +84,6 @@ const TEAM_MEMBERS = [
   }
 ];
 
-// Updated with Real Reviews from Play Store
 const TESTIMONIALS = [
   {
     id: 1,
@@ -116,50 +115,30 @@ const PROJECTS = [
     type: 'Released',
     tag: 'Anime Customization',
     description: 'Transform your Android Home Screen with Anime Kwgt Widgets & Klwp. Rated 4.8 Stars.',
-    longDescription: 'Transform Your Android Home Screen with Aniset - Anime Kwgt Widgets & Klwp! Elevate your device customization to a whole new level with Aniset - Anime Kwgt & Klwp Widgets! This collection of stunning KWGT and KLWP widgets brings the vibrant and dynamic world of anime to your Android home screen. Immerse yourself in the captivating aesthetics of your favorite anime characters and themes, making your device a true anime wonderland.   Note: While initially launched on the Play Store, Aniset has transitioned to UPI-based direct sales via DMs. This change was made to prevent refund abuse and ensure fair access for all users.',
+    longDescription: 'Transform Your Android Home Screen with Aniset - Anime Kwgt Widgets & Klwp! Elevate your device customization to a whole new level with Aniset - Anime Kwgt & Klwp Widgets! This collection of stunning KWGT and KLWP widgets brings the vibrant and dynamic world of anime to your Android home screen.Immerse yourself in the captivating aesthetics of your favorite anime characters and themes, making your device a true anime wonderland.   Note: While initially launched on the Play Store, Aniset has transitioned to UPI-based direct sales via DMs. This change was made to prevent refund abuse and ensure fair access for all users',
     features: [
-      '9 New Widgets Added (v4.8)',
+      '100+ widgets',
       'Android 16 Support',
       'Curated 4K Wallpaper Section',
       'Seamless KWGT & KLWP Integration'
     ],
+    // ADDED: Gallery Images
+
     imagePlaceholder: 'bg-gradient-to-br from-pink-600 to-purple-100',
-    banner: 'https://play-lh.googleusercontent.com/X5-j_gJq-zNoshCO96DwKVjh6Y6XNIOWFtFlip3EtWLJ-W5gctNo_Y-Qg1dk-98x00s=w5120-h2880-rw', // Anime/Abstract vibe
-    icon: <Brush className="w-12 h-12 text-pink-100" />,
+    banner: 'https://play-lh.googleusercontent.com/X5-j_gJq-zNoshCO96DwKVjh6Y6XNIOWFtFlip3EtWLJ-W5gctNo_Y-Qg1dk-98x00s=w5120-h2880-rw', 
+    icon: <Smartphone className="w-12 h-12 text-pink-400" />, // Added icon
     action: 'Open',
     active: true,
-    url: 'https://play.google.com/store/apps/details?id=com.reydevstuffs.aniset',
+    url: 'https://aniset.vercel.app/',
     playStoreUrl: 'https://play.google.com/store/apps/details?id=com.reydevstuffs.aniset',
     githubUrl: null,
-    // extraLink: {
+    extraLink: {
     //     label: "More by ReyDevStuffs",
     //     url: LINKS.playStoreDev
-    // }
+    label:"Website",
+    url:'https://aniset.vercel.app/'
+    }
   },
-  {
-    id: 'gwalls', 
-    title: 'Gwalls',
-    type: 'Released',
-    tag: 'Wallpaper Utility',
-    description: 'A premium wallpaper application focusing on high-quality, curated aesthetics for Android devices.',
-    longDescription: 'Gwalls offers a hand-picked selection of wallpapers designed to make your home screen pop. With a focus on quality over quantity, every image is optimized for high-DPI displays. Features cloud-based syncing and daily updates.',
-    features: [
-      'High-Res Cloud Gallery',
-      'Daily Updates',
-      'Material You Design',
-      'Simple, Ad-free Experience'
-    ],
-    imagePlaceholder: 'bg-gradient-to-br from-green-600 to-teal-900',
-    banner: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2064&auto=format&fit=crop',
-    icon: <Palette className="w-12 h-12 text-green-400" />,
-    action: 'View App',
-    active: true,
-    url: LINKS.playStoreDev, // General dev link as fallback
-    playStoreUrl: LINKS.playStoreDev,
-    githubUrl: null,
-    extraLink: null
-  },
-
   {
     id: 'unannounced',
     title: 'Unannounced Title',
@@ -168,10 +147,33 @@ const PROJECTS = [
     description: 'We are working on something entirely new behind the scenes. No details are available at this time.',
     longDescription: 'This project is currently classified. Access is restricted to Level 4 clearance personnel. Stay tuned for the official reveal trailer coming later this year.',
     features: ['[REDACTED]', '[REDACTED]', '[REDACTED]'],
+    gallery: [
+        "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=800&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1595079676339-1534801fafde?q=80&w=800&auto=format&fit=crop"
+    ],
+    imagePlaceholder: 'bg-gradient-to-br from-green-600 to-teal-900',
+ banner: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2070&auto=format&fit=crop', 
+    icon: <Lock className="w-12 h-12 text-gray-800" />,
+    action: 'Coming soon',
+    active: false,
+    url: '#',
+    playStoreUrl: null,
+    githubUrl: null,
+    extraLink: null
+  },
+  {
+    id: 'unannounced',
+    title: 'Unannounced Title',
+    type: 'Top Secret',
+    tag: 'Unknown',
+    description: 'We are working on something entirely new behind the scenes. No details are available at this time.',
+    longDescription: 'This project is currently classified. Access is restricted to Level 4 clearance personnel. Stay tuned for the official reveal trailer coming later this year.',
+    features: ['[REDACTED]', '[REDACTED]', '[REDACTED]'],
+    gallery: null,
     imagePlaceholder: 'bg-gray-950',
     banner: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2070&auto=format&fit=crop', 
     icon: <Lock className="w-12 h-12 text-gray-800" />,
-    action: 'Classified',
+    action: 'Coming soon',
     active: false,
     url: '#',
     playStoreUrl: null,
@@ -241,8 +243,9 @@ const Navigation = ({ onNavigate, currentView }) => {
         </div>
       </div>
 
+      {/* Mobile Menu with Backdrop Blur Fix */}
       {isOpen && (
-        <div className="md:hidden bg-gray-900 border-b border-gray-800">
+        <div className="md:hidden bg-gray-900/95 backdrop-blur-xl border-b border-gray-800 absolute w-full left-0 z-50 shadow-2xl">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navLinks.map((link) => (
               <button 
@@ -265,8 +268,13 @@ const Navigation = ({ onNavigate, currentView }) => {
 
 // --- DEV STATUS PAGE ---
 const DevStatus = ({ onBack }) => {
+    // Animation State
+    const [animated, setAnimated] = useState(false);
+
     useEffect(() => {
         window.scrollTo(0, 0);
+        // Trigger animation
+        setTimeout(() => setAnimated(true), 100);
     }, []);
 
     const calculateDaysLeft = () => {
@@ -324,12 +332,15 @@ const DevStatus = ({ onBack }) => {
                         {DEV_STATS.categories.map((cat, idx) => {
                             const percent = cat.total > 0 ? Math.round((cat.completed / cat.total) * 100) : 0;
                             const statusLabel = cat.name === "Bugs/Issues" ? (percent === 100 || cat.total === 0 ? "Fixed" : "Pending") : `${percent}%`;
+                            
+                            // Animation width logic
+                            const width = animated ? `${percent}%` : '0%';
 
                             return (
                                 <div key={idx} className="relative h-10 bg-gray-800/80 rounded overflow-hidden">
                                     <div 
                                         className={`absolute top-0 left-0 h-full ${cat.color} transition-all duration-1000 ease-out`} 
-                                        style={{ width: `${percent}%` }}
+                                        style={{ width: width }}
                                     ></div>
                                     
                                     <div className="absolute inset-0 flex justify-between items-center px-3 text-white font-bold text-sm drop-shadow-md z-10 pointer-events-none" style={{ textShadow: '1px 1px 2px black' }}>
@@ -483,7 +494,7 @@ const Hero = ({ onNavigate }) => (
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
           <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
         </span>
-        Systems Online // Welcome to the Studio
+        Welcome to the Skdev
       </div>
       
       <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter mb-6 uppercase">
@@ -491,7 +502,7 @@ const Hero = ({ onNavigate }) => (
       </h1>
       
       <p className="mt-4 max-w-2xl mx-auto text-xl text-gray-400 font-light">
-        The digital project studio of <span className="text-white font-semibold">Satyakiran</span> (SkDev). 
+        A digital indie studio <span className="text-white font-semibold">Satyakiran</span> (SkDev). 
         Crafting immersive applications, widgets, and web experiences.
       </p>
       
@@ -703,6 +714,29 @@ const ProjectDetail = ({ project, onBack }) => {
                 ))}
               </div>
             </div>
+
+            {/* --- ADDED: SCREENSHOTS GALLERY --- */}
+            {project.gallery && (
+                <div className="pt-8 border-t border-gray-900">
+                    <h2 className="text-2xl font-bold text-white mb-6 flex items-center">
+                        <Smartphone className="w-6 h-6 text-cyan-500 mr-3" />
+                        App Gallery
+                    </h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        {project.gallery.map((img, index) => (
+                            <div key={index} className="rounded-lg overflow-hidden border border-gray-800 group relative aspect-[9/16] bg-gray-900 shadow-xl">
+                                <img 
+                                    src={img} 
+                                    alt={`${project.title} Screenshot ${index + 1}`} 
+                                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                />
+                                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors"></div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
+
           </div>
 
           {/* Sidebar / Actions */}
@@ -776,8 +810,8 @@ const Support = ({ onNavigate }) => (
         </div>
         <h2 className="text-3xl font-bold text-white mb-4">Fuel the Projects</h2>
         <p className="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
-          skdev (ReyDevStuffs) is an independent project studio. Your support directly funds server costs, assets, and coffee required to keep building updates for Aniset and future titles.
-        </p>
+          Satya Kiran (Skdev) is an indie studio. Support directly funds servers, assets, and the coffee fueling updates for Aniset and future titles
+              </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           <a href={LINKS.upi} target="_blank" rel="noopener noreferrer" className="px-8 py-3 bg-orange-600 text-white font-bold rounded-lg hover:bg-orange-500 transition-colors shadow-lg flex items-center justify-center gap-2">
             <QrCode className="w-5 h-5 fill-current" /> Donate via UPI
@@ -876,15 +910,12 @@ const Footer = ({ onNavigate }) => (
             <span className="font-bold text-2xl tracking-wider font-mono">skdev</span>
           </div>
           <p className="text-sm leading-relaxed max-w-xs text-gray-400">
-            A digital project studio dedicated to building high-quality web and mobile experiences.
+            An independent digital studio dedicated to building high-quality web and mobile experiences.
           </p>
           <div className="mt-4 text-sm text-cyan-400 font-mono">
-            <Mail className="w-4 h-4 inline mr-2" /> satyakiran29@gmail.com
+            <Mail className="w-4 h-4 inline mr-2" /> satyakiran296@gmail.com
           </div>
-          <div className="mt-6 flex space-x-4">
-             <div className="w-2 h-2 rounded-full bg-green-500"></div>
-             <span className="text-xs font-mono text-green-500">ALL SYSTEMS OPERATIONAL</span>
-          </div>
+        
         </div>
         <div>
           <h4 className="text-white font-bold uppercase tracking-wider mb-6 text-sm">Studio</h4>
