@@ -41,7 +41,7 @@ const LINKS = {
   twitter: "https://twitter.com",
   youtube: "https://youtube.com",
   discord: "https://discord.com",
-  telegram: "https://telegram.org",
+  telegram: "https://t.me/skdev29",
   paypal: "https://paypal.me/",
   upi: "@upi", 
   email: "mailto:satyakiran296@gmail.com",
@@ -502,7 +502,7 @@ const Hero = ({ onNavigate }) => (
       </h1>
       
       <p className="mt-4 max-w-2xl mx-auto text-xl text-gray-400 font-light">
-        A digital indie studio <span className="text-white font-semibold">Satyakiran</span> (SkDev). 
+        A digital indie studio <span className="text-white font-semibold">SkDev</span>. 
         Crafting immersive applications, widgets, and web experiences.
       </p>
       
@@ -877,7 +877,7 @@ const Feedback = () => (
               <h3 className="text-xl font-bold text-white mb-2">Direct Contact</h3>
               <p className="text-gray-500 text-sm mb-6 max-w-xs mx-auto">For business inquiries, bug reports, and confidential matters.</p>
               <a href={LINKS.email} className="px-6 py-3 bg-gray-900 text-cyan-400 rounded-lg hover:bg-cyan-900/30 transition-colors font-mono font-bold w-full">
-                  satyakiran29@gmail.com
+                  satyakiran296@gmail.com
               </a>
           </div>
           <div className="bg-black rounded-2xl p-8 border border-gray-800 hover:border-cyan-500/50 transition-all duration-300 hover:-translate-y-1 flex flex-col items-center">
@@ -907,7 +907,7 @@ const Footer = ({ onNavigate }) => (
         <div className="col-span-1 md:col-span-2">
           <div className="flex items-center mb-6 text-white">
             <Terminal className="w-6 h-6 text-cyan-500 mr-2" />
-            <span className="font-bold text-2xl tracking-wider font-mono">skdev</span>
+            <span className="font-bold text-2xl tracking-wider font-mono">SkDev</span>
           </div>
           <p className="text-sm leading-relaxed max-w-xs text-gray-400">
             An independent digital studio dedicated to building high-quality web and mobile experiences.
@@ -940,7 +940,7 @@ const Footer = ({ onNavigate }) => (
         </div>
       </div>
       <div className="border-t border-gray-900 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600">
-        <p>© 2025 skdev Studio (SkDev). All rights reserved.</p>
+        <p>© 2025 SkDev. All rights reserved.</p>
         <p className="mt-2 md:mt-0 font-mono">DESIGNED BY SATYAKIRAN</p>
       </div>
     </div>
