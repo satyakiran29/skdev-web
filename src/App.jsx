@@ -72,7 +72,7 @@ const TEAM_MEMBERS = [
   { 
     name: 'Satyakiran', 
     role: 'Lead Developer & Designer', 
-    alias: '(aka ReyDevStuffs)',
+    alias: '(aka Skdev)',
     icon: <Terminal className="w-8 h-8" />, 
     color: 'text-cyan-400',
     bio: 'The sole mind behind skdev and ReyDevStuffs. Architecting the entire ecosystem from backend infrastructure to frontend design and Android customization.',
@@ -491,7 +491,7 @@ const Hero = ({ onNavigate }) => (
       </h1>
       
       <p className="mt-4 max-w-2xl mx-auto text-xl text-gray-400 font-light">
-        The digital project studio of <span className="text-white font-semibold">Satyakiran</span> (aka ReyDevStuffs). 
+        The digital project studio of <span className="text-white font-semibold">Satyakiran</span> (SkDev). 
         Crafting immersive applications, widgets, and web experiences.
       </p>
       
@@ -909,7 +909,7 @@ const Footer = ({ onNavigate }) => (
         </div>
       </div>
       <div className="border-t border-gray-900 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600">
-        <p>© 2025 skdev Studio (ReyDevStuffs). All rights reserved.</p>
+        <p>© 2025 skdev Studio (SkDev). All rights reserved.</p>
         <p className="mt-2 md:mt-0 font-mono">DESIGNED BY SATYAKIRAN</p>
       </div>
     </div>
