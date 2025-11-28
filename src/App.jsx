@@ -29,10 +29,8 @@ import {
   QrCode,
   Copy, 
   Check, 
-  Bitcoin,
   Activity,
   Palette,
-  Gamepad2,
   Brush
 } from 'lucide-react';
 
@@ -118,17 +116,17 @@ const PROJECTS = [
     type: 'Released',
     tag: 'Anime Customization',
     description: 'Transform your Android Home Screen with Anime Kwgt Widgets & Klwp. Rated 4.8 Stars.',
-    longDescription: 'Elevate your device customization to a whole new level. Aniset brings the vibrant and dynamic world of anime to your Android home screen. Immerse yourself in the captivating aesthetics of your favorite characters. Features extensive customization options for colors, fonts, and layouts.',
+    longDescription: 'Transform Your Android Home Screen with Aniset - Anime Kwgt Widgets & Klwp! Elevate your device customization to a whole new level with Aniset - Anime Kwgt & Klwp Widgets! This collection of stunning KWGT and KLWP widgets brings the vibrant and dynamic world of anime to your Android home screen. Immerse yourself in the captivating aesthetics of your favorite anime characters and themes, making your device a true anime wonderland.   Note: While initially launched on the Play Store, Aniset has transitioned to UPI-based direct sales via DMs. This change was made to prevent refund abuse and ensure fair access for all users.',
     features: [
       '9 New Widgets Added (v4.8)',
       'Android 16 Support',
       'Curated 4K Wallpaper Section',
       'Seamless KWGT & KLWP Integration'
     ],
-    imagePlaceholder: 'bg-gradient-to-br from-pink-600 to-purple-900',
-    banner: 'https://images.unsplash.com/photo-1630713815144-d8d2122da2ee?q=80&w=2070&auto=format&fit=crop', // Anime/Abstract vibe
-    icon: <Brush className="w-12 h-12 text-pink-400" />,
-    action: 'Get on Play Store',
+    imagePlaceholder: 'bg-gradient-to-br from-pink-600 to-purple-100',
+    banner: 'https://play-lh.googleusercontent.com/X5-j_gJq-zNoshCO96DwKVjh6Y6XNIOWFtFlip3EtWLJ-W5gctNo_Y-Qg1dk-98x00s=w5120-h2880-rw', // Anime/Abstract vibe
+    icon: <Brush className="w-12 h-12 text-pink-100" />,
+    action: 'Open',
     active: true,
     url: 'https://play.google.com/store/apps/details?id=com.reydevstuffs.aniset',
     playStoreUrl: 'https://play.google.com/store/apps/details?id=com.reydevstuffs.aniset',
