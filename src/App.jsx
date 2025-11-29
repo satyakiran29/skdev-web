@@ -6,8 +6,7 @@ import {
   ExternalLink, 
   Smartphone, 
   Lock,
-  Rocket,
-  Globe, 
+  Rocket, 
   Heart, 
   Twitter, 
   Youtube, 
@@ -30,8 +29,7 @@ import {
   Copy, 
   Check, 
   Activity,
-  Palette,
-  Brush
+  Instagram
 } from 'lucide-react';
 
 // --- Configuration & Links ---
@@ -41,17 +39,19 @@ const LINKS = {
   twitter: "https://twitter.com",
   youtube: "https://youtube.com",
   discord: "https://discord.com",
-  telegram: "https://t.me/skdev29",
+  telegram: "https://t.me/skdev29 ",
   paypal: "https://paypal.me/",
   upi: "@upi", 
   email: "mailto:satyakiran296@gmail.com",
   playStoreDev: "https://play.google.com/store/apps/dev?id=",
 };
-
+const Plinks={
+  aniset:"https://play.google.com/store/apps/details?id=com.skdev.aniset",
+};
 // --- DATA CONSTANTS ---
 
 const RECENT_SUPPORTERS = [
-    { name: "Seonbaeyakuza", amount: "Play Store Review" },
+    { name: "Ahmed", amount: "200" },
 ];
 
 const DEV_STATS = {
@@ -79,7 +79,8 @@ const TEAM_MEMBERS = [
     socials: {
       github: LINKS.github,
       twitter: LINKS.twitter,
-      youtube: LINKS.youtube
+      youtube: LINKS.youtube,
+      Instagram:LINKS.Instagram
     }
   }
 ];
@@ -130,13 +131,11 @@ const PROJECTS = [
     action: 'Open',
     active: true,
     url: 'https://aniset.vercel.app/',
-    playStoreUrl: 'https://play.google.com/store/apps/details?id=com.reydevstuffs.aniset',
+    playStoreUrl: null,
     githubUrl: null,
     extraLink: {
-    //     label: "More by ReyDevStuffs",
-    //     url: LINKS.playStoreDev
-    label:"Website",
-    url:'https://aniset.vercel.app/'
+        label: "More by ReyDevStuffs",
+        url: Plinks.aniset
     }
   },
   {
@@ -762,7 +761,7 @@ const ProjectDetail = ({ project, onBack }) => {
                     rel="noopener noreferrer"
                     className="w-full py-4 bg-cyan-600 hover:bg-cyan-500 text-white font-bold rounded-lg transition-colors flex items-center justify-center mb-4 shadow-lg shadow-cyan-900/20"
                   >
-                    Launch / View <ExternalLink className="w-4 h-4 ml-2" />
+                    Website <ExternalLink className="w-4 h-4 ml-2" />
                   </a>
                 ) : (
                   <div className="w-full py-4 bg-gray-800 text-gray-500 font-bold rounded-lg flex items-center justify-center mb-4 cursor-not-allowed border border-gray-700">
@@ -918,12 +917,12 @@ const Footer = ({ onNavigate }) => (
         
         </div>
         <div>
-          <h4 className="text-white font-bold uppercase tracking-wider mb-6 text-sm">Studio</h4>
+          {/* <h4 className="text-white font-bold uppercase tracking-wider mb-6 text-sm">Studio</h4>
           <ul className="space-y-4 text-sm">
             <li><button className="bg-transparent border-none cursor-pointer text-gray-500 hover:text-cyan-400 transition-colors text-left p-0">About</button></li>
             <li><button className="bg-transparent border-none cursor-pointer text-gray-500 hover:text-cyan-400 transition-colors text-left p-0">Assets</button></li>
             <li><button className="bg-transparent border-none cursor-pointer text-gray-500 hover:text-cyan-400 transition-colors text-left p-0">Changelog</button></li>
-          </ul>
+          </ul> */}
         </div>
         <div>
           <h4 className="text-white font-bold uppercase tracking-wider mb-6 text-sm">Community</h4>
