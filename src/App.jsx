@@ -126,7 +126,7 @@ const PROJECTS = [
     // ADDED: Gallery Images
 
     imagePlaceholder: 'bg-gradient-to-br from-pink-600 to-purple-100',
-    banner: './files/aniset.webp', 
+    banner: 'https://play-lh.googleusercontent.com/X5-j_gJq-zNoshCO96DwKVjh6Y6XNIOWFtFlip3EtWLJ-W5gctNo_Y-Qg1dk-98x00s=w5120-h2880-rw', 
     icon: <Smartphone className="w-12 h-12 text-pink-400" />, // Added icon
     action: 'Open',
     active: true,
