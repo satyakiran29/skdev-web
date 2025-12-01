@@ -131,12 +131,12 @@ const PROJECTS = [
     action: 'Open',
     active: true,
     url: 'https://aniset.vercel.app/',
-    playStoreUrl: null,
+    playStoreUrl: Plinks.aniset,
     githubUrl: null,
-    extraLink: {
-        label: "More by ReyDevStuffs",
-        url: Plinks.aniset
-    }
+    // extraLink: {
+    //     label: "Play Store",
+    //     url: Plinks.aniset
+    // }
   },
   {
     id: 'unannounced',
