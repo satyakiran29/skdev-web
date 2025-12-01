@@ -73,14 +73,14 @@ const TEAM_MEMBERS = [
     name: 'Satyakiran', 
     role: 'Lead Developer & Designer', 
     alias: '(aka Skdev)',
-    icon: <Terminal className="w-8 h-8" />, 
+    icon: <img src="/skdev.png" alt="Satyakiran"  />, 
     color: 'text-cyan-400',
     bio: 'The sole mind behind skdev. Architecting the entire ecosystem from backend infrastructure to frontend design and Android customization.',
     socials: {
       github: LINKS.github,
       twitter: LINKS.twitter,
       youtube: LINKS.youtube,
-      Instagram:LINKS.Instagram
+      instagram: LINKS.instagram
     }
   }
 ];
@@ -206,8 +206,8 @@ const Navigation = ({ onNavigate, currentView }) => {
         <div className="flex items-center justify-between h-20">
           <div className="flex-shrink-0 flex items-center cursor-pointer group" onClick={() => { onNavigate('home'); window.scrollTo(0,0); }}>
             <div className="relative">
-              <Terminal className="w-8 h-8 text-cyan-500 mr-3 relative z-10" />
-              <div className="absolute inset-0 bg-cyan-500 blur-lg opacity-20 group-hover:opacity-40 transition-opacity"></div>
+                   <img src="/skdev.png" alt="Satyakiran" className="w-8 h-8 rounded-full" />
+                   <div className="absolute inset-0 bg-cyan-500 blur-lg opacity-20 group-hover:opacity-40 transition-opacity"></div>
             </div>
             <span className="font-bold text-2xl tracking-wider text-white font-mono">
               sk<span className="text-cyan-500">dev</span>
