@@ -40,8 +40,8 @@ const LINKS = {
   youtube: "https://youtube.com",
   discord: "https://discord.com",
   telegram: "https://t.me/skdev29 ",
-  paypal: "https://paypal.me/",
-  upi: "@upi", 
+  paypal: "https://paypal.me/skdev029",
+  upi: "skdev29@ptyes", 
   email: "mailto:satyakiran296@gmail.com",
   playStoreDev: "https://play.google.com/store/apps/dev?id=",
 };
@@ -501,7 +501,7 @@ const Hero = ({ onNavigate }) => (
       </h1>
       
       <p className="mt-4 max-w-2xl mx-auto text-xl text-gray-400 font-light">
-        A digital indie studio <span className="text-white font-semibold">SkDev</span>. 
+        A Indie Developer <span className="text-white font-semibold">SkDev</span>. 
         Crafting immersive applications, widgets, and web experiences.
       </p>
       
@@ -649,7 +649,7 @@ const ProjectDetail = ({ project, onBack }) => {
           className="flex items-center text-gray-400 hover:text-cyan-400 transition-colors mb-8 group"
         >
           <ArrowLeft className="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform" />
-          Back to Studio
+          Back to Website
         </button>
 
         {/* Project Header / Banner Area */}
@@ -809,7 +809,7 @@ const Support = ({ onNavigate }) => (
         </div>
         <h2 className="text-3xl font-bold text-white mb-4">Fuel the Projects</h2>
         <p className="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">
-          Satya Kiran (Skdev) is an indie studio. Support directly funds servers, assets, and the coffee fueling updates for Aniset and future titles
+          Satya Kiran (Skdev) is an indie developer. Support directly funds servers, assets, and the coffee fueling updates for Aniset and future titles
               </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           <a href={LINKS.upi} target="_blank" rel="noopener noreferrer" className="px-8 py-3 bg-orange-600 text-white font-bold rounded-lg hover:bg-orange-500 transition-colors shadow-lg flex items-center justify-center gap-2">
@@ -909,7 +909,7 @@ const Footer = ({ onNavigate }) => (
             <span className="font-bold text-2xl tracking-wider font-mono">SkDev</span>
           </div>
           <p className="text-sm leading-relaxed max-w-xs text-gray-400">
-            An independent digital studio dedicated to building high-quality web and mobile experiences.
+            An Indie Developer dedicated to building high-quality web and mobile experiences.
           </p>
           <div className="mt-4 text-sm text-cyan-400 font-mono">
             <Mail className="w-4 h-4 inline mr-2" /> satyakiran296@gmail.com
