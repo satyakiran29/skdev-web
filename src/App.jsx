@@ -58,11 +58,10 @@ const DEV_STATS = {
     nextBuildDate: "2026-01-30", 
     lastBuild: "Dec 27 Alpha bulid",
     version: "unannounced project",
-    overallProgress: 60,
+    overallProgress: 35,
     totalTasks: 150,
     categories: [
-        { name: "Widgets Design", completed: 20, total: 30, color: "bg-[#e91e63]" }, 
-        { name: "App Support", completed: 15, total: 30, color: "bg-[#4caf50]" },  
+        { name: "Widgets Design", completed: 15, total: 50, color: "bg-[#e91e63]" },   
         { name: "Code (React/Kotlin)", completed: 20, total: 100, color: "bg-[#4682b4]" }, 
         { name: "Bugs/Issues", completed: 0, total: 0, color: "bg-[#4b0082]" } 
     ]
