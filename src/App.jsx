@@ -56,13 +56,13 @@ const RECENT_SUPPORTERS = [
 
 const DEV_STATS = {
     nextBuildDate: "2026-01-30", 
-    lastBuild: "Nov 27 Alpha bulid",
+    lastBuild: "Dec 27 Alpha bulid",
     version: "unannounced project",
-    overallProgress: 35,
+    overallProgress: 39,
     totalTasks: 150,
     categories: [
-        { name: "Widgets Design", completed: 15, total: 50, color: "bg-[#e91e63]" },   
-        { name: "Code (React/Kotlin)", completed: 20, total: 100, color: "bg-[#4682b4]" }, 
+        { name: "Widgets Design", completed: 19, total: 50, color: "bg-[#e91e63]" },   
+        { name: "Code (React/Kotlin)", completed: 25, total: 100, color: "bg-[#4682b4]" }, 
         { name: "Bugs/Issues", completed: 0, total: 0, color: "bg-[#4b0082]" } 
     ]
 };
