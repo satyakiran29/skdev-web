@@ -55,8 +55,8 @@ const RECENT_SUPPORTERS = [
 ];
 
 const DEV_STATS = {
-    nextBuildDate: "2026-01-30", 
-    lastBuild: "Dec 27 Alpha bulid",
+    nextBuildDate: "2026-03-19", 
+    lastBuild: "feb 8 Alpha bulid",
     version: "unannounced project",
     overallProgress: 39,
     totalTasks: 150,
