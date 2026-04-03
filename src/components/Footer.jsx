@@ -33,7 +33,7 @@ export default function Footer() {
       <div className="container" style={{ textAlign: 'center', marginTop: '3rem', color: 'var(--text-secondary)', fontSize: '0.875rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
         <div>&copy; {new Date().getFullYear()} SKDev. All rights reserved.</div>
         <div>
-          Designed & Developed by <span className="text-gradient" style={{ fontWeight: 600 }}>Satyakiran</span>
+          Designed & Developed by <a href="https://psatyakiran.in" target="_blank" rel="noreferrer" className="text-gradient" style={{ fontWeight: 600, textDecoration: 'none' }}>Satyakiran</a>
         </div>
       </div>
     </footer>
