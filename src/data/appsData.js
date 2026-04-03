@@ -34,7 +34,7 @@ export const appsData = [
     directPurchase: {
       inPrice: '₹200',
       globalPrice: '$2.5',
-      telegramLink: 'https://t.me/skdev'
+      telegramLink: 'https://t.me/skdev1'
     },
     reviews: [
       { id: 1, user: "John Doe", rating: 4, comment: "Very useful for my daily tasks." },
