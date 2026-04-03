@@ -11,8 +11,16 @@ import News from './pages/News';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import FAQ from './pages/FAQ';
 import Donate from './pages/Donate';
+import UnderDevelopment from './pages/UnderDevelopment';
+
+// Set this to true to hide the entire production site behind the Under Development landing page
+const IS_UNDER_DEVELOPMENT = true;
 
 function App() {
+  if (IS_UNDER_DEVELOPMENT) {
+    return <UnderDevelopment />;
+  }
+
   return (
     <BrowserRouter>
       <Header />
