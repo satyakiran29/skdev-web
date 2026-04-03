@@ -185,6 +185,11 @@ p { color: var(--text-secondary); margin-bottom: 1rem; }
 .grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
 .grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
 
+/* Header Hamburger Logic */
+.desktop-nav { display: flex; }
+.mobile-menu-btn { display: none; }
+.mobile-dropdown { display: none; }
+
 /* Responsive Overrides */
 .responsive-panel {
   padding: 3rem;
@@ -221,6 +226,11 @@ p { color: var(--text-secondary); margin-bottom: 1rem; }
   .container {
     padding: 0 1rem;
   }
+  
+  /* Hamburger logic */
+  .desktop-nav { display: none !important; }
+  .mobile-menu-btn { display: flex !important; }
+  .mobile-dropdown { display: flex !important; }
   
   /* Redefine button paddings down slightly if needed */
   .btn {

@@ -10,6 +10,7 @@ import AppDetails from './pages/AppDetails';
 import News from './pages/News';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import FAQ from './pages/FAQ';
+import Donate from './pages/Donate';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/news" element={<News />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/faq" element={<FAQ />} />
+          <Route path="/donate" element={<Donate />} />
         </Routes>
       </main>
       <Footer />

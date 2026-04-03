@@ -22,6 +22,7 @@ export default function Footer() {
             <NavLink to="/apps">Apps</NavLink>
             <NavLink to="/news">News</NavLink>
             <NavLink to="/faq">FAQ</NavLink>
+            <NavLink to="/donate">Donate</NavLink>
             <NavLink to="/privacy">Privacy Policy</NavLink>
           </div>
           
