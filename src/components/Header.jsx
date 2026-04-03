@@ -17,6 +17,7 @@ export default function Header() {
         
         <nav style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
           <NavLink to="/apps" style={({ isActive }) => ({ color: isActive ? 'var(--accent-primary)' : 'inherit' })}>Apps</NavLink>
+          <NavLink to="/news" style={({ isActive }) => ({ color: isActive ? 'var(--accent-primary)' : 'inherit' })}>News</NavLink>
           
           <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', marginLeft: '0.5rem', borderLeft: '1px solid var(--border-color)', paddingLeft: '0.5rem' }}>
             <a href="mailto:satyakiran296@gmail.com" className="btn-icon" title="Email Developer">

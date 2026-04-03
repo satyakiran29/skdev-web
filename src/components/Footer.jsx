@@ -20,6 +20,8 @@ export default function Footer() {
             <h4 style={{ marginBottom: '0.5rem' }}>Quick Links</h4>
             <NavLink to="/">Home</NavLink>
             <NavLink to="/apps">Apps</NavLink>
+            <NavLink to="/news">News</NavLink>
+            <NavLink to="/privacy">Privacy Policy</NavLink>
           </div>
           
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
