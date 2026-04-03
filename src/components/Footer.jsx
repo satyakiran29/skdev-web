@@ -1,13 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Play } from 'lucide-react';
+import { Play, Mail } from 'lucide-react';
 import heroLogo from '../assets/hero.png';
 
 export default function Footer() {
   return (
     <footer style={{ borderTop: '1px solid var(--border-color)', padding: '3rem 0', marginTop: '4rem', backgroundColor: 'var(--bg-secondary)' }}>
-      <div className="container flex-between" style={{ alignItems: 'flex-start' }}>
-        <div>
+      <div className="container flex-between flex-between-mobile-col" style={{ alignItems: 'flex-start' }}>
+        <div style={{ maxWidth: '100%' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
             <img src={heroLogo} alt="SKDev Logo" style={{ width: '32px', height: '32px', objectFit: 'cover', borderRadius: '50%', background: 'var(--bg-secondary)' }} />
             <h3 className="text-gradient" style={{ margin: 0 }}>SKDev</h3>
@@ -24,6 +24,9 @@ export default function Footer() {
           
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
             <h4 style={{ marginBottom: '0.5rem' }}>Connect</h4>
+            <a href="mailto:satyakiran296@gmail.com" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <Mail size={16} /> Email
+            </a>
             <a href="https://play.google.com/store/apps/dev?id=9166037782169864125" target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <Play size={16} /> Play Store
             </a>

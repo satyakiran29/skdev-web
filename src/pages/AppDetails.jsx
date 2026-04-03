@@ -33,9 +33,9 @@ export default function AppDetails() {
   };
 
   return (
-    <div className="container animate-fade-in" style={{ padding: '4rem 0' }}>
+    <div className="container animate-fade-in" style={{ padding: 'clamp(2rem, 5vw, 4rem) 0' }}>
       {/* App Header */}
-      <div className="glass-panel" style={{ padding: '3rem', marginBottom: '4rem', display: 'flex', gap: '3rem', alignItems: 'center', flexWrap: 'wrap-reverse' }}>
+      <div className="glass-panel responsive-panel" style={{ marginBottom: '4rem', display: 'flex', gap: 'clamp(1.5rem, 4vw, 3rem)', alignItems: 'center', flexWrap: 'wrap-reverse' }}>
         <div style={{ flex: 1, minWidth: '300px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '1.5rem' }}>
             <img src={app.icon} alt={`${app.name} icon`} style={{ width: '80px', height: '80px', borderRadius: '1.25rem', objectFit: 'cover', border: '2px solid var(--border-color)' }} />
@@ -87,8 +87,7 @@ export default function AppDetails() {
       {/* Important Notice Section for Direct Purchase */}
       {/* Important Notice Section for Direct Purchase */}
       {app.directPurchase && (
-        <div className="glass-panel" style={{ 
-          padding: '2.5rem', 
+        <div className="glass-panel responsive-panel" style={{ 
           marginBottom: '4rem', 
           display: 'flex', 
           flexDirection: 'column', 

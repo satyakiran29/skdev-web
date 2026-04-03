@@ -12,17 +12,17 @@ export default function Home() {
     <div className="container">
       {/* Hero Section */}
       <section style={{ padding: '8rem 0 6rem 0', textAlign: 'center', maxWidth: '800px', margin: '0 auto' }} className="animate-fade-in">
-        <h1 style={{ marginBottom: '1.5rem', fontSize: '4rem' }}>
+        <h1 style={{ marginBottom: '1.5rem', fontSize: 'clamp(2.5rem, 8vw, 4rem)' }}>
           Crafting Digital <br /> <span className="text-gradient">Experiences</span>
         </h1>
-        <p style={{ fontSize: '1.25rem', marginBottom: '2.5rem' }}>
+        <p style={{ fontSize: 'clamp(1rem, 4vw, 1.25rem)', marginBottom: '2.5rem', padding: '0 1rem' }}>
           Indie developer crafting clean, practical apps focused on performance and real user needs.
         </p>
-        <div className="flex-center" style={{ gap: '1rem' }}>
-          <NavLink to="/apps" className="btn btn-primary">
+        <div className="flex-center" style={{ gap: '1rem', flexWrap: 'wrap' }}>
+          <NavLink to="/apps" className="btn btn-primary mobile-w-full">
             View All Apps <ArrowRight size={18} />
           </NavLink>
-          <a href="https://play.google.com/store/apps/dev?id=9166037782169864125" target="_blank" rel="noreferrer" className="btn btn-secondary">
+          <a href="https://play.google.com/store/apps/dev?id=9166037782169864125" target="_blank" rel="noreferrer" className="btn btn-secondary mobile-w-full">
             Play Store Profile <Download size={18} />
           </a>
         </div>
@@ -30,7 +30,7 @@ export default function Home() {
 
       {/* Featured Apps Section */}
       <section style={{ padding: '4rem 0' }} className="animate-fade-in delay-200">
-        <div className="flex-between" style={{ marginBottom: '3rem' }}>
+        <div className="flex-between flex-between-mobile-col" style={{ marginBottom: '3rem' }}>
           <h2>Featured Applications</h2>
           <NavLink to="/apps" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--accent-primary)', fontWeight: 600 }}>
             See All <ArrowRight size={16} />
