@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Play, Users } from 'lucide-react';
+import { Play } from 'lucide-react';
 import heroLogo from '../assets/hero.png';
 
 export default function Footer() {
@@ -27,16 +27,13 @@ export default function Footer() {
             <a href="https://play.google.com/store/apps/dev?id=SKDev" target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <Play size={16} /> Play Store
             </a>
-            <a href="https://github.com/satyakiran29" target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Users size={16} /> Community Hub
-            </a>
           </div>
         </div>
       </div>
       <div className="container" style={{ textAlign: 'center', marginTop: '3rem', color: 'var(--text-secondary)', fontSize: '0.875rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
         <div>&copy; {new Date().getFullYear()} SKDev. All rights reserved.</div>
         <div>
-          Designed & Developed by <a href="https://github.com/satyakiran29" target="_blank" rel="noreferrer" className="text-gradient" style={{ fontWeight: 600 }}>Satyakiran</a>
+          Designed & Developed by <span className="text-gradient" style={{ fontWeight: 600 }}>Satyakiran</span>
         </div>
       </div>
     </footer>

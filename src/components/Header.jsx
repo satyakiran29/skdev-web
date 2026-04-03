@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Users, Play } from 'lucide-react';
+import { Play } from 'lucide-react';
 import heroLogo from '../assets/hero.png';
 
 export default function Header() {
@@ -21,9 +21,6 @@ export default function Header() {
           <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', marginLeft: '1rem', borderLeft: '1px solid var(--border-color)', paddingLeft: '1rem' }}>
             <a href="https://play.google.com/store/apps/dev?id=SKDev" target="_blank" rel="noreferrer" className="btn-icon" title="Play Store Profile">
               <Play size={20} />
-            </a>
-            <a href="https://github.com/satyakiran29" target="_blank" rel="noreferrer" className="btn-icon" title="Community Hub">
-              <Users size={20} />
             </a>
           </div>
         </nav>
