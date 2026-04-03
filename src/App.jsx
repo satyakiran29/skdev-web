@@ -9,6 +9,7 @@ import AppsSection from './pages/AppsSection';
 import AppDetails from './pages/AppDetails';
 import News from './pages/News';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import FAQ from './pages/FAQ';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/apps/:id" element={<AppDetails />} />
           <Route path="/news" element={<News />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/faq" element={<FAQ />} />
         </Routes>
       </main>
       <Footer />
