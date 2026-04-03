@@ -22,7 +22,7 @@ export default function Home() {
           <NavLink to="/apps" className="btn btn-primary">
             View All Apps <ArrowRight size={18} />
           </NavLink>
-          <a href="https://play.google.com/store/apps/dev?id=SKDev" target="_blank" rel="noreferrer" className="btn btn-secondary">
+          <a href="https://play.google.com/store/apps/dev?id=9166037782169864125" target="_blank" rel="noreferrer" className="btn btn-secondary">
             Play Store Profile <Download size={18} />
           </a>
         </div>

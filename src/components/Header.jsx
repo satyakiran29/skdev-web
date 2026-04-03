@@ -19,7 +19,7 @@ export default function Header() {
           <NavLink to="/apps" style={({ isActive }) => ({ color: isActive ? 'var(--accent-primary)' : 'inherit' })}>Apps</NavLink>
           
           <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', marginLeft: '1rem', borderLeft: '1px solid var(--border-color)', paddingLeft: '1rem' }}>
-            <a href="https://play.google.com/store/apps/dev?id=SKDev" target="_blank" rel="noreferrer" className="btn-icon" title="Play Store Profile">
+            <a href="https://play.google.com/store/apps/dev?id=9166037782169864125" target="_blank" rel="noreferrer" className="btn-icon" title="Play Store Profile">
               <Play size={20} />
             </a>
           </div>

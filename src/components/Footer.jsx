@@ -24,7 +24,7 @@ export default function Footer() {
           
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
             <h4 style={{ marginBottom: '0.5rem' }}>Connect</h4>
-            <a href="https://play.google.com/store/apps/dev?id=SKDev" target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <a href="https://play.google.com/store/apps/dev?id=9166037782169864125" target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <Play size={16} /> Play Store
             </a>
           </div>
