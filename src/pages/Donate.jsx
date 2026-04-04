@@ -38,7 +38,7 @@ export default function Donate() {
           </p>
           
           <div style={{ width: '100%', padding: '1rem', backgroundColor: 'var(--bg-primary)', borderRadius: '1rem', border: '1px solid var(--border-color)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 'auto' }}>
-            <span style={{ fontFamily: 'monospace', fontSize: '1.125rem', color: 'var(--text-primary)' }}>satyakiran@upi</span>
+            <span style={{ fontFamily: 'monospace', fontSize: '1.125rem', color: 'var(--text-primary)' }}>psatyakiran1@oksbi</span>
             <button onClick={handleCopyUPI} className="btn-icon" style={{ backgroundColor: 'var(--bg-secondary)' }} title="Copy UPI ID">
               {copiedUPI ? <CheckCircle2 size={18} color="#10b981" /> : <Copy size={18} />}
             </button>
