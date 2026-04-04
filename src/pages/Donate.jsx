@@ -6,7 +6,7 @@ export default function Donate() {
 
   const handleCopyUPI = async () => {
     try {
-      await navigator.clipboard.writeText(''); // Placeholder UPI ID
+      await navigator.clipboard.writeText('psatyakiran1@oksbi'); // Placeholder UPI ID
       setCopiedUPI(true);
       setTimeout(() => setCopiedUPI(false), 2000);
     } catch (err) {
