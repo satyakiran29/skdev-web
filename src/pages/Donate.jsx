@@ -56,7 +56,7 @@ export default function Donate() {
           </p>
           
           <a 
-            href="#" 
+            href="https://paypal.me/skdev029" 
             target="_blank" 
             rel="noreferrer" 
             className="btn btn-primary" 
