@@ -14,9 +14,23 @@ import anifys4 from '../assets/anify/anify_screenshot (4).png';
 import anifys5 from '../assets/anify/anify_screenshot (5).png';
 import anifys6 from '../assets/anify/anify_screenshot (6).png';
 
+//gwalls images
+// import gwallsIcon from '../assets/gwalls_icon.png';
+import gwallsbg from '../assets/gwalls/gwallsbg.png';
+
 
 export const appsData = [
- 
+  {
+    id:"gwalls",
+    name: "Gwalls (Free)",
+    screenshot: gwallsbg,
+    description: "Gwalls is a free wallpaper app that offers a curated collection of high-quality, ad-free wallpapers. With a focus on privacy and user experience, Gwalls provides a seamless way to discover and set stunning wallpapers without any distractions.",
+    shortDesc: "Ad-free wallpapers.",
+    icon: "https://play-lh.googleusercontent.com/Fi0yymWa6vKSk_z-cfb9nzAYpPK6zE4dm_0kSKxJzjckJDMPpHRoIK1iMfCk8mpXSaZx=w240-h480-rw",
+    playStoreLink: "https://play.google.com/store/apps/details?id=com.skdev.gwalls",
+    websiteLink: "coming soon",
+    reviews: [   ]
+  },
   {
     id: "aniset",
     name: "Aniset (Paid)",
