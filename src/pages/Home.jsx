@@ -42,6 +42,14 @@ export default function Home() {
             <AppCard key={app.id} app={app} />
           ))}
         </div>
+
+        {appsData.length > 2 && (
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem' }}>
+            <NavLink to="/apps" className="btn btn-secondary">
+              Show More
+            </NavLink>
+          </div>
+        )}
       </section>
     </div>
   );
