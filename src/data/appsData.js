@@ -1,29 +1,25 @@
 
-// import anifyImg from '../assets/anify_preview.png';
-// import anisetImg from '../assets/aniset_preview.png';
 
-// import anifyIcon from '../assets/anify_icon.png';
+
 import anisetIcon from '../assets/Aniset_logo.webp';
 import anisetImg from '../assets/aniset_bg.webp';
+//anify images
+import anifyIcon from '../assets/anify/anifyicon.png';
+import anifybg from '../assets/anify/anify_bg.png';
+import anifyapp from '../assets/anify/anify1.jpeg';
+import anifys1 from '../assets/anify/anify_screenshot (1).png';
+import anifys2 from '../assets/anify/anify_screenshot (2).png';
+import anifys3 from '../assets/anify/anify_screenshot (3).png';
+import anifys4 from '../assets/anify/anify_screenshot (4).png';
+import anifys5 from '../assets/anify/anify_screenshot (5).png';
+import anifys6 from '../assets/anify/anify_screenshot (6).png';
+
 
 export const appsData = [
-  // {
-  //   id: "anify",
-  //   name: "Anify Widget",
-  //   // screenshot: anifyImg,
-  //   // screenshots: [anifyImg, anifyImg, anifyImg],
-  //   description: "Your ultimate anime widget companion. Discover widgets, track your favorite shows, and customize your home screen to match your aesthetic.",
-  //   shortDesc: "Anime tracking widget companion.",
-  //   icon: anifyIcon,
-  //   playStoreLink: "https://play.google.com/store/apps/details?id=com.skdev.anify",
-  //   websiteLink: "https://anify.skdev.com",
-  //   reviews: [
-  //     { id: 1, user: "OtakuFan99", rating: 5, comment: "Best widget for anime lovers!" },
-  //   ]
-  // },
+ 
   {
     id: "aniset",
-    name: "Aniset",
+    name: "Aniset (Paid)",
     screenshot: anisetImg,
     // screenshots: [anisetImg, anisetImg, anisetImg],
     description: "An incredibly elegant tool set and routing app. Features privacy-focused tools without compromising design. Everything you need, right at your fingertips.",
@@ -46,5 +42,19 @@ export const appsData = [
       { id: 7, user: "Nate Westby", rating: 5, comment: "Thanks You for making anime kwgt ❤️❤️❤️" },
       { id: 8, user: "A Koushik", rating: 5, comment: "Good app. Nice dev." }
     ]
-  }
+  },
+   {
+    id: "anify",
+    name: "Anify (Free)",
+    screenshot: anifybg,
+    screenshots: [anifyapp, anifys1, anifys2, anifys3, anifys4, anifys5, anifys6],
+    description: "Anify is an upcoming app that will feature a collection of beautifully designed, privacy-focused widgets, wallpapers, and ringtones. It aims to provide users with a seamless and ad-free experience while enhancing the aesthetics of their devices. without depending on any third-party services, ensuring your data remains private and secure.",
+    shortDesc: "Widget,wallpaper,ringtone.",
+    icon: anifyIcon,
+    playStoreLink: "coming soon",
+    websiteLink: "coming soon",
+    reviews: [
+      
+    ]
+  },
 ];
