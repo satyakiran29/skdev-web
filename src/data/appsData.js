@@ -21,6 +21,20 @@ import gwallsbg from '../assets/gwalls/gwallsbg.png';
 
 export const appsData = [
   {
+    id: "anify",
+    name: "Anify (Free)",
+    screenshot: anifybg,
+    screenshots: [anifyapp, anifys1, anifys2, anifys3, anifys4, anifys5, anifys6],
+    description: "Anify is an upcoming app that will feature a collection of beautifully designed, privacy-focused widgets, wallpapers, and ringtones. It aims to provide users with a seamless and ad-free experience while enhancing the aesthetics of their devices. without depending on any third-party services, ensuring your data remains private and secure.",
+    shortDesc: "Widget,wallpaper,ringtone.",
+    icon: anifyIcon,
+    playStoreLink: "coming soon",
+    websiteLink: "coming soon",
+    reviews: [
+      
+    ]
+  },
+  {
     id:"gwalls",
     name: "Gwalls (Free)",
     screenshot: gwallsbg,
@@ -57,18 +71,5 @@ export const appsData = [
       { id: 8, user: "A Koushik", rating: 5, comment: "Good app. Nice dev." }
     ]
   },
-   {
-    id: "anify",
-    name: "Anify (Free)",
-    screenshot: anifybg,
-    screenshots: [anifyapp, anifys1, anifys2, anifys3, anifys4, anifys5, anifys6],
-    description: "Anify is an upcoming app that will feature a collection of beautifully designed, privacy-focused widgets, wallpapers, and ringtones. It aims to provide users with a seamless and ad-free experience while enhancing the aesthetics of their devices. without depending on any third-party services, ensuring your data remains private and secure.",
-    shortDesc: "Widget,wallpaper,ringtone.",
-    icon: anifyIcon,
-    playStoreLink: "coming soon",
-    websiteLink: "coming soon",
-    reviews: [
-      
-    ]
-  },
+   
 ];
