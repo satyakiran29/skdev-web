@@ -28,7 +28,7 @@ export const appsData = [
     description: "Anify is an upcoming app that will feature a collection of beautifully designed, privacy-focused widgets, wallpapers, and ringtones. It aims to provide users with a seamless and ad-free experience while enhancing the aesthetics of their devices. without depending on any third-party services, ensuring your data remains private and secure.",
     shortDesc: "Widget,wallpaper,ringtone.",
     icon: anifyIcon,
-    playStoreLink: "coming soon",
+    playStoreLink: "https://play.google.com/store/apps/details?id=com.skdev.anify",
     websiteLink: "https://anify.psatyakiran.in/",
     reviews: [
 

@@ -3,6 +3,7 @@ import { ChevronDown, Share2, Clock, Tag, CheckCheck, Newspaper } from 'lucide-r
 import SEO from '../components/SEO';
 import Anify from '../assets/anify/anify_bg.png';
 import skdevbanner from '../assets/skdev-banner.png';
+import AnisetBg from '../assets/aniset_bg.webp';
 
 const readTime = (text) => `${Math.max(1, Math.ceil(text.split(' ').length / 200))} min read`;
 
@@ -31,13 +32,25 @@ export default function News() {
     },
     {
       id: 2,
-      date: 'Coming Soon',
-      tag: 'Update',
-      tagColor: '#a78bfa',
-      title: 'Anify App - New release on the horizon!',
-      content: 'We are actively working on the Anify app which had widgets, wallpapers and more. The upcoming release will include new features, enhanced performance, and a more intuitive user interface. Stay tuned for the official launch date and get ready to experience Anify like never before!',
+      date: 'April 29, 2026',
+      tag: 'Launch',
+      tagColor: '#34d399',
+      title: 'Anify App is officially live on Google Play!',
+      content: 'We are thrilled to announce that Anify is now officially released on the Google Play Store! Anify brings you stunning anime-themed widgets, beautiful wallpapers, and much more — all in one sleek app. Download it today and elevate your Android experience with Anify!',
       image: Anify,
-      imageAlt: 'Anify app update banner',
+      imageAlt: 'Anify app launch banner',
+      link: 'https://play.google.com/store/apps/details?id=com.skdev.anify',
+      linkLabel: 'Download on Google Play',
+    },
+    {
+      id: 3,
+      date: 'Coming Soon',
+      tag: 'In Development',
+      tagColor: '#f59e0b',
+      title: 'Aniset Pro — Work in Progress!',
+      content: 'Big things are coming! Aniset Pro is currently under active development and will be arriving soon. We are putting a lot of love and effort into crafting a premium experience for anime fans. Stay tuned for more details, sneak peeks, and an official release date. Thank you for your patience and support!',
+      image: AnisetBg,
+      imageAlt: 'Aniset Pro coming soon banner',
     }
   ];
 
@@ -227,6 +240,33 @@ export default function News() {
                     <p style={{ color: 'var(--text-secondary)', lineHeight: 1.8, margin: 0 }}>
                       {item.content}
                     </p>
+
+                    {/* CTA Link (e.g. Play Store) */}
+                    {item.link && (
+                      <div>
+                        <a
+                          href={item.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          style={{
+                            display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+                            padding: '0.6rem 1.4rem',
+                            borderRadius: '9999px',
+                            background: 'linear-gradient(135deg, #34d399, #059669)',
+                            color: '#fff',
+                            fontWeight: 700, fontSize: '0.9rem',
+                            textDecoration: 'none',
+                            boxShadow: '0 4px 16px rgba(52,211,153,0.35)',
+                            transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                          }}
+                          onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(52,211,153,0.5)'; }}
+                          onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 16px rgba(52,211,153,0.35)'; }}
+                        >
+                          ▶ {item.linkLabel}
+                        </a>
+                      </div>
+                    )}
 
                     {/* Share */}
                     <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
