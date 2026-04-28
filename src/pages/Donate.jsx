@@ -1,5 +1,6 @@
 import React from 'react';
 import { Heart, Coffee, CreditCard, Copy, CheckCircle2 } from 'lucide-react';
+import SEO from '../components/SEO';
 
 export default function Donate() {
   const [copiedUPI, setCopiedUPI] = React.useState(false);
@@ -16,6 +17,11 @@ export default function Donate() {
 
   return (
     <div className="container animate-fade-in" style={{ padding: 'clamp(2rem, 5vw, 4rem) 0' }}>
+      <SEO
+        title="Support My Work"
+        description="Love skdev apps? Support the indie developer behind Aniset, Anify, and Gwalls via UPI (India) or PayPal (global)."
+        canonical="/donate"
+      />
       <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
         <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem', color: '#ec4899' }}>
           <Heart size={48} fill="currentColor" />

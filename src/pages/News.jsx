@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ChevronDown, Share2, Clock, Tag, CheckCheck, Newspaper } from 'lucide-react';
+import SEO from '../components/SEO';
 import Anify from '../assets/anify/anify_bg.png';
 import skdevbanner from '../assets/skdev-banner.png';
 
@@ -61,6 +62,11 @@ export default function News() {
 
   return (
     <div className="container animate-fade-in" style={{ padding: 'clamp(2rem, 5vw, 4rem) 0' }}>
+      <SEO
+        title="News"
+        description="Latest news, app releases, and updates from skdev — stay informed about Anify, Aniset, Gwalls, and more."
+        canonical="/news"
+      />
 
       {/* ── Hero ── */}
       <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>

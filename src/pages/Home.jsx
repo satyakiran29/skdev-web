@@ -3,6 +3,22 @@ import { NavLink } from 'react-router-dom';
 import { ArrowRight, Download } from 'lucide-react';
 import AppCard from '../components/AppCard';
 import { appsData } from '../data/appsData';
+import SEO from '../components/SEO';
+
+const ORG_JSONLD = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Satyakiran Pampana',
+  url: 'https://skdev.psatyakiran.in',
+  sameAs: [
+    'https://play.google.com/store/apps/dev?id=9166037782169864125',
+    'https://t.me/anify_app',
+  ],
+  jobTitle: 'Indie App Developer',
+  description:
+    'Indie developer crafting clean, practical apps focused on performance and real user needs.',
+};
+
 
 
 export default function Home() {
@@ -10,6 +26,11 @@ export default function Home() {
 
   return (
     <div className="container">
+      <SEO
+        description="Indie developer crafting clean, practical apps focused on performance and real user needs. Explore apps like Aniset, Anify, and Gwalls."
+        canonical="/"
+        jsonLd={ORG_JSONLD}
+      />
       {/* Hero Section */}
       <section style={{ padding: '8rem 0 6rem 0', textAlign: 'center', maxWidth: '800px', margin: '0 auto' }} className="animate-fade-in">
         <h1 style={{ marginBottom: '1.5rem', fontSize: 'clamp(2.5rem, 8vw, 4rem)' }}>

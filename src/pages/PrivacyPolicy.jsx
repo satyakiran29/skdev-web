@@ -1,8 +1,14 @@
 import React from 'react';
+import SEO from '../components/SEO';
 
 export default function PrivacyPolicy() {
   return (
     <div className="container animate-fade-in" style={{ padding: 'clamp(2rem, 5vw, 4rem) 0' }}>
+      <SEO
+        title="Privacy Policy"
+        description="Read the skdev privacy policy — how we handle user data, third-party services, and your privacy rights for all our Android apps."
+        canonical="/privacy"
+      />
       <div className="glass-panel responsive-panel" style={{ maxWidth: '900px', margin: '0 auto' }}>
         <h1 style={{ marginBottom: '2rem', textAlign: 'center', fontSize: 'clamp(2rem, 5vw, 3rem)' }}>
           Privacy <span className="text-gradient">Policy</span>

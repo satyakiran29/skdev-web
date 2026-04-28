@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { appsData } from '../data/appsData';
 import { Download, Star, Quote, Globe, Clock, AlertCircle, CheckCircle2, Ticket, Share2 } from 'lucide-react';
+import SEO from '../components/SEO';
 
 export default function AppDetails() {
   const { id } = useParams();
@@ -12,7 +13,31 @@ export default function AppDetails() {
   }
 
   // Calculate average rating
-  const avgRating = app.reviews.reduce((acc, curr) => acc + curr.rating, 0) / app.reviews.length;
+  const avgRating = app.reviews.length
+    ? app.reviews.reduce((acc, curr) => acc + curr.rating, 0) / app.reviews.length
+    : null;
+
+  const appJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: app.name,
+    description: app.description,
+    applicationCategory: 'MobileApplication',
+    operatingSystem: 'Android',
+    url: `https://skdev.psatyakiran.in/apps/${app.id}`,
+    ...(app.playStoreLink && app.playStoreLink.toLowerCase() !== 'coming soon'
+      ? { downloadUrl: app.playStoreLink }
+      : {}),
+    ...(avgRating
+      ? {
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: avgRating.toFixed(1),
+            reviewCount: app.reviews.length,
+          },
+        }
+      : {}),
+  };
 
   const handleShare = async () => {
     const shareData = {
@@ -34,6 +59,14 @@ export default function AppDetails() {
 
   return (
     <div className="container animate-fade-in" style={{ padding: 'clamp(2rem, 5vw, 4rem) 0' }}>
+      <SEO
+        title={app.name}
+        description={app.description.slice(0, 160)}
+        canonical={`/apps/${app.id}`}
+        image={typeof app.icon === 'string' && app.icon.startsWith('http') ? app.icon : undefined}
+        type="website"
+        jsonLd={appJsonLd}
+      />
       {/* App Header */}
       <div className="glass-panel responsive-panel" style={{ marginBottom: '4rem', display: 'flex', gap: 'clamp(1.5rem, 4vw, 3rem)', alignItems: 'center', flexWrap: 'wrap-reverse' }}>
         <div style={{ flex: 1, minWidth: '300px' }}>
@@ -42,9 +75,15 @@ export default function AppDetails() {
             <div>
               <h1 style={{ fontSize: '3rem', margin: 0 }}>{app.name}</h1>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#fbbf24', marginTop: '0.5rem' }}>
-                <Star size={20} fill="currentColor" />
-                <span style={{ color: 'var(--text-primary)', fontWeight: 600 }}>{avgRating.toFixed(1)}</span>
-                <span style={{ color: 'var(--text-secondary)' }}>({app.reviews.length} reviews)</span>
+                {avgRating !== null ? (
+                  <>
+                    <Star size={20} fill="currentColor" />
+                    <span style={{ color: 'var(--text-primary)', fontWeight: 600 }}>{avgRating.toFixed(1)}</span>
+                    <span style={{ color: 'var(--text-secondary)' }}>({app.reviews.length} reviews)</span>
+                  </>
+                ) : (
+                  <span style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>No reviews yet</span>
+                )}
               </div>
             </div>
           </div>
