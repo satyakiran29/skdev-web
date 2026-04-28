@@ -29,13 +29,13 @@ export const appsData = [
     shortDesc: "Widget,wallpaper,ringtone.",
     icon: anifyIcon,
     playStoreLink: "coming soon",
-    websiteLink: "coming soon",
+    websiteLink: "https://anify.psatyakiran.in/",
     reviews: [
-      
+
     ]
   },
   {
-    id:"gwalls",
+    id: "gwalls",
     name: "Gwalls (Free)",
     screenshot: gwallsbg,
     description: "Gwalls is a free wallpaper app that offers a curated collection of high-quality, ad-free wallpapers. With a focus on privacy and user experience, Gwalls provides a seamless way to discover and set stunning wallpapers without any distractions.",
@@ -43,7 +43,7 @@ export const appsData = [
     icon: "https://play-lh.googleusercontent.com/Fi0yymWa6vKSk_z-cfb9nzAYpPK6zE4dm_0kSKxJzjckJDMPpHRoIK1iMfCk8mpXSaZx=w240-h480-rw",
     playStoreLink: "https://play.google.com/store/apps/details?id=com.skdev.gwalls",
     websiteLink: "coming soon",
-    reviews: [   ]
+    reviews: []
   },
   {
     id: "aniset",
@@ -71,5 +71,5 @@ export const appsData = [
       { id: 8, user: "A Koushik", rating: 5, comment: "Good app. Nice dev." }
     ]
   },
-   
+
 ];
