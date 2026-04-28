@@ -58,9 +58,9 @@ const faqs = [
   },
   {
     category: 'Apps & Widgets',
-    question: 'When will Anify be released on the Play Store?',
+    question: 'Is Anify available on the Play Store?',
     answer:
-      'Anify is currently in active development. Follow us on Telegram (@anify_app) or check the News page for the latest release updates and beta announcements.',
+      'Yes! Anify is now officially live on Google Play. You can download it for free at https://play.google.com/store/apps/details?id=com.skdev.anify. It brings anime-themed widgets, beautiful wallpapers, and more — all in one app!',
   },
   {
     category: 'Apps & Widgets',
@@ -80,7 +80,7 @@ const faqs = [
     category: 'Privacy',
     question: 'Are your apps ad-free?',
     answer:
-      'Gwalls is completely ad-free. Aniset is a paid app with no ads. Anify is free and may include minimal, non-intrusive ads to support ongoing development.',
+      'Gwalls is completely ad-free. Aniset is a paid app with no ads. Anify is free and may include minimal, non-intrusive ads to support ongoing development. Follow us on Telegram for updates on any future ad-free options.',
   },
   {
     category: 'Privacy',
