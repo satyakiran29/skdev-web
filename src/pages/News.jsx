@@ -21,14 +21,46 @@ export default function News() {
 
   const newsItems = [
     {
-      id: 1,
-      date: 'April 3, 2026',
-      tag: 'Launch',
-      tagColor: '#38bdf8',
-      title: 'Welcome to the new SKDev Website!',
-      content: 'We are thrilled to launch our newly redesigned website! It features a fresh look, responsive design across all devices, and improved access to all our latest apps and utility tools. Stay tuned for more updates!',
+      id: 5,
+      date: 'May 22, 2026',
+      tag: 'In Development',
+      tagColor: '#f59e0b',
+      title: 'Anify 1.1.0 in Progress — The Most Stable Version Yet',
+      content: `I am currently working on the upcoming Anify 1.1.0 update!
+
+This release focuses heavily on polishing the experience, optimizing performance, and resolving issues to make it the most stable version of the app yet. Stay tuned for the update coming soon!`,
+      image: Anify,
+      imageAlt: 'Anify 1.1.0 development banner',
+    },
+    {
+      id: 4,
+      date: 'May 22, 2026',
+      tag: 'Update',
+      tagColor: '#f43f5e',
+      title: 'A Note on App Modding and Future Development',
+      content: `I recently saw another post related to a modded version of my app. Seeing modded and leaked versions is discouraging when I’ve always tried to keep my apps affordable and provide real value. As an independent developer, a massive amount of time, effort, and personal investment goes into designing, building, and maintaining these apps.
+
+Please support original developers by downloading official versions from the Play Store instead of using modified APKs. Your support is what helps me continue improving the apps and releasing updates. ❤️
+
+Due to time management issues and the discouragement of leaks, I have paused Aniset Pro development for now. After its eventual release, I may discontinue app development for some time.
+
+Still, I’m incredibly grateful to everyone who supported Aniset officially, shared feedback, and stayed with the project. For now, enjoy Anify! ❤️ If there are any pending updates left for the normal Aniset app, I’ll try to push them within a week.`,
       image: skdevbanner,
-      imageAlt: 'SKDev website launch banner',
+      imageAlt: 'SKDev update banner',
+    },
+    {
+      id: 3,
+      date: 'May 22, 2026',
+      tag: 'On Hold',
+      tagColor: '#9ca3af',
+      title: 'Aniset Pro — Project On Hold',
+      content: `I paused Aniset Pro development for now due to some time management issues. I don’t want to spend more time on apps when things eventually get leaked somehow.
+
+For now, enjoy Anify ❤️
+
+If there are any pending updates left for the normal Aniset app, I’ll try to push them within a week.`,
+      image: AnisetBg,
+      imageAlt: 'Aniset Pro project on hold banner',
     },
     {
       id: 2,
@@ -43,14 +75,14 @@ export default function News() {
       linkLabel: 'Download on Google Play',
     },
     {
-      id: 3,
-      date: 'Coming Soon',
-      tag: 'In Development',
-      tagColor: '#f59e0b',
-      title: 'Aniset Pro — Work in Progress!',
-      content: 'Big things are coming! Aniset Pro is currently under active development and will be arriving soon. We are putting a lot of love and effort into crafting a premium experience for anime fans. Stay tuned for more details, sneak peeks, and an official release date. Thank you for your patience and support!',
-      image: AnisetBg,
-      imageAlt: 'Aniset Pro coming soon banner',
+      id: 1,
+      date: 'April 3, 2026',
+      tag: 'Launch',
+      tagColor: '#38bdf8',
+      title: 'Welcome to the new SKDev Website!',
+      content: 'We are thrilled to launch our newly redesigned website! It features a fresh look, responsive design across all devices, and improved access to all our latest apps and utility tools. Stay tuned for more updates!',
+      image: skdevbanner,
+      imageAlt: 'SKDev website launch banner',
     }
   ];
 
@@ -237,7 +269,7 @@ export default function News() {
                     borderTop: '1px solid var(--border-color)',
                     display: 'flex', flexDirection: 'column', gap: '1.25rem',
                   }}>
-                    <p style={{ color: 'var(--text-secondary)', lineHeight: 1.8, margin: 0 }}>
+                    <p style={{ color: 'var(--text-secondary)', lineHeight: 1.8, margin: 0, whiteSpace: 'pre-line' }}>
                       {item.content}
                     </p>
 

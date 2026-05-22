@@ -55,11 +55,7 @@ export const appsData = [
     icon: anisetIcon,
     playStoreLink: "Coming Soon",
     websiteLink: "https://aniset.psatyakiran.in",
-    directPurchase: {
-      inPrice: '₹200',
-      globalPrice: '$2.5',
-      telegramLink: 'https://t.me/skdev1'
-    },
+    directPurchase: null,
     reviews: [
       { id: 1, user: "Google Play User", rating: 5, comment: "This widget is best in Play Store and it's a game-changer! It's sleek, customizable, and makes app discovery and management a breeze. The developer support for this widget is top-notch." },
       { id: 2, user: "선배야쿠자", rating: 5, comment: "Recommend to anyone. Great set of widgets with totally original style and design. Just top notch developer. I hope this pack keeps on growing." },
