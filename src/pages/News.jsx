@@ -4,6 +4,7 @@ import SEO from '../components/SEO';
 import Anify from '../assets/anify/anify_bg.png';
 import skdevbanner from '../assets/skdev-banner.png';
 import AnisetBg from '../assets/aniset_bg.webp';
+import OfficialInfographic from '../components/OfficialInfographic';
 
 const readTime = (text) => `${Math.max(1, Math.ceil(text.split(' ').length / 200))} min read`;
 
@@ -322,6 +323,9 @@ If there are any pending updates left for the normal Aniset app, I’ll try to p
         })}
       </div>
 
+      <div style={{ marginTop: '4rem', borderTop: '1px solid var(--border-color)', paddingTop: '2rem' }}>
+        <OfficialInfographic />
+      </div>
     </div>
   );
 }

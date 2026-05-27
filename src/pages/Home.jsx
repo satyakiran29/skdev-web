@@ -4,6 +4,7 @@ import { ArrowRight, Download } from 'lucide-react';
 import AppCard from '../components/AppCard';
 import { appsData } from '../data/appsData';
 import SEO from '../components/SEO';
+import OfficialInfographic from '../components/OfficialInfographic';
 
 const ORG_JSONLD = {
   '@context': 'https://schema.org',
@@ -72,6 +73,9 @@ export default function Home() {
           </div>
         )}
       </section>
+
+      {/* Official vs Modded App Education Infographic */}
+      <OfficialInfographic />
     </div>
   );
 }
