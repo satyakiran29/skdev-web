@@ -31,7 +31,42 @@ export const appsData = [
     playStoreLink: "https://play.google.com/store/apps/details?id=com.skdev.anify",
     websiteLink: "https://anify.psatyakiran.in/",
     reviews: [
-
+      {
+        id: 1,
+        user: "Krishna Vishwakarma",
+        rating: 5,
+        comment: "Absolutely amazing app! The widgets and wallpapers look premium and aesthetic. Very smooth experience and easy to customize. My home screen looks so much better now."
+      },
+      {
+        id: 2,
+        user: "RONNIE",
+        rating: 5,
+        comment: "very nice app increadible wallpapers and widgets"
+      },
+      {
+        id: 3,
+        user: "Subhodeep Ghosh",
+        rating: 5,
+        comment: "Very smooth! transitions and feels premium with High quality widgets ❤️"
+      },
+      {
+        id: 4,
+        user: "Helen Jones",
+        rating: 4,
+        comment: "Not bad. More live wallpapers would be good"
+      },
+      {
+        id: 5,
+        user: "Veera Thijil",
+        rating: 5,
+        comment: "good quality wallpapers👌"
+      },
+      {
+        id: 6,
+        user: "Ganesh Alla",
+        rating: 5,
+        comment: "best app"
+      }
     ]
   },
   {
