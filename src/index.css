@@ -1,5 +1,4 @@
-/* src/index.css */
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Press+Start+2P&display=swap');
 
 :root {
   /* Light Theme */
@@ -257,3 +256,85 @@ p { color: var(--text-secondary); margin-bottom: 1rem; }
 .delay-100 { animation-delay: 100ms; }
 .delay-200 { animation-delay: 200ms; }
 .delay-300 { animation-delay: 300ms; }
+
+/* Retro 8-bit mode styling */
+.retro-mode, .retro-mode * {
+  font-family: 'Press Start 2P', monospace !important;
+  font-size: 0.85rem;
+  line-height: 1.8;
+  image-rendering: pixelated;
+}
+
+.retro-mode body {
+  background-image: none !important;
+  background-color: #02020a !important;
+}
+
+.retro-mode h1, .retro-mode h2, .retro-mode h3, .retro-mode h4, .retro-mode h5, .retro-mode h6 {
+  text-transform: uppercase;
+  color: #38bdf8 !important;
+  text-shadow: 2px 2px 0px #000;
+}
+
+.retro-mode .text-gradient {
+  background-image: none !important;
+  -webkit-text-fill-color: initial !important;
+  background-clip: initial !important;
+  -webkit-background-clip: initial !important;
+  color: #f43f5e !important;
+  text-shadow: 2px 2px 0px #000;
+}
+
+.retro-mode .glass-panel {
+  background: #080812 !important;
+  border: 4px double #38bdf8 !important;
+  border-radius: 0px !important;
+  box-shadow: 6px 6px 0px #000 !important;
+  transform: none !important;
+}
+
+.retro-mode .btn {
+  border-radius: 0px !important;
+  border: 3px solid #fff !important;
+  box-shadow: 4px 4px 0px #000 !important;
+  background-color: #1e1b4b !important;
+  color: #fff !important;
+  transform: none !important;
+}
+
+.retro-mode .btn-primary {
+  background-color: #34d399 !important;
+}
+
+.retro-mode .btn:hover {
+  box-shadow: 2px 2px 0px #000 !important;
+  transform: translate(2px, 2px) !important;
+}
+
+.retro-mode header {
+  border-radius: 0px !important;
+  border: 4px double #38bdf8 !important;
+  top: 0px !important;
+  left: 0px !important;
+  right: 0px !important;
+  background-color: #000 !important;
+}
+
+/* CRT Screen Flicker and Scanline Overlay */
+.retro-mode::after {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.015), rgba(0, 255, 0, 0.04));
+  z-index: 99999;
+  background-size: 100% 6px, 6px 100%;
+  pointer-events: none;
+  animation: crt-flicker 0.15s infinite;
+}
+
+@keyframes crt-flicker {
+  0% { opacity: 0.98; }
+  50% { opacity: 1; }
+  100% { opacity: 0.98; }
+}

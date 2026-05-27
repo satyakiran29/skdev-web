@@ -6,11 +6,31 @@ import heroLogo from '../assets/hero.png';
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [clickCount, setClickCount] = useState(0);
+  const [lastClickTime, setLastClickTime] = useState(0);
   const location = useLocation();
 
   React.useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location]);
+
+  const handleLogoClick = (e) => {
+    setIsMobileMenuOpen(false);
+    const now = Date.now();
+    if (now - lastClickTime > 1500) {
+      setClickCount(1);
+    } else {
+      const nextCount = clickCount + 1;
+      if (nextCount >= 5) {
+        e.preventDefault();
+        window.dispatchEvent(new CustomEvent('waku-waku-trigger'));
+        setClickCount(0);
+        return;
+      }
+      setClickCount(nextCount);
+    }
+    setLastClickTime(now);
+  };
 
   return (
     <header className="glass-panel" style={{
@@ -19,7 +39,7 @@ export default function Header() {
       maxHeight: 'calc(100vh - 2rem)', overflowY: 'auto'
     }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <NavLink to="/" onClick={() => setIsMobileMenuOpen(false)} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        <NavLink to="/" onClick={handleLogoClick} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
           <img src={heroLogo} alt="SKDev Logo" style={{ width: '36px', height: '36px', objectFit: 'cover', borderRadius: '50%', background: 'var(--bg-secondary)' }} />
           <span className="text-gradient" style={{ fontSize: '1.5rem', fontWeight: 800 }}>Skdev</span>
         </NavLink>
