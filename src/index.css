@@ -338,3 +338,33 @@ p { color: var(--text-secondary); margin-bottom: 1rem; }
   50% { opacity: 1; }
   100% { opacity: 0.98; }
 }
+
+/* Custom Support Tiers & Highlights */
+.popular-glow {
+  position: relative;
+  border-color: rgba(139, 92, 246, 0.6) !important;
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.2) !important;
+}
+
+.popular-glow:hover {
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.5) !important;
+  border-color: #8b5cf6 !important;
+}
+
+@keyframes pulse-highlight {
+  0%, 100% {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+  }
+  50% {
+    border-color: #8b5cf6;
+    box-shadow: 0 0 25px rgba(139, 92, 246, 0.8);
+    transform: scale(1.02);
+  }
+}
+
+.payment-highlight {
+  animation: pulse-highlight 1.5s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
