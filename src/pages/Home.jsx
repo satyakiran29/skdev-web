@@ -5,6 +5,7 @@ import AppCard from '../components/AppCard';
 import { appsData } from '../data/appsData';
 import SEO from '../components/SEO';
 import OfficialInfographic from '../components/OfficialInfographic';
+import skdevbanner from '../assets/skdev-banner.png';
 
 const ORG_JSONLD = {
   '@context': 'https://schema.org',
@@ -30,6 +31,7 @@ export default function Home() {
       <SEO
         description="Indie developer crafting clean, practical apps focused on performance and real user needs. Explore apps like Aniset, Anify, and Gwalls."
         canonical="/"
+        image={skdevbanner}
         jsonLd={ORG_JSONLD}
       />
       {/* Hero Section */}

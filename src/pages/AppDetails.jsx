@@ -63,7 +63,7 @@ export default function AppDetails() {
         title={app.name}
         description={app.description.slice(0, 160)}
         canonical={`/apps/${app.id}`}
-        image={typeof app.icon === 'string' && app.icon.startsWith('http') ? app.icon : undefined}
+        image={app.screenshot || app.icon}
         type="website"
         jsonLd={appJsonLd}
       />

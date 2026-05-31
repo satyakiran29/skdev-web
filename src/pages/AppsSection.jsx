@@ -2,6 +2,7 @@ import React from 'react';
 import { appsData } from '../data/appsData';
 import AppCard from '../components/AppCard';
 import SEO from '../components/SEO';
+import skdevbanner from '../assets/skdev-banner.png';
 
 export default function AppsSection() {
   return (
@@ -10,6 +11,7 @@ export default function AppsSection() {
         title="Apps"
         description="Browse all apps by skdev — including Aniset (elegant KWGT widgets), Anify (anime widgets & wallpapers), and Gwalls (ad-free wallpapers)."
         canonical="/apps"
+        image={skdevbanner}
       />
       <header style={{ marginBottom: '4rem', textAlign: 'center', maxWidth: '600px', margin: '0 auto 4rem' }}>
         <h1 style={{ marginBottom: '1rem' }}>My Applications</h1>

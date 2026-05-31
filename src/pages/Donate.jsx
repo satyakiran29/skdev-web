@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Heart, Coffee, CreditCard, Copy, CheckCircle2, Sparkles, Gift } from 'lucide-react';
 import SEO from '../components/SEO';
+import skdevbanner from '../assets/skdev-banner.png';
 
 const tiers = [
   {
@@ -78,6 +79,7 @@ export default function Donate() {
         title="Support My Work"
         description="Love skdev apps? Support the indie developer behind Aniset, Anify, and Gwalls via UPI (India) or PayPal (global) with creative support tiers."
         canonical="/donate"
+        image={skdevbanner}
       />
 
       {/* Hero Header */}

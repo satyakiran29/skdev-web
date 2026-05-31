@@ -143,6 +143,7 @@ If there are any pending updates left for the normal Aniset app, I’ll try to p
         title="News"
         description="Latest news, app releases, and updates from skdev — stay informed about Anify, Aniset, Gwalls, and more."
         canonical="/news"
+        image={skdevbanner}
       />
 
       {/* ── Hero ── */}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronDown, MessageCircle, Mail, HelpCircle } from 'lucide-react';
 import SEO from '../components/SEO';
+import skdevbanner from '../assets/skdev-banner.png';
 
 const CATEGORIES = ['All', 'Purchasing', 'Apps & Widgets', 'Privacy', 'Support'];
 
@@ -135,6 +136,7 @@ export default function FAQ() {
         title="FAQ"
         description="Frequently asked questions about skdev apps — purchasing, widgets, privacy, feature requests, and support."
         canonical="/faq"
+        image={skdevbanner}
         jsonLd={faqJsonLd}
       />
 
