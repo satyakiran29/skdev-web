@@ -22,6 +22,37 @@ export default function News() {
 
   const newsItems = [
     {
+      id: 6,
+      date: 'June 1, 2026',
+      tag: 'Update',
+      tagColor: '#f43f5e',
+      title: 'Anify 1.1.0 is Live — In-App Updater, Life Calendar & Easter Eggs!',
+      content: `Anify version 1.1.0 is now officially available on the Google Play Store! 🚀
+
+This update brings exciting new features, design improvements, and stability enhancements to elevate your device customization.
+
+✨ New Features:
+• In-app update checker & changelog - never miss an update!
+• Life Calendar quick access - keep track of what matters.
+• Hidden easter egg 👀 - can you find it?
+
+🎨 Visual & Theme Improvements:
+• Better accent theming & Material You support.
+• Brand new styled dialogs and popup menus.
+• Fixed and polished popup menu icons.
+
+🧭 Stability & Navigation:
+• Added full system back button support.
+• Improved overall navigation consistency.
+• Fixed key issues with widgets and settings.
+
+Thank you for choosing and supporting Anify! 💖`,
+      image: Anify,
+      imageAlt: 'Anify 1.1.0 release banner',
+      link: 'https://play.google.com/store/apps/details?id=com.skdev.anify',
+      linkLabel: 'Update on Google Play',
+    },
+    {
       id: 5,
       date: 'May 22, 2026',
       tag: 'In Development',
