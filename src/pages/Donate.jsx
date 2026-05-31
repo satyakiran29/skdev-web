@@ -13,6 +13,8 @@ const tiers = [
     icon: Coffee,
     perks: [
       'Supporter badge in community chats',
+      'Supporter role in Discord & Telegram',
+      'Request custom widgets/wallpapers',
       'Cute thank you email response',
       'Our eternal gratitude ❤️',
     ],
@@ -28,8 +30,10 @@ const tiers = [
     icon: Sparkles,
     perks: [
       'All previous perks included',
+      'Request custom widgets/wallpapers',
       'Access to early beta builds',
       'Direct vote on upcoming app features',
+      'Sneak peeks at upcoming widget designs',
       'Access to private support channel',
     ],
     popular: true,
@@ -47,6 +51,8 @@ const tiers = [
       'Request custom widgets/wallpapers',
       'Your name in the app Credits section',
       '1-on-1 setup styling consultation',
+      'Direct developer DM access for styling advice',
+      'Personal spotlight on our Telegram channel',
     ],
     popular: false,
     color: '#ec4899',
