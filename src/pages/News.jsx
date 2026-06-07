@@ -22,6 +22,28 @@ export default function News() {
 
   const newsItems = [
     {
+      id: 7,
+      date: 'June 7, 2026',
+      tag: 'In Development',
+      tagColor: '#f59e0b',
+      title: 'Anify 1.1.1 Coming Soon — Routines, Interactive Anipet & BlockIt!',
+      content: `I am currently working on the upcoming Anify 1.1.1 update! 🚀
+
+This release is packed with major new features, utilities, and widgets to take your device customization and productivity to the next level.
+
+✨ What's coming in Anify 1.1.1:
+• Routines & Habit Tracker: A complete system to build and customize routines, set notifications, track statistics, and manage templates directly from your home screen.
+• Interactive Anipet Widget: An adorable, animated pixel-art virtual pet widget that responds dynamically to your phone's battery level and music status.
+• BlockIt Focus Mode: Restrict distracting apps with a customizable focus overlay and background blocking service to boost productivity.
+• Wallpaper Auto-Changer: Cycle through your favorite wallpapers automatically at custom intervals using Android's background scheduler.
+• New Todo Widget: Stay on top of your daily tasks with a beautiful, quick-access check-list widget.
+• Core Optimizations: Upgraded data pagination for wallpaper and ringtone fetching, along with dedicated favorites and local gallery managers for a smoother experience.
+
+Stay tuned! The update will be rolling out soon on the Google Play Store. 💖`,
+      image: Anify,
+      imageAlt: 'Anify 1.1.1 development banner',
+    },
+    {
       id: 6,
       date: 'June 1, 2026',
       tag: 'Update',
