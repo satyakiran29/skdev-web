@@ -88,7 +88,7 @@ export const appsData = [
     description: "An incredibly elegant tool set and routing app. Features privacy-focused tools without compromising design. Everything you need, right at your fingertips.",
     shortDesc: "Elegant utility tools.",
     icon: anisetIcon,
-    playStoreLink: "Coming Soon",
+    playStoreLink: "https://play.google.com/store/apps/details?id=com.skdev.aniset",
     websiteLink: "https://aniset.psatyakiran.in",
     directPurchase: null,
     reviews: [
