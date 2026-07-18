@@ -1,10 +1,15 @@
 import React from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { appsData } from '../data/appsData';
-import { Download, Star, Quote, Globe, Clock, AlertCircle, CheckCircle2, Ticket, Share2 } from 'lucide-react';
+import { Download, Star, Quote, Globe, Clock, AlertCircle, CheckCircle2, Ticket, Share2, MessageCircle, QrCode, X } from 'lucide-react';
+import QRCode from 'react-qr-code';
+
+const TwitterIcon = ({ size }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>;
+const LinkedinIcon = ({ size }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>;
 import SEO from '../components/SEO';
 
 export default function AppDetails() {
+  const [isQrModalOpen, setIsQrModalOpen] = React.useState(false);
   const { id } = useParams();
   const app = appsData.find(a => a.id === id);
 
@@ -110,9 +115,23 @@ export default function AppDetails() {
                 <Clock size={20} /> Website Coming Soon
               </button>
             )}
-            <button onClick={handleShare} className="btn-icon btn-secondary" style={{ padding: '1rem', height: '100%', background: 'transparent', border: '2px solid var(--border-color)', color: 'var(--text-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '0.75rem', cursor: 'pointer' }} title="Share App">
-              <Share2 size={20} />
-            </button>
+            <div style={{ display: 'flex', gap: '0.5rem' }}>
+              <button onClick={() => setIsQrModalOpen(true)} className="btn-icon btn-secondary" style={{ padding: '1rem', height: '100%', background: 'transparent', border: '2px solid var(--border-color)', color: 'var(--text-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '0.75rem', cursor: 'pointer' }} title="Show QR Code">
+                <QrCode size={20} />
+              </button>
+              <button onClick={handleShare} className="btn-icon btn-secondary" style={{ padding: '1rem', height: '100%', background: 'transparent', border: '2px solid var(--border-color)', color: 'var(--text-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '0.75rem', cursor: 'pointer' }} title="Native Share">
+                <Share2 size={20} />
+              </button>
+              <a href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent('Check out ' + app.name)}`} target="_blank" rel="noreferrer" className="btn-icon btn-secondary" style={{ padding: '1rem', height: '100%', background: 'transparent', border: '2px solid var(--border-color)', color: '#1DA1F2', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '0.75rem', cursor: 'pointer' }} title="Share on Twitter">
+                <TwitterIcon size={20} />
+              </a>
+              <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`} target="_blank" rel="noreferrer" className="btn-icon btn-secondary" style={{ padding: '1rem', height: '100%', background: 'transparent', border: '2px solid var(--border-color)', color: '#0A66C2', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '0.75rem', cursor: 'pointer' }} title="Share on LinkedIn">
+                <LinkedinIcon size={20} />
+              </a>
+              <a href={`https://wa.me/?text=${encodeURIComponent('Check out ' + app.name + ' ' + window.location.href)}`} target="_blank" rel="noreferrer" className="btn-icon btn-secondary" style={{ padding: '1rem', height: '100%', background: 'transparent', border: '2px solid var(--border-color)', color: '#25D366', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '0.75rem', cursor: 'pointer' }} title="Share on WhatsApp">
+                <MessageCircle size={20} />
+              </a>
+            </div>
           </div>
         </div>
 
@@ -239,6 +258,46 @@ export default function AppDetails() {
           ))}
         </div>
       </div>
+      
+      {/* QR Code Modal */}
+      {isQrModalOpen && (
+        <div style={{
+          position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
+          backgroundColor: 'rgba(0, 0, 0, 0.7)',
+          backdropFilter: 'blur(4px)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          zIndex: 100, padding: '1rem'
+        }} onClick={() => setIsQrModalOpen(false)}>
+          <div className="glass-panel animate-fade-in" style={{
+            padding: '2.5rem', borderRadius: '1.5rem',
+            display: 'flex', flexDirection: 'column', alignItems: 'center',
+            position: 'relative', maxWidth: '400px', width: '100%'
+          }} onClick={e => e.stopPropagation()}>
+            <button
+              onClick={() => setIsQrModalOpen(false)}
+              className="btn-icon"
+              style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'transparent', border: 'none', color: 'var(--text-secondary)', cursor: 'pointer' }}
+            >
+              <X size={24} />
+            </button>
+            
+            <img src={app.icon} alt={app.name} style={{ width: '60px', height: '60px', borderRadius: '1rem', marginBottom: '1.5rem', boxShadow: 'var(--shadow-md)' }} />
+            <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', textAlign: 'center' }}>Scan to Download</h3>
+            <p style={{ color: 'var(--text-secondary)', textAlign: 'center', marginBottom: '2rem', fontSize: '0.95rem' }}>
+              Scan this QR code with your phone's camera to get <strong>{app.name}</strong> instantly.
+            </p>
+            
+            <div style={{ background: '#fff', padding: '1.5rem', borderRadius: '1rem', boxShadow: '0 8px 32px rgba(0,0,0,0.5)' }}>
+              <QRCode 
+                value={app.playStoreLink && app.playStoreLink.toLowerCase() !== 'coming soon' ? app.playStoreLink : window.location.href} 
+                size={200}
+                style={{ height: 'auto', maxWidth: '100%', width: '100%' }}
+                viewBox={`0 0 256 256`}
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronDown, MessageCircle, Mail, HelpCircle } from 'lucide-react';
+import { ChevronDown, MessageCircle, Mail, HelpCircle, Search } from 'lucide-react';
 import SEO from '../components/SEO';
 import skdevbanner from '../assets/skdev-banner.png';
 
@@ -114,9 +114,26 @@ const faqs = [
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(null);
   const [activeCategory, setActiveCategory] = useState('All');
+  const [searchQuery, setSearchQuery] = useState('');
 
-  const filtered =
-    activeCategory === 'All' ? faqs : faqs.filter(f => f.category === activeCategory);
+  const filtered = faqs.filter(f => {
+    const matchesCategory = activeCategory === 'All' || f.category === activeCategory;
+    const matchesSearch = f.question.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                          f.answer.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
+
+  const highlightText = (text, query) => {
+    if (!query || query.length < 2) return text;
+    const parts = text.split(new RegExp(`(${query})`, 'gi'));
+    return parts.map((part, i) =>
+      part.toLowerCase() === query.toLowerCase() ? (
+        <span key={i} style={{ backgroundColor: 'rgba(56, 189, 248, 0.3)', color: 'var(--accent-primary)', borderRadius: '2px', padding: '0 2px', fontWeight: 600 }}>{part}</span>
+      ) : (
+        part
+      )
+    );
+  };
 
   const faqJsonLd = {
     '@context': 'https://schema.org',
@@ -157,6 +174,26 @@ export default function FAQ() {
           Have questions? We have answers. Browse by category or scroll through them all.
         </p>
 
+        {/* ── Search Bar ── */}
+        <div style={{ position: 'relative', maxWidth: '500px', margin: '0 auto 2rem' }}>
+          <Search size={20} style={{ position: 'absolute', left: '1.25rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-secondary)' }} />
+          <input
+            type="text"
+            placeholder="Search questions or answers..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            style={{
+              width: '100%', padding: '1rem 1rem 1rem 3.25rem',
+              borderRadius: '9999px', border: '1px solid var(--border-color)',
+              backgroundColor: 'rgba(0,0,0,0.2)', color: 'var(--text-primary)',
+              fontSize: '1rem', outline: 'none', transition: 'border-color 0.2s',
+              boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.1)'
+            }}
+            onFocus={(e) => e.target.style.borderColor = 'var(--accent-primary)'}
+            onBlur={(e) => e.target.style.borderColor = 'var(--border-color)'}
+          />
+        </div>
+
         {/* ── Category pills ── */}
         <div style={{ display: 'flex', gap: '0.6rem', justifyContent: 'center', flexWrap: 'wrap' }}>
           {CATEGORIES.map(cat => (
@@ -185,8 +222,13 @@ export default function FAQ() {
 
       {/* ── Accordion ── */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', maxWidth: '820px', margin: '0 auto' }}>
+        {filtered.length === 0 && (
+          <div style={{ textAlign: 'center', padding: '3rem', color: 'var(--text-secondary)' }}>
+            No FAQs found matching your search.
+          </div>
+        )}
         {filtered.map((faq, idx) => {
-          const isOpen = openIndex === idx;
+          const isOpen = openIndex === idx || searchQuery.length > 1;
           return (
             <div
               key={idx}
@@ -214,7 +256,7 @@ export default function FAQ() {
                     transition: 'background 0.25s ease',
                   }} />
                   <h3 style={{ fontSize: '1.05rem', margin: 0, fontWeight: 600, lineHeight: 1.4 }}>
-                    {faq.question}
+                    {highlightText(faq.question, searchQuery)}
                   </h3>
                 </div>
                 <div style={{
@@ -248,7 +290,7 @@ export default function FAQ() {
                     paddingTop: isOpen ? '1.25rem' : '0',
                     transition: 'border-color 0.25s ease',
                   }}>
-                    {faq.answer}
+                    {highlightText(faq.answer, searchQuery)}
                   </div>
                 </div>
               </div>

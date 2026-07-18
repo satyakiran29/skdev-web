@@ -18,10 +18,11 @@ A modern, responsive web portfolio for indie developer Satya Kiran. This applica
 
 ## ✨ Key Features
 
-- **📱 App Showcase & Details:** Browse featured applications with dedicated detail pages including descriptions, screenshots, and direct download links to the Google Play Store.
+- **📱 App Showcase & Details:** Browse featured applications with dedicated detail pages including descriptions, screenshots, direct download links, and dynamic QR Codes for instant mobile installation.
 - **🎨 Modern Responsive Design:** A sleek, glassmorphic UI that adapts perfectly to desktop, tablet, and mobile devices.
 - **📰 News Integration:** Dedicated section for the latest updates on app releases and developer news.
-- **🛡️ User Privacy & Support:** Built-in Privacy Policy, FAQ, and Support/Donation pages to ensure transparency and user trust.
+- **🛡️ User Privacy & Support:** Built-in Privacy Policy, Support/Donation pages, and an interactive FAQ with live search and text highlighting to ensure transparency and user trust.
+- **🌐 Progressive Web App (PWA):** Fully installable on mobile and desktop devices with offline caching and background service worker support.
 - **⚡ High Performance:** Built with Vite and React 19 for instantaneous hot-module replacement and optimized production builds.
 
 ## 🏗️ Architecture & Component Flow
