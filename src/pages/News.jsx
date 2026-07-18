@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { ChevronDown, Share2, Clock, Tag, CheckCheck, Newspaper, MessageCircle } from 'lucide-react';
 
-const TwitterIcon = ({ size }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>;
-const LinkedinIcon = ({ size }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>;
+const TwitterIcon = ({ size }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>;
+const LinkedinIcon = ({ size }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>;
 import SEO from '../components/SEO';
 import Anify from '../assets/anify/anify_bg.png';
 import Anify115 from '../assets/image.png';
@@ -21,8 +21,8 @@ const isRecent = (dateStr) => {
 };
 
 export default function News() {
-  const [expandedId,  setExpandedId]  = useState(null);
-  const [copied,    setCopied]  = useState(null);
+  const [expandedId, setExpandedId] = useState(null);
+  const [copied, setCopied] = useState(null);
   const [activeTag, setActiveTag] = useState('All');
 
   const newsItems = [
@@ -41,10 +41,27 @@ We are shifting our focus and resources to building and improving other projects
     {
       id: 8,
       date: 'July 18, 2026',
-      tag: 'In Development',
-      tagColor: '#f59e0b',
-      title: 'Anify v1.1.5 Coming Soon — Widget Categories, OLED Mode & More!',
-      content: `🚀 Anify v1.1.5
+      tag: 'Coming Soon',
+      tagColor: '#f4ee3fff',
+      title: 'Anify v1.1.4 Coming Soon — Widget Categories, OLED Mode & More!',
+      content: `🚀 Anify v1.1.4
+
+## 💎 KWGT Integration & Custom Widgets
+- **Direct KWGT Import**: Seamlessly download and open curated widget files directly into the KWGT app from within Anify.
+- **Widget Gallery**: Browse a dynamic collection of beautiful, high-quality KWGT setups.
+- **Nothing Hex Widget**: Added the brand-new native Nothing Hex Widget to the custom widgets collection.
+- Features a stunning honeycomb layout with striking red accents.
+- Uses the iconic **Nothing dotted font** for an authentic aesthetic.
+- Displays real-time **battery percentage**, time, date, and weather all in one unified design.
+- Meticulously crafted gaps and proportions for a premium, pixel-perfect look on any home screen.
+- Fixed stacked clock widget.
+
+## 🕰️ Month Clock Widget Improvements
+- Added a dedicated settings screen for the Month Clock Widget.
+- Introduced a brand new modern aesthetic option with **Style 2**.
+- You can now seamlessly switch between **Style 1 (Vintage)** and **Style 2 (Modern)**.
+- Added a toggle to show or hide the **Seconds Hand**.
+- The new settings screen features a cohesive, premium UI that fully supports Dark Mode.
 
 💎 New Features & Enhancements:
 - Widget Categories: Discover and filter widgets instantly using the new stylish category chips (All, Clock, System, Tools, Custom) located below the search bar.
@@ -67,13 +84,13 @@ We are shifting our focus and resources to building and improving other projects
 - Implemented modern scrolling behavior (scroll-to-collapse) for the wallpaper gallery using CoordinatorLayout and AppBarLayout.
 - Header, search bar, and categories automatically collapse when scrolling down to maximize screen space, and reappear instantly on scroll-up.
 
-💖 Thank you for using Anify! Your support helps us continue building new features and improving the experience for everyone.`,
+💖 **Thank you for using Anify! Your support helps us continue building new features and improving the experience for everyone.**`,
       image: Anify115,
-      imageAlt: 'Anify 1.1.5 development banner',
+      imageAlt: 'Anify 1.1.4 development banner',
     },
     {
       id: 7,
-      date: 'July 18, 2026',
+      date: 'July 11, 2026',
       tag: 'Update',
       tagColor: '#f43f5e',
       title: 'Anify 1.1.1 is Live — Routines, Interactive Anipet & BlockIt!',
@@ -180,7 +197,7 @@ If there are any pending updates left for the normal Aniset app, I’ll try to p
     }
   ];
 
-  const allTags  = ['All', ...new Set(newsItems.map(n => n.tag))];
+  const allTags = ['All', ...new Set(newsItems.map(n => n.tag))];
   const filtered = activeTag === 'All' ? newsItems : newsItems.filter(n => n.tag === activeTag);
 
   const toggle = (id) => setExpandedId(prev => prev === id ? null : id);
@@ -228,11 +245,11 @@ If there are any pending updates left for the normal Aniset app, I’ll try to p
                 fontSize: '0.82rem', fontWeight: 600,
                 cursor: 'pointer',
                 transition: 'all 0.2s ease',
-                borderColor:      activeTag === tag ? 'var(--accent-primary)' : 'var(--border-color)',
-                backgroundColor:  activeTag === tag ? 'var(--accent-primary)' : 'var(--bg-secondary)',
-                color:            activeTag === tag ? '#fff' : 'var(--text-secondary)',
-                transform:        activeTag === tag ? 'translateY(-1px)' : 'none',
-                boxShadow:        activeTag === tag ? '0 4px 12px rgba(56,189,248,0.25)' : 'none',
+                borderColor: activeTag === tag ? 'var(--accent-primary)' : 'var(--border-color)',
+                backgroundColor: activeTag === tag ? 'var(--accent-primary)' : 'var(--bg-secondary)',
+                color: activeTag === tag ? '#fff' : 'var(--text-secondary)',
+                transform: activeTag === tag ? 'translateY(-1px)' : 'none',
+                boxShadow: activeTag === tag ? '0 4px 12px rgba(56,189,248,0.25)' : 'none',
               }}
             >
               {tag}
