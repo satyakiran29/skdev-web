@@ -15,11 +15,6 @@
 
 A modern, responsive web portfolio for indie developer Satya Kiran. This application serves as a centralized hub to showcase Android applications published on the Google Play Store, share news updates, provide FAQs, and offer a support/donation platform.
 
-## 📊 Overview
-
-<div align="center">
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=satyakiran29&repo=skdev-web&theme=react&border_radius=10" alt="Repo Stats" />
-</div>
 
 ## ✨ Key Features
 
