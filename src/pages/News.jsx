@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ChevronDown, Share2, Clock, Tag, CheckCheck, Newspaper } from 'lucide-react';
 import SEO from '../components/SEO';
 import Anify from '../assets/anify/anify_bg.png';
+import Anify115 from '../assets/image.png';
 import skdevbanner from '../assets/skdev-banner.png';
 import AnisetBg from '../assets/aniset_bg.webp';
 import OfficialInfographic from '../components/OfficialInfographic';
@@ -22,16 +23,49 @@ export default function News() {
 
   const newsItems = [
     {
-      id: 7,
-      date: 'June 7, 2026',
+      id: 8,
+      date: 'July 18, 2026',
       tag: 'In Development',
       tagColor: '#f59e0b',
-      title: 'Anify 1.1.1 Coming Soon — Routines, Interactive Anipet & BlockIt!',
-      content: `I am currently working on the upcoming Anify 1.1.1 update! 🚀
+      title: 'Anify v1.1.5 Coming Soon — Widget Categories, OLED Mode & More!',
+      content: `🚀 Anify v1.1.5
+
+💎 New Features & Enhancements:
+- Widget Categories: Discover and filter widgets instantly using the new stylish category chips (All, Clock, System, Tools, Custom) located below the search bar.
+- Smart Reflow: Improved grid rendering so widgets beautifully reposition themselves with zero empty gaps when shifting between categories.
+- UI Polish: Custom color styling and crisp accent highlights for selected category chips perfectly aligned with Anify's premium design.
+- Enhanced Theming: Introduced a new Appearance settings page with multiple accent colors (Blue, Violet, Emerald).
+- Pure Black OLED Mode: Added an option for a true black dark mode to save battery on OLED screens.
+- Unified UI Styling: Standardized cards across the app for a more consistent and premium look.
+
+🛠️ Performance & Stability:
+- Fixed a bug where widgets could overlap or cause duplicate identifiers in the system layout parser.
+- Internal optimization for the layout generation script.
+- Dynamic theme detection improvements and general UI polish.
+
+🎨 Widget Card Redesign:
+- Redesigned widget cards to use a premium ConstraintLayout design featuring an accent pill category badge on the top-left and a unified bottom row for ADD and EDIT/settings action.
+- Removed star icons for a cleaner, modern look.
+
+🌅 Seamless Wallpaper List Scrolling:
+- Implemented modern scrolling behavior (scroll-to-collapse) for the wallpaper gallery using CoordinatorLayout and AppBarLayout.
+- Header, search bar, and categories automatically collapse when scrolling down to maximize screen space, and reappear instantly on scroll-up.
+
+💖 Thank you for using Anify! Your support helps us continue building new features and improving the experience for everyone.`,
+      image: Anify115,
+      imageAlt: 'Anify 1.1.5 development banner',
+    },
+    {
+      id: 7,
+      date: 'July 18, 2026',
+      tag: 'Update',
+      tagColor: '#f43f5e',
+      title: 'Anify 1.1.1 is Live — Routines, Interactive Anipet & BlockIt!',
+      content: `Anify version 1.1.1 is now officially available on the Google Play Store! 🚀
 
 This release is packed with major new features, utilities, and widgets to take your device customization and productivity to the next level.
 
-✨ What's coming in Anify 1.1.1:
+✨ New Features in Anify 1.1.1:
 • Routines & Habit Tracker: A complete system to build and customize routines, set notifications, track statistics, and manage templates directly from your home screen.
 • Interactive Anipet Widget: An adorable, animated pixel-art virtual pet widget that responds dynamically to your phone's battery level and music status.
 • BlockIt Focus Mode: Restrict distracting apps with a customizable focus overlay and background blocking service to boost productivity.
@@ -39,9 +73,11 @@ This release is packed with major new features, utilities, and widgets to take y
 • New Todo Widget: Stay on top of your daily tasks with a beautiful, quick-access check-list widget.
 • Core Optimizations: Upgraded data pagination for wallpaper and ringtone fetching, along with dedicated favorites and local gallery managers for a smoother experience.
 
-Stay tuned! The update will be rolling out soon on the Google Play Store. 💖`,
+Thank you for choosing and supporting Anify! 💖`,
       image: Anify,
-      imageAlt: 'Anify 1.1.1 development banner',
+      imageAlt: 'Anify 1.1.1 release banner',
+      link: 'https://play.google.com/store/apps/details?id=com.skdev.anify',
+      linkLabel: 'Update on Google Play',
     },
     {
       id: 6,
@@ -73,18 +109,6 @@ Thank you for choosing and supporting Anify! 💖`,
       imageAlt: 'Anify 1.1.0 release banner',
       link: 'https://play.google.com/store/apps/details?id=com.skdev.anify',
       linkLabel: 'Update on Google Play',
-    },
-    {
-      id: 5,
-      date: 'May 22, 2026',
-      tag: 'In Development',
-      tagColor: '#f59e0b',
-      title: 'Anify 1.1.0 in Progress — The Most Stable Version Yet',
-      content: `I am currently working on the upcoming Anify 1.1.0 update!
-
-This release focuses heavily on polishing the experience, optimizing performance, and resolving issues to make it the most stable version of the app yet. Stay tuned for the update coming soon!`,
-      image: Anify,
-      imageAlt: 'Anify 1.1.0 development banner',
     },
     {
       id: 4,

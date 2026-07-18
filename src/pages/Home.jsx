@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { ArrowRight, Download } from 'lucide-react';
+import { ArrowRight, Download, Send } from 'lucide-react';
 import AppCard from '../components/AppCard';
 import { appsData } from '../data/appsData';
 import SEO from '../components/SEO';
@@ -15,6 +15,7 @@ const ORG_JSONLD = {
   sameAs: [
     'https://play.google.com/store/apps/dev?id=9166037782169864125',
     'https://t.me/anify_app',
+    'https://t.me/skdev29',
   ],
   jobTitle: 'Indie App Developer',
   description:
@@ -48,6 +49,9 @@ export default function Home() {
           </NavLink>
           <a href="https://play.google.com/store/apps/dev?id=9166037782169864125" target="_blank" rel="noreferrer" className="btn btn-secondary mobile-w-full">
             Play Store Profile <Download size={18} />
+          </a>
+          <a href="https://t.me/skdev29" target="_blank" rel="noreferrer" className="btn btn-secondary mobile-w-full">
+            Telegram Channel <Send size={18} />
           </a>
         </div>
       </section>
