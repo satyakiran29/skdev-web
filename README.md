@@ -1,19 +1,81 @@
-# SKDev Web Portfolio
+# 🚀 SKDev Web Portfolio
 
-![React](https://img.shields.io/badge/React-19.2.4-blue?logo=react)
-![Vite](https://img.shields.io/badge/Vite-8.0.1-purple?logo=vite)
-![React Router](https://img.shields.io/badge/React_Router-7.13.2-red?logo=react-router)
-![UI](https://img.shields.io/badge/UI-Lucide_Icons-ff69b4)
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=38bdf8&height=200&section=header&text=SKDev%20Portfolio&fontSize=50&fontColor=ffffff" alt="Header" />
+</div>
+
+<div align="center">
+  <img src="https://img.shields.io/badge/React-19.2.4-blue?style=for-the-badge&logo=react" alt="React" />
+  <img src="https://img.shields.io/badge/Vite-8.0.1-purple?style=for-the-badge&logo=vite" alt="Vite" />
+  <img src="https://img.shields.io/badge/React_Router-7.13.2-red?style=for-the-badge&logo=react-router" alt="React Router" />
+  <img src="https://img.shields.io/badge/UI-Lucide_Icons-ff69b4?style=for-the-badge" alt="UI" />
+</div>
+
+<br />
 
 A modern, responsive web portfolio for indie developer Satya Kiran. This application serves as a centralized hub to showcase Android applications published on the Google Play Store, share news updates, provide FAQs, and offer a support/donation platform.
 
-## 🚀 Key Features and Benefits
+## 📊 Overview
 
-- **App Showcase & Details:** Browse featured applications with dedicated detail pages including descriptions, screenshots, and direct download links to the Google Play Store.
-- **Modern Responsive Design:** A sleek, glassmorphic UI that adapts perfectly to desktop, tablet, and mobile devices.
-- **News Integration:** Dedicated section for the latest updates on app releases and developer news.
-- **User Privacy & Support:** Built-in Privacy Policy, FAQ, and Support/Donation pages to ensure transparency and user trust.
-- **High Performance:** Built with Vite and React 19 for instantaneous hot-module replacement and optimized production builds.
+<div align="center">
+  <img src="https://github-readme-stats.vercel.app/api/pin/?username=satyakiran29&repo=skdev-web&theme=react&border_radius=10" alt="Repo Stats" />
+</div>
+
+## ✨ Key Features
+
+- **📱 App Showcase & Details:** Browse featured applications with dedicated detail pages including descriptions, screenshots, and direct download links to the Google Play Store.
+- **🎨 Modern Responsive Design:** A sleek, glassmorphic UI that adapts perfectly to desktop, tablet, and mobile devices.
+- **📰 News Integration:** Dedicated section for the latest updates on app releases and developer news.
+- **🛡️ User Privacy & Support:** Built-in Privacy Policy, FAQ, and Support/Donation pages to ensure transparency and user trust.
+- **⚡ High Performance:** Built with Vite and React 19 for instantaneous hot-module replacement and optimized production builds.
+
+## 🏗️ Architecture & Component Flow
+
+```mermaid
+graph TD
+    A[App.jsx] --> B[Header]
+    A --> C(Routes)
+    A --> D[Footer]
+    
+    C --> E[Home Page]
+    C --> F[App Details Page]
+    C --> G[News Page]
+    C --> H[FAQ Page]
+    C --> I[Donate Page]
+    C --> J[Privacy Policy Page]
+    
+    E --> K[AppsSection]
+    K --> L[AppCard]
+    
+    F --> M[SEO Component]
+    
+    style A fill:#0f172a,stroke:#38bdf8,stroke-width:2px,color:#fff
+    style C fill:#1e293b,stroke:#38bdf8,stroke-width:2px,color:#fff
+```
+
+## 📂 Project Structure
+
+```mermaid
+mindmap
+  root((src/))
+    assets/
+      ::icon(fas fa-image) Images and SVGs
+    components/
+      ::icon(fas fa-cube) Reusable UI logic
+      AppCard.jsx
+      Header.jsx
+      Footer.jsx
+      SEO.jsx
+    pages/
+      ::icon(fas fa-file) Route Views
+      Home.jsx
+      AppDetails.jsx
+      News.jsx
+      FAQ.jsx
+    data/
+      ::icon(fas fa-database) Static JSON/JS Data
+      appsData.js
+```
 
 ## 💻 Getting Started
 
@@ -56,9 +118,9 @@ To preview the built production bundle locally:
 npm run preview
 ```
 
-### 📝 Usage Example: Adding a New App
+## 📝 Usage Example: Adding a New App
 
-To add a new application to the portfolio, update the applications data file (usually located in `src/data/appsData.js` or `src/data/appsData.ts`). You don't need to create new UI components; the app will automatically render in the featured list and create a detail page route.
+To add a new application to the portfolio, update the applications data file (usually located in `src/data/appsData.js`). You don't need to create new UI components; the app will automatically render in the featured list and create a detail page route.
 
 ## 🤝 Support and Help
 

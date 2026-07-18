@@ -4,6 +4,7 @@ import SEO from '../components/SEO';
 import Anify from '../assets/anify/anify_bg.png';
 import Anify115 from '../assets/image.png';
 import skdevbanner from '../assets/skdev-banner.png';
+import GwallsDiscontinued from '../assets/gwalls_discontinued.png';
 import AnisetBg from '../assets/aniset_bg.webp';
 import OfficialInfographic from '../components/OfficialInfographic';
 
@@ -22,6 +23,18 @@ export default function News() {
   const [activeTag, setActiveTag] = useState('All');
 
   const newsItems = [
+    {
+      id: 9,
+      date: 'July 18, 2026',
+      tag: 'Discontinued',
+      tagColor: '#9ca3af',
+      title: 'Gwalls — Project Discontinued',
+      content: `We would like to announce that Gwalls is officially discontinued. We appreciate everyone who used the app and supported its development.
+
+We are shifting our focus and resources to building and improving other projects like Anify. Thank you for your continued support!`,
+      image: GwallsDiscontinued,
+      imageAlt: 'Gwalls discontinued banner',
+    },
     {
       id: 8,
       date: 'July 18, 2026',
