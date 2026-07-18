@@ -58,22 +58,22 @@ graph TD
 ```mermaid
 mindmap
   root((src/))
-    assets/
-      ::icon(fas fa-image) Images and SVGs
-    components/
-      ::icon(fas fa-cube) Reusable UI logic
+    assets("assets/")
+      Images and SVGs
+    components("components/")
+      Reusable UI logic
       AppCard.jsx
       Header.jsx
       Footer.jsx
       SEO.jsx
-    pages/
-      ::icon(fas fa-file) Route Views
+    pages("pages/")
+      Route Views
       Home.jsx
       AppDetails.jsx
       News.jsx
       FAQ.jsx
-    data/
-      ::icon(fas fa-database) Static JSON/JS Data
+    data("data/")
+      Static JSON or JS Data
       appsData.js
 ```
 
