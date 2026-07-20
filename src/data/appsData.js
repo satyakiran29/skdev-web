@@ -4,7 +4,7 @@
 import anisetIcon from '../assets/Aniset_logo.webp';
 import anisetImg from '../assets/aniset_bg.webp';
 //anify images
-import anifyIcon from '../assets/anify/anifyicon.png';
+import anifyIcon from '../assets/anify/anifyicon_new.webp';
 import anifybg from '../assets/anify/anify_bg.png';
 import anifyapp from '../assets/anify/anify1.jpeg';
 import anifys1 from '../assets/anify/anify_screenshot (1).png';
