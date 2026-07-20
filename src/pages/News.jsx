@@ -6,6 +6,7 @@ const LinkedinIcon = ({ size }) => <svg xmlns="http://www.w3.org/2000/svg" width
 import SEO from '../components/SEO';
 import Anify from '../assets/anify/anify_bg.png';
 import Anify115 from '../assets/image.png';
+import Anify114Release from '../assets/image copy.png';
 import skdevbanner from '../assets/skdev-banner.png';
 import GwallsDiscontinued from '../assets/gwalls_discontinued.png';
 import AnisetBg from '../assets/aniset_bg.webp';
@@ -26,6 +27,34 @@ export default function News() {
   const [activeTag, setActiveTag] = useState('All');
 
   const newsItems = [
+    {
+      id: 10,
+      date: 'July 20, 2026',
+      tag: 'Update',
+      tagColor: '#f43f5e',
+      title: 'Anify 1.1.4 is Live — Customization & Polish!',
+      content: `🚀 Anify v1.1.4 is now available!
+
+This update brings one of the biggest improvements yet, making Anify more customizable and polished than ever.
+
+✨ What's New
+🔹 KWGT widget integration for seamless imports
+🔹 Brand-new Nothing Hex Widget
+🔹 Month Clock settings with multiple styles
+🔹 Widget categories for faster browsing
+🔹 New accent colours & Pure Black OLED Mode
+🔹 Redesigned widget cards with a cleaner UI
+🔹 Smoother wallpaper gallery scrolling
+🔹 Bug fixes, UI improvements & performance optimizations
+
+💙 Thank you for your continued support! Every update is built from your feedback and helps make Anify even better.
+
+📲 Update now on Google Play and let me know your favourite new feature!`,
+      image: Anify114Release,
+      imageAlt: 'Anify 1.1.4 release banner',
+      link: 'https://play.google.com/store/apps/details?id=com.skdev.anify',
+      linkLabel: 'Update on Google Play',
+    },
     {
       id: 9,
       date: 'July 18, 2026',
