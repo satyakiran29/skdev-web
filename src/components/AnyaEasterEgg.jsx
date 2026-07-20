@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import anyaImage from '../assets/anya_chibi_pixel.png';
+import anyaImage from '../assets/anya_chibi_pixel.webp';
 
 export default function AnyaEasterEgg({ onClose }) {
   const [position, setPosition] = useState({ bottom: '20px', right: '20px' });

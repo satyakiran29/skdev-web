@@ -2,7 +2,7 @@ import React from 'react';
 import { appsData } from '../data/appsData';
 import AppCard from '../components/AppCard';
 import SEO from '../components/SEO';
-import skdevbanner from '../assets/skdev-banner.png';
+import skdevbanner from '../assets/skdev-banner.webp';
 
 export default function AppsSection() {
   return (

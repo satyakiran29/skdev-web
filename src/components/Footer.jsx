@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Play, Mail } from 'lucide-react';
-import heroLogo from '../assets/hero.png';
+import heroLogo from '../assets/hero.webp';
 
 export default function Footer() {
   return (

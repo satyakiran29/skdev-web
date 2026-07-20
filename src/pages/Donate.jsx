@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Heart, Coffee, CreditCard, Copy, CheckCircle2, Sparkles, Gift } from 'lucide-react';
 import SEO from '../components/SEO';
-import skdevbanner from '../assets/skdev-banner.png';
+import skdevbanner from '../assets/skdev-banner.webp';
 
 const tiers = [
   {

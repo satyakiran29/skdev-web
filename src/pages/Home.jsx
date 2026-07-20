@@ -5,7 +5,7 @@ import AppCard from '../components/AppCard';
 import { appsData } from '../data/appsData';
 import SEO from '../components/SEO';
 import OfficialInfographic from '../components/OfficialInfographic';
-import skdevbanner from '../assets/skdev-banner.png';
+import skdevbanner from '../assets/skdev-banner.webp';
 
 const ORG_JSONLD = {
   '@context': 'https://schema.org',

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronDown, MessageCircle, Mail, HelpCircle, Search } from 'lucide-react';
 import SEO from '../components/SEO';
-import skdevbanner from '../assets/skdev-banner.png';
+import skdevbanner from '../assets/skdev-banner.webp';
 
 const CATEGORIES = ['All', 'Purchasing', 'Apps & Widgets', 'Privacy', 'Support'];
 

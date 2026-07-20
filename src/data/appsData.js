@@ -5,18 +5,18 @@ import anisetIcon from '../assets/Aniset_logo.webp';
 import anisetImg from '../assets/aniset_bg.webp';
 //anify images
 import anifyIcon from '../assets/anify/anifyicon_new.webp';
-import anifybg from '../assets/anify/anify_bg.png';
-import anifyapp from '../assets/anify/anify1.jpeg';
-import anifys1 from '../assets/anify/anify_screenshot (1).png';
-import anifys2 from '../assets/anify/anify_screenshot (2).png';
-import anifys3 from '../assets/anify/anify_screenshot (3).png';
-import anifys4 from '../assets/anify/anify_screenshot (4).png';
-import anifys5 from '../assets/anify/anify_screenshot (5).png';
-import anifys6 from '../assets/anify/anify_screenshot (6).png';
+import anifybg from '../assets/anify/anify_new_bg.webp';
+import anifyapp from '../assets/anify/anify1.webp';
+import anifys1 from '../assets/anify/anify_screenshot (1).webp';
+import anifys2 from '../assets/anify/anify_screenshot (2).webp';
+import anifys3 from '../assets/anify/anify_screenshot (3).webp';
+import anifys4 from '../assets/anify/anify_screenshot (4).webp';
+import anifys5 from '../assets/anify/anify_screenshot (5).webp';
+import anifys6 from '../assets/anify/anify_screenshot (6).webp';
 
 //gwalls images
-// import gwallsIcon from '../assets/gwalls_icon.png';
-import gwallsbg from '../assets/gwalls/gwallsbg.png';
+// import gwallsIcon from '../assets/gwalls_icon.webp';
+import gwallsbg from '../assets/gwalls/gwallsbg.webp';
 
 
 export const appsData = [

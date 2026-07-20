@@ -1,6 +1,6 @@
 import React from 'react';
 import { Mail, Hammer, Rocket } from 'lucide-react';
-import heroLogo from '../assets/hero.png';
+import heroLogo from '../assets/hero.webp';
 
 export default function UnderDevelopment() {
   return (

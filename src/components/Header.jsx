@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { Play, Mail, Heart, Menu, X } from 'lucide-react';
-import heroLogo from '../assets/hero.png';
+import heroLogo from '../assets/hero.webp';
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

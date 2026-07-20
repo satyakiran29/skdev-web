@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 
 const BASE_URL = 'https://skdev.psatyakiran.in';
-const DEFAULT_IMAGE = `${BASE_URL}/android-chrome-512x512.png`;
+const DEFAULT_IMAGE = `${BASE_URL}/android-chrome-512x512.webp`;
 const SITE_NAME = 'skdev';
 const DEFAULT_TITLE = 'skdev — Crafting Digital Experiences';
 const DEFAULT_DESC =
