@@ -18,7 +18,11 @@ export default function AppsSection() {
         <p>A curated collection of tools, widgets, and platforms meticulously crafted for an unparalleled user experience.</p>
       </header>
       
-      <div className="grid grid-cols-2">
+      <div style={{ 
+        display: 'grid', 
+        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
+        gap: '2rem' 
+      }}>
         {appsData.map(app => (
           <AppCard key={app.id} app={app} />
         ))}
