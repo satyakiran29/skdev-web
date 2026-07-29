@@ -7,6 +7,14 @@ import SEO from '../components/SEO';
 import OfficialInfographic from '../components/OfficialInfographic';
 import skdevbanner from '../assets/skdev-banner.webp';
 
+const InstagramIcon = ({ size = 18 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+  </svg>
+);
+
 const ORG_JSONLD = {
   '@context': 'https://schema.org',
   '@type': 'Person',
@@ -16,6 +24,7 @@ const ORG_JSONLD = {
     'https://play.google.com/store/apps/dev?id=9166037782169864125',
     'https://t.me/anify_app',
     'https://t.me/skdev29',
+    'https://www.instagram.com/skdev29/',
   ],
   jobTitle: 'Indie App Developer',
   description:
@@ -52,6 +61,9 @@ export default function Home() {
           </a>
           <a href="https://t.me/skdev29" target="_blank" rel="noreferrer" className="btn btn-secondary mobile-w-full">
             Telegram Channel <Send size={18} />
+          </a>
+          <a href="https://www.instagram.com/skdev29/" target="_blank" rel="noreferrer" className="btn btn-secondary mobile-w-full">
+            Instagram <InstagramIcon size={18} />
           </a>
         </div>
       </section>

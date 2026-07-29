@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-import { Heart, Coffee, CreditCard, Copy, CheckCircle2 } from 'lucide-react';
+import { Heart, Coffee, CreditCard, Copy, CheckCircle2, QrCode } from 'lucide-react';
+import QRCode from 'react-qr-code';
 import SEO from '../components/SEO';
 import skdevbanner from '../assets/skdev-banner.webp';
 
 export default function Donate() {
   const [copiedUPI, setCopiedUPI] = useState(false);
+
+  const upiUri = 'upi://pay?pa=psatyakiran1@oksbi&pn=SKDev&cu=INR';
 
   const handleCopyUPI = async () => {
     try {
@@ -56,9 +59,35 @@ export default function Donate() {
               <Coffee size={32} />
             </div>
             <h3 style={{ fontSize: '1.5rem', marginBottom: '0.75rem', fontWeight: 700 }}>Indian Users (UPI)</h3>
-            <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem', fontSize: '0.95rem', lineHeight: 1.6 }}>
+            <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', fontSize: '0.95rem', lineHeight: 1.6 }}>
               Fast, secure, and zero-fee transfers via Google Pay, PhonePe, Paytm, or any UPI app.
             </p>
+
+            {/* QR Code Container */}
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              backgroundColor: '#ffffff',
+              padding: '1.25rem',
+              borderRadius: '1.25rem',
+              boxShadow: '0 10px 25px rgba(0, 0, 0, 0.25)',
+              marginBottom: '1.5rem',
+              width: '100%',
+              maxWidth: '210px'
+            }}>
+              <div style={{ height: 'auto', margin: '0 auto', maxWidth: '100%', width: '100%' }}>
+                <QRCode
+                  size={256}
+                  style={{ height: 'auto', maxWidth: '100%', width: '100%' }}
+                  value={upiUri}
+                  viewBox={`0 0 256 256`}
+                />
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', marginTop: '0.75rem', fontSize: '0.7rem', fontWeight: 800, color: '#0f172a', letterSpacing: '0.05em' }}>
+                <QrCode size={13} color="#0284c7" /> SCAN WITH ANY UPI APP
+              </div>
+            </div>
 
             <div style={{
               width: '100%',
@@ -99,9 +128,35 @@ export default function Donate() {
               <CreditCard size={32} />
             </div>
             <h3 style={{ fontSize: '1.5rem', marginBottom: '0.75rem', fontWeight: 700 }}>Global Users (PayPal)</h3>
-            <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem', fontSize: '0.95rem', lineHeight: 1.6 }}>
+            <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', fontSize: '0.95rem', lineHeight: 1.6 }}>
               Secure international transactions using your PayPal account or credit/debit card.
             </p>
+
+            {/* PayPal QR Code Container */}
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              backgroundColor: '#ffffff',
+              padding: '1.25rem',
+              borderRadius: '1.25rem',
+              boxShadow: '0 10px 25px rgba(0, 0, 0, 0.25)',
+              marginBottom: '1.5rem',
+              width: '100%',
+              maxWidth: '210px'
+            }}>
+              <div style={{ height: 'auto', margin: '0 auto', maxWidth: '100%', width: '100%' }}>
+                <QRCode
+                  size={256}
+                  style={{ height: 'auto', maxWidth: '100%', width: '100%' }}
+                  value="https://paypal.me/skdev029"
+                  viewBox={`0 0 256 256`}
+                />
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', marginTop: '0.75rem', fontSize: '0.7rem', fontWeight: 800, color: '#0f172a', letterSpacing: '0.05em' }}>
+                <QrCode size={13} color="#8b5cf6" /> SCAN TO PAY VIA PAYPAL
+              </div>
+            </div>
 
             <a
               href="https://paypal.me/skdev029"
