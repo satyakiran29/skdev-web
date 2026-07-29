@@ -1,68 +1,10 @@
-import React, { useState, useRef } from 'react';
-import { Heart, Coffee, CreditCard, Copy, CheckCircle2, Sparkles, Gift } from 'lucide-react';
+import React, { useState } from 'react';
+import { Heart, Coffee, CreditCard, Copy, CheckCircle2 } from 'lucide-react';
 import SEO from '../components/SEO';
 import skdevbanner from '../assets/skdev-banner.webp';
 
-const tiers = [
-  {
-    id: 'peanuts',
-    title: 'Peanuts Tier 🥜',
-    priceUSD: '$1',
-    priceINR: '₹80',
-    description: 'Keep the developer fueled and support basic operational costs!',
-    icon: Coffee,
-    perks: [
-      'Supporter badge in community chats',
-      'Supporter role in Discord & Telegram',
-      'Request custom widgets/wallpapers',
-      'Cute thank you email response',
-      'Our eternal gratitude ❤️',
-    ],
-    popular: false,
-    color: '#38bdf8',
-  },
-  {
-    id: 'wakuwaku',
-    title: 'Waku Waku Tier ✨',
-    priceUSD: '$5',
-    priceINR: '₹400',
-    description: 'Supercharge support and get priority development updates!',
-    icon: Sparkles,
-    perks: [
-      'All previous perks included',
-      'Request custom widgets/wallpapers',
-      'Access to early beta builds',
-      'Direct vote on upcoming app features',
-      'Sneak peeks at upcoming widget designs',
-      'Access to private support channel',
-    ],
-    popular: true,
-    color: '#8b5cf6',
-  },
-  {
-    id: 'pro',
-    title: 'Pro Sponsor 👑',
-    priceUSD: '$15',
-    priceINR: '₹1200',
-    description: 'The ultimate tier to directly influence future projects!',
-    icon: Gift,
-    perks: [
-      'All previous perks included',
-      'Request custom widgets/wallpapers',
-      'Your name in the app Credits section',
-      '1-on-1 setup styling consultation',
-      'Direct developer DM access for styling advice',
-      'Personal spotlight on our Telegram channel',
-    ],
-    popular: false,
-    color: '#ec4899',
-  },
-];
-
 export default function Donate() {
   const [copiedUPI, setCopiedUPI] = useState(false);
-  const [selectedTier, setSelectedTier] = useState(null);
-  const paymentsRef = useRef(null);
 
   const handleCopyUPI = async () => {
     try {
@@ -74,16 +16,11 @@ export default function Donate() {
     }
   };
 
-  const handleSelectTier = (tier) => {
-    setSelectedTier(tier);
-    paymentsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  };
-
   return (
     <div className="container animate-fade-in" style={{ padding: 'clamp(2rem, 5vw, 4rem) 0' }}>
       <SEO
         title="Support My Work"
-        description="Love skdev apps? Support the indie developer behind Aniset, Anify, and Gwalls via UPI (India) or PayPal (global) with creative support tiers."
+        description="Love skdev apps? Support the indie developer behind Aniset, Anify, and Gwalls via UPI (India) or PayPal (global)."
         canonical="/donate"
         image={skdevbanner}
       />
@@ -99,170 +36,13 @@ export default function Donate() {
         </p>
       </div>
 
-      {/* Support Tiers Grid */}
-      <div style={{ marginBottom: '5rem' }}>
-        <h2 style={{ textAlign: 'center', marginBottom: '3rem', fontSize: '1.875rem' }}>Choose Your Tier</h2>
-        <div className="grid grid-cols-3" style={{ gap: '2rem', alignItems: 'stretch' }}>
-          {tiers.map((tier) => {
-            const TierIcon = tier.icon;
-            return (
-              <div
-                key={tier.id}
-                className={`glass-panel ${tier.popular ? 'popular-glow' : ''}`}
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  padding: '2.25rem 1.75rem',
-                  position: 'relative',
-                  overflow: 'hidden',
-                  borderRadius: '1.5rem',
-                  transition: 'all 0.3s ease',
-                }}
-              >
-                {/* Popular Badge */}
-                {tier.popular && (
-                  <div style={{
-                    position: 'absolute', top: '16px', right: '16px',
-                    background: 'linear-gradient(135deg, #8b5cf6, #ec4899)',
-                    color: '#fff', fontSize: '0.65rem', fontWeight: 800,
-                    padding: '0.25rem 0.75rem', borderRadius: '9999px',
-                    textTransform: 'uppercase', letterSpacing: '0.06em',
-                    boxShadow: '0 2px 8px rgba(139,92,246,0.3)'
-                  }}>
-                    Popular
-                  </div>
-                )}
-
-                {/* Tier Icon */}
-                <div style={{
-                  alignSelf: 'flex-start',
-                  padding: '0.75rem',
-                  backgroundColor: `${tier.color}15`,
-                  borderRadius: '1rem',
-                  color: tier.color,
-                  marginBottom: '1.5rem',
-                  border: `1px solid ${tier.color}30`
-                }}>
-                  <TierIcon size={24} />
-                </div>
-
-                {/* Tier Header */}
-                <h3 style={{ fontSize: '1.35rem', marginBottom: '0.5rem', fontWeight: 700 }}>
-                  {tier.title}
-                </h3>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: 1.5, minHeight: '42px', marginBottom: '1.5rem' }}>
-                  {tier.description}
-                </p>
-
-                {/* Price tag */}
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'baseline',
-                  gap: '0.4rem',
-                  borderTop: '1px solid var(--border-color)',
-                  borderBottom: '1px solid var(--border-color)',
-                  padding: '1rem 0',
-                  margin: '0.5rem 0 1.5rem 0'
-                }}>
-                  <span style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--text-primary)' }}>
-                    {tier.priceUSD}
-                  </span>
-                  <span style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
-                    USD / {tier.priceINR} INR
-                  </span>
-                </div>
-
-                {/* Perks Checklist */}
-                <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '2.5rem', flex: 1 }}>
-                  {tier.perks.map((perk, idx) => (
-                    <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem', fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
-                      <CheckCircle2 size={16} style={{ color: tier.color, flexShrink: 0, marginTop: '2px' }} />
-                      <span style={{ lineHeight: 1.4 }}>{perk}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                {/* CTA Action */}
-                <button
-                  onClick={() => handleSelectTier(tier)}
-                  className="btn"
-                  style={{
-                    width: '100%',
-                    padding: '0.8rem',
-                    borderRadius: '9999px',
-                    fontWeight: 700,
-                    fontSize: '0.95rem',
-                    backgroundColor: tier.popular ? 'var(--accent-primary)' : 'var(--bg-secondary)',
-                    color: tier.popular ? '#fff' : 'var(--text-primary)',
-                    border: tier.popular ? 'none' : '1px solid var(--border-color)',
-                    boxShadow: tier.popular ? '0 4px 12px rgba(56,189,248,0.25)' : 'none',
-                    transition: 'all 0.2s ease',
-                    cursor: 'pointer',
-                    marginTop: 'auto',
-                  }}
-                  onMouseEnter={e => {
-                    e.currentTarget.style.transform = 'translateY(-2px)';
-                    if (tier.popular) e.currentTarget.style.boxShadow = '0 8px 20px rgba(56,189,248,0.45)';
-                  }}
-                  onMouseLeave={e => {
-                    e.currentTarget.style.transform = 'translateY(0)';
-                    if (tier.popular) e.currentTarget.style.boxShadow = '0 4px 12px rgba(56,189,248,0.25)';
-                  }}
-                >
-                  Choose {tier.title.split(' ')[0]}
-                </button>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Selected Tier Prompt Helper */}
-      {selectedTier && (
-        <div
-          className="glass-panel animate-fade-in"
-          style={{
-            maxWidth: '650px',
-            margin: '0 auto 3rem auto',
-            padding: '1.25rem 2rem',
-            borderLeft: `4px solid ${selectedTier.color}`,
-            borderRadius: '1rem',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: '1rem',
-            backgroundColor: 'rgba(15, 23, 42, 0.9)',
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <Sparkles size={20} style={{ color: selectedTier.color }} />
-            <span style={{ fontSize: '0.95rem', color: 'var(--text-primary)' }}>
-              Selected: <strong style={{ color: selectedTier.color }}>{selectedTier.title}</strong>. Send <strong>{selectedTier.priceUSD}</strong> / <strong>{selectedTier.priceINR}</strong> using the payment options below.
-            </span>
-          </div>
-          <button
-            onClick={() => setSelectedTier(null)}
-            style={{
-              background: 'transparent',
-              border: 'none',
-              color: 'var(--text-secondary)',
-              cursor: 'pointer',
-              fontWeight: 'bold',
-              fontSize: '0.85rem'
-            }}
-          >
-            Clear
-          </button>
-        </div>
-      )}
-
       {/* Payment Options Section */}
-      <div ref={paymentsRef} style={{ scrollMarginTop: '120px' }}>
+      <div>
         <h2 style={{ textAlign: 'center', marginBottom: '2.5rem', fontSize: '1.875rem' }}>Payment Methods</h2>
         <div className="grid grid-cols-2" style={{ gap: '2rem' }}>
           {/* UPI Section for Indian Users */}
           <div
-            className={`glass-panel responsive-panel ${selectedTier ? 'payment-highlight' : ''}`}
+            className="glass-panel responsive-panel"
             style={{
               display: 'flex',
               flexDirection: 'column',
@@ -305,7 +85,7 @@ export default function Donate() {
 
           {/* PayPal Section for Global Users */}
           <div
-            className={`glass-panel responsive-panel ${selectedTier ? 'payment-highlight' : ''}`}
+            className="glass-panel responsive-panel"
             style={{
               display: 'flex',
               flexDirection: 'column',
@@ -345,3 +125,4 @@ export default function Donate() {
     </div>
   );
 }
+
