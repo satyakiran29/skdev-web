@@ -99,39 +99,147 @@ export const appsData = [
     reviews: [
       {
         id: 1,
-        user: "Krishna Vishwakarma",
+        user: "Bhupender",
+        date: "11 August 2026",
         rating: 5,
-        comment: "Absolutely amazing app! The widgets and wallpapers look premium and aesthetic. Very smooth experience and easy to customize. My home screen looks so much better now."
+        comment: "Really impressive app! Unlike KWGT, the widgets don't require any base app to apply presets. The wallpapers are top-tier high quality, making this a complete all-in-one package for customisation.",
+        developerResponse: {
+          author: "Satya Kiran",
+          date: "11 August 2026",
+          comment: "Thank you so much for the amazing 5-star review! ❤️ I’m really glad you’re enjoying the widgets and wallpapers. Your feedback means a lot and motivates me to keep improving the app! 🚀✨"
+        }
       },
       {
         id: 2,
-        user: "RONNIE",
+        user: "Krishna Vishwakarma",
+        date: "17 May 2026",
         rating: 5,
-        comment: "very nice app increadible wallpapers and widgets"
+        comment: "Absolutely amazing app! The widgets and wallpapers look premium and aesthetic. Very smooth experience and easy to customize. My home screen looks so much better now.",
+        developerResponse: {
+          author: "Satya Kiran",
+          date: "17 May 2026",
+          comment: "Thanks for your valuable feedback 🙂"
+        }
       },
       {
         id: 3,
         user: "Subhodeep Ghosh",
+        date: "1 May 2026",
         rating: 5,
-        comment: "Very smooth! transitions and feels premium with High quality widgets ❤️"
+        comment: "Very smooth! transitions and feels premium with High quality widgets ❤️",
+        developerResponse: {
+          author: "Satya Kiran",
+          date: "3 May 2026",
+          comment: "Thanks for your valuable feedback"
+        }
       },
       {
         id: 4,
-        user: "Helen Jones",
-        rating: 4,
-        comment: "Not bad. More live wallpapers would be good"
+        user: "RONNIE",
+        date: "3 May 2026",
+        rating: 5,
+        comment: "very nice app increadible wallpapers and widgets",
+        developerResponse: {
+          author: "Satya Kiran",
+          date: "3 May 2026",
+          comment: "Thanks for your valuable feedback"
+        }
       },
       {
         id: 5,
-        user: "Veera Thijil",
+        user: "Priyanshu",
+        date: "9 August 2026",
         rating: 5,
-        comment: "good quality wallpapers👌"
+        comment: "this is so good app.. pls bro don't discontinued this app",
+        developerResponse: {
+          author: "Satya Kiran",
+          date: "10 August 2026",
+          comment: "Thank you so much for the 5★ review! ❤️ I really appreciate the support. I’m not planning to discontinue the app anytime soon! 😄 If you have any ideas, feature requests, or find any bugs, feel free to join my Telegram community and tell me directly. Your feedback really helps me improve the app! 🚀❤️"
+        }
       },
       {
         id: 6,
-        user: "Ganesh Alla",
+        user: "Priyanka 3800",
+        date: "8 August 2026",
         rating: 5,
-        comment: "best app"
+        comment: "Absolutely amazing app",
+        developerResponse: {
+          author: "Satya Kiran",
+          date: "10 August 2026",
+          comment: "Thank you so much, sis! ❤️ Really glad you’re enjoying the app! Your support means a lot to me. 🥹✨"
+        }
+      },
+      {
+        id: 7,
+        user: "shemual 629",
+        date: "18 July 2026",
+        rating: 5,
+        comment: "nice keep it up I saw your MSG on tele so I came here to support you hope you will do well ♥️🙏",
+        developerResponse: {
+          author: "Satya Kiran",
+          date: "20 July 2026",
+          comment: "Thank you so much for your kind words and for coming from our Telegram community to support Anify! ❤️ Your encouragement means a lot and motivates me to keep improving the app. I hope you'll continue to enjoy future updates. Thanks again for being part of the journey! ✨"
+        }
+      },
+      {
+        id: 8,
+        user: "Helen Jones",
+        date: "9 May 2026",
+        rating: 4,
+        comment: "Not bad. More live wallpapers would be good",
+        developerResponse: {
+          author: "Satya Kiran",
+          date: "9 May 2026",
+          comment: "Thanks for your valuable feedback Anify v1.0.8 is still in early access, and I’m actively adding new features and improvements. Version 1.1.0 will be the first stable major release. After that, new live wallpapers will be added regularly. For suggestions or support: satyakiran296@gmail.com"
+        }
+      },
+      {
+        id: 9,
+        user: "Android ProATM",
+        date: "15 June 2026",
+        rating: 1,
+        comment: "crashes once i try to open the app fix this",
+        developerResponse: {
+          author: "Satya Kiran",
+          date: "16 June 2026",
+          comment: "Hi, please update to the latest version of the app and let us know which version you're using. The app also has a Report Logs option—please tap it and send the logs to satyakiran296@gmail.com so we can investigate the crash and help resolve the issue as quickly as possible."
+        }
+      },
+      {
+        id: 10,
+        user: "Veera Thijil",
+        date: "28 April 2026",
+        rating: 5,
+        comment: "good quality wallpapers👌",
+        developerResponse: {
+          author: "Satya Kiran",
+          date: "28 April 2026",
+          comment: "Thanks for your valuable feedback ☺️"
+        }
+      },
+      {
+        id: 11,
+        user: "M.Narasimha",
+        date: "23 July 2026",
+        rating: 5,
+        comment: "good app",
+        developerResponse: {
+          author: "Satya Kiran",
+          date: "23 July 2026",
+          comment: "Thanks for your valuable feedback 😃"
+        }
+      },
+      {
+        id: 12,
+        user: "Ganesh Alla",
+        date: "5 May 2026",
+        rating: 5,
+        comment: "best app",
+        developerResponse: {
+          author: "Satya Kiran",
+          date: "9 May 2026",
+          comment: "Thanks for your valuable feedback 😃"
+        }
       }
     ]
   },
@@ -215,14 +323,102 @@ export const appsData = [
       }
     ],
     reviews: [
-      { id: 1, user: "Google Play User", rating: 5, comment: "This widget is best in Play Store and it's a game-changer! It's sleek, customizable, and makes app discovery and management a breeze. The developer support for this widget is top-notch." },
-      { id: 2, user: "선배야쿠자", rating: 5, comment: "Recommend to anyone. Great set of widgets with totally original style and design. Just top notch developer. I hope this pack keeps on growing." },
-      { id: 3, user: "Ahmed Alkhatib", rating: 5, comment: "Using it since one year and really like it's widgets. And developer thank you for your efforts." },
-      { id: 4, user: "Gaurav Kumar", rating: 5, comment: "I'm in Love with this Kwgt & Klwp 🥹🩷 thank you so much" },
-      { id: 5, user: "Fatema", rating: 5, comment: "Awesome widgets especially the anya one looks cool" },
-      { id: 6, user: "Amartya Anand", rating: 4, comment: "Great widget and wall set. Only found 1 locked widget (I hate those). Gonna keep." },
-      { id: 7, user: "Nate Westby", rating: 5, comment: "Thanks You for making anime kwgt ❤️❤️❤️" },
-      { id: 8, user: "A Koushik", rating: 5, comment: "Good app. Nice dev." }
+      {
+        id: 1,
+        user: "선배야쿠자",
+        date: "8 February 2024",
+        rating: 5,
+        comment: "This widget is best in Play Store and it's a game-changer! It's sleek, customizable, and makes app discovery and management a breeze. The developer support for this widget is top-notch. Any questions or issues I had were quickly resolved, and he is very responsive and helpful. It's clear that he is dedicated to providing a great user experience. Great job!",
+        developerResponse: {
+          author: "Satya Kiran",
+          date: "8 February 2024",
+          comment: "Thanks for your valuable review"
+        }
+      },
+      {
+        id: 2,
+        user: "Gaurav Kumar",
+        date: "13 July 2024",
+        rating: 5,
+        comment: "Using it since one year and really like it's widgets. And developer thank you for your efforts.",
+        developerResponse: {
+          author: "Satya Kiran",
+          date: "13 July 2024",
+          comment: "Thanks for using our app. Thanks for postive review"
+        }
+      },
+      {
+        id: 3,
+        user: "Nate Westby",
+        date: "27 December 2023",
+        rating: 4,
+        comment: "Great widget and wall set. Only found 1 locked widget (I hate those). Gonna keep.",
+        developerResponse: {
+          author: "Satya Kiran",
+          date: "27 December 2023",
+          comment: "Thanks for your feedback. We try to fix in next update. Tell us more details about that locked widget in our mail - satyakiran296@gmail.com"
+        }
+      },
+      {
+        id: 4,
+        user: "Amartya Anand",
+        date: "13 September 2024",
+        rating: 5,
+        comment: "Awesome widgets especially the anya one looks cool",
+        developerResponse: {
+          author: "Satya Kiran",
+          date: "13 September 2024",
+          comment: "Thanks for review 😃"
+        }
+      },
+      {
+        id: 5,
+        user: "Fatema !",
+        date: "16 October 2024",
+        rating: 5,
+        comment: "I'm in Love with this Kwgt & Klwp 🥹🩷 thank you so much",
+        developerResponse: {
+          author: "Satya Kiran",
+          date: "7 November 2024",
+          comment: "Thanks for your review"
+        }
+      },
+      {
+        id: 6,
+        user: "A Koushik",
+        date: "26 December 2023",
+        rating: 5,
+        comment: "Thanks You for making anime kwgt ❤️❤️❤️",
+        developerResponse: {
+          author: "Satya Kiran",
+          date: "26 December 2023",
+          comment: "Thanks for postive feedback"
+        }
+      },
+      {
+        id: 7,
+        user: "Satyakiran Pampana",
+        date: "3 April 2024",
+        rating: 5,
+        comment: "Good app 😁",
+        developerResponse: {
+          author: "Satya Kiran",
+          date: "15 August 2026",
+          comment: "Thank you for downloading our app! We will keep working on it!"
+        }
+      },
+      {
+        id: 8,
+        user: "Ma Saren",
+        date: "19 February 2026",
+        rating: 5,
+        comment: "Aesthetic Enthusiast",
+        developerResponse: {
+          author: "Satya Kiran",
+          date: "20 February 2026",
+          comment: "Thanks for review 😃"
+        }
+      }
     ]
   },
 ];

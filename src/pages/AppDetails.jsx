@@ -17,10 +17,21 @@ export default function AppDetails() {
     return <Navigate to="/apps" />;
   }
 
-  // Calculate average rating
-  const avgRating = app.reviews.length
-    ? app.reviews.reduce((acc, curr) => acc + curr.rating, 0) / app.reviews.length
+  // Calculate average rating and distribution
+  const totalReviews = app.reviews ? app.reviews.length : 0;
+  const avgRating = totalReviews > 0
+    ? app.reviews.reduce((acc, curr) => acc + curr.rating, 0) / totalReviews
     : null;
+
+  const ratingCounts = { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 };
+  if (totalReviews > 0) {
+    app.reviews.forEach(r => {
+      const rounded = Math.round(r.rating);
+      if (ratingCounts[rounded] !== undefined) {
+        ratingCounts[rounded]++;
+      }
+    });
+  }
 
   const appJsonLd = {
     '@context': 'https://schema.org',
@@ -322,32 +333,184 @@ export default function AppDetails() {
         </div>
       )}
 
-      {/* Reviews Section */}
-      <div>
-        <h2 style={{ marginBottom: '2rem' }}>User Reviews</h2>
-        <div className="grid grid-cols-2">
-          {app.reviews.map(review => (
-            <div key={review.id} className="glass-panel" style={{ padding: '2rem' }}>
-              <div className="flex-between" style={{ marginBottom: '1.5rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                  <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'var(--accent-primary)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold' }}>
-                    {review.user.charAt(0)}
-                  </div>
-                  <span style={{ fontWeight: 600, fontSize: '1.125rem' }}>{review.user}</span>
-                </div>
-                <div style={{ display: 'flex', color: '#fbbf24' }}>
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={16} fill={i < review.rating ? 'currentColor' : 'none'} color={i < review.rating ? 'currentColor' : 'var(--border-color)'} />
-                  ))}
-                </div>
-              </div>
-              <div style={{ position: 'relative', paddingLeft: '2rem' }}>
-                <Quote size={20} color="var(--text-secondary)" style={{ position: 'absolute', left: 0, top: '0', opacity: 0.3 }} />
-                <p style={{ margin: 0, fontStyle: 'italic', fontSize: '1.125rem', color: 'var(--text-primary)' }}>"{review.comment}"</p>
-              </div>
+      {/* Reviews & Ratings Section */}
+      <div style={{ marginBottom: '4rem' }}>
+        <h2 style={{ marginBottom: '2rem' }}>Ratings & Reviews</h2>
+        
+        {/* Rating Breakdown Overview Card */}
+        <div className="glass-panel responsive-panel" style={{ 
+          padding: '2.5rem', 
+          marginBottom: '2.5rem', 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', 
+          gap: '2.5rem',
+          alignItems: 'center'
+        }}>
+          {/* Average Rating Score */}
+          <div style={{ textAlign: 'center', borderRight: '1px solid var(--border-color)', paddingRight: '1.5rem' }}>
+            <div style={{ fontSize: '4.5rem', fontWeight: 800, lineHeight: 1, color: 'var(--text-primary)', marginBottom: '0.75rem' }}>
+              {avgRating !== null ? avgRating.toFixed(1) : '—'}
             </div>
-          ))}
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '0.35rem', color: '#fbbf24', marginBottom: '0.75rem' }}>
+              {[1, 2, 3, 4, 5].map(star => (
+                <Star 
+                  key={star} 
+                  size={24} 
+                  fill={avgRating && star <= Math.round(avgRating) ? '#fbbf24' : 'none'} 
+                  color={avgRating && star <= Math.round(avgRating) ? '#fbbf24' : 'var(--border-color)'} 
+                />
+              ))}
+            </div>
+            <p style={{ margin: 0, color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
+              Based on {totalReviews} {totalReviews === 1 ? 'review' : 'reviews'}
+            </p>
+          </div>
+
+          {/* Star Distribution Bars */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+            {[5, 4, 3, 2, 1].map(stars => {
+              const count = ratingCounts[stars] || 0;
+              const percentage = totalReviews > 0 ? (count / totalReviews) * 100 : 0;
+              return (
+                <div key={stars} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '0.875rem' }}>
+                  <span style={{ width: '28px', display: 'flex', alignItems: 'center', gap: '0.2rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
+                    {stars} <Star size={12} fill="#fbbf24" color="#fbbf24" />
+                  </span>
+                  <div style={{ 
+                    flex: 1, 
+                    height: '8px', 
+                    backgroundColor: 'rgba(255, 255, 255, 0.08)', 
+                    borderRadius: '4px', 
+                    overflow: 'hidden',
+                    position: 'relative'
+                  }}>
+                    <div style={{ 
+                      width: `${percentage}%`, 
+                      height: '100%', 
+                      background: 'linear-gradient(90deg, #f59e0b, #fbbf24)', 
+                      borderRadius: '4px',
+                      transition: 'width 0.6s cubic-bezier(0.4, 0, 0.2, 1)'
+                    }} />
+                  </div>
+                  <span style={{ width: '32px', textAlign: 'right', color: 'var(--text-secondary)', fontSize: '0.8rem' }}>
+                    {count}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Call to Action: Review on Play Store */}
+          <div style={{ 
+            backgroundColor: 'rgba(0, 0, 0, 0.25)', 
+            border: '1px solid var(--border-color)', 
+            borderRadius: '1.25rem', 
+            padding: '1.75rem',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            textAlign: 'center'
+          }}>
+            <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>
+              Share Your Feedback
+            </h3>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.5, marginBottom: '1.25rem' }}>
+              Enjoying {app.name}? Your rating on Google Play helps other users discover the app and supports future updates!
+            </p>
+            {app.playStoreLink && app.playStoreLink.toLowerCase() !== 'coming soon' ? (
+              <a 
+                href={app.playStoreLink} 
+                target="_blank" 
+                rel="noreferrer" 
+                className="btn btn-primary"
+                style={{ justifyContent: 'center', gap: '0.5rem', padding: '0.75rem 1.25rem' }}
+              >
+                <Star size={16} fill="currentColor" /> Write a Review on Play Store
+              </a>
+            ) : (
+              <a 
+                href="https://t.me/skdev_chat" 
+                target="_blank" 
+                rel="noreferrer" 
+                className="btn btn-secondary"
+                style={{ justifyContent: 'center', gap: '0.5rem', padding: '0.75rem 1.25rem' }}
+              >
+                <MessageCircle size={16} /> Share Feedback in Chat
+              </a>
+            )}
+          </div>
         </div>
+
+        {/* User Reviews Grid */}
+        {app.reviews && app.reviews.length > 0 ? (
+          <div className="grid grid-cols-2" style={{ gap: '1.5rem' }}>
+            {app.reviews.map(review => (
+              <div key={review.id} className="glass-panel" style={{ padding: '2rem', display: 'flex', flexDirection: 'column' }}>
+                <div className="flex-between" style={{ marginBottom: '1.25rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                    <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'var(--accent-primary)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold' }}>
+                      {review.user.charAt(0)}
+                    </div>
+                    <div>
+                      <span style={{ fontWeight: 600, fontSize: '1.05rem', display: 'block' }}>{review.user}</span>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                        <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>Verified User</span>
+                        {review.date && (
+                          <>
+                            <span style={{ fontSize: '0.75rem', color: 'var(--border-color)' }}>•</span>
+                            <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>{review.date}</span>
+                          </>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                  <div style={{ display: 'flex', color: '#fbbf24' }}>
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} size={15} fill={i < review.rating ? 'currentColor' : 'none'} color={i < review.rating ? 'currentColor' : 'var(--border-color)'} />
+                    ))}
+                  </div>
+                </div>
+                <div style={{ position: 'relative', paddingLeft: '1.75rem', marginBottom: review.developerResponse ? '1.25rem' : 0 }}>
+                  <Quote size={18} color="var(--text-secondary)" style={{ position: 'absolute', left: 0, top: '0', opacity: 0.3 }} />
+                  <p style={{ margin: 0, fontStyle: 'italic', fontSize: '1.05rem', color: 'var(--text-primary)', lineHeight: 1.6 }}>"{review.comment}"</p>
+                </div>
+
+                {/* Developer Response Bubble */}
+                {review.developerResponse && (
+                  <div style={{
+                    marginTop: 'auto',
+                    backgroundColor: 'rgba(56, 189, 248, 0.06)',
+                    border: '1px solid rgba(56, 189, 248, 0.2)',
+                    borderRadius: '1rem',
+                    padding: '1rem 1.25rem',
+                    fontSize: '0.9rem',
+                    lineHeight: 1.5
+                  }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.4rem', flexWrap: 'wrap', gap: '0.25rem' }}>
+                      <span style={{ fontWeight: 600, color: 'var(--accent-primary)', fontSize: '0.85rem' }}>
+                        💬 Response from {review.developerResponse.author || 'Developer'}
+                      </span>
+                      {review.developerResponse.date && (
+                        <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>
+                          {review.developerResponse.date}
+                        </span>
+                      )}
+                    </div>
+                    <p style={{ margin: 0, color: 'var(--text-primary)', opacity: 0.95 }}>
+                      {review.developerResponse.comment}
+                    </p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="glass-panel" style={{ padding: '3rem', textAlign: 'center', color: 'var(--text-secondary)' }}>
+            <Star size={36} color="var(--text-secondary)" style={{ opacity: 0.4, marginBottom: '1rem' }} />
+            <h3 style={{ color: 'var(--text-primary)', marginBottom: '0.5rem' }}>No reviews yet</h3>
+            <p style={{ margin: 0 }}>Be the first to leave a review on Google Play after trying out the app!</p>
+          </div>
+        )}
       </div>
       
       {/* QR Code Modal */}
