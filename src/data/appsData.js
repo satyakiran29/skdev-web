@@ -265,7 +265,14 @@ export const appsData = [
     icon: anisetIcon,
     playStoreLink: "https://play.google.com/store/apps/details?id=com.skdev.aniset",
     websiteLink: "https://aniset.psatyakiran.in",
-    directPurchase: null,
+    directPurchase: {
+      inPrice: "₹160",
+      globalPrice: "$1.68",
+      telegramUser: "skdev1",
+      telegramLink: "https://t.me/skdev1",
+      upiMessage: "Hi Satya, I'd like to purchase Aniset via UPI for ₹160. Please share the payment details and redeem code instructions.",
+      paypalMessage: "Hi Satya, I'd like to purchase Aniset via PayPal for $1.68. Please share the payment link and redeem code instructions."
+    },
     highlights: [
       "Anime-inspired KWGT & KLWP widget designs",
       "Curated high-quality anime wallpaper section",

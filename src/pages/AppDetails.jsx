@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { appsData } from '../data/appsData';
-import { Download, Star, Quote, Globe, Clock, AlertCircle, CheckCircle2, Ticket, Share2, MessageCircle, QrCode, X, Smartphone, Sparkles, Shield } from 'lucide-react';
+import { Download, Star, Quote, Globe, Clock, AlertCircle, CheckCircle2, Ticket, Share2, MessageCircle, QrCode, X, Smartphone, Sparkles, Shield, Send } from 'lucide-react';
 import QRCode from 'react-qr-code';
 
 const TwitterIcon = ({ size }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>;
@@ -254,61 +254,117 @@ export default function AppDetails() {
           alignItems: 'center', 
           textAlign: 'center',
           position: 'relative',
-          overflow: 'hidden'
+          overflow: 'hidden',
+          padding: '3rem 2rem'
         }}>
-          {/* subtle red gradient indicator at top */}
-          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(90deg, transparent, #ef4444, transparent)' }} />
+          {/* subtle accent gradient indicator at top */}
+          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(90deg, transparent, var(--accent-primary), transparent)' }} />
           
           <div style={{ 
             width: '64px', 
             height: '64px', 
             borderRadius: '50%', 
-            backgroundColor: 'rgba(239, 68, 68, 0.1)', 
+            backgroundColor: 'rgba(56, 189, 248, 0.1)', 
             display: 'flex', 
             alignItems: 'center', 
             justifyContent: 'center',
             marginBottom: '1.5rem',
-            border: '1px solid rgba(239, 68, 68, 0.2)'
+            border: '1px solid rgba(56, 189, 248, 0.25)'
           }}>
-            <AlertCircle color="#EF4444" size={32} />
+            <Sparkles color="var(--accent-primary)" size={32} />
           </div>
-          <h2 style={{ fontSize: '1.75rem', marginBottom: '1rem', color: 'var(--text-primary)' }}>Important Notice</h2>
-          <p style={{ fontSize: '1.125rem', color: 'var(--text-secondary)', maxWidth: '700px', lineHeight: 1.6, marginBottom: '2.5rem' }}>
-            Due to refund abuse and Play Store taxes, I've increased the price on the Play Store.<br/>
-            To cut out Play Store tax, I'm offering a discounted price for <strong style={{ color: 'var(--text-primary)' }}>direct purchases</strong>.
+          <h2 style={{ fontSize: '1.85rem', marginBottom: '1rem', color: 'var(--text-primary)' }}>Direct Purchase (Tax & Fee Removed)</h2>
+          <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)', maxWidth: '680px', lineHeight: 1.6, marginBottom: '2.5rem' }}>
+            To cut out Google Play Store taxes and fees, get a <strong style={{ color: 'var(--text-primary)' }}>direct redeem code</strong> at a discounted price via UPI or PayPal.
           </p>
           
-          <div style={{ backgroundColor: 'rgba(0,0,0,0.2)', borderRadius: '1rem', padding: '1.5rem 2rem', border: '1px solid var(--border-color)', width: '100%', maxWidth: '600px', marginBottom: '1.5rem' }}>
-            <h3 style={{ fontSize: '1rem', color: 'var(--text-primary)', marginBottom: '1.5rem', textTransform: 'uppercase', letterSpacing: '1px', opacity: 0.8 }}>Discounted Price (Tax Removed)</h3>
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '2rem', flexWrap: 'wrap' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                <span style={{ color: 'var(--text-secondary)', fontWeight: 'bold' }}>IN</span>
-                <span style={{ color: 'var(--accent-primary)', fontSize: '1.75rem', fontWeight: 'bold' }}>{app.directPurchase.inPrice}</span>
-                <span style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>for India (UPI)</span>
+          {/* One-Click Payment Action Cards */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem', width: '100%', maxWidth: '650px', marginBottom: '2rem' }}>
+            
+            {/* India UPI Card */}
+            <div style={{
+              backgroundColor: 'rgba(0, 0, 0, 0.25)',
+              border: '1px solid rgba(56, 189, 248, 0.3)',
+              borderRadius: '1.25rem',
+              padding: '1.75rem',
+              textAlign: 'center',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between'
+            }}>
+              <div>
+                <div style={{ display: 'inline-block', backgroundColor: 'rgba(56, 189, 248, 0.12)', color: 'var(--accent-primary)', padding: '0.25rem 0.75rem', borderRadius: '20px', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.75rem' }}>
+                  INDIA (UPI)
+                </div>
+                <div style={{ fontSize: '2.25rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '0.25rem' }}>
+                  {app.directPurchase.inPrice}
+                </div>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', marginBottom: '1.5rem' }}>
+                  Google Pay, PhonePe, Paytm, BHIM
+                </p>
               </div>
-              <div style={{ width: '1px', height: '40px', backgroundColor: 'var(--border-color)', opacity: 0.5 }}></div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                <span style={{ color: '#22c55e', fontWeight: 'bold', fontSize: '1.25rem' }}>$</span>
-                <span style={{ color: 'var(--accent-primary)', fontSize: '1.75rem', fontWeight: 'bold' }}>{app.directPurchase.globalPrice}</span>
-                <span style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>for Global (PayPal)</span>
+
+              <a
+                href={`https://t.me/${app.directPurchase.telegramUser || 'skdev1'}?text=${encodeURIComponent(app.directPurchase.upiMessage || `Hi Satya, I'd like to purchase ${app.name} via UPI for ${app.directPurchase.inPrice}. Please share the details!`)}`}
+                target="_blank"
+                rel="noreferrer"
+                className="btn btn-primary"
+                style={{ width: '100%', justifyContent: 'center', gap: '0.5rem', fontSize: '0.95rem', padding: '0.75rem' }}
+              >
+                <Send size={16} /> Buy with UPI ({app.directPurchase.inPrice})
+              </a>
+            </div>
+
+            {/* Global PayPal Card */}
+            <div style={{
+              backgroundColor: 'rgba(0, 0, 0, 0.25)',
+              border: '1px solid rgba(34, 197, 94, 0.3)',
+              borderRadius: '1.25rem',
+              padding: '1.75rem',
+              textAlign: 'center',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between'
+            }}>
+              <div>
+                <div style={{ display: 'inline-block', backgroundColor: 'rgba(34, 197, 94, 0.12)', color: '#22c55e', padding: '0.25rem 0.75rem', borderRadius: '20px', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.75rem' }}>
+                  GLOBAL (PAYPAL)
+                </div>
+                <div style={{ fontSize: '2.25rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '0.25rem' }}>
+                  {app.directPurchase.globalPrice}
+                </div>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', marginBottom: '1.5rem' }}>
+                  International Cards & PayPal Balance
+                </p>
               </div>
+
+              <a
+                href={`https://t.me/${app.directPurchase.telegramUser || 'skdev1'}?text=${encodeURIComponent(app.directPurchase.paypalMessage || `Hi Satya, I'd like to purchase ${app.name} via PayPal for ${app.directPurchase.globalPrice}. Please share the details!`)}`}
+                target="_blank"
+                rel="noreferrer"
+                className="btn btn-secondary"
+                style={{ width: '100%', justifyContent: 'center', gap: '0.5rem', fontSize: '0.95rem', padding: '0.75rem', borderColor: 'rgba(34, 197, 94, 0.4)', color: '#22c55e' }}
+              >
+                <Send size={16} /> Buy with PayPal ({app.directPurchase.globalPrice})
+              </a>
             </div>
           </div>
 
-          <div style={{ backgroundColor: 'rgba(0,0,0,0.2)', borderRadius: '1rem', padding: '1.5rem 2rem', border: '1px solid var(--border-color)', width: '100%', maxWidth: '600px', textAlign: 'left', marginBottom: '2.5rem' }}>
+          {/* Steps & Verification Info */}
+          <div style={{ backgroundColor: 'rgba(0,0,0,0.2)', borderRadius: '1rem', padding: '1.5rem 2rem', border: '1px solid var(--border-color)', width: '100%', maxWidth: '650px', textAlign: 'left' }}>
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', marginBottom: '1rem' }}>
               <CheckCircle2 color="#22c55e" size={20} style={{ flexShrink: 0, marginTop: '2px' }} />
-              <p style={{ color: 'var(--text-secondary)', margin: 0, fontSize: '1rem', lineHeight: 1.5 }}>After payment verification, you will receive a <strong style={{ color: 'var(--text-primary)' }}>redeem code</strong>.</p>
+              <p style={{ color: 'var(--text-secondary)', margin: 0, fontSize: '0.95rem', lineHeight: 1.5 }}>
+                Tap either button above to open a <strong style={{ color: 'var(--text-primary)' }}>pre-filled Telegram message</strong> directly to <strong style={{ color: 'var(--accent-primary)' }}>@{app.directPurchase.telegramUser || 'skdev1'}</strong>.
+              </p>
             </div>
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
               <Ticket color="#ec4899" size={20} style={{ flexShrink: 0, marginTop: '2px' }} />
-              <p style={{ color: 'var(--text-secondary)', margin: 0, fontSize: '1rem', lineHeight: 1.5 }}>You can redeem the app on the Play Store using this redeem code.</p>
+              <p style={{ color: 'var(--text-secondary)', margin: 0, fontSize: '0.95rem', lineHeight: 1.5 }}>
+                After quick payment verification, you will receive an official <strong style={{ color: 'var(--text-primary)' }}>Play Store Redeem Code</strong> for lifetime access.
+              </p>
             </div>
           </div>
-
-          <p style={{ color: 'var(--text-secondary)', fontSize: '1rem' }}>
-            If you're interested in buying, contact me directly on <a href={app.directPurchase.telegramLink} target="_blank" rel="noreferrer" style={{ color: 'var(--accent-primary)', textDecoration: 'none', fontWeight: 'bold' }}>Telegram</a>.
-          </p>
         </div>
       )}
 
