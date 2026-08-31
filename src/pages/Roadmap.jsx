@@ -12,11 +12,7 @@ import {
   ArrowRight, 
   Layers, 
   Smartphone, 
-  ShieldCheck, 
   Palette, 
-  Volume2, 
-  ExternalLink,
-  PlusCircle,
   Lightbulb
 } from 'lucide-react';
 import SEO from '../components/SEO';
@@ -28,7 +24,7 @@ import anisetIcon from '../assets/Aniset_logo.webp';
 export default function Roadmap() {
   const toast = useToast();
   const [selectedYear, setSelectedYear] = useState('All');
-  const [activeTab, setActiveTab] = useState('all'); // 'all', 'in-progress', 'planned', 'under-review'
+  const [activeTab, setActiveTab] = useState('all'); // 'all', 'in-progress', 'planned', 'planning'
 
   const journeyMilestones = [
     {
@@ -192,7 +188,7 @@ export default function Roadmap() {
   };
 
   return (
-    <div className="container animate-fade-in" style={{ padding: 'clamp(2rem, 5vw, 4rem) 0' }}>
+    <div className="container animate-fade-in" style={{ padding: 'clamp(1.5rem, 4vw, 3.5rem) 0' }}>
       <SEO
         title="Developer Journey & Public Roadmap"
         description="Explore the evolution of SKDev and track live development sprints for Anify 1.1.6 (PC Remote, Dual Screen, File Transfer), Aniset 2.0, Aniset Pro, and Home Launcher."
@@ -203,84 +199,85 @@ export default function Roadmap() {
       />
 
       {/* ── Hero Section ── */}
-      <section style={{ textAlign: 'center', maxWidth: '850px', margin: '0 auto 4rem auto' }}>
+      <section style={{ textAlign: 'center', maxWidth: '850px', margin: '0 auto clamp(2.5rem, 6vw, 4rem) auto' }}>
         <div style={{
           display: 'inline-flex',
           alignItems: 'center',
-          gap: '0.5rem',
-          padding: '0.35rem 1rem',
+          gap: '0.4rem',
+          padding: '0.35rem 0.9rem',
           borderRadius: '9999px',
           backgroundColor: 'rgba(56, 189, 248, 0.1)',
           border: '1px solid rgba(56, 189, 248, 0.25)',
           color: 'var(--accent-primary)',
-          fontSize: '0.875rem',
+          fontSize: '0.825rem',
           fontWeight: 600,
           marginBottom: '1.25rem',
         }}>
-          <Compass size={16} /> Transparent Indie Development
+          <Compass size={15} /> Transparent Indie Development
         </div>
 
-        <h1 style={{ fontSize: 'clamp(2.25rem, 6vw, 3.5rem)', marginBottom: '1.25rem', lineHeight: 1.15 }}>
+        <h1 style={{ fontSize: 'clamp(2rem, 6.5vw, 3.5rem)', marginBottom: '1.25rem', lineHeight: 1.15 }}>
           Developer Journey & <br /><span className="text-gradient">Public Roadmap</span>
         </h1>
 
-        <p style={{ fontSize: 'clamp(1rem, 2.5vw, 1.2rem)', color: 'var(--text-secondary)', lineHeight: 1.7, marginBottom: '2rem' }}>
+        <p style={{ fontSize: 'clamp(0.95rem, 3vw, 1.15rem)', color: 'var(--text-secondary)', lineHeight: 1.7, marginBottom: '2rem' }}>
           From simple wallpaper experiments to crafting full-featured Android personalization tools — here is how it started, what’s happening right now, and what’s coming next.
         </p>
 
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-          <button onClick={handleSuggestFeature} className="btn btn-primary" style={{ padding: '0.85rem 1.75rem' }}>
-            <Lightbulb size={18} /> Suggest a Feature
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
+          <button onClick={handleSuggestFeature} className="btn btn-primary" style={{ padding: '0.8rem 1.65rem', flex: '1 1 180px', maxWidth: '240px' }}>
+            <Lightbulb size={17} /> Suggest a Feature
           </button>
-          <a href="https://t.me/skdev29" target="_blank" rel="noreferrer" className="btn btn-secondary" style={{ padding: '0.85rem 1.75rem' }}>
-            <Send size={18} /> Join Telegram Updates
+          <a href="https://t.me/skdev29" target="_blank" rel="noreferrer" className="btn btn-secondary" style={{ padding: '0.8rem 1.65rem', flex: '1 1 180px', maxWidth: '240px' }}>
+            <Send size={17} /> Join Updates
           </a>
         </div>
       </section>
 
       {/* ── Section 1: The Public Roadmap ── */}
-      <section style={{ marginBottom: '5rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '2rem', flexWrap: 'wrap', gap: '1rem' }}>
+      <section style={{ marginBottom: 'clamp(3rem, 7vw, 5rem)' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', marginBottom: '1.75rem' }}>
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.35rem' }}>
-              <Flame color="#f43f5e" size={24} />
-              <h2 style={{ margin: 0, fontSize: 'clamp(1.5rem, 4vw, 2.25rem)' }}>What We're Building</h2>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.35rem' }}>
+              <Flame color="#f43f5e" size={22} />
+              <h2 style={{ margin: 0, fontSize: 'clamp(1.4rem, 4.5vw, 2.25rem)' }}>What We're Building</h2>
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
-              <p style={{ color: 'var(--text-secondary)', margin: 0, fontSize: '0.95rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap', marginTop: '0.35rem' }}>
+              <p style={{ color: 'var(--text-secondary)', margin: 0, fontSize: '0.9rem' }}>
                 Live sprint progress and planned features for Anify and Aniset.
               </p>
               <span style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '0.35rem',
-                fontSize: '0.8rem',
+                gap: '0.3rem',
+                fontSize: '0.75rem',
                 fontWeight: 600,
                 color: 'var(--accent-primary)',
                 backgroundColor: 'rgba(56, 189, 248, 0.1)',
                 border: '1px solid rgba(56, 189, 248, 0.25)',
-                padding: '0.2rem 0.65rem',
+                padding: '0.15rem 0.6rem',
                 borderRadius: '9999px'
               }}>
-                <Clock size={13} /> Last updated: August 31, 2026 at 11:30 PM IST
+                <Clock size={12} /> Updated: September 1, 2026 at 1:00 AM IST
               </span>
             </div>
           </div>
 
-          {/* Filter Tabs */}
-          <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', backgroundColor: 'var(--bg-secondary)', padding: '0.35rem', borderRadius: '0.875rem', border: '1px solid var(--border-color)' }}>
+          {/* Filter Tabs (Horizontal scrollable pill container on mobile) */}
+          <div className="scroll-pills-container" style={{ backgroundColor: 'rgba(15, 23, 42, 0.7)', padding: '0.35rem', borderRadius: '1rem', border: '1px solid var(--border-color)', width: '100%', maxWidth: 'max-content' }}>
             {[
               { id: 'all', label: 'All Items' },
-              { id: 'in-progress', label: '⚡ Active Development' },
+              { id: 'in-progress', label: '⚡ Active Sprints' },
               { id: 'planned', label: '👑 Next Phase' },
               { id: 'planning', label: '⏳ In Planning' },
             ].map(tab => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
+                className="scroll-pill-item"
                 style={{
-                  padding: '0.45rem 0.9rem',
-                  borderRadius: '0.6rem',
+                  padding: '0.45rem 0.95rem',
+                  borderRadius: '0.75rem',
                   border: 'none',
                   fontSize: '0.85rem',
                   fontWeight: 600,
@@ -288,6 +285,7 @@ export default function Roadmap() {
                   backgroundColor: activeTab === tab.id ? 'var(--accent-primary)' : 'transparent',
                   color: activeTab === tab.id ? '#0f172a' : 'var(--text-secondary)',
                   transition: 'all 0.2s ease',
+                  whiteSpace: 'nowrap',
                 }}
               >
                 {tab.label}
@@ -299,8 +297,8 @@ export default function Roadmap() {
         {/* Roadmap Grid */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(min(320px, 100%), 1fr))',
-          gap: '1.5rem'
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(300px, 100%), 1fr))',
+          gap: 'clamp(1rem, 3vw, 1.5rem)'
         }}>
           {filteredRoadmap.map(item => (
             <div 
@@ -316,9 +314,9 @@ export default function Roadmap() {
               }}
             >
               <div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem', flexWrap: 'wrap', gap: '0.5rem' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.875rem', flexWrap: 'wrap', gap: '0.4rem' }}>
                   <span style={{
-                    padding: '0.2rem 0.65rem',
+                    padding: '0.2rem 0.6rem',
                     borderRadius: '9999px',
                     fontSize: '0.75rem',
                     fontWeight: 700,
@@ -334,16 +332,16 @@ export default function Roadmap() {
                   </span>
                 </div>
 
-                <h3 style={{ fontSize: '1.25rem', marginBottom: '0.75rem', color: 'var(--text-primary)', lineHeight: 1.3 }}>
+                <h3 style={{ fontSize: '1.2rem', marginBottom: '0.65rem', color: 'var(--text-primary)', lineHeight: 1.3 }}>
                   {item.title}
                 </h3>
 
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.925rem', lineHeight: 1.6, marginBottom: item.partner ? '0.75rem' : '1.5rem' }}>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.6, marginBottom: item.partner ? '0.65rem' : '1.25rem' }}>
                   {item.description}
                 </p>
 
                 {item.partner && (
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.825rem', marginBottom: '1.25rem', flexWrap: 'wrap' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.8rem', marginBottom: '1.25rem', flexWrap: 'wrap' }}>
                     <span style={{ color: 'var(--text-secondary)' }}>🤝 In Partnership with:</span>
                     <a
                       href={item.partner.link}
@@ -360,7 +358,6 @@ export default function Roadmap() {
                         padding: '0.15rem 0.6rem',
                         borderRadius: '9999px',
                         border: '1px solid rgba(56, 189, 248, 0.25)',
-                        transition: 'all 0.2s ease'
                       }}
                     >
                       <Send size={12} /> {item.partner.name}
@@ -371,8 +368,8 @@ export default function Roadmap() {
 
               <div>
                 {/* Progress bar */}
-                <div style={{ marginBottom: '1rem' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem', color: 'var(--text-secondary)', marginBottom: '0.4rem', fontWeight: 600 }}>
+                <div style={{ marginBottom: '0.875rem' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem', color: 'var(--text-secondary)', marginBottom: '0.35rem', fontWeight: 600 }}>
                     <span>Progress</span>
                     <span>{item.progress}%</span>
                   </div>
@@ -387,7 +384,7 @@ export default function Roadmap() {
                   </div>
                 </div>
 
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '0.75rem', borderTop: '1px solid rgba(255, 255, 255, 0.06)', fontSize: '0.825rem', color: 'var(--text-secondary)' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '0.75rem', borderTop: '1px solid rgba(255, 255, 255, 0.06)', fontSize: '0.8rem', color: 'var(--text-secondary)' }}>
                   <span>Target: <strong style={{ color: 'var(--text-primary)' }}>{item.eta}</strong></span>
                   <span style={{ color: item.categoryColor, fontWeight: 600 }}>{item.priority}</span>
                 </div>
@@ -398,34 +395,36 @@ export default function Roadmap() {
       </section>
 
       {/* ── Section 2: Interactive Developer Journey Timeline ── */}
-      <section style={{ marginBottom: '5rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '2.5rem', flexWrap: 'wrap', gap: '1rem' }}>
+      <section style={{ marginBottom: 'clamp(3rem, 7vw, 5rem)' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', marginBottom: '2rem' }}>
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.35rem' }}>
-              <Milestone color="var(--accent-primary)" size={24} />
-              <h2 style={{ margin: 0, fontSize: 'clamp(1.5rem, 4vw, 2.25rem)' }}>The Story & Milestones</h2>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.35rem' }}>
+              <Milestone color="var(--accent-primary)" size={22} />
+              <h2 style={{ margin: 0, fontSize: 'clamp(1.4rem, 4.5vw, 2.25rem)' }}>The Story & Milestones</h2>
             </div>
-            <p style={{ color: 'var(--text-secondary)', margin: 0, fontSize: '0.95rem' }}>
+            <p style={{ color: 'var(--text-secondary)', margin: 0, fontSize: '0.9rem' }}>
               Key milestones achieved in our indie development journey.
             </p>
           </div>
 
-          {/* Year Filter */}
-          <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+          {/* Year Filter (Horizontal scrollable pill container on mobile) */}
+          <div className="scroll-pills-container" style={{ width: '100%', maxWidth: 'max-content' }}>
             {['All', '2023', '2024', '2025', '2026'].map(year => (
               <button
                 key={year}
                 onClick={() => setSelectedYear(year)}
+                className="scroll-pill-item"
                 style={{
                   padding: '0.4rem 1rem',
                   borderRadius: '9999px',
                   border: selectedYear === year ? '1px solid var(--accent-primary)' : '1px solid var(--border-color)',
-                  backgroundColor: selectedYear === year ? 'rgba(56, 189, 248, 0.15)' : 'transparent',
+                  backgroundColor: selectedYear === year ? 'rgba(56, 189, 248, 0.15)' : 'rgba(15, 23, 42, 0.6)',
                   color: selectedYear === year ? 'var(--accent-primary)' : 'var(--text-secondary)',
                   fontSize: '0.85rem',
                   fontWeight: 600,
                   cursor: 'pointer',
                   transition: 'all 0.2s ease',
+                  whiteSpace: 'nowrap',
                 }}
               >
                 {year}
@@ -435,16 +434,15 @@ export default function Roadmap() {
         </div>
 
         {/* Timeline List */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
           {filteredMilestones.map((milestone, idx) => (
             <div
               key={idx}
               className="glass-panel responsive-panel"
               style={{
                 display: 'flex',
-                gap: 'clamp(1rem, 3vw, 2rem)',
+                gap: 'clamp(0.875rem, 3vw, 1.75rem)',
                 alignItems: 'flex-start',
-                flexWrap: 'wrap',
                 position: 'relative'
               }}
             >
@@ -453,52 +451,52 @@ export default function Roadmap() {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                minWidth: '70px',
+                minWidth: '52px',
                 flexShrink: 0
               }}>
                 <div style={{
-                  width: '46px',
-                  height: '46px',
-                  borderRadius: '1rem',
+                  width: '42px',
+                  height: '42px',
+                  borderRadius: '0.875rem',
                   backgroundColor: 'rgba(255, 255, 255, 0.05)',
                   border: `1px solid ${milestone.tagColor}40`,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   boxShadow: 'var(--shadow-sm)',
-                  marginBottom: '0.5rem'
+                  marginBottom: '0.35rem'
                 }}>
                   {milestone.icon}
                 </div>
-                <span style={{ fontSize: '0.8rem', fontWeight: 700, color: milestone.tagColor }}>
+                <span style={{ fontSize: '0.75rem', fontWeight: 700, color: milestone.tagColor }}>
                   {milestone.year}
                 </span>
               </div>
 
               {/* Main Content */}
-              <div style={{ flex: 1, minWidth: '240px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '0.5rem' }}>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '0.4rem' }}>
                   <span style={{
-                    padding: '0.2rem 0.6rem',
+                    padding: '0.15rem 0.55rem',
                     borderRadius: '2rem',
                     backgroundColor: `${milestone.tagColor}15`,
                     color: milestone.tagColor,
-                    fontSize: '0.75rem',
+                    fontSize: '0.7rem',
                     fontWeight: 700,
                     border: `1px solid ${milestone.tagColor}30`
                   }}>
                     {milestone.tag}
                   </span>
-                  <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
+                  <span style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>
                     {milestone.date}
                   </span>
                 </div>
 
-                <h3 style={{ fontSize: '1.3rem', marginBottom: '0.75rem', color: 'var(--text-primary)' }}>
+                <h3 style={{ fontSize: 'clamp(1.1rem, 3.5vw, 1.3rem)', marginBottom: '0.5rem', color: 'var(--text-primary)', lineHeight: 1.3 }}>
                   {milestone.title}
                 </h3>
 
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.65, margin: '0 0 1rem 0' }}>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.6, margin: '0 0 0.875rem 0' }}>
                   {milestone.description}
                 </p>
 
@@ -508,20 +506,20 @@ export default function Roadmap() {
                     style={{
                       display: 'inline-flex',
                       alignItems: 'center',
-                      gap: '0.5rem',
-                      fontSize: '0.875rem',
+                      gap: '0.45rem',
+                      fontSize: '0.825rem',
                       fontWeight: 600,
                       color: 'var(--accent-primary)',
-                      padding: '0.35rem 0.75rem',
+                      padding: '0.3rem 0.75rem',
                       borderRadius: '0.5rem',
                       backgroundColor: 'rgba(56, 189, 248, 0.08)',
                       border: '1px solid rgba(56, 189, 248, 0.2)'
                     }}
                   >
                     {milestone.appIcon && (
-                      <img src={milestone.appIcon} alt="" style={{ width: '18px', height: '18px', borderRadius: '4px' }} />
+                      <img src={milestone.appIcon} alt="" style={{ width: '16px', height: '16px', borderRadius: '4px' }} />
                     )}
-                    View {milestone.app} Page <ArrowRight size={14} />
+                    View {milestone.app} Page <ArrowRight size={13} />
                   </NavLink>
                 )}
               </div>
@@ -532,44 +530,46 @@ export default function Roadmap() {
 
       {/* ── Section 3: Community Input & Suggestion Box ── */}
       <section>
-        <div className="glass-panel" style={{
-          padding: 'clamp(2rem, 5vw, 3.5rem)',
-          textAlign: 'center',
-          maxWidth: '800px',
-          margin: '0 auto',
-          background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.7) 100%)',
-          border: '1px solid rgba(56, 189, 248, 0.3)',
-          boxShadow: '0 20px 40px rgba(0, 0, 0, 0.4)'
-        }}>
+        <div
+          className="glass-panel responsive-panel"
+          style={{
+            textAlign: 'center',
+            maxWidth: '800px',
+            margin: '0 auto',
+            background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.7) 100%)',
+            border: '1px solid rgba(56, 189, 248, 0.3)',
+            boxShadow: '0 20px 40px rgba(0, 0, 0, 0.4)'
+          }}
+        >
           <div style={{
-            width: '60px',
-            height: '60px',
+            width: '54px',
+            height: '54px',
             borderRadius: '1.25rem',
             backgroundColor: 'rgba(56, 189, 248, 0.1)',
             border: '1px solid rgba(56, 189, 248, 0.3)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            margin: '0 auto 1.5rem auto',
+            margin: '0 auto 1.25rem auto',
             color: 'var(--accent-primary)'
           }}>
-            <Lightbulb size={28} />
+            <Lightbulb size={26} />
           </div>
 
-          <h2 style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)', marginBottom: '1rem' }}>
+          <h2 style={{ fontSize: 'clamp(1.5rem, 5vw, 2.25rem)', marginBottom: '0.75rem' }}>
             Have a Widget or Feature Idea?
           </h2>
 
-          <p style={{ fontSize: '1.05rem', color: 'var(--text-secondary)', lineHeight: 1.7, marginBottom: '2rem', maxWidth: '600px', margin: '0 auto 2rem auto' }}>
+          <p style={{ fontSize: 'clamp(0.95rem, 3vw, 1.05rem)', color: 'var(--text-secondary)', lineHeight: 1.65, marginBottom: '1.75rem', maxWidth: '600px', margin: '0 auto 1.75rem auto' }}>
             SKDev apps evolve directly from user suggestions. If there's a widget style, focus feature, or wallpaper theme you'd love to see, share it directly!
           </p>
 
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-            <button onClick={handleSuggestFeature} className="btn btn-primary" style={{ padding: '0.85rem 1.75rem', fontSize: '1rem' }}>
-              <Send size={18} /> Send via Telegram (@skdev1)
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
+            <button onClick={handleSuggestFeature} className="btn btn-primary mobile-w-full" style={{ padding: '0.8rem 1.65rem', fontSize: '0.95rem', flex: '1 1 200px', maxWidth: '280px' }}>
+              <Send size={16} /> Send via Telegram
             </button>
-            <a href="https://t.me/skdev_chat" target="_blank" rel="noreferrer" className="btn btn-secondary" style={{ padding: '0.85rem 1.75rem', fontSize: '1rem' }}>
-              <MessageCircle size={18} /> Discuss in Group Chat
+            <a href="https://t.me/skdev_chat" target="_blank" rel="noreferrer" className="btn btn-secondary mobile-w-full" style={{ padding: '0.8rem 1.65rem', fontSize: '0.95rem', flex: '1 1 200px', maxWidth: '280px' }}>
+              <MessageCircle size={16} /> Community Chat
             </a>
           </div>
         </div>

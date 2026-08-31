@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { ArrowRight, Download, Send, MessageCircle } from 'lucide-react';
+import { ArrowRight, Download, Send, MessageCircle, Sparkles } from 'lucide-react';
 import AppCard from '../components/AppCard';
 import { appsData } from '../data/appsData';
 import SEO from '../components/SEO';
@@ -61,38 +61,195 @@ export default function Home() {
         jsonLd={ORG_JSONLD}
       />
       {/* Hero Section */}
-      <section style={{ padding: '8rem 0 6rem 0', textAlign: 'center', maxWidth: '800px', margin: '0 auto' }} className="animate-fade-in">
-        <h1 style={{ marginBottom: '1.5rem', fontSize: 'clamp(2.5rem, 8vw, 4rem)' }}>
+      <section
+        style={{
+          padding: 'clamp(3rem, 7vw, 6rem) 0 clamp(2rem, 5vw, 4rem) 0',
+          textAlign: 'center',
+          maxWidth: '820px',
+          margin: '0 auto',
+        }}
+        className="animate-fade-in"
+      >
+        {/* Subtle Badge */}
+        <div
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.4rem',
+            padding: '0.35rem 0.9rem',
+            borderRadius: '9999px',
+            backgroundColor: 'rgba(56, 189, 248, 0.1)',
+            border: '1px solid rgba(56, 189, 248, 0.25)',
+            color: 'var(--accent-primary)',
+            fontSize: '0.825rem',
+            fontWeight: 600,
+            marginBottom: '1.25rem',
+          }}
+        >
+          <Sparkles size={14} /> Indie Android Creator
+        </div>
+
+        <h1
+          style={{
+            marginBottom: '1.25rem',
+            fontSize: 'clamp(2.25rem, 7.5vw, 3.85rem)',
+            lineHeight: 1.15,
+          }}
+        >
           Crafting Digital <br /> <span className="text-gradient">Experiences</span>
         </h1>
-        <p style={{ fontSize: 'clamp(1rem, 4vw, 1.25rem)', marginBottom: '2.5rem', padding: '0 1rem' }}>
-          Indie developer crafting clean, practical apps focused on performance and real user needs.
+
+        <p
+          style={{
+            fontSize: 'clamp(0.95rem, 3.5vw, 1.2rem)',
+            marginBottom: '2rem',
+            padding: '0 0.5rem',
+            color: 'var(--text-secondary)',
+            lineHeight: 1.65,
+          }}
+        >
+          Clean, aesthetic, and battery-friendly Android personalization suites built for real user needs.
         </p>
-        <div className="flex-center" style={{ gap: '1rem', flexWrap: 'wrap' }}>
-          <NavLink to="/apps" className="btn btn-primary mobile-w-full">
-            View All Apps <ArrowRight size={18} />
+
+        {/* Primary CTAs */}
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            gap: '0.75rem',
+            flexWrap: 'wrap',
+            marginBottom: '1.5rem',
+          }}
+        >
+          <NavLink
+            to="/apps"
+            className="btn btn-primary"
+            style={{
+              padding: '0.85rem 1.75rem',
+              fontSize: '1rem',
+              flex: '1 1 200px',
+              maxWidth: '280px',
+            }}
+          >
+            Explore All Apps <ArrowRight size={18} />
           </NavLink>
-          <a href="https://play.google.com/store/apps/dev?id=9166037782169864125" target="_blank" rel="noreferrer" className="btn btn-secondary mobile-w-full">
-            Play Store Profile <Download size={18} />
+
+          <a
+            href="https://play.google.com/store/apps/dev?id=9166037782169864125"
+            target="_blank"
+            rel="noreferrer"
+            className="btn btn-secondary"
+            style={{
+              padding: '0.85rem 1.75rem',
+              fontSize: '1rem',
+              flex: '1 1 200px',
+              maxWidth: '280px',
+            }}
+          >
+            Google Play <Download size={18} />
           </a>
-          <a href="https://t.me/skdev29" target="_blank" rel="noreferrer" className="btn btn-secondary mobile-w-full">
-            Telegram Channel <Send size={18} />
+        </div>
+
+        {/* Community & Social Quick Links Strip */}
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: '0.6rem',
+            flexWrap: 'wrap',
+          }}
+        >
+          <a
+            href="https://t.me/skdev29"
+            target="_blank"
+            rel="noreferrer"
+            className="btn btn-secondary"
+            style={{
+              padding: '0.45rem 0.95rem',
+              fontSize: '0.85rem',
+              minHeight: '38px',
+              borderRadius: '9999px',
+              backgroundColor: 'rgba(15, 23, 42, 0.6)',
+            }}
+          >
+            <Send size={15} color="var(--accent-primary)" /> Updates Channel
           </a>
-          <a href="https://t.me/skdev_chat" target="_blank" rel="noreferrer" className="btn btn-secondary mobile-w-full">
-            Telegram Chat <MessageCircle size={18} />
+          <a
+            href="https://t.me/skdev_chat"
+            target="_blank"
+            rel="noreferrer"
+            className="btn btn-secondary"
+            style={{
+              padding: '0.45rem 0.95rem',
+              fontSize: '0.85rem',
+              minHeight: '38px',
+              borderRadius: '9999px',
+              backgroundColor: 'rgba(15, 23, 42, 0.6)',
+            }}
+          >
+            <MessageCircle size={15} color="#34d399" /> Community Chat
           </a>
-          <a href="https://www.instagram.com/skdev29/" target="_blank" rel="noreferrer" className="btn btn-secondary mobile-w-full">
-            Instagram <InstagramIcon size={18} />
+          <a
+            href="https://www.instagram.com/skdev29/"
+            target="_blank"
+            rel="noreferrer"
+            className="btn btn-secondary"
+            style={{
+              padding: '0.45rem 0.95rem',
+              fontSize: '0.85rem',
+              minHeight: '38px',
+              borderRadius: '9999px',
+              backgroundColor: 'rgba(15, 23, 42, 0.6)',
+            }}
+          >
+            <InstagramIcon size={15} /> Instagram
           </a>
         </div>
       </section>
 
       {/* Featured Apps Section */}
-      <section style={{ padding: '4rem 0' }} className="animate-fade-in delay-200">
-        <div className="flex-between flex-between-mobile-col" style={{ marginBottom: '3rem' }}>
-          <h2>Featured Applications</h2>
-          <NavLink to="/apps" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--accent-primary)', fontWeight: 600 }}>
-            See All <ArrowRight size={16} />
+      <section style={{ padding: 'clamp(2rem, 5vw, 4rem) 0' }} className="animate-fade-in delay-200">
+        <div
+          className="flex-between"
+          style={{
+            marginBottom: '2rem',
+            alignItems: 'flex-end',
+            gap: '1rem',
+          }}
+        >
+          <div>
+            <span
+              style={{
+                fontSize: '0.8rem',
+                fontWeight: 700,
+                color: 'var(--accent-primary)',
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em',
+              }}
+            >
+              Curated Highlights
+            </span>
+            <h2 style={{ margin: '0.25rem 0 0 0', fontSize: 'clamp(1.5rem, 4vw, 2.25rem)' }}>
+              Featured Applications
+            </h2>
+          </div>
+          <NavLink
+            to="/apps"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.35rem',
+              color: 'var(--accent-primary)',
+              fontWeight: 600,
+              fontSize: '0.95rem',
+              flexShrink: 0,
+              padding: '0.35rem 0.75rem',
+              borderRadius: '0.5rem',
+              backgroundColor: 'rgba(56, 189, 248, 0.1)',
+            }}
+          >
+            See All <ArrowRight size={15} />
           </NavLink>
         </div>
 
@@ -103,9 +260,9 @@ export default function Home() {
         </div>
 
         {appsData.length > 2 && (
-          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem' }}>
-            <NavLink to="/apps" className="btn btn-secondary">
-              Show More
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '2.5rem' }}>
+            <NavLink to="/apps" className="btn btn-secondary" style={{ padding: '0.75rem 2rem' }}>
+              Show More Applications ({appsData.length})
             </NavLink>
           </div>
         )}

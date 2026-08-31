@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronDown, MessageCircle, Mail, HelpCircle, Search, Send } from 'lucide-react';
+import { ChevronDown, MessageCircle, Mail, HelpCircle, Search, Send, X } from 'lucide-react';
 import SEO from '../components/SEO';
 import skdevbanner from '../assets/skdev-banner.webp';
 
@@ -11,7 +11,7 @@ const faqs = [
     category: 'Purchasing',
     question: 'How do I purchase apps directly instead of using the Play Store?',
     answer:
-      'We offer direct purchases at a discounted rate — via UPI for Indian users or PayPal for global users. Open the specific app\'s detail page on this site, scroll to the "Important Notice" section, and tap the Telegram link to contact us and complete your purchase.',
+      'We offer direct purchases at a discounted rate — via UPI for Indian users or PayPal for global users. Open the specific app\'s detail page on this site, scroll to the "Direct Purchase" section, and tap the Telegram link to contact us and complete your purchase.',
   },
   {
     category: 'Purchasing',
@@ -23,13 +23,13 @@ const faqs = [
     category: 'Purchasing',
     question: 'What payment methods are accepted?',
     answer:
-      'For Indian users: any UPI app (Google Pay, PhonePe, Paytm, etc.). For global users: PayPal. If you need another method, reach out on Telegram and we\'ll do our best to accommodate you.',
+      'For Indian users: any UPI app (Google Pay, PhonePe, Paytm, BHIM, etc.). For global users: PayPal. If you need another method, reach out on Telegram and we\'ll do our best to accommodate you.',
   },
   {
     category: 'Purchasing',
     question: 'How do I get access after paying directly?',
     answer:
-      'After your payment is verified, you will receive a Google Play redeem code via Telegram. Enter this code on the Play Store to unlock the app on your account permanently.',
+      'After your payment is verified, you will receive an official Google Play redeem code via Telegram. Enter this code on the Play Store to unlock the app on your Google account permanently.',
   },
   {
     category: 'Purchasing',
@@ -61,19 +61,19 @@ const faqs = [
     category: 'Apps & Widgets',
     question: 'Is Anify available on the Play Store?',
     answer:
-      'Yes! Anify is now officially live on Google Play. You can download it for free at https://play.google.com/store/apps/details?id=com.skdev.anify. It brings anime-themed widgets, beautiful wallpapers, and more — all in one app!',
+      'Yes! Anify is now officially live on Google Play. You can download it for free at https://play.google.com/store/apps/details?id=com.skdev.anify. It brings anime-themed widgets, beautiful wallpapers, Sticker Studio, and more — all in one standalone app!',
   },
   {
     category: 'Apps & Widgets',
     question: 'Which Android versions are supported by Anify?',
     answer:
-      'Anify supports Android 7.0 (Nougat) all the way up to Android 16, ensuring seamless performance, battery efficiency, and compatibility across both older and newest generation Android devices.',
+      'Anify supports Android 7.0 (Nougat) all the way up to Android 16 (API 36), ensuring seamless performance, battery efficiency, and compatibility across both older and newest generation Android devices.',
   },
   {
     category: 'Apps & Widgets',
     question: 'Does Gwalls require an internet connection?',
     answer:
-      'Yes, Gwalls loads wallpapers from a curated online collection, so an internet connection is required to browse and download. Once a wallpaper is set, it lives on your device.',
+      'Yes, Gwalls loads wallpapers from a curated online collection, so an internet connection is required to browse and download. Once a wallpaper is set, it lives locally on your device.',
   },
 
   /* ── Privacy ── */
@@ -87,13 +87,13 @@ const faqs = [
     category: 'Privacy',
     question: 'Are your apps ad-free?',
     answer:
-      'Gwalls is completely ad-free and Aniset is a paid app with no ads. Anify is completely free to download and is supported by ads, which helps cover server costs and ongoing development for new widgets, wallpapers, and features. Follow us on Telegram for updates on any future ad-free options.',
+      'Gwalls is completely ad-free and Aniset is a paid app with no ads. Anify is completely free to download and is supported by non-intrusive ads, which helps cover server costs and ongoing development for new widgets, wallpapers, and features.',
   },
   {
     category: 'Privacy',
     question: 'Do you sell user data to third parties?',
     answer:
-      'Absolutely not. We do not sell, trade, or share any user data with third parties for marketing purposes. Any analytics collected are solely used to improve the app experience.',
+      'Absolutely not. We do not sell, trade, or share any user data with third parties for marketing purposes. Any analytics collected are solely used to improve the app experience and crash diagnostics.',
   },
 
   /* ── Support ── */
@@ -154,7 +154,7 @@ export default function FAQ() {
   const toggle = idx => setOpenIndex(prev => (prev === idx ? null : idx));
 
   return (
-    <div className="container animate-fade-in" style={{ padding: 'clamp(2rem, 5vw, 4rem) 0' }}>
+    <div className="container animate-fade-in" style={{ padding: 'clamp(1.5rem, 4vw, 3.5rem) 0' }}>
       <SEO
         title="Frequently Asked Questions (FAQ)"
         description="Frequently asked questions about SKDev Android apps, Anify, Aniset, direct redeem code purchases (UPI / PayPal), widget setup, and privacy."
@@ -165,59 +165,76 @@ export default function FAQ() {
       />
 
       {/* ── Hero ── */}
-      <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+      <div style={{ textAlign: 'center', marginBottom: 'clamp(2rem, 5vw, 3rem)' }}>
         <div style={{
           display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-          width: '64px', height: '64px', borderRadius: '50%',
+          width: '56px', height: '56px', borderRadius: '50%',
           background: 'rgba(56,189,248,0.1)', border: '1px solid rgba(56,189,248,0.2)',
-          color: 'var(--accent-primary)', marginBottom: '1.5rem',
+          color: 'var(--accent-primary)', marginBottom: '1.25rem',
         }}>
-          <HelpCircle size={28} />
+          <HelpCircle size={26} />
         </div>
-        <h1 style={{ marginBottom: '1rem' }}>
+        <h1 style={{ marginBottom: '0.75rem', fontSize: 'clamp(2rem, 6vw, 3.25rem)' }}>
           Frequently Asked <span className="text-gradient">Questions</span>
         </h1>
-        <p style={{ fontSize: '1.125rem', maxWidth: '600px', margin: '0 auto 2rem', color: 'var(--text-secondary)' }}>
-          Have questions? We have answers. Browse by category or scroll through them all.
+        <p style={{ fontSize: 'clamp(0.95rem, 3vw, 1.125rem)', maxWidth: '600px', margin: '0 auto clamp(1.5rem, 4vw, 2rem)', color: 'var(--text-secondary)' }}>
+          Have questions? Browse by category or search through them all.
         </p>
 
         {/* ── Search Bar ── */}
-        <div style={{ position: 'relative', maxWidth: '500px', margin: '0 auto 2rem' }}>
-          <Search size={20} style={{ position: 'absolute', left: '1.25rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-secondary)' }} />
+        <div style={{ position: 'relative', maxWidth: '520px', margin: '0 auto clamp(1.25rem, 3vw, 2rem)' }}>
+          <Search size={18} style={{ position: 'absolute', left: '1.15rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-secondary)' }} />
           <input
             type="text"
             placeholder="Search questions or answers..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             style={{
-              width: '100%', padding: '1rem 1rem 1rem 3.25rem',
-              borderRadius: '9999px', border: '1px solid var(--border-color)',
-              backgroundColor: 'rgba(0,0,0,0.2)', color: 'var(--text-primary)',
-              fontSize: '1rem', outline: 'none', transition: 'border-color 0.2s',
+              width: '100%',
+              padding: '0.85rem 2.75rem 0.85rem 3rem',
+              borderRadius: '9999px',
+              border: '1px solid var(--border-color)',
+              backgroundColor: 'rgba(15, 23, 42, 0.7)',
+              color: 'var(--text-primary)',
+              fontSize: '1rem',
+              outline: 'none',
+              transition: 'border-color 0.2s',
               boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.1)'
             }}
             onFocus={(e) => e.target.style.borderColor = 'var(--accent-primary)'}
             onBlur={(e) => e.target.style.borderColor = 'var(--border-color)'}
           />
+          {searchQuery && (
+            <button
+              onClick={() => setSearchQuery('')}
+              className="btn-icon"
+              style={{ position: 'absolute', right: '0.5rem', top: '50%', transform: 'translateY(-50%)', padding: '0.25rem', minWidth: '32px', minHeight: '32px', color: 'var(--text-secondary)' }}
+              aria-label="Clear search"
+            >
+              <X size={16} />
+            </button>
+          )}
         </div>
 
-        {/* ── Category pills ── */}
-        <div style={{ display: 'flex', gap: '0.6rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+        {/* ── Category pills (Horizontal scrollable on mobile) ── */}
+        <div className="scroll-pills-container" style={{ justifyContent: 'center', width: '100%', maxWidth: 'max-content', margin: '0 auto' }}>
           {CATEGORIES.map(cat => (
             <button
               key={cat}
               onClick={() => { setActiveCategory(cat); setOpenIndex(null); }}
+              className="scroll-pill-item"
               style={{
-                padding: '0.45rem 1.2rem',
+                padding: '0.45rem 1.15rem',
                 borderRadius: '9999px',
                 border: '1px solid',
-                fontSize: '0.85rem', fontWeight: 600,
+                fontSize: '0.85rem',
+                fontWeight: 600,
                 cursor: 'pointer',
                 transition: 'all 0.2s ease',
+                whiteSpace: 'nowrap',
                 borderColor:     activeCategory === cat ? 'var(--accent-primary)' : 'var(--border-color)',
-                backgroundColor: activeCategory === cat ? 'var(--accent-primary)' : 'var(--bg-secondary)',
-                color:           activeCategory === cat ? '#fff' : 'var(--text-secondary)',
-                transform:       activeCategory === cat ? 'translateY(-1px)' : 'none',
+                backgroundColor: activeCategory === cat ? 'var(--accent-primary)' : 'rgba(15, 23, 42, 0.6)',
+                color:           activeCategory === cat ? '#0f172a' : 'var(--text-secondary)',
                 boxShadow:       activeCategory === cat ? '0 4px 14px rgba(56,189,248,0.25)' : 'none',
               }}
             >
@@ -230,8 +247,8 @@ export default function FAQ() {
       {/* ── Accordion ── */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', maxWidth: '820px', margin: '0 auto' }}>
         {filtered.length === 0 && (
-          <div style={{ textAlign: 'center', padding: '3rem', color: 'var(--text-secondary)' }}>
-            No FAQs found matching your search.
+          <div className="glass-panel" style={{ textAlign: 'center', padding: '3rem 1.5rem', color: 'var(--text-secondary)' }}>
+            No FAQs found matching "{searchQuery}". Try a different search term or category.
           </div>
         )}
         {filtered.map((faq, idx) => {
@@ -252,17 +269,19 @@ export default function FAQ() {
             >
               {/* Header */}
               <div style={{
-                display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-                gap: '1rem', padding: '1.25rem 1.5rem',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                gap: '0.875rem',
+                padding: 'clamp(1rem, 3vw, 1.25rem) clamp(1rem, 3vw, 1.5rem)',
               }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', flex: 1, minWidth: 0 }}>
-                  {/* Category dot */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flex: 1, minWidth: 0 }}>
                   <span style={{
                     flexShrink: 0, width: '8px', height: '8px', borderRadius: '50%',
                     background: isOpen ? 'var(--accent-primary)' : 'var(--border-color)',
                     transition: 'background 0.25s ease',
                   }} />
-                  <h3 style={{ fontSize: '1.05rem', margin: 0, fontWeight: 600, lineHeight: 1.4 }}>
+                  <h3 style={{ fontSize: 'clamp(0.95rem, 3vw, 1.05rem)', margin: 0, fontWeight: 600, lineHeight: 1.4 }}>
                     {highlightText(faq.question, searchQuery)}
                   </h3>
                 </div>
@@ -273,7 +292,7 @@ export default function FAQ() {
                   borderRadius: '50%',
                   background: isOpen ? 'var(--accent-primary)' : 'var(--bg-secondary)',
                   border: '1px solid var(--border-color)',
-                  color: isOpen ? '#fff' : 'var(--text-secondary)',
+                  color: isOpen ? '#0f172a' : 'var(--text-secondary)',
                   transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
                   transition: 'transform 0.3s ease, background 0.25s ease, color 0.25s ease',
                 }}>
@@ -281,21 +300,20 @@ export default function FAQ() {
                 </div>
               </div>
 
-              {/* Body — CSS grid expand trick */}
+              {/* Body — CSS grid expand */}
               <div style={{
                 display: 'grid',
                 gridTemplateRows: isOpen ? '1fr' : '0fr',
-                transition: 'grid-template-rows 0.35s ease',
+                transition: 'grid-template-rows 0.3s ease',
               }}>
                 <div style={{ overflow: 'hidden' }}>
                   <div style={{
-                    padding: '0 1.5rem 1.5rem 3.1rem',
+                    padding: '0 clamp(1rem, 3vw, 1.5rem) clamp(1rem, 3vw, 1.5rem) clamp(1.25rem, 3vw, 2.25rem)',
                     color: 'var(--text-secondary)',
-                    lineHeight: 1.75,
-                    fontSize: '0.975rem',
-                    borderTop: isOpen ? '1px solid var(--border-color)' : 'none',
-                    paddingTop: isOpen ? '1.25rem' : '0',
-                    transition: 'border-color 0.25s ease',
+                    lineHeight: 1.7,
+                    fontSize: '0.925rem',
+                    borderTop: isOpen ? '1px solid rgba(255, 255, 255, 0.06)' : 'none',
+                    paddingTop: isOpen ? '1rem' : '0',
                   }}>
                     {highlightText(faq.answer, searchQuery)}
                   </div>
@@ -307,51 +325,50 @@ export default function FAQ() {
       </div>
 
       {/* ── Still have questions? ── */}
-      <div className="glass-panel" style={{
-        maxWidth: '820px', margin: '3rem auto 0',
-        textAlign: 'center', padding: 'clamp(2rem, 4vw, 3rem)',
+      <div className="glass-panel responsive-panel" style={{
+        maxWidth: '820px', margin: 'clamp(2.5rem, 6vw, 4rem) auto 0',
+        textAlign: 'center',
         background: 'linear-gradient(135deg, rgba(56,189,248,0.05) 0%, rgba(139,92,246,0.05) 100%)',
         border: '1px solid rgba(56,189,248,0.15)',
         position: 'relative', overflow: 'hidden',
       }}>
-        {/* subtle top line */}
         <div style={{
           position: 'absolute', top: 0, left: 0, right: 0, height: '3px',
           background: 'linear-gradient(90deg, transparent, var(--accent-primary), transparent)',
         }} />
 
-        <h2 style={{ fontSize: '1.5rem', marginBottom: '0.75rem' }}>
+        <h2 style={{ fontSize: 'clamp(1.35rem, 4vw, 1.75rem)', marginBottom: '0.5rem' }}>
           Still have questions?
         </h2>
-        <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem', maxWidth: '480px', margin: '0 auto 2rem' }}>
-          Can't find the answer you're looking for? Reach out directly — we usually reply within 24 hours.
+        <p style={{ color: 'var(--text-secondary)', fontSize: '0.925rem', lineHeight: 1.6, maxWidth: '480px', margin: '0 auto 1.75rem auto' }}>
+          Can't find what you're looking for? Reach out directly — we usually reply within 24 hours.
         </p>
 
-        <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <a
-            href="https://t.me/skdev29"
-            target="_blank"
-            rel="noreferrer"
-            className="btn btn-secondary"
-            style={{ gap: '0.5rem' }}
-          >
-            <Send size={18} /> Telegram Channel
-          </a>
+        <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', flexWrap: 'wrap' }}>
           <a
             href="https://t.me/skdev_chat"
             target="_blank"
             rel="noreferrer"
-            className="btn btn-primary"
-            style={{ gap: '0.5rem' }}
+            className="btn btn-primary mobile-w-full"
+            style={{ gap: '0.4rem', flex: '1 1 180px', maxWidth: '240px' }}
           >
-            <MessageCircle size={18} /> Join Telegram Chat
+            <MessageCircle size={16} /> Community Chat
+          </a>
+          <a
+            href="https://t.me/skdev29"
+            target="_blank"
+            rel="noreferrer"
+            className="btn btn-secondary mobile-w-full"
+            style={{ gap: '0.4rem', flex: '1 1 180px', maxWidth: '240px' }}
+          >
+            <Send size={16} /> Telegram Channel
           </a>
           <a
             href="mailto:satyakiran296@gmail.com"
-            className="btn btn-secondary"
-            style={{ gap: '0.5rem' }}
+            className="btn btn-secondary mobile-w-full"
+            style={{ gap: '0.4rem', flex: '1 1 180px', maxWidth: '240px' }}
           >
-            <Mail size={18} /> Send an Email
+            <Mail size={16} /> Send an Email
           </a>
         </div>
       </div>
