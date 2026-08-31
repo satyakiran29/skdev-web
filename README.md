@@ -30,13 +30,15 @@ A modern, high-performance web portfolio for indie Android developer **Satya Kir
 
 ## ✨ Key Features
 
-- **📱 App Showcase & Details:** Dedicated app detail pages featuring high-resolution WebP screenshots, feature highlights, user reviews, direct download links, compatibility tags (Android 7 to 16), and dynamic QR Codes for instant mobile installation.
-- **🎨 Glassmorphic & Responsive UI:** Sleek, modern dark-themed aesthetics with glassmorphism, fluid typography, and subtle micro-animations that adapt across mobile, tablet, and desktop viewports.
+- **📱 App Showcase & Details:** Dedicated app detail pages featuring high-resolution WebP screenshots, feature highlights, user reviews with developer replies, direct download links, compatibility badges (Android 5.0 to 16), and dynamic QR Codes for instant mobile installation.
+- **⭐ Dynamic Ratings & Reviews Breakdown:** Interactive 5-to-1 star distribution bars, aggregate scores, and direct Google Play review action cards.
+- **⚡ One-Click Direct Purchase Generator:** Instant pre-filled Telegram link generator for direct redeem code purchases (UPI ₹160 / PayPal $1.68) cutting out app store taxes.
+- **🎨 100% Mobile Responsive Glassmorphic UI:** Sleek, modern dark-themed aesthetics with glassmorphism, fluid typography (`clamp()`), and subtle micro-animations that adapt seamlessly across small phones, foldables, tablets, and desktops.
 - **📰 News & Announcements:** Dedicated section covering app updates, changelogs, release notes, and developer insights.
 - **❓ Interactive FAQ:** Filterable knowledge base with real-time text search and keyword highlighting.
-- **💖 Support & Direct Purchases:** Support options including UPI and PayPal payment details with direct contact links for tax-free purchase codes.
+- **💖 Support & Direct Donations:** Support options including UPI and PayPal payment details with QR codes and copy-friendly address fields.
 - **🌐 Progressive Web App (PWA):** Fully installable on Android, iOS, Windows, and macOS with offline caching and service worker management.
-- **⚡ Optimized Asset Pipeline:** All images and screenshots converted to next-gen **WebP** format for ultra-fast load times.
+- **⚡ Ultra-Optimized Asset Pipeline:** Next-gen **WebP** image pipeline reducing screenshot sizes by >92% for instant page loads.
 - **🔍 SEO & Social Previews:** Automated OpenGraph meta tags, Twitter card summaries, and Schema.org structured JSON-LD data via `react-helmet-async`.
 - **🥜 Anya Easter Egg:** Hidden interactive retro mode with audio cues and retro CRT screen effects.
 

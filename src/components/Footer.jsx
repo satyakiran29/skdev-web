@@ -23,7 +23,7 @@ export default function Footer() {
           <p>Indie developer crafting clean, practical apps<br/>focused on performance and real user needs.</p>
         </div>
         
-        <div style={{ display: 'flex', gap: '3rem' }}>
+        <div style={{ display: 'flex', gap: 'clamp(2rem, 5vw, 4rem)', flexWrap: 'wrap' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
             <h4 style={{ marginBottom: '0.5rem' }}>Quick Links</h4>
             <NavLink to="/">Home</NavLink>

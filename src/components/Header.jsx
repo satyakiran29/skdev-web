@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { Play, Mail, Heart, Menu, X } from 'lucide-react';
+import { Play, Mail, Heart, Menu, X, Send } from 'lucide-react';
 import heroLogo from '../assets/hero.webp';
 
 const InstagramIcon = ({ size = 20 }) => (
@@ -42,32 +42,36 @@ export default function Header() {
 
   return (
     <header className="glass-panel" style={{
-      position: 'fixed', top: '1rem', left: '1rem', right: '1rem',
-      zIndex: 50, padding: '1rem 5%', borderRadius: '1rem',
+      position: 'fixed', top: '1rem', left: 'clamp(0.5rem, 3vw, 1rem)', right: 'clamp(0.5rem, 3vw, 1rem)',
+      zIndex: 50, padding: '0.875rem clamp(1rem, 4vw, 2rem)', borderRadius: '1rem',
       maxHeight: 'calc(100vh - 2rem)', overflowY: 'auto'
     }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <NavLink to="/" onClick={handleLogoClick} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        <NavLink to="/" onClick={handleLogoClick} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexShrink: 0 }}>
           <img src={heroLogo} alt="SKDev Logo" style={{ width: '36px', height: '36px', objectFit: 'cover', borderRadius: '50%', background: 'var(--bg-secondary)' }} />
-          <span className="text-gradient" style={{ fontSize: '1.5rem', fontWeight: 800 }}>Skdev</span>
+          <span className="text-gradient" style={{ fontSize: '1.4rem', fontWeight: 800 }}>Skdev</span>
         </NavLink>
 
         <nav className="desktop-nav" style={{ gap: '1rem', alignItems: 'center' }}>
           <NavLink to="/apps" style={({ isActive }) => ({ color: isActive ? 'var(--accent-primary)' : 'inherit' })}>Apps</NavLink>
           <NavLink to="/news" style={({ isActive }) => ({ color: isActive ? 'var(--accent-primary)' : 'inherit' })}>News</NavLink>
+          <NavLink to="/faq" style={({ isActive }) => ({ color: isActive ? 'var(--accent-primary)' : 'inherit' })}>FAQ</NavLink>
           <NavLink to="/donate" style={({ isActive }) => ({ color: isActive ? '#ec4899' : 'inherit', display: 'flex', alignItems: 'center', gap: '0.25rem' })}>
             Support <Heart size={14} className={window.location.pathname === '/donate' ? 'fill-current' : ''} />
           </NavLink>
 
-          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', marginLeft: '0.5rem', borderLeft: '1px solid var(--border-color)', paddingLeft: '0.5rem' }}>
-            <a href="mailto:satyakiran296@gmail.com" className="btn-icon" title="Email Developer">
-              <Mail size={20} />
+          <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', marginLeft: '0.5rem', borderLeft: '1px solid var(--border-color)', paddingLeft: '0.75rem' }}>
+            <a href="https://t.me/skdev29" target="_blank" rel="noreferrer" className="btn-icon" title="Telegram Channel">
+              <Send size={18} />
             </a>
             <a href="https://play.google.com/store/apps/dev?id=9166037782169864125" target="_blank" rel="noreferrer" className="btn-icon" title="Play Store Profile">
-              <Play size={20} />
+              <Play size={18} />
             </a>
             <a href="https://www.instagram.com/skdev29/" target="_blank" rel="noreferrer" className="btn-icon" title="Instagram Profile">
-              <InstagramIcon size={20} />
+              <InstagramIcon size={18} />
+            </a>
+            <a href="mailto:satyakiran296@gmail.com" className="btn-icon" title="Email Developer">
+              <Mail size={18} />
             </a>
           </div>
         </nav>
@@ -75,6 +79,7 @@ export default function Header() {
         <button
           className="mobile-menu-btn btn-icon"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle Navigation Menu"
         >
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -82,24 +87,28 @@ export default function Header() {
 
       {isMobileMenuOpen && (
         <div className="mobile-dropdown animate-fade-in" style={{
-          flexDirection: 'column', gap: '1.5rem',
-          paddingTop: '1.5rem', marginTop: '1rem', borderTop: '1px solid var(--border-color)'
+          flexDirection: 'column', gap: '1.25rem',
+          paddingTop: '1.25rem', marginTop: '1rem', borderTop: '1px solid var(--border-color)'
         }}>
-          <NavLink to="/apps">Apps</NavLink>
-          <NavLink to="/news">News</NavLink>
-          <NavLink to="/donate" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#ec4899' }}>
+          <NavLink to="/apps" style={{ fontSize: '1.1rem', fontWeight: 600 }}>Apps</NavLink>
+          <NavLink to="/news" style={{ fontSize: '1.1rem', fontWeight: 600 }}>News</NavLink>
+          <NavLink to="/faq" style={{ fontSize: '1.1rem', fontWeight: 600 }}>FAQ</NavLink>
+          <NavLink to="/donate" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#ec4899', fontSize: '1.1rem', fontWeight: 600 }}>
             Support <Heart size={16} />
           </NavLink>
 
-          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', paddingTop: '1rem', borderTop: '1px dotted var(--border-color)' }}>
-            <a href="mailto:satyakiran296@gmail.com" className="btn-icon" title="Email Developer">
-              <Mail size={20} />
+          <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', paddingTop: '1rem', borderTop: '1px dotted var(--border-color)', flexWrap: 'wrap' }}>
+            <a href="https://t.me/skdev29" target="_blank" rel="noreferrer" className="btn-icon" title="Telegram Channel">
+              <Send size={20} />
             </a>
             <a href="https://play.google.com/store/apps/dev?id=9166037782169864125" target="_blank" rel="noreferrer" className="btn-icon" title="Play Store Profile">
               <Play size={20} />
             </a>
             <a href="https://www.instagram.com/skdev29/" target="_blank" rel="noreferrer" className="btn-icon" title="Instagram Profile">
               <InstagramIcon size={20} />
+            </a>
+            <a href="mailto:satyakiran296@gmail.com" className="btn-icon" title="Email Developer">
+              <Mail size={20} />
             </a>
           </div>
         </div>

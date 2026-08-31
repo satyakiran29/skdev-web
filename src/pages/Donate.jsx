@@ -100,7 +100,7 @@ export default function Donate() {
               justifyContent: 'space-between',
               marginTop: 'auto'
             }}>
-              <span style={{ fontFamily: 'monospace', fontSize: '1.125rem', color: 'var(--text-primary)' }}>psatyakiran1@oksbi</span>
+              <span style={{ fontFamily: 'monospace', fontSize: 'clamp(0.85rem, 3.5vw, 1.125rem)', color: 'var(--text-primary)', wordBreak: 'break-all' }}>psatyakiran1@oksbi</span>
               <button
                 onClick={handleCopyUPI}
                 className="btn-icon"

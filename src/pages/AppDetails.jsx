@@ -85,21 +85,21 @@ export default function AppDetails() {
       />
       {/* App Header */}
       <div className="glass-panel responsive-panel" style={{ marginBottom: '4rem', display: 'flex', gap: 'clamp(1.5rem, 4vw, 3rem)', alignItems: 'center', flexWrap: 'wrap-reverse' }}>
-        <div style={{ flex: 1, minWidth: '300px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '1.5rem' }}>
-            <img src={app.icon} alt={`${app.name} icon`} style={{ width: '80px', height: '80px', borderRadius: '1.25rem', objectFit: 'cover', border: '2px solid var(--border-color)' }} />
+        <div style={{ flex: '1 1 280px', minWidth: 0 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 'clamp(1rem, 3vw, 1.5rem)', marginBottom: '1.5rem' }}>
+            <img src={app.icon} alt={`${app.name} icon`} style={{ width: 'clamp(64px, 10vw, 80px)', height: 'clamp(64px, 10vw, 80px)', borderRadius: '1.25rem', objectFit: 'cover', border: '2px solid var(--border-color)', flexShrink: 0 }} />
             <div>
-              <h1 style={{ fontSize: '3rem', margin: 0 }}>{app.name}</h1>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap', marginTop: '0.5rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#fbbf24' }}>
+              <h1 style={{ fontSize: 'clamp(1.75rem, 5vw, 3rem)', margin: 0 }}>{app.name}</h1>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap', marginTop: '0.5rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', color: '#fbbf24' }}>
                   {avgRating !== null ? (
                     <>
-                      <Star size={20} fill="currentColor" />
+                      <Star size={18} fill="currentColor" />
                       <span style={{ color: 'var(--text-primary)', fontWeight: 600 }}>{avgRating.toFixed(1)}</span>
-                      <span style={{ color: 'var(--text-secondary)' }}>({app.reviews.length} reviews)</span>
+                      <span style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>({app.reviews.length} reviews)</span>
                     </>
                   ) : (
-                    <span style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>No reviews yet</span>
+                    <span style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>No reviews yet</span>
                   )}
                 </div>
                 {app.requiresAndroid && (
@@ -107,65 +107,65 @@ export default function AppDetails() {
                     display: 'inline-flex', 
                     alignItems: 'center', 
                     gap: '0.35rem', 
-                    padding: '0.25rem 0.75rem', 
+                    padding: '0.2rem 0.65rem', 
                     borderRadius: '2rem', 
                     backgroundColor: 'rgba(56, 189, 248, 0.1)', 
                     color: 'var(--accent-primary)', 
-                    fontSize: '0.85rem', 
+                    fontSize: '0.8rem', 
                     fontWeight: 600, 
                     border: '1px solid rgba(56, 189, 248, 0.2)' 
                   }}>
-                    <Smartphone size={14} /> {app.requiresAndroid}
+                    <Smartphone size={13} /> {app.requiresAndroid}
                   </span>
                 )}
               </div>
             </div>
           </div>
           
-          <p style={{ fontSize: '1.125rem', marginBottom: '2.5rem', maxWidth: '600px', lineHeight: 1.8 }}>
+          <p style={{ fontSize: 'clamp(0.95rem, 2.5vw, 1.125rem)', marginBottom: '2rem', maxWidth: '600px', lineHeight: 1.8 }}>
             {app.description}
           </p>
-          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', alignItems: 'center' }}>
             {app.playStoreLink && app.playStoreLink.toLowerCase() !== "coming soon" ? (
-              <a href={app.playStoreLink} target="_blank" rel="noreferrer" className="btn btn-primary" style={{ padding: '1rem 2rem', fontSize: '1.125rem' }}>
-                <Download size={20} /> Get on Google Play
+              <a href={app.playStoreLink} target="_blank" rel="noreferrer" className="btn btn-primary mobile-w-full" style={{ padding: '0.875rem 1.75rem', fontSize: '1rem' }}>
+                <Download size={18} /> Get on Google Play
               </a>
             ) : (
-              <button disabled className="btn btn-primary" style={{ padding: '1rem 2rem', fontSize: '1.125rem', opacity: 0.7, cursor: 'not-allowed' }}>
-                <Clock size={20} /> Coming Soon
+              <button disabled className="btn btn-primary mobile-w-full" style={{ padding: '0.875rem 1.75rem', fontSize: '1rem', opacity: 0.7, cursor: 'not-allowed' }}>
+                <Clock size={18} /> Coming Soon
               </button>
             )}
             {app.websiteLink && app.websiteLink.toLowerCase() !== "coming soon" ? (
-              <a href={app.websiteLink} target="_blank" rel="noreferrer" className="btn btn-secondary" style={{ padding: '1rem 2rem', fontSize: '1.125rem', background: 'transparent', border: '2px solid var(--border-color)', color: 'var(--text-primary)' }}>
-                <Globe size={20} /> Visit Website
+              <a href={app.websiteLink} target="_blank" rel="noreferrer" className="btn btn-secondary mobile-w-full" style={{ padding: '0.875rem 1.75rem', fontSize: '1rem', background: 'transparent', border: '2px solid var(--border-color)', color: 'var(--text-primary)' }}>
+                <Globe size={18} /> Visit Website
               </a>
             ) : (
-              <button disabled className="btn btn-secondary" style={{ padding: '1rem 2rem', fontSize: '1.125rem', background: 'transparent', border: '2px solid var(--border-color)', color: 'var(--text-primary)', opacity: 0.7, cursor: 'not-allowed' }}>
-                <Clock size={20} /> Website Coming Soon
+              <button disabled className="btn btn-secondary mobile-w-full" style={{ padding: '0.875rem 1.75rem', fontSize: '1rem', background: 'transparent', border: '2px solid var(--border-color)', color: 'var(--text-primary)', opacity: 0.7, cursor: 'not-allowed' }}>
+                <Clock size={18} /> Website Coming Soon
               </button>
             )}
-            <div style={{ display: 'flex', gap: '0.5rem' }}>
-              <button onClick={() => setIsQrModalOpen(true)} className="btn-icon btn-secondary" style={{ padding: '1rem', height: '100%', background: 'transparent', border: '2px solid var(--border-color)', color: 'var(--text-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '0.75rem', cursor: 'pointer' }} title="Show QR Code">
-                <QrCode size={20} />
+            <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+              <button onClick={() => setIsQrModalOpen(true)} className="btn-icon btn-secondary" style={{ padding: '0.75rem', background: 'transparent', border: '1px solid var(--border-color)', color: 'var(--text-primary)', borderRadius: '0.75rem', cursor: 'pointer' }} title="Show QR Code">
+                <QrCode size={18} />
               </button>
-              <button onClick={handleShare} className="btn-icon btn-secondary" style={{ padding: '1rem', height: '100%', background: 'transparent', border: '2px solid var(--border-color)', color: 'var(--text-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '0.75rem', cursor: 'pointer' }} title="Native Share">
-                <Share2 size={20} />
+              <button onClick={handleShare} className="btn-icon btn-secondary" style={{ padding: '0.75rem', background: 'transparent', border: '1px solid var(--border-color)', color: 'var(--text-primary)', borderRadius: '0.75rem', cursor: 'pointer' }} title="Native Share">
+                <Share2 size={18} />
               </button>
-              <a href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent('Check out ' + app.name)}`} target="_blank" rel="noreferrer" className="btn-icon btn-secondary" style={{ padding: '1rem', height: '100%', background: 'transparent', border: '2px solid var(--border-color)', color: '#1DA1F2', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '0.75rem', cursor: 'pointer' }} title="Share on Twitter">
-                <TwitterIcon size={20} />
+              <a href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent('Check out ' + app.name)}`} target="_blank" rel="noreferrer" className="btn-icon btn-secondary" style={{ padding: '0.75rem', background: 'transparent', border: '1px solid var(--border-color)', color: '#1DA1F2', borderRadius: '0.75rem', cursor: 'pointer' }} title="Share on Twitter">
+                <TwitterIcon size={18} />
               </a>
-              <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`} target="_blank" rel="noreferrer" className="btn-icon btn-secondary" style={{ padding: '1rem', height: '100%', background: 'transparent', border: '2px solid var(--border-color)', color: '#0A66C2', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '0.75rem', cursor: 'pointer' }} title="Share on LinkedIn">
-                <LinkedinIcon size={20} />
+              <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`} target="_blank" rel="noreferrer" className="btn-icon btn-secondary" style={{ padding: '0.75rem', background: 'transparent', border: '1px solid var(--border-color)', color: '#0A66C2', borderRadius: '0.75rem', cursor: 'pointer' }} title="Share on LinkedIn">
+                <LinkedinIcon size={18} />
               </a>
-              <a href={`https://wa.me/?text=${encodeURIComponent('Check out ' + app.name + ' ' + window.location.href)}`} target="_blank" rel="noreferrer" className="btn-icon btn-secondary" style={{ padding: '1rem', height: '100%', background: 'transparent', border: '2px solid var(--border-color)', color: '#25D366', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '0.75rem', cursor: 'pointer' }} title="Share on WhatsApp">
-                <MessageCircle size={20} />
+              <a href={`https://wa.me/?text=${encodeURIComponent('Check out ' + app.name + ' ' + window.location.href)}`} target="_blank" rel="noreferrer" className="btn-icon btn-secondary" style={{ padding: '0.75rem', background: 'transparent', border: '1px solid var(--border-color)', color: '#25D366', borderRadius: '0.75rem', cursor: 'pointer' }} title="Share on WhatsApp">
+                <MessageCircle size={18} />
               </a>
             </div>
           </div>
         </div>
 
         {app.screenshot && (
-          <div style={{ flex: 1, minWidth: '300px', display: 'flex', justifyContent: 'center' }}>
+          <div style={{ flex: '1 1 280px', minWidth: 0, display: 'flex', justifyContent: 'center' }}>
             <img src={app.screenshot} alt={`${app.name} screenshot`} style={{ maxWidth: '100%', height: 'auto', borderRadius: '1.5rem', boxShadow: 'var(--shadow-lg)', border: '1px solid var(--border-color)' }} />
           </div>
         )}
@@ -371,17 +371,15 @@ export default function AppDetails() {
       {/* Screenshots Section */}
       {app.screenshots && app.screenshots.length > 0 && (
         <div style={{ marginBottom: '4rem' }}>
-          <h2 style={{ marginBottom: '2rem' }}>Screenshots</h2>
-          <div style={{ 
-            display: 'flex', gap: '2rem', overflowX: 'auto', paddingBottom: '1.5rem', 
-            scrollSnapType: 'x mandatory', scrollbarWidth: 'thin' 
-          }}>
+          <h2 style={{ marginBottom: '1.5rem' }}>Screenshots</h2>
+          <div className="screenshots-container">
             {app.screenshots.map((img, idx) => (
               <div key={idx} style={{ flex: '0 0 auto', scrollSnapAlign: 'start' }}>
                 <img 
                   src={img} 
                   alt={`${app.name} preview ${idx + 1}`} 
-                  style={{ height: '350px', width: 'auto', borderRadius: '1rem', border: '1px solid var(--border-color)', boxShadow: 'var(--shadow-md)' }} 
+                  loading="lazy"
+                  style={{ height: 'clamp(260px, 45vh, 360px)', width: 'auto', borderRadius: '1rem', border: '1px solid var(--border-color)', boxShadow: 'var(--shadow-md)' }} 
                 />
               </div>
             ))}

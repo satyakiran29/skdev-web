@@ -15,13 +15,13 @@ export default function OfficialInfographic() {
 
       <div style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-        gap: '2.5rem',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))',
+        gap: 'clamp(1.5rem, 4vw, 2.5rem)',
         alignItems: 'stretch'
       }}>
         {/* Unofficial / Modded Card */}
         <div className="glass-panel" style={{
-          padding: '2.5rem 2rem',
+          padding: 'clamp(1.5rem, 4vw, 2.5rem)',
           position: 'relative',
           overflow: 'hidden',
           display: 'flex',
@@ -113,7 +113,7 @@ export default function OfficialInfographic() {
 
         {/* Official / Licensed Card */}
         <div className="glass-panel" style={{
-          padding: '2.5rem 2rem',
+          padding: 'clamp(1.5rem, 4vw, 2.5rem)',
           position: 'relative',
           overflow: 'hidden',
           display: 'flex',

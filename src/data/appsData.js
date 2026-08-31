@@ -244,17 +244,6 @@ export const appsData = [
     ]
   },
   {
-    id: "gwalls",
-    name: "Gwalls (Discontinued)",
-    screenshot: gwallsbg,
-    description: "Gwalls is a free wallpaper app that offers a curated collection of high-quality, ad-free wallpapers. With a focus on privacy and user experience, Gwalls provides a seamless way to discover and set stunning wallpapers without any distractions. Note: This app is discontinued.",
-    shortDesc: "Discontinued.",
-    icon: "https://play-lh.googleusercontent.com/Fi0yymWa6vKSk_z-cfb9nzAYpPK6zE4dm_0kSKxJzjckJDMPpHRoIK1iMfCk8mpXSaZx=w240-h480-rw",
-    playStoreLink: null,
-    websiteLink: "coming soon",
-    reviews: []
-  },
-  {
     id: "aniset",
     name: "Aniset (Paid)",
     tagline: "Anime KWGT & KLWP Widgets",
@@ -427,5 +416,16 @@ export const appsData = [
         }
       }
     ]
+  },
+  {
+    id: "gwalls",
+    name: "Gwalls (Discontinued)",
+    screenshot: gwallsbg,
+    description: "Gwalls is a free wallpaper app that offers a curated collection of high-quality, ad-free wallpapers. With a focus on privacy and user experience, Gwalls provides a seamless way to discover and set stunning wallpapers without any distractions. Note: This app is discontinued.",
+    shortDesc: "Discontinued.",
+    icon: "https://play-lh.googleusercontent.com/Fi0yymWa6vKSk_z-cfb9nzAYpPK6zE4dm_0kSKxJzjckJDMPpHRoIK1iMfCk8mpXSaZx=w240-h480-rw",
+    playStoreLink: null,
+    websiteLink: "coming soon",
+    reviews: []
   },
 ];
