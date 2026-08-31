@@ -17,23 +17,35 @@ const InstagramIcon = ({ size = 18 }) => (
 
 const ORG_JSONLD = {
   '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: 'Satyakiran Pampana',
-  url: 'https://skdev.psatyakiran.in',
-  sameAs: [
-    'https://play.google.com/store/apps/dev?id=9166037782169864125',
-    'https://t.me/anify_app',
-    'https://t.me/skdev29',
-    'https://t.me/skdev_chat',
-    'https://t.me/skdev1',
-    'https://www.instagram.com/skdev29/',
-  ],
-  jobTitle: 'Indie App Developer',
-  description:
-    'Indie developer crafting clean, practical apps focused on performance and real user needs.',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': 'https://skdev.psatyakiran.in/#person',
+      name: 'Satyakiran Pampana',
+      alternateName: 'SKDev',
+      url: 'https://skdev.psatyakiran.in',
+      sameAs: [
+        'https://play.google.com/store/apps/dev?id=9166037782169864125',
+        'https://t.me/anify_app',
+        'https://t.me/skdev29',
+        'https://t.me/skdev_chat',
+        'https://t.me/skdev1',
+        'https://www.instagram.com/skdev29/',
+      ],
+      jobTitle: 'Indie Android App Developer',
+      description:
+        'Indie Android developer crafting clean, aesthetic, and high-performance personalization and productivity apps.',
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://skdev.psatyakiran.in/#website',
+      url: 'https://skdev.psatyakiran.in',
+      name: 'SKDev',
+      description: 'Official portfolio for SKDev Android applications, widgets, and tools.',
+      publisher: { '@id': 'https://skdev.psatyakiran.in/#person' },
+    }
+  ]
 };
-
-
 
 export default function Home() {
   const featuredApps = appsData.slice(0, 2);
@@ -41,7 +53,9 @@ export default function Home() {
   return (
     <div className="container">
       <SEO
-        description="Indie developer crafting clean, practical apps focused on performance and real user needs. Explore apps like Aniset, Anify, and Gwalls."
+        title="Crafting Digital Experiences"
+        description="Explore Android personalization and productivity suites crafted by indie developer Satyakiran (SKDev) — including Anify, Aniset, and live developer roadmap."
+        keywords="skdev, satyakiran, anify, aniset, sticker studio, kwgt widgets, klwp live wallpapers, android 16, focus lock, blockit, android personalization, indie app developer"
         canonical="/"
         image={skdevbanner}
         jsonLd={ORG_JSONLD}

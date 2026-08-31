@@ -158,13 +158,32 @@ export default function Roadmap() {
     toast.success('Opening Telegram to submit your idea!');
   };
 
+  const roadmapJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    name: 'SKDev Developer Journey & Public Roadmap',
+    description: 'Chronological timeline of SKDev milestones from 2023 to 2026+ and live public roadmap for upcoming Android personalization features (Anify 1.1.6, Aniset 2.0, Aniset Pro).',
+    url: 'https://skdev.psatyakiran.in/roadmap',
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: roadmapItems.map((item, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: item.title,
+        description: item.description,
+      })),
+    },
+  };
+
   return (
     <div className="container animate-fade-in" style={{ padding: 'clamp(2rem, 5vw, 4rem) 0' }}>
       <SEO
         title="Developer Journey & Public Roadmap"
-        description="Explore the story of SKDev, from early wallpaper tools to Aniset and Anify, and see what features and widgets are in active development."
+        description="Explore the evolution of SKDev and track live development sprints for Anify 1.1.6 (PC Remote, Dual Screen, File Transfer), Aniset 2.0, and Aniset Pro."
+        keywords="skdev roadmap, anify 1.1.6, aniset 2.0, aniset pro, android indie developer, pc remote android, android widgets development, transparent indie dev"
         canonical="/roadmap"
         image={skdevbanner}
+        jsonLd={roadmapJsonLd}
       />
 
       {/* ── Hero Section ── */}

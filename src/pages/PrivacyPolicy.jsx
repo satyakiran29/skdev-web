@@ -6,7 +6,8 @@ export default function PrivacyPolicy() {
     <div className="container animate-fade-in" style={{ padding: 'clamp(2rem, 5vw, 4rem) 0' }}>
       <SEO
         title="Privacy Policy"
-        description="Read the skdev privacy policy — how we handle user data, third-party services, and your privacy rights for all our Android apps."
+        description="Official SKDev Privacy Policy — how user data, permissions, AccessibilityService API, and third-party services are handled across Anify, Aniset, and SKDev apps."
+        keywords="skdev privacy policy, anify privacy, aniset privacy, accessibility service android privacy, indie developer data policy"
         canonical="/privacy"
       />
       <div className="glass-panel responsive-panel" style={{ maxWidth: '900px', margin: '0 auto' }}>

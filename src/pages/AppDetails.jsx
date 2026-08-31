@@ -67,9 +67,21 @@ export default function AppDetails() {
     '@type': 'SoftwareApplication',
     name: app.name,
     description: app.description,
-    applicationCategory: 'MobileApplication',
-    operatingSystem: app.requiresAndroid || 'Android',
+    applicationCategory: 'PersonalizationApplication',
+    operatingSystem: app.requiresAndroid || 'Android 7.0+',
     url: `https://skdev.psatyakiran.in/apps/${app.id}`,
+    image: app.screenshot || app.icon,
+    author: {
+      '@type': 'Person',
+      name: 'Satyakiran Pampana',
+      url: 'https://skdev.psatyakiran.in',
+    },
+    offers: {
+      '@type': 'Offer',
+      price: app.id === 'anify' ? '0' : '1.68',
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+    },
     ...(app.playStoreLink && app.playStoreLink.toLowerCase() !== 'coming soon'
       ? { downloadUrl: app.playStoreLink }
       : {}),
@@ -79,10 +91,14 @@ export default function AppDetails() {
             '@type': 'AggregateRating',
             ratingValue: avgRating.toFixed(1),
             reviewCount: app.reviews.length,
+            bestRating: '5',
+            worstRating: '1',
           },
         }
       : {}),
   };
+
+  const appKeywords = `${app.name}, ${app.tagline}, ${app.shortDesc || ''}, android personalization, android widgets, skdev`.toLowerCase();
 
   const handleShare = async () => {
     const shareData = {
@@ -108,8 +124,9 @@ export default function AppDetails() {
   return (
     <div className="container animate-fade-in" style={{ padding: 'clamp(2rem, 5vw, 4rem) 0' }}>
       <SEO
-        title={app.name}
-        description={app.description.slice(0, 160)}
+        title={`${app.name} — ${app.tagline}`}
+        description={app.shortDesc || app.description.slice(0, 160)}
+        keywords={appKeywords}
         canonical={`/apps/${app.id}`}
         image={app.screenshot || app.icon}
         type="website"

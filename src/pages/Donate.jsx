@@ -26,8 +26,9 @@ export default function Donate() {
   return (
     <div className="container animate-fade-in" style={{ padding: 'clamp(2rem, 5vw, 4rem) 0' }}>
       <SEO
-        title="Support My Work"
-        description="Love skdev apps? Support the indie developer behind Aniset, Anify, and Gwalls via UPI (India) or PayPal (global)."
+        title="Support SKDev — Donate & Sponsor"
+        description="Love SKDev apps? Support indie Android development behind Aniset and Anify via UPI (India) or PayPal (Global)."
+        keywords="support skdev, donate indie developer, upi donate satyakiran, paypal skdev, sponsor android developer"
         canonical="/donate"
         image={skdevbanner}
       />

@@ -156,8 +156,9 @@ export default function FAQ() {
   return (
     <div className="container animate-fade-in" style={{ padding: 'clamp(2rem, 5vw, 4rem) 0' }}>
       <SEO
-        title="FAQ"
-        description="Frequently asked questions about skdev apps — purchasing, widgets, privacy, feature requests, and support."
+        title="Frequently Asked Questions (FAQ)"
+        description="Frequently asked questions about SKDev Android apps, Anify, Aniset, direct redeem code purchases (UPI / PayPal), widget setup, and privacy."
+        keywords="skdev faq, anify help, aniset kwgt setup, android widget redeem codes, upi paypal direct purchase, indie app support"
         canonical="/faq"
         image={skdevbanner}
         jsonLd={faqJsonLd}

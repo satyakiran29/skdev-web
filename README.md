@@ -22,7 +22,7 @@ A modern, high-performance web portfolio for indie Android developer **Satya Kir
 
 | App | Type | Compatibility | Description | Links |
 | :--- | :---: | :---: | :--- | :--- |
-| **[Anify](https://anify.psatyakiran.in/)** | Free (Ads) | Android 7.0 – 16 | Complete personalization & productivity suite: Ready-to-use widgets (No KWGT required), premium KWGT packs, BlockIt focus lock, HD wallpapers & ringtones. | [Play Store](https://play.google.com/store/apps/details?id=com.skdev.anify) • [Website](https://anify.psatyakiran.in/) |
+| **[Anify](https://anify.psatyakiran.in/)** | Free (Ads) | Android 7.0 – 16 (API 36) | Personalization & productivity suite: Ready-to-use widgets (No KWGT required), Sticker Studio (Telegram → WhatsApp), premium KWGT packs, BlockIt focus lock, HD wallpapers & ringtones. | [Play Store](https://play.google.com/store/apps/details?id=com.skdev.anify) • [Website](https://anify.psatyakiran.in/) |
 | **[Aniset](https://aniset.psatyakiran.in)** | Paid | Android 5.0 – 16 | Anime KWGT & KLWP widget suite with iconic designs, curated anime wallpaper collection, and deep color & font customization. | [Play Store](https://play.google.com/store/apps/details?id=com.skdev.aniset) • [Website](https://aniset.psatyakiran.in) |
 | **Gwalls** | Discontinued | Android | Curated collection of high-quality, ad-free wallpapers designed with privacy in mind. | *Discontinued* |
 
@@ -30,10 +30,11 @@ A modern, high-performance web portfolio for indie Android developer **Satya Kir
 
 ## ✨ Key Features
 
-- **📱 App Showcase & Details:** Dedicated app detail pages featuring high-resolution WebP screenshots, interactive fullscreen lightbox zoom viewer, user reviews with developer replies, compatibility badges (Android 5.0 to 16), and dynamic QR Codes.
+- **📱 App Showcase & Details:** Dedicated app detail pages featuring high-resolution WebP screenshots, interactive fullscreen lightbox zoom viewer, user reviews with developer replies, compatibility badges (Android 5.0 to 16 / API 36), and dynamic QR Codes.
+- **🎨 Sticker Studio Integration:** Convert Telegram sticker sets to WhatsApp with 1-tap direct export in Anify.
 - **⭐ Dynamic Ratings & Reviews Breakdown:** Interactive 5-to-1 star distribution bars, aggregate scores, and direct Google Play review action cards.
 - **⚡ One-Click Direct Purchase Generator:** Instant pre-filled Telegram link generator for direct redeem code purchases (UPI ₹160 / PayPal $1.68) cutting out app store taxes.
-- **🗺️ Developer Journey & Public Roadmap:** Interactive milestone timeline from 2023 to 2026+ and live public roadmap (`In Progress`, `Planned`, `Next Phase`) with live progress bars and feature suggestion box.
+- **🗺️ Developer Journey & Public Roadmap:** Interactive milestone timeline from 2023 to 2026+ and live public roadmap (`⚡ Active Development`, `👑 Next Phase`) with live progress bars and feature suggestion box.
 - **🍞 Modern Glass Toast System:** Sleek, accessible toast notifications with auto-dismiss replacing browser alert popups.
 - **🎨 100% Mobile Responsive Glassmorphic UI:** Sleek, modern dark-themed aesthetics with glassmorphism, fluid typography (`clamp()`), and subtle micro-animations that adapt seamlessly across small phones, foldables, tablets, and desktops.
 - **❓ Interactive FAQ:** Filterable knowledge base with real-time text search and keyword highlighting.

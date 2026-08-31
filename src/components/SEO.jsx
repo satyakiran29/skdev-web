@@ -1,25 +1,29 @@
 import { Helmet } from 'react-helmet-async';
 
 const BASE_URL = 'https://skdev.psatyakiran.in';
-const DEFAULT_IMAGE = `${BASE_URL}/android-chrome-512x512.webp`;
-const SITE_NAME = 'skdev';
-const DEFAULT_TITLE = 'skdev — Crafting Digital Experiences';
+const DEFAULT_IMAGE = `${BASE_URL}/android-chrome-512x512.png`;
+const SITE_NAME = 'SKDev';
+const DEFAULT_TITLE = 'SKDev — Android Apps, Personalization & Productivity Suites';
 const DEFAULT_DESC =
-  'Indie developer crafting clean, practical apps focused on performance and real user needs. Explore apps like Aniset, Anify, and Gwalls.';
+  'Official portfolio of indie Android developer Satya Kiran. Discover Anify (Sticker Studio, widgets & focus lock), Aniset (Anime KWGT & KLWP), and public roadmap.';
+const DEFAULT_KEYWORDS =
+  'skdev, satyakiran, anify, aniset, sticker studio, kwgt widgets, klwp live wallpapers, android 16, focus lock, blockit, android personalization, indie app developer';
 
 /**
  * SEO component — inject per-page <head> meta tags.
  *
- * @param {string}  title       - Page title (appended with " | skdev")
+ * @param {string}  title       - Page title (appended with " | SKDev")
  * @param {string}  description - Meta description
+ * @param {string}  keywords    - Meta keywords string
  * @param {string}  canonical   - Canonical URL path (e.g. "/apps/aniset")
- * @param {string}  image       - Absolute OG image URL
+ * @param {string}  image       - Absolute or relative OG image URL
  * @param {string}  type        - OG type (default "website")
  * @param {object}  jsonLd      - Optional JSON-LD structured data object
  */
 export default function SEO({
   title,
   description = DEFAULT_DESC,
+  keywords = DEFAULT_KEYWORDS,
   canonical = '/',
   image = DEFAULT_IMAGE,
   type = 'website',
@@ -43,6 +47,8 @@ export default function SEO({
       {/* Primary */}
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
+      <meta name="keywords" content={keywords} />
+      <meta name="author" content="Satyakiran" />
       <link rel="canonical" href={canonicalUrl} />
 
       {/* Open Graph */}
@@ -54,9 +60,12 @@ export default function SEO({
       <meta property="og:image" content={ogImage} />
       <meta property="og:image:width" content={width} />
       <meta property="og:image:height" content={height} />
+      <meta property="og:locale" content="en_US" />
 
       {/* Twitter Card */}
       <meta name="twitter:card" content={twitterCard} />
+      <meta name="twitter:site" content="@skdev29" />
+      <meta name="twitter:creator" content="@skdev29" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={ogImage} />
