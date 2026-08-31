@@ -34,7 +34,7 @@ A modern, high-performance web portfolio for indie Android developer **Satya Kir
 - **🎨 Sticker Studio Integration:** Convert Telegram sticker sets to WhatsApp with 1-tap direct export in Anify.
 - **⭐ Dynamic Ratings & Reviews Breakdown:** Interactive 5-to-1 star distribution bars, aggregate scores, and direct Google Play review action cards.
 - **⚡ One-Click Direct Purchase Generator:** Instant pre-filled Telegram link generator for direct redeem code purchases (UPI ₹160 / PayPal $1.68) cutting out app store taxes.
-- **🗺️ Developer Journey & Public Roadmap:** Interactive milestone timeline from 2023 to 2026+ and live public roadmap (`⚡ Active Development`, `👑 Next Phase`) with live progress bars and feature suggestion box.
+- **🗺️ Developer Journey & Public Roadmap:** Interactive milestone timeline from 2023 to 2026+ and live public roadmap (`⚡ Active Development`, `👑 Next Phase`, `⏳ In Planning`) with live progress bars and feature suggestion box.
 - **🍞 Modern Glass Toast System:** Sleek, accessible toast notifications with auto-dismiss replacing browser alert popups.
 - **🎨 100% Mobile Responsive Glassmorphic UI:** Sleek, modern dark-themed aesthetics with glassmorphism, fluid typography (`clamp()`), and subtle micro-animations that adapt seamlessly across small phones, foldables, tablets, and desktops.
 - **❓ Interactive FAQ:** Filterable knowledge base with real-time text search and keyword highlighting.

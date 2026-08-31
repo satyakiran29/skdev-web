@@ -142,6 +142,18 @@ export default function Roadmap() {
       eta: 'After Aniset 2.0',
       progress: 20,
     },
+    {
+      id: 4,
+      title: 'Home Launcher — Planning Stage',
+      targetApp: 'Home Launcher',
+      category: 'planning',
+      categoryLabel: '⏳ In Planning',
+      categoryColor: '#f59e0b',
+      priority: 'Planning Stage',
+      description: 'Android home launcher project. Currently in the planning stage with release date unknown.',
+      eta: 'Planning Stage',
+      progress: 10,
+    },
   ];
 
   const filteredMilestones = selectedYear === 'All' 
@@ -162,7 +174,7 @@ export default function Roadmap() {
     '@context': 'https://schema.org',
     '@type': 'AboutPage',
     name: 'SKDev Developer Journey & Public Roadmap',
-    description: 'Chronological timeline of SKDev milestones from 2023 to 2026+ and live public roadmap for upcoming Android personalization features (Anify 1.1.6, Aniset 2.0, Aniset Pro).',
+    description: 'Chronological timeline of SKDev milestones from 2023 to 2026+ and live public roadmap for upcoming Android personalization features (Anify 1.1.6, Aniset 2.0, Aniset Pro, and Home Launcher).',
     url: 'https://skdev.psatyakiran.in/roadmap',
     mainEntity: {
       '@type': 'ItemList',
@@ -179,8 +191,8 @@ export default function Roadmap() {
     <div className="container animate-fade-in" style={{ padding: 'clamp(2rem, 5vw, 4rem) 0' }}>
       <SEO
         title="Developer Journey & Public Roadmap"
-        description="Explore the evolution of SKDev and track live development sprints for Anify 1.1.6 (PC Remote, Dual Screen, File Transfer), Aniset 2.0, and Aniset Pro."
-        keywords="skdev roadmap, anify 1.1.6, aniset 2.0, aniset pro, android indie developer, pc remote android, android widgets development, transparent indie dev"
+        description="Explore the evolution of SKDev and track live development sprints for Anify 1.1.6 (PC Remote, Dual Screen, File Transfer), Aniset 2.0, Aniset Pro, and Home Launcher."
+        keywords="skdev roadmap, anify 1.1.6, aniset 2.0, aniset pro, home launcher, android indie developer, pc remote android, android widgets development, transparent indie dev"
         canonical="/roadmap"
         image={skdevbanner}
         jsonLd={roadmapJsonLd}
@@ -257,6 +269,7 @@ export default function Roadmap() {
               { id: 'all', label: 'All Items' },
               { id: 'in-progress', label: '⚡ Active Development' },
               { id: 'planned', label: '👑 Next Phase' },
+              { id: 'planning', label: '⏳ In Planning' },
             ].map(tab => (
               <button
                 key={tab.id}
