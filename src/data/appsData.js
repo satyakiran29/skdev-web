@@ -6,13 +6,13 @@ import anisetImg from '../assets/aniset_bg.webp';
 //anify images
 import anifyIcon from '../assets/anify/anifyicon_new.webp';
 import anifybg from '../assets/anify/anify_new_bg.webp';
-import anifyapp from '../assets/anify/anify1.webp';
-import anifys1 from '../assets/anify/anify_screenshot (1).webp';
-import anifys2 from '../assets/anify/anify_screenshot (2).webp';
-import anifys3 from '../assets/anify/anify_screenshot (3).webp';
-import anifys4 from '../assets/anify/anify_screenshot (4).webp';
-import anifys5 from '../assets/anify/anify_screenshot (5).webp';
-import anifys6 from '../assets/anify/anify_screenshot (6).webp';
+import anifys1 from '../assets/anify/anify_screenshot_1.webp';
+import anifys2 from '../assets/anify/anify_screenshot_2.webp';
+import anifys3 from '../assets/anify/anify_screenshot_3.webp';
+import anifys4 from '../assets/anify/anify_screenshot_4.webp';
+import anifys5 from '../assets/anify/anify_screenshot_5.webp';
+import anifys6 from '../assets/anify/anify_screenshot_6.webp';
+import anifys7 from '../assets/anify/anify_screenshot_7.webp';
 
 //gwalls images
 // import gwallsIcon from '../assets/gwalls_icon.webp';
@@ -24,7 +24,7 @@ export const appsData = [
     id: "anify",
     name: "Anify (Free)",
     screenshot: anifybg,
-    screenshots: [anifyapp, anifys1, anifys2, anifys3, anifys4, anifys5, anifys6],
+    screenshots: [anifys1, anifys2, anifys3, anifys4, anifys5, anifys6, anifys7],
     description: "Anify is a feature-rich customization app that offers a collection of beautifully designed, privacy-focused widgets, wallpapers, and ringtones. It aims to provide users with a seamless and ad-free experience while enhancing the aesthetics of their devices, without depending on any third-party services, ensuring your data remains private and secure.",
     shortDesc: "Widget,wallpaper,ringtone.",
     icon: anifyIcon,
