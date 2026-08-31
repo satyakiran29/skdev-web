@@ -149,14 +149,71 @@ export const appsData = [
   {
     id: "aniset",
     name: "Aniset (Paid)",
+    tagline: "Anime KWGT & KLWP Widgets",
     screenshot: anisetImg,
-    // screenshots: [anisetImg, anisetImg, anisetImg],
-    description: "An incredibly elegant tool set and routing app. Features privacy-focused tools without compromising design. Everything you need, right at your fingertips.",
-    shortDesc: "Elegant utility tools.",
+    description: "Elevate your device customization to a whole new level with Aniset - Anime KWGT & KLWP Widgets! This collection of stunning KWGT and KLWP widgets brings the vibrant and dynamic world of anime to your Android home screen. Immerse yourself in the captivating aesthetics of your favorite anime characters and themes, making your device a true anime wonderland.",
+    shortDesc: "Anime KWGT Widgets, KLWP Live Wallpapers & Curated Backgrounds.",
+    requiresAndroid: "Android 5.0 to Android 16 (Requires KWGT/KLWP Pro)",
     icon: anisetIcon,
     playStoreLink: "https://play.google.com/store/apps/details?id=com.skdev.aniset",
     websiteLink: "https://aniset.psatyakiran.in",
     directPurchase: null,
+    highlights: [
+      "Anime-inspired KWGT & KLWP widget designs",
+      "Curated high-quality anime wallpaper section",
+      "Deep customization: Colors, fonts & layouts",
+      "Seamless integration with KWGT & KLWP Pro",
+      "Android 5.0 to Android 16 Supported",
+      "Compatible with smartphones & tablets",
+      "100% Ad-Free premium experience"
+    ],
+    features: [
+      {
+        icon: "✨",
+        title: "Anime-Inspired Designs",
+        subtitle: "Iconic characters, scenes, and aesthetic themes.",
+        points: [
+          "Beautifully crafted widgets featuring iconic characters and anime series elements.",
+          "Captivating aesthetics that transform your home screen into a true anime wonderland."
+        ]
+      },
+      {
+        icon: "🖼️",
+        title: "Curated Wallpaper Section",
+        subtitle: "High-resolution backgrounds matching widget palettes.",
+        points: [
+          "Curated selection of high-quality anime wallpapers designed to complement the widgets.",
+          "Set the perfect aesthetic mood for your launcher with breathtaking anime art."
+        ]
+      },
+      {
+        icon: "🎨",
+        title: "Customization Galore",
+        subtitle: "Tailor every widget to match your unique style.",
+        points: [
+          "Extensive options to adjust colors, fonts, and layout elements.",
+          "Create a truly personalized and unique home screen experience."
+        ]
+      },
+      {
+        icon: "⚙️",
+        title: "KWGT & KLWP Integration",
+        subtitle: "Full power of KWGT widgets & KLWP dynamic wallpapers.",
+        points: [
+          "Seamlessly import and customize within KWGT and KLWP apps.",
+          "Requires the KWGT app and KWGT Pro key (or KLWP Pro) to apply."
+        ]
+      },
+      {
+        icon: "🔄",
+        title: "User-Friendly & Regular Updates",
+        subtitle: "Simple setup with continuous aesthetic additions.",
+        points: [
+          "Effortlessly browse and apply widgets with just a few taps.",
+          "Dedicated updates bringing fresh anime aesthetics and designs."
+        ]
+      }
+    ],
     reviews: [
       { id: 1, user: "Google Play User", rating: 5, comment: "This widget is best in Play Store and it's a game-changer! It's sleek, customizable, and makes app discovery and management a breeze. The developer support for this widget is top-notch." },
       { id: 2, user: "선배야쿠자", rating: 5, comment: "Recommend to anyone. Great set of widgets with totally original style and design. Just top notch developer. I hope this pack keeps on growing." },
@@ -168,5 +225,4 @@ export const appsData = [
       { id: 8, user: "A Koushik", rating: 5, comment: "Good app. Nice dev." }
     ]
   },
-
 ];

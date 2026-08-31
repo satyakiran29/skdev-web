@@ -23,7 +23,7 @@ A modern, high-performance web portfolio for indie Android developer **Satya Kir
 | App | Type | Compatibility | Description | Links |
 | :--- | :---: | :---: | :--- | :--- |
 | **[Anify](https://anify.psatyakiran.in/)** | Free (Ads) | Android 7.0 – 16 | Complete personalization & productivity suite: Ready-to-use widgets (No KWGT required), premium KWGT packs, BlockIt focus lock, HD wallpapers & ringtones. | [Play Store](https://play.google.com/store/apps/details?id=com.skdev.anify) • [Website](https://anify.psatyakiran.in/) |
-| **[Aniset](https://aniset.psatyakiran.in)** | Paid | Android 8.0+ | Elegant utility toolset and routing app with privacy-centric tools without compromising on design. | [Play Store](https://play.google.com/store/apps/details?id=com.skdev.aniset) • [Website](https://aniset.psatyakiran.in) |
+| **[Aniset](https://aniset.psatyakiran.in)** | Paid | Android 5.0 – 16 | Anime KWGT & KLWP widget suite with iconic designs, curated anime wallpaper collection, and deep color & font customization. | [Play Store](https://play.google.com/store/apps/details?id=com.skdev.aniset) • [Website](https://aniset.psatyakiran.in) |
 | **Gwalls** | Discontinued | Android | Curated collection of high-quality, ad-free wallpapers designed with privacy in mind. | *Discontinued* |
 
 ---
@@ -170,12 +170,14 @@ All application data is centrally declared in [`src/data/appsData.js`](file:///h
 
 ---
 
-## 🧑‍💻 Maintainer & Contact
+## 🧑‍💻 Maintainer & Community Contact
 
 - **Developer:** Satya Kiran ([@satyakiran29](https://github.com/satyakiran29))
 - **Google Play Developer Profile:** [SKDev](https://play.google.com/store/apps/dev?id=9166037782169864125)
+- **Telegram Channel:** [@skdev29](https://t.me/skdev29)
+- **Telegram Community Chat:** [@skdev_chat](https://t.me/skdev_chat)
+- **Direct Support / Telegram:** [@skdev1](https://t.me/skdev1)
 - **Email:** [satyakiran296@gmail.com](mailto:satyakiran296@gmail.com)
-- **Telegram:** [@skdev1](https://t.me/skdev1)
 
 ---
 

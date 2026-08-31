@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronDown, MessageCircle, Mail, HelpCircle, Search } from 'lucide-react';
+import { ChevronDown, MessageCircle, Mail, HelpCircle, Search, Send } from 'lucide-react';
 import SEO from '../components/SEO';
 import skdevbanner from '../assets/skdev-banner.webp';
 
@@ -101,13 +101,13 @@ const faqs = [
     category: 'Support',
     question: 'How can I request a new widget or feature?',
     answer:
-      'The best ways to submit feature requests are: (1) join our Telegram community and post your idea, or (2) email us at satyakiran296@gmail.com. Popular requests are regularly considered for future updates.',
+      'The best ways to submit feature requests are: (1) join our Telegram community chat (https://t.me/skdev_chat) or follow our channel (https://t.me/skdev29), or (2) email us at satyakiran296@gmail.com. Popular requests are regularly considered for future updates.',
   },
   {
     category: 'Support',
     question: 'How do I report a bug?',
     answer:
-      'Please send a bug report via Telegram (@skdev1) with: your device model, Android version, app version, and a description of what happened (screenshots help a lot). We aim to respond within 24–48 hours.',
+      'Please send a bug report via Telegram (@skdev1 or in our chat https://t.me/skdev_chat) with: your device model, Android version, app version, and a description of what happened (screenshots help a lot). We aim to respond within 24–48 hours.',
   },
   {
     category: 'Support',
@@ -328,13 +328,22 @@ export default function FAQ() {
 
         <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
           <a
-            href="https://t.me/skdev1"
+            href="https://t.me/skdev29"
+            target="_blank"
+            rel="noreferrer"
+            className="btn btn-secondary"
+            style={{ gap: '0.5rem' }}
+          >
+            <Send size={18} /> Telegram Channel
+          </a>
+          <a
+            href="https://t.me/skdev_chat"
             target="_blank"
             rel="noreferrer"
             className="btn btn-primary"
             style={{ gap: '0.5rem' }}
           >
-            <MessageCircle size={18} /> Message on Telegram
+            <MessageCircle size={18} /> Join Telegram Chat
           </a>
           <a
             href="mailto:satyakiran296@gmail.com"

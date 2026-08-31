@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Play, Mail, Send } from 'lucide-react';
+import { Play, Mail, Send, MessageCircle } from 'lucide-react';
 import heroLogo from '../assets/hero.webp';
 
 const InstagramIcon = ({ size = 16 }) => (
@@ -42,8 +42,11 @@ export default function Footer() {
             <a href="https://play.google.com/store/apps/dev?id=9166037782169864125" target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <Play size={16} /> Play Store
             </a>
-            <a href="https://t.me/skdev1" target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Send size={16} /> Telegram
+            <a href="https://t.me/skdev29" target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <Send size={16} /> Telegram Channel
+            </a>
+            <a href="https://t.me/skdev_chat" target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <MessageCircle size={16} /> Telegram Chat
             </a>
             <a href="https://www.instagram.com/skdev29/" target="_blank" rel="noreferrer" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <InstagramIcon size={16} /> Instagram
