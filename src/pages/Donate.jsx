@@ -3,8 +3,10 @@ import { Heart, Coffee, CreditCard, Copy, CheckCircle2, QrCode } from 'lucide-re
 import QRCode from 'react-qr-code';
 import SEO from '../components/SEO';
 import skdevbanner from '../assets/skdev-banner.webp';
+import { useToast } from '../context/ToastContext';
 
 export default function Donate() {
+  const toast = useToast();
   const [copiedUPI, setCopiedUPI] = useState(false);
 
   const upiUri = 'upi://pay?pa=psatyakiran1@oksbi&pn=SKDev&cu=INR';
@@ -13,9 +15,11 @@ export default function Donate() {
     try {
       await navigator.clipboard.writeText('psatyakiran1@oksbi');
       setCopiedUPI(true);
+      toast.success('UPI ID copied: psatyakiran1@oksbi');
       setTimeout(() => setCopiedUPI(false), 2000);
     } catch (err) {
       console.error('Failed to copy text: ', err);
+      toast.error('Failed to copy UPI ID.');
     }
   };
 

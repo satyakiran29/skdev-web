@@ -1,17 +1,46 @@
 import React from 'react';
+import { createPortal } from 'react-dom';
 import { useParams, Navigate } from 'react-router-dom';
 import { appsData } from '../data/appsData';
-import { Download, Star, Quote, Globe, Clock, AlertCircle, CheckCircle2, Ticket, Share2, MessageCircle, QrCode, X, Smartphone, Sparkles, Shield, Send } from 'lucide-react';
+import { Download, Star, Quote, Globe, Clock, AlertCircle, CheckCircle2, Ticket, Share2, MessageCircle, QrCode, X, Smartphone, Sparkles, Shield, Send, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react';
 import QRCode from 'react-qr-code';
 
 const TwitterIcon = ({ size }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>;
 const LinkedinIcon = ({ size }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>;
 import SEO from '../components/SEO';
+import { useToast } from '../context/ToastContext';
 
 export default function AppDetails() {
+  const toast = useToast();
   const [isQrModalOpen, setIsQrModalOpen] = React.useState(false);
+  const [activeScreenshotIndex, setActiveScreenshotIndex] = React.useState(null);
   const { id } = useParams();
   const app = appsData.find(a => a.id === id);
+
+  React.useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (activeScreenshotIndex === null || !app?.screenshots) return;
+      if (e.key === 'Escape') {
+        setActiveScreenshotIndex(null);
+      } else if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') {
+        setActiveScreenshotIndex((prev) => (prev === 0 ? app.screenshots.length - 1 : prev - 1));
+      } else if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') {
+        setActiveScreenshotIndex((prev) => (prev === app.screenshots.length - 1 ? 0 : prev + 1));
+      }
+    };
+
+    if (activeScreenshotIndex !== null) {
+      document.body.style.overflow = 'hidden';
+      window.addEventListener('keydown', handleKeyDown);
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [activeScreenshotIndex, app?.screenshots]);
 
   if (!app) {
     return <Navigate to="/apps" />;
@@ -66,10 +95,13 @@ export default function AppDetails() {
         await navigator.share(shareData);
       } else {
         await navigator.clipboard.writeText(window.location.href);
-        alert('Link copied to clipboard!');
+        toast.success(`Copied ${app.name} link to clipboard!`);
       }
     } catch (err) {
-      console.error('Error sharing:', err);
+      if (err.name !== 'AbortError') {
+        await navigator.clipboard.writeText(window.location.href);
+        toast.success(`Copied ${app.name} link to clipboard!`);
+      }
     }
   };
 
@@ -371,15 +403,41 @@ export default function AppDetails() {
       {/* Screenshots Section */}
       {app.screenshots && app.screenshots.length > 0 && (
         <div style={{ marginBottom: '4rem' }}>
-          <h2 style={{ marginBottom: '1.5rem' }}>Screenshots</h2>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '0.75rem' }}>
+            <h2 style={{ margin: 0 }}>Screenshots</h2>
+            <span style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+              <ZoomIn size={16} color="var(--accent-primary)" /> Click to inspect in fullscreen
+            </span>
+          </div>
           <div className="screenshots-container">
             {app.screenshots.map((img, idx) => (
-              <div key={idx} style={{ flex: '0 0 auto', scrollSnapAlign: 'start' }}>
+              <div
+                key={idx}
+                onClick={() => setActiveScreenshotIndex(idx)}
+                style={{
+                  flex: '0 0 auto',
+                  scrollSnapAlign: 'start',
+                  cursor: 'zoom-in',
+                  position: 'relative',
+                  borderRadius: '1rem',
+                  overflow: 'hidden',
+                  transition: 'transform 0.25s ease, box-shadow 0.25s ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px)';
+                  e.currentTarget.style.boxShadow = '0 12px 24px rgba(56, 189, 248, 0.25)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = 'var(--shadow-md)';
+                }}
+                title="Click to view fullscreen"
+              >
                 <img 
                   src={img} 
                   alt={`${app.name} preview ${idx + 1}`} 
                   loading="lazy"
-                  style={{ height: 'clamp(260px, 45vh, 360px)', width: 'auto', borderRadius: '1rem', border: '1px solid var(--border-color)', boxShadow: 'var(--shadow-md)' }} 
+                  style={{ height: 'clamp(260px, 45vh, 360px)', width: 'auto', borderRadius: '1rem', border: '1px solid var(--border-color)', display: 'block' }} 
                 />
               </div>
             ))}
@@ -567,19 +625,21 @@ export default function AppDetails() {
         )}
       </div>
       
-      {/* QR Code Modal */}
-      {isQrModalOpen && (
+      {/* QR Code Modal (Portaled) */}
+      {isQrModalOpen && createPortal(
         <div style={{
           position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
-          backgroundColor: 'rgba(0, 0, 0, 0.7)',
-          backdropFilter: 'blur(4px)',
+          backgroundColor: 'rgba(0, 0, 0, 0.8)',
+          backdropFilter: 'blur(8px)',
+          WebkitBackdropFilter: 'blur(8px)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
-          zIndex: 100, padding: '1rem'
+          zIndex: 999999, padding: '1rem'
         }} onClick={() => setIsQrModalOpen(false)}>
           <div className="glass-panel animate-fade-in" style={{
             padding: '2.5rem', borderRadius: '1.5rem',
             display: 'flex', flexDirection: 'column', alignItems: 'center',
-            position: 'relative', maxWidth: '400px', width: '100%'
+            position: 'relative', maxWidth: '400px', width: '100%',
+            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.7)'
           }} onClick={e => e.stopPropagation()}>
             <button
               onClick={() => setIsQrModalOpen(false)}
@@ -604,7 +664,242 @@ export default function AppDetails() {
               />
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
+      )}
+
+      {/* Fullscreen Screenshot Lightbox Modal (Portaled) */}
+      {activeScreenshotIndex !== null && app.screenshots && createPortal(
+        <div
+          className="animate-fade-in"
+          style={{
+            position: 'fixed',
+            inset: 0,
+            width: '100vw',
+            height: '100vh',
+            backgroundColor: 'rgba(3, 7, 18, 0.96)',
+            backdropFilter: 'blur(24px)',
+            WebkitBackdropFilter: 'blur(24px)',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            zIndex: 999999,
+            padding: '1.25rem 1rem',
+            boxSizing: 'border-box',
+          }}
+          onClick={() => setActiveScreenshotIndex(null)}
+        >
+          {/* Top Bar Controls */}
+          <div
+            style={{
+              width: '100%',
+              maxWidth: '1200px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              zIndex: 10,
+              padding: '0 0.5rem',
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.6rem',
+                backgroundColor: 'rgba(15, 23, 42, 0.85)',
+                border: '1px solid var(--border-color)',
+                padding: '0.5rem 1.25rem',
+                borderRadius: '9999px',
+                color: 'var(--text-primary)',
+                fontSize: '0.925rem',
+                fontWeight: 600,
+                boxShadow: 'var(--shadow-md)',
+              }}
+            >
+              <span>{app.name}</span>
+              <span style={{ opacity: 0.4 }}>•</span>
+              <span style={{ color: 'var(--accent-primary)', fontWeight: 700 }}>
+                {activeScreenshotIndex + 1} / {app.screenshots.length}
+              </span>
+            </div>
+
+            <button
+              onClick={() => setActiveScreenshotIndex(null)}
+              className="btn-icon"
+              style={{
+                backgroundColor: 'rgba(15, 23, 42, 0.85)',
+                border: '1px solid var(--border-color)',
+                padding: '0.6rem',
+                color: 'var(--text-primary)',
+                cursor: 'pointer',
+                borderRadius: '50%',
+                boxShadow: 'var(--shadow-md)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+              title="Close viewer (Esc)"
+              aria-label="Close fullscreen screenshot viewer"
+            >
+              <X size={22} />
+            </button>
+          </div>
+
+          {/* Main Screenshot Preview */}
+          <div
+            style={{
+              position: 'relative',
+              width: '100%',
+              flex: 1,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '1rem 0',
+              overflow: 'hidden',
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              key={activeScreenshotIndex}
+              src={app.screenshots[activeScreenshotIndex]}
+              alt={`${app.name} preview full ${activeScreenshotIndex + 1}`}
+              style={{
+                maxWidth: '90vw',
+                maxHeight: 'calc(100vh - 180px)',
+                width: 'auto',
+                height: 'auto',
+                objectFit: 'contain',
+                borderRadius: '1.25rem',
+                border: '1px solid rgba(56, 189, 248, 0.3)',
+                boxShadow: '0 25px 60px -15px rgba(0, 0, 0, 0.9), 0 0 30px rgba(56, 189, 248, 0.25)',
+                animation: 'fadeIn 0.2s ease-out',
+                userSelect: 'none',
+              }}
+            />
+
+            {/* Left / Previous Arrow */}
+            {app.screenshots.length > 1 && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setActiveScreenshotIndex((prev) =>
+                    prev === 0 ? app.screenshots.length - 1 : prev - 1
+                  );
+                }}
+                className="btn-icon"
+                style={{
+                  position: 'absolute',
+                  left: 'clamp(0.5rem, 3vw, 2.5rem)',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  backgroundColor: 'rgba(15, 23, 42, 0.85)',
+                  border: '1px solid var(--border-color)',
+                  padding: '0.85rem',
+                  borderRadius: '50%',
+                  color: 'var(--text-primary)',
+                  cursor: 'pointer',
+                  boxShadow: 'var(--shadow-lg)',
+                  zIndex: 10,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+                title="Previous image (Left arrow)"
+                aria-label="Previous image"
+              >
+                <ChevronLeft size={28} />
+              </button>
+            )}
+
+            {/* Right / Next Arrow */}
+            {app.screenshots.length > 1 && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setActiveScreenshotIndex((prev) =>
+                    prev === app.screenshots.length - 1 ? 0 : prev + 1
+                  );
+                }}
+                className="btn-icon"
+                style={{
+                  position: 'absolute',
+                  right: 'clamp(0.5rem, 3vw, 2.5rem)',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  backgroundColor: 'rgba(15, 23, 42, 0.85)',
+                  border: '1px solid var(--border-color)',
+                  padding: '0.85rem',
+                  borderRadius: '50%',
+                  color: 'var(--text-primary)',
+                  cursor: 'pointer',
+                  boxShadow: 'var(--shadow-lg)',
+                  zIndex: 10,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+                title="Next image (Right arrow)"
+                aria-label="Next image"
+              >
+                <ChevronRight size={28} />
+              </button>
+            )}
+          </div>
+
+          {/* Bottom Thumbnails Strip */}
+          {app.screenshots.length > 1 && (
+            <div
+              style={{
+                display: 'flex',
+                gap: '0.5rem',
+                padding: '0.4rem 0.75rem',
+                backgroundColor: 'rgba(15, 23, 42, 0.85)',
+                backdropFilter: 'blur(8px)',
+                borderRadius: '9999px',
+                border: '1px solid var(--border-color)',
+                maxWidth: '90vw',
+                overflowX: 'auto',
+                zIndex: 10,
+              }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {app.screenshots.map((thumb, tIdx) => (
+                <button
+                  key={tIdx}
+                  onClick={() => setActiveScreenshotIndex(tIdx)}
+                  style={{
+                    width: '38px',
+                    height: '38px',
+                    borderRadius: '8px',
+                    padding: 0,
+                    border:
+                      activeScreenshotIndex === tIdx
+                        ? '2px solid var(--accent-primary)'
+                        : '1px solid transparent',
+                    background: 'transparent',
+                    cursor: 'pointer',
+                    overflow: 'hidden',
+                    opacity: activeScreenshotIndex === tIdx ? 1 : 0.45,
+                    transition: 'all 0.2s ease',
+                    transform: activeScreenshotIndex === tIdx ? 'scale(1.1)' : 'scale(1)',
+                    flexShrink: 0,
+                  }}
+                  title={`View screenshot ${tIdx + 1}`}
+                  aria-label={`Jump to screenshot ${tIdx + 1}`}
+                >
+                  <img
+                    src={thumb}
+                    alt={`Thumbnail ${tIdx + 1}`}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  />
+                </button>
+              ))}
+            </div>
+          )}
+        </div>,
+        document.body
       )}
     </div>
   );

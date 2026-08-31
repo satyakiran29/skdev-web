@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import { ToastProvider } from './context/ToastContext';
 
 // Pages
 import Home from './pages/Home';
@@ -46,20 +47,22 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Header />
-      <main className="main-content">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/apps" element={<AppsSection />} />
-          <Route path="/apps/:id" element={<AppDetails />} />
-          <Route path="/news" element={<News />} />
-          <Route path="/privacy" element={<PrivacyPolicy />} />
-          <Route path="/faq" element={<FAQ />} />
-          <Route path="/donate" element={<Donate />} />
-        </Routes>
-      </main>
-      <Footer />
-      {isEasterEggActive && <AnyaEasterEgg onClose={() => setIsEasterEggActive(false)} />}
+      <ToastProvider>
+        <Header />
+        <main className="main-content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/apps" element={<AppsSection />} />
+            <Route path="/apps/:id" element={<AppDetails />} />
+            <Route path="/news" element={<News />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/donate" element={<Donate />} />
+          </Routes>
+        </main>
+        <Footer />
+        {isEasterEggActive && <AnyaEasterEgg onClose={() => setIsEasterEggActive(false)} />}
+      </ToastProvider>
     </BrowserRouter>
   );
 }
