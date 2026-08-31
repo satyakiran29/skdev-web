@@ -10,11 +10,12 @@
   <img src="https://img.shields.io/badge/React_Router-7.13.2-red?style=for-the-badge&logo=react-router" alt="React Router" />
   <img src="https://img.shields.io/badge/PWA-Ready-orange?style=for-the-badge&logo=pwa" alt="PWA" />
   <img src="https://img.shields.io/badge/UI-Lucide_Icons-ff69b4?style=for-the-badge" alt="UI" />
+  <img src="https://img.shields.io/badge/Mobile-Optimized-green?style=for-the-badge&logo=android" alt="Mobile Optimized" />
 </div>
 
 <br />
 
-A modern, high-performance web portfolio for indie Android developer **Satya Kiran**. This web app serves as the centralized hub to showcase custom Android apps published on Google Play, share transparent developer journey milestones and public roadmap progress, provide interactive FAQs, offer direct purchase/donation options, and deliver a smooth, high-fidelity user experience.
+A modern, high-performance web portfolio for indie Android developer **Satya Kiran**. This web app serves as the centralized hub to showcase custom Android apps published on Google Play, share transparent developer journey milestones and public roadmap progress, provide interactive FAQs, offer direct purchase/donation options, and deliver a smooth, high-fidelity user experience across mobile, tablet, and desktop.
 
 ---
 
@@ -30,15 +31,16 @@ A modern, high-performance web portfolio for indie Android developer **Satya Kir
 
 ## ✨ Key Features
 
-- **📱 App Showcase & Details:** Dedicated app detail pages featuring high-resolution WebP screenshots, interactive fullscreen lightbox zoom viewer, user reviews with developer replies, compatibility badges (Android 5.0 to 16 / API 36), and dynamic QR Codes.
+- **📱 Mobile-First Native Experience:** Sleek, frosted-glass sheet navigation with route icons, safe-area inset support (`env(safe-area-inset-top/bottom)`), iOS Safari input zoom prevention, active touch feedback, and fluid typography.
+- **📱 App Showcase & Details:** Dedicated app detail pages featuring high-resolution WebP screenshots, touch-optimized horizontal carousel with scroll snap, interactive fullscreen lightbox zoom viewer, user reviews with developer replies, compatibility badges (Android 5.0 to 16 / API 36), and dynamic QR Codes.
+- **📲 Native Web Share Sheet:** Seamless 1-tap mobile sharing using the device's native share tray alongside quick WhatsApp, Twitter, and LinkedIn action buttons.
 - **🎨 Sticker Studio Integration:** Convert Telegram sticker sets to WhatsApp with 1-tap direct export in Anify.
 - **⭐ Dynamic Ratings & Reviews Breakdown:** Interactive 5-to-1 star distribution bars, aggregate scores, and direct Google Play review action cards.
-- **⚡ One-Click Direct Purchase Generator:** Instant pre-filled Telegram link generator for direct redeem code purchases (UPI ₹160 / PayPal $1.68) cutting out app store taxes.
-- **🗺️ Developer Journey & Public Roadmap:** Interactive milestone timeline from 2023 to 2026+ and live public roadmap (`⚡ Active Development`, `👑 Next Phase`, `⏳ In Planning`) with live progress bars and feature suggestion box.
-- **🍞 Modern Glass Toast System:** Sleek, accessible toast notifications with auto-dismiss replacing browser alert popups.
-- **🎨 100% Mobile Responsive Glassmorphic UI:** Sleek, modern dark-themed aesthetics with glassmorphism, fluid typography (`clamp()`), and subtle micro-animations that adapt seamlessly across small phones, foldables, tablets, and desktops.
-- **❓ Interactive FAQ:** Filterable knowledge base with real-time text search and keyword highlighting.
-- **💖 Support & Direct Donations:** Support options including UPI and PayPal payment details with QR codes and copy-friendly address fields.
+- **⚡ One-Click Direct Purchase Generator:** Instant pre-filled Telegram link generator for direct redeem code purchases (UPI ₹160 / PayPal $1.68) cutting out app store fees.
+- **💸 Mobile-Optimized 1-Tap UPI Donations:** Instant one-tap "Open in Any UPI App" intent trigger (`upi://pay...`) alongside QR codes and copy-friendly address fields.
+- **🗺️ Developer Journey & Public Roadmap:** Interactive milestone timeline from 2023 to 2026+ and live public roadmap (`⚡ Active Sprints`, `👑 Next Phase`, `⏳ In Planning`) with horizontal touch scroll pills, live progress bars, and feature suggestion box.
+- **🍞 Modern Glass Toast System:** Accessible toast notifications with auto-dismiss replacing browser alert popups.
+- **❓ Interactive FAQ:** Filterable knowledge base with horizontal category pill scrolling, real-time text search, and keyword highlighting.
 - **🌐 Progressive Web App (PWA):** Fully installable on Android, iOS, Windows, and macOS with offline caching and service worker management.
 - **⚡ Ultra-Optimized Asset Pipeline:** Next-gen **WebP** image pipeline reducing screenshot sizes by >92% for instant page loads.
 - **🔍 SEO & Social Previews:** Automated OpenGraph meta tags, Twitter card summaries, and Schema.org structured JSON-LD data via `react-helmet-async`.
@@ -169,7 +171,7 @@ npm run lint
 
 ## 📝 Adding or Modifying Apps
 
-All application data is centrally declared in [`src/data/appsData.js`](file:///h:/Github/skdev-web/src/data/appsData.js). To add or update an app:
+All application data is centrally declared in [`src/data/appsData.js`](src/data/appsData.js). To add or update an app:
 
 1. Place optimized WebP screenshots and icons in `src/assets/<app-name>/`.
 2. Import the assets in `src/data/appsData.js`.
