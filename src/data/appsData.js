@@ -33,16 +33,27 @@ export const appsData = [
     playStoreLink: "https://play.google.com/store/apps/details?id=com.skdev.anify",
     websiteLink: "https://anify.psatyakiran.in/",
     highlights: [
+      "🎨 Sticker Studio: Telegram → WhatsApp conversion & 1-tap export",
       "Ready-to-use widgets (No KWGT required)",
-      "Premium KWGT widget packs",
-      "BlockIt – Focus Lock & App Blocker",
+      "Premium KWGT widget packs & copyright/removal requests",
+      "BlockIt – Enhanced Focus Lock UI & controls",
+      "Automatic crash reports & device diagnostics",
+      "Targeting Android 16 (API 36) • Android 7.0+ Supported",
       "HD & Aesthetic Wallpapers + Live Calendars",
       "Trending Ringtones & Sound Effects",
-      "Android 7.0 to Android 16 Supported",
-      "Lightweight, battery-optimized Material UI",
       "Free with Ads"
     ],
     features: [
+      {
+        icon: "🎨",
+        title: "Sticker Studio (Telegram → WhatsApp)",
+        subtitle: "Convert and export Telegram sticker packs directly into WhatsApp in 1-tap.",
+        points: [
+          "Instant Conversion: Seamlessly convert any Telegram sticker packs to WhatsApp-ready formats.",
+          "One-Tap Export: Send created packs straight to WhatsApp without third-party converters.",
+          "High-fidelity rendering with transparent PNG/WebP background preservation."
+        ]
+      },
       {
         icon: "📱",
         title: "Ready-to-Use Widgets (No KWGT Required)",

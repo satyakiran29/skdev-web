@@ -54,7 +54,7 @@ export default function Header() {
 
         <nav className="desktop-nav" style={{ gap: '1rem', alignItems: 'center' }}>
           <NavLink to="/apps" style={({ isActive }) => ({ color: isActive ? 'var(--accent-primary)' : 'inherit' })}>Apps</NavLink>
-          <NavLink to="/news" style={({ isActive }) => ({ color: isActive ? 'var(--accent-primary)' : 'inherit' })}>News</NavLink>
+          <NavLink to="/roadmap" style={({ isActive }) => ({ color: isActive ? 'var(--accent-primary)' : 'inherit' })}>Roadmap</NavLink>
           <NavLink to="/faq" style={({ isActive }) => ({ color: isActive ? 'var(--accent-primary)' : 'inherit' })}>FAQ</NavLink>
           <NavLink to="/donate" style={({ isActive }) => ({ color: isActive ? '#ec4899' : 'inherit', display: 'flex', alignItems: 'center', gap: '0.25rem' })}>
             Support <Heart size={14} className={window.location.pathname === '/donate' ? 'fill-current' : ''} />
@@ -91,7 +91,7 @@ export default function Header() {
           paddingTop: '1.25rem', marginTop: '1rem', borderTop: '1px solid var(--border-color)'
         }}>
           <NavLink to="/apps" style={{ fontSize: '1.1rem', fontWeight: 600 }}>Apps</NavLink>
-          <NavLink to="/news" style={{ fontSize: '1.1rem', fontWeight: 600 }}>News</NavLink>
+          <NavLink to="/roadmap" style={{ fontSize: '1.1rem', fontWeight: 600 }}>Roadmap</NavLink>
           <NavLink to="/faq" style={{ fontSize: '1.1rem', fontWeight: 600 }}>FAQ</NavLink>
           <NavLink to="/donate" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#ec4899', fontSize: '1.1rem', fontWeight: 600 }}>
             Support <Heart size={16} />

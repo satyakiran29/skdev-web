@@ -14,7 +14,7 @@
 
 <br />
 
-A modern, high-performance web portfolio for indie Android developer **Satya Kiran**. This web app serves as the centralized hub to showcase custom Android apps published on Google Play, share news updates, provide interactive FAQs, offer direct purchase/donation options, and deliver a smooth user experience.
+A modern, high-performance web portfolio for indie Android developer **Satya Kiran**. This web app serves as the centralized hub to showcase custom Android apps published on Google Play, share transparent developer journey milestones and public roadmap progress, provide interactive FAQs, offer direct purchase/donation options, and deliver a smooth, high-fidelity user experience.
 
 ---
 
@@ -30,11 +30,12 @@ A modern, high-performance web portfolio for indie Android developer **Satya Kir
 
 ## ✨ Key Features
 
-- **📱 App Showcase & Details:** Dedicated app detail pages featuring high-resolution WebP screenshots, feature highlights, user reviews with developer replies, direct download links, compatibility badges (Android 5.0 to 16), and dynamic QR Codes for instant mobile installation.
+- **📱 App Showcase & Details:** Dedicated app detail pages featuring high-resolution WebP screenshots, interactive fullscreen lightbox zoom viewer, user reviews with developer replies, compatibility badges (Android 5.0 to 16), and dynamic QR Codes.
 - **⭐ Dynamic Ratings & Reviews Breakdown:** Interactive 5-to-1 star distribution bars, aggregate scores, and direct Google Play review action cards.
 - **⚡ One-Click Direct Purchase Generator:** Instant pre-filled Telegram link generator for direct redeem code purchases (UPI ₹160 / PayPal $1.68) cutting out app store taxes.
+- **🗺️ Developer Journey & Public Roadmap:** Interactive milestone timeline from 2023 to 2026+ and live public roadmap (`In Progress`, `Planned`, `Next Phase`) with live progress bars and feature suggestion box.
+- **🍞 Modern Glass Toast System:** Sleek, accessible toast notifications with auto-dismiss replacing browser alert popups.
 - **🎨 100% Mobile Responsive Glassmorphic UI:** Sleek, modern dark-themed aesthetics with glassmorphism, fluid typography (`clamp()`), and subtle micro-animations that adapt seamlessly across small phones, foldables, tablets, and desktops.
-- **📰 News & Announcements:** Dedicated section covering app updates, changelogs, release notes, and developer insights.
 - **❓ Interactive FAQ:** Filterable knowledge base with real-time text search and keyword highlighting.
 - **💖 Support & Direct Donations:** Support options including UPI and PayPal payment details with QR codes and copy-friendly address fields.
 - **🌐 Progressive Web App (PWA):** Fully installable on Android, iOS, Windows, and macOS with offline caching and service worker management.
@@ -52,11 +53,12 @@ graph TD
     A --> C[Routes]
     A --> D[Footer]
     A --> E[AnyaEasterEgg]
+    A --> T[ToastProvider]
     
     C --> F[Home Page]
     C --> G[AppsSection]
     C --> H[AppDetails Page]
-    C --> I[News Page]
+    C --> I[Roadmap Page]
     C --> J[FAQ Page]
     C --> K[Donate Page]
     C --> L[Privacy Policy Page]
@@ -65,8 +67,9 @@ graph TD
     G --> N[AppCard]
     H --> O[SEO Component]
     H --> P[QRCode Modal]
-    H --> Q[Screenshots Carousel]
-    I --> R[OfficialInfographic]
+    H --> Q[Fullscreen Lightbox Viewer]
+    I --> R[Milestones Timeline]
+    I --> S[Public Roadmap Tracker]
     
     style A fill:#0f172a,stroke:#38bdf8,stroke-width:2px,color:#fff
     style C fill:#1e293b,stroke:#38bdf8,stroke-width:2px,color:#fff
@@ -90,6 +93,8 @@ skdev-web/
 │   │   ├── Header.jsx
 │   │   ├── OfficialInfographic.jsx
 │   │   └── SEO.jsx
+│   ├── context/             # Global application state & notifications
+│   │   └── ToastContext.jsx
 │   ├── data/                # Application & portfolio dataset
 │   │   └── appsData.js
 │   ├── pages/               # Route views & pages
@@ -98,11 +103,11 @@ skdev-web/
 │   │   ├── Donate.jsx
 │   │   ├── FAQ.jsx
 │   │   ├── Home.jsx
-│   │   ├── News.jsx
 │   │   ├── PrivacyPolicy.jsx
+│   │   ├── Roadmap.jsx
 │   │   └── UnderDevelopment.jsx
-│   ├── App.jsx              # Main App entry with routing
-│   ├── index.css            # Core design system & theme variables
+│   ├── App.jsx              # Main App entry with routing & toast provider
+│   ├── index.css            # Core design system, fluid tokens & animations
 │   └── main.jsx             # React DOM root entry
 ├── package.json
 ├── vite.config.js           # Vite & PWA configuration

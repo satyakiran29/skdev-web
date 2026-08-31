@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Play, Mail, Send, MessageCircle } from 'lucide-react';
+import { Play, Mail, Send, MessageCircle, Clock } from 'lucide-react';
 import heroLogo from '../assets/hero.webp';
 
 const InstagramIcon = ({ size = 16 }) => (
@@ -28,7 +28,7 @@ export default function Footer() {
             <h4 style={{ marginBottom: '0.5rem' }}>Quick Links</h4>
             <NavLink to="/">Home</NavLink>
             <NavLink to="/apps">Apps</NavLink>
-            <NavLink to="/news">News</NavLink>
+            <NavLink to="/roadmap">Roadmap</NavLink>
             <NavLink to="/faq">FAQ</NavLink>
             <NavLink to="/donate">Donate</NavLink>
             <NavLink to="/privacy">Privacy Policy</NavLink>
@@ -58,6 +58,9 @@ export default function Footer() {
         <div>&copy; {new Date().getFullYear()} SKDev. All rights reserved.</div>
         <div>
           Designed & Developed by <a href="https://psatyakiran.in" target="_blank" rel="noreferrer" className="text-gradient" style={{ fontWeight: 600, textDecoration: 'none' }}>Satyakiran</a>
+        </div>
+        <div style={{ fontSize: '0.8rem', opacity: 0.75, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.35rem', marginTop: '0.25rem' }}>
+          <Clock size={13} color="var(--accent-primary)" /> Last updated: August 31, 2026 at 11:30 PM IST
         </div>
       </div>
     </footer>
