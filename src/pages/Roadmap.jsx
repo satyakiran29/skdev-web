@@ -150,7 +150,11 @@ export default function Roadmap() {
       categoryLabel: '⏳ In Planning',
       categoryColor: '#f59e0b',
       priority: 'Planning Stage',
-      description: 'Android home launcher project. Currently in the planning stage with release date unknown.',
+      partner: {
+        name: '@KBOT09',
+        link: 'https://t.me/KBOT09'
+      },
+      description: 'Android home launcher project in partnership with @KBOT09. Currently in the planning stage with release date unknown.',
       eta: 'Planning Stage',
       progress: 10,
     },
@@ -334,9 +338,35 @@ export default function Roadmap() {
                   {item.title}
                 </h3>
 
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.925rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.925rem', lineHeight: 1.6, marginBottom: item.partner ? '0.75rem' : '1.5rem' }}>
                   {item.description}
                 </p>
+
+                {item.partner && (
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.825rem', marginBottom: '1.25rem', flexWrap: 'wrap' }}>
+                    <span style={{ color: 'var(--text-secondary)' }}>🤝 In Partnership with:</span>
+                    <a
+                      href={item.partner.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      style={{
+                        color: 'var(--accent-primary)',
+                        fontWeight: 600,
+                        textDecoration: 'none',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.25rem',
+                        backgroundColor: 'rgba(56, 189, 248, 0.1)',
+                        padding: '0.15rem 0.6rem',
+                        borderRadius: '9999px',
+                        border: '1px solid rgba(56, 189, 248, 0.25)',
+                        transition: 'all 0.2s ease'
+                      }}
+                    >
+                      <Send size={12} /> {item.partner.name}
+                    </a>
+                  </div>
+                )}
               </div>
 
               <div>
