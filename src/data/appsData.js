@@ -23,13 +23,79 @@ export const appsData = [
   {
     id: "anify",
     name: "Anify (Free)",
+    tagline: "Personalization & Productivity Suite for Android",
     screenshot: anifybg,
     screenshots: [anifys1, anifys2, anifys3, anifys4, anifys5, anifys6, anifys7],
-    description: "Anify is a feature-rich customization app that offers a collection of beautifully designed, privacy-focused widgets, wallpapers, and ringtones. It aims to provide users with a seamless and ad-free experience while enhancing the aesthetics of their devices, without depending on any third-party services, ensuring your data remains private and secure.",
-    shortDesc: "Widget,wallpaper,ringtone.",
+    description: "Give your phone a complete makeover with Anify, the ultimate personalization and productivity app for Android. Get instant access to ready-to-use widgets, premium KWGT widget packs, HD wallpapers, trending ringtones, and a powerful focus blocker—all in one place. Whether you want instant widgets or advanced KWGT customization, Anify has you covered.",
+    shortDesc: "Ready-to-use Widgets, KWGT Packs, Wallpapers, Ringtones & Focus Blocker.",
+    requiresAndroid: "Android 7.0 to Android 16",
     icon: anifyIcon,
     playStoreLink: "https://play.google.com/store/apps/details?id=com.skdev.anify",
     websiteLink: "https://anify.psatyakiran.in/",
+    highlights: [
+      "Ready-to-use widgets (No KWGT required)",
+      "Premium KWGT widget packs",
+      "BlockIt – Focus Lock & App Blocker",
+      "HD & Aesthetic Wallpapers + Live Calendars",
+      "Trending Ringtones & Sound Effects",
+      "Android 7.0 to Android 16 Supported",
+      "Lightweight, battery-optimized Material UI",
+      "Free with Ads"
+    ],
+    features: [
+      {
+        icon: "📱",
+        title: "Ready-to-Use Widgets (No KWGT Required)",
+        subtitle: "Add gorgeous home screen widgets in seconds—no setup hassle or companion apps needed.",
+        points: [
+          "Aesthetic Clocks & Anisets: Sleek Nothing-style designs, anime-inspired time widgets, and custom clocks.",
+          "Real-Time System Monitors: Track CPU usage with dot-graph visualization, battery levels, and live network speed/data usage (Wi-Fi/Mobile).",
+          "Smart Utilities: Manage Bluetooth devices, track the sun's path, enable Caffeine mode, create sticky notes, and control music with interactive playback widgets.",
+          "Fun Widgets: Spin the Bottle and display animated GIFs right on your launcher."
+        ]
+      },
+      {
+        icon: "🎨",
+        title: "Premium KWGT Widget Packs",
+        subtitle: "Take customization to the next level with beautifully crafted KWGT widget packs (Requires KWGT & KWGT Pro).",
+        points: [
+          "Modern and aesthetic widget designs with anime-inspired layouts.",
+          "Minimal & Nothing-style widgets with regular updates.",
+          "One-tap seamless import directly into the KWGT app."
+        ]
+      },
+      {
+        icon: "🔒",
+        title: "BlockIt – Focus Lock & App Blocker",
+        subtitle: "Stay productive and reclaim your time using built-in focus tools powered via Android's AccessibilityService API.",
+        points: [
+          "Lockdown Mode: Instantly block distracting apps during work or study sessions.",
+          "Focus Reports: Track focus duration with an intuitive 7-day activity chart.",
+          "Anti-Impulse Protection: 3-second 'Hold to Give Up' confirmation barrier.",
+          "Safe Whitelisting: Essential system apps remain accessible for emergencies."
+        ]
+      },
+      {
+        icon: "🖼️",
+        title: "HD Wallpapers & Trending Ringtones",
+        subtitle: "Curated collection of aesthetic visuals and audio personalization.",
+        points: [
+          "AMOLED, Minimal, Anime, Aesthetic, and Abstract wallpaper styles.",
+          "Life Calendar Live Wallpaper & Auto Wallpaper Changer.",
+          "Trending ringtones, notification sounds, and alarm tones updated regularly."
+        ]
+      },
+      {
+        icon: "⚡",
+        title: "Smooth UI & Battery Optimized",
+        subtitle: "Built with modern Material Design principles for fluid responsiveness.",
+        points: [
+          "Fast, clean interface with fluid animations and immersive Dark Mode.",
+          "Anify is completely free and supported by ads, helping continuously deliver new widgets, wallpapers, ringtones, and features."
+        ]
+      }
+    ],
+    accessibilityInfo: "Anify uses the Android AccessibilityService API strictly to provide Focus Lock and app-blocking functionality. When enabled, it detects when a selected distracting app is opened to restrict access according to your Focus Lock settings.",
     reviews: [
       {
         id: 1,

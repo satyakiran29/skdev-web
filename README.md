@@ -20,17 +20,17 @@ A modern, high-performance web portfolio for indie Android developer **Satya Kir
 
 ## 📱 Featured Applications
 
-| App | Type | Description | Links |
-| :--- | :---: | :--- | :--- |
-| **[Anify](https://anify.psatyakiran.in/)** | Free | Privacy-focused customization app with curated widgets, wallpapers, and ringtones. No third-party tracking or ads. | [Play Store](https://play.google.com/store/apps/details?id=com.skdev.anify) • [Website](https://anify.psatyakiran.in/) |
-| **[Aniset](https://aniset.psatyakiran.in)** | Paid | Elegant utility toolset and routing app with privacy-centric tools without compromising on design. | [Play Store](https://play.google.com/store/apps/details?id=com.skdev.aniset) • [Website](https://aniset.psatyakiran.in) |
-| **Gwalls** | Discontinued | Curated collection of high-quality, ad-free wallpapers designed with privacy in mind. | *Discontinued* |
+| App | Type | Compatibility | Description | Links |
+| :--- | :---: | :---: | :--- | :--- |
+| **[Anify](https://anify.psatyakiran.in/)** | Free (Ads) | Android 7.0 – 16 | Complete personalization & productivity suite: Ready-to-use widgets (No KWGT required), premium KWGT packs, BlockIt focus lock, HD wallpapers & ringtones. | [Play Store](https://play.google.com/store/apps/details?id=com.skdev.anify) • [Website](https://anify.psatyakiran.in/) |
+| **[Aniset](https://aniset.psatyakiran.in)** | Paid | Android 8.0+ | Elegant utility toolset and routing app with privacy-centric tools without compromising on design. | [Play Store](https://play.google.com/store/apps/details?id=com.skdev.aniset) • [Website](https://aniset.psatyakiran.in) |
+| **Gwalls** | Discontinued | Android | Curated collection of high-quality, ad-free wallpapers designed with privacy in mind. | *Discontinued* |
 
 ---
 
 ## ✨ Key Features
 
-- **📱 App Showcase & Details:** Dedicated app detail pages featuring high-resolution WebP screenshots, feature highlights, user reviews, direct download links, and dynamic QR Codes for instant mobile installation.
+- **📱 App Showcase & Details:** Dedicated app detail pages featuring high-resolution WebP screenshots, feature highlights, user reviews, direct download links, compatibility tags (Android 7 to 16), and dynamic QR Codes for instant mobile installation.
 - **🎨 Glassmorphic & Responsive UI:** Sleek, modern dark-themed aesthetics with glassmorphism, fluid typography, and subtle micro-animations that adapt across mobile, tablet, and desktop viewports.
 - **📰 News & Announcements:** Dedicated section covering app updates, changelogs, release notes, and developer insights.
 - **❓ Interactive FAQ:** Filterable knowledge base with real-time text search and keyword highlighting.
@@ -175,7 +175,7 @@ All application data is centrally declared in [`src/data/appsData.js`](file:///h
 - **Developer:** Satya Kiran ([@satyakiran29](https://github.com/satyakiran29))
 - **Google Play Developer Profile:** [SKDev](https://play.google.com/store/apps/dev?id=9166037782169864125)
 - **Email:** [satyakiran296@gmail.com](mailto:satyakiran296@gmail.com)
-- **Telegram:** [@psatyakiran](https://t.me/psatyakiran)
+- **Telegram:** [@skdev1](https://t.me/skdev1)
 
 ---
 

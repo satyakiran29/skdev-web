@@ -23,7 +23,7 @@ const ORG_JSONLD = {
   sameAs: [
     'https://play.google.com/store/apps/dev?id=9166037782169864125',
     'https://t.me/anify_app',
-    'https://t.me/skdev29',
+    'https://t.me/skdev1',
     'https://www.instagram.com/skdev29/',
   ],
   jobTitle: 'Indie App Developer',
@@ -59,8 +59,8 @@ export default function Home() {
           <a href="https://play.google.com/store/apps/dev?id=9166037782169864125" target="_blank" rel="noreferrer" className="btn btn-secondary mobile-w-full">
             Play Store Profile <Download size={18} />
           </a>
-          <a href="https://t.me/skdev29" target="_blank" rel="noreferrer" className="btn btn-secondary mobile-w-full">
-            Telegram Channel <Send size={18} />
+          <a href="https://t.me/skdev1" target="_blank" rel="noreferrer" className="btn btn-secondary mobile-w-full">
+            Telegram <Send size={18} />
           </a>
           <a href="https://www.instagram.com/skdev29/" target="_blank" rel="noreferrer" className="btn btn-secondary mobile-w-full">
             Instagram <InstagramIcon size={18} />

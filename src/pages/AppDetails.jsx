@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { appsData } from '../data/appsData';
-import { Download, Star, Quote, Globe, Clock, AlertCircle, CheckCircle2, Ticket, Share2, MessageCircle, QrCode, X } from 'lucide-react';
+import { Download, Star, Quote, Globe, Clock, AlertCircle, CheckCircle2, Ticket, Share2, MessageCircle, QrCode, X, Smartphone, Sparkles, Shield } from 'lucide-react';
 import QRCode from 'react-qr-code';
 
 const TwitterIcon = ({ size }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>;
@@ -28,7 +28,7 @@ export default function AppDetails() {
     name: app.name,
     description: app.description,
     applicationCategory: 'MobileApplication',
-    operatingSystem: 'Android',
+    operatingSystem: app.requiresAndroid || 'Android',
     url: `https://skdev.psatyakiran.in/apps/${app.id}`,
     ...(app.playStoreLink && app.playStoreLink.toLowerCase() !== 'coming soon'
       ? { downloadUrl: app.playStoreLink }
@@ -79,15 +79,33 @@ export default function AppDetails() {
             <img src={app.icon} alt={`${app.name} icon`} style={{ width: '80px', height: '80px', borderRadius: '1.25rem', objectFit: 'cover', border: '2px solid var(--border-color)' }} />
             <div>
               <h1 style={{ fontSize: '3rem', margin: 0 }}>{app.name}</h1>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#fbbf24', marginTop: '0.5rem' }}>
-                {avgRating !== null ? (
-                  <>
-                    <Star size={20} fill="currentColor" />
-                    <span style={{ color: 'var(--text-primary)', fontWeight: 600 }}>{avgRating.toFixed(1)}</span>
-                    <span style={{ color: 'var(--text-secondary)' }}>({app.reviews.length} reviews)</span>
-                  </>
-                ) : (
-                  <span style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>No reviews yet</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap', marginTop: '0.5rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#fbbf24' }}>
+                  {avgRating !== null ? (
+                    <>
+                      <Star size={20} fill="currentColor" />
+                      <span style={{ color: 'var(--text-primary)', fontWeight: 600 }}>{avgRating.toFixed(1)}</span>
+                      <span style={{ color: 'var(--text-secondary)' }}>({app.reviews.length} reviews)</span>
+                    </>
+                  ) : (
+                    <span style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>No reviews yet</span>
+                  )}
+                </div>
+                {app.requiresAndroid && (
+                  <span style={{ 
+                    display: 'inline-flex', 
+                    alignItems: 'center', 
+                    gap: '0.35rem', 
+                    padding: '0.25rem 0.75rem', 
+                    borderRadius: '2rem', 
+                    backgroundColor: 'rgba(56, 189, 248, 0.1)', 
+                    color: 'var(--accent-primary)', 
+                    fontSize: '0.85rem', 
+                    fontWeight: 600, 
+                    border: '1px solid rgba(56, 189, 248, 0.2)' 
+                  }}>
+                    <Smartphone size={14} /> {app.requiresAndroid}
+                  </span>
                 )}
               </div>
             </div>
@@ -142,7 +160,80 @@ export default function AppDetails() {
         )}
       </div>
 
-      {/* Important Notice Section for Direct Purchase */}
+      {/* Key Highlights */}
+      {app.highlights && app.highlights.length > 0 && (
+        <div style={{ marginBottom: '4rem' }}>
+          <h2 style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <Sparkles size={24} color="var(--accent-primary)" /> Key Highlights
+          </h2>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
+            {app.highlights.map((h, i) => (
+              <div 
+                key={i} 
+                style={{ 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  gap: '0.5rem', 
+                  backgroundColor: 'var(--bg-secondary)', 
+                  border: '1px solid var(--border-color)', 
+                  padding: '0.6rem 1.2rem', 
+                  borderRadius: '2rem',
+                  fontSize: '0.95rem',
+                  color: 'var(--text-primary)'
+                }}
+              >
+                <CheckCircle2 size={16} color="var(--accent-primary)" />
+                <span>{h}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Detailed Features Section */}
+      {app.features && app.features.length > 0 && (
+        <div style={{ marginBottom: '4rem' }}>
+          <h2 style={{ marginBottom: '2rem' }}>Features & Capabilities</h2>
+          <div className="grid grid-cols-2" style={{ gap: '1.5rem' }}>
+            {app.features.map((feat, idx) => (
+              <div key={idx} className="glass-panel" style={{ padding: '2rem', display: 'flex', flexDirection: 'column' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
+                  <span style={{ fontSize: '1.75rem' }}>{feat.icon}</span>
+                  <h3 style={{ fontSize: '1.25rem', margin: 0, color: 'var(--text-primary)' }}>{feat.title}</h3>
+                </div>
+                {feat.subtitle && (
+                  <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', marginBottom: '1.25rem', lineHeight: 1.5 }}>
+                    {feat.subtitle}
+                  </p>
+                )}
+                {feat.points && (
+                  <ul style={{ margin: 0, paddingLeft: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.5rem', color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.6 }}>
+                    {feat.points.map((pt, pIdx) => (
+                      <li key={pIdx}>
+                        {pt}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Accessibility Service Notice */}
+      {app.accessibilityInfo && (
+        <div className="glass-panel" style={{ marginBottom: '4rem', padding: '2rem', borderLeft: '4px solid var(--accent-primary)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
+            <Shield size={22} color="var(--accent-primary)" />
+            <h3 style={{ margin: 0, fontSize: '1.15rem', color: 'var(--text-primary)' }}>AccessibilityService API Usage</h3>
+          </div>
+          <p style={{ margin: 0, color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.6 }}>
+            {app.accessibilityInfo}
+          </p>
+        </div>
+      )}
+
       {/* Important Notice Section for Direct Purchase */}
       {app.directPurchase && (
         <div className="glass-panel responsive-panel" style={{ 

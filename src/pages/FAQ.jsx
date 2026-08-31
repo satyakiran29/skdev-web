@@ -65,6 +65,12 @@ const faqs = [
   },
   {
     category: 'Apps & Widgets',
+    question: 'Which Android versions are supported by Anify?',
+    answer:
+      'Anify supports Android 7.0 (Nougat) all the way up to Android 16, ensuring seamless performance, battery efficiency, and compatibility across both older and newest generation Android devices.',
+  },
+  {
+    category: 'Apps & Widgets',
     question: 'Does Gwalls require an internet connection?',
     answer:
       'Yes, Gwalls loads wallpapers from a curated online collection, so an internet connection is required to browse and download. Once a wallpaper is set, it lives on your device.',
@@ -81,7 +87,7 @@ const faqs = [
     category: 'Privacy',
     question: 'Are your apps ad-free?',
     answer:
-      'Gwalls is completely ad-free. Aniset is a paid app with no ads. Anify is free and may include minimal, non-intrusive ads to support ongoing development. Follow us on Telegram for updates on any future ad-free options.',
+      'Gwalls is completely ad-free and Aniset is a paid app with no ads. Anify is completely free to download and is supported by ads, which helps cover server costs and ongoing development for new widgets, wallpapers, and features. Follow us on Telegram for updates on any future ad-free options.',
   },
   {
     category: 'Privacy',
