@@ -258,7 +258,7 @@ export default function Roadmap() {
                 padding: '0.15rem 0.6rem',
                 borderRadius: '9999px'
               }}>
-                <Clock size={12} /> Updated: September 1, 2026 at 1:00 AM IST
+                <Clock size={12} /> Updated: September 9, 2026 at 8:00 PM IST
               </span>
             </div>
           </div>

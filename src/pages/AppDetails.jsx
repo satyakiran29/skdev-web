@@ -70,7 +70,7 @@ export default function AppDetails() {
     applicationCategory: 'PersonalizationApplication',
     operatingSystem: app.requiresAndroid || 'Android 7.0+',
     url: `https://skdev.psatyakiran.in/apps/${app.id}`,
-    image: app.screenshot || app.icon,
+    image: app.previewBanner || app.banner || app.screenshot || app.icon,
     author: {
       '@type': 'Person',
       name: 'Satyakiran',
@@ -128,7 +128,7 @@ export default function AppDetails() {
         description={app.shortDesc || app.description.slice(0, 160)}
         keywords={appKeywords}
         canonical={`/apps/${app.id}`}
-        image={app.screenshot || app.icon}
+        image={app.previewBanner || app.banner || app.screenshot || app.icon}
         type="website"
         jsonLd={appJsonLd}
       />
@@ -842,7 +842,6 @@ export default function AppDetails() {
             position: 'fixed',
             inset: 0,
             width: '100vw',
-            height: '100vh',
             height: '100dvh',
             backgroundColor: 'rgba(3, 7, 18, 0.97)',
             backdropFilter: 'blur(24px)',

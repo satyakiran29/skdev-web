@@ -38,8 +38,11 @@ export default function SEO({
   }
 
   const isDefaultImage = image === DEFAULT_IMAGE;
+  const isWebp = ogImage?.toLowerCase().includes('.webp');
+  const isPng = ogImage?.toLowerCase().includes('.png');
+  const imageType = isWebp ? 'image/webp' : isPng ? 'image/png' : 'image/jpeg';
   const width = isDefaultImage ? '512' : '1200';
-  const height = isDefaultImage ? '512' : '630';
+  const height = isDefaultImage ? '512' : '672';
   const twitterCard = isDefaultImage ? 'summary' : 'summary_large_image';
 
   return (
@@ -58,9 +61,17 @@ export default function SEO({
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:site_name" content={SITE_NAME} />
       <meta property="og:image" content={ogImage} />
+      <meta property="og:image:url" content={ogImage} />
+      {ogImage?.startsWith('https://') && (
+        <meta property="og:image:secure_url" content={ogImage} />
+      )}
+      <meta property="og:image:type" content={imageType} />
       <meta property="og:image:width" content={width} />
       <meta property="og:image:height" content={height} />
+      <meta property="og:image:alt" content={fullTitle} />
       <meta property="og:locale" content="en_US" />
+      <meta property="og:updated_time" content="2026-09-09T20:00:00+05:30" />
+      <link rel="image_src" href={ogImage} />
 
       {/* Twitter Card */}
       <meta name="twitter:card" content={twitterCard} />
@@ -69,6 +80,7 @@ export default function SEO({
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={ogImage} />
+      <meta name="twitter:image:alt" content={fullTitle} />
 
       {/* JSON-LD Structured Data */}
       {jsonLd && (

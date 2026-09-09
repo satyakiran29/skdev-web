@@ -13,6 +13,7 @@ import anifys4 from '../assets/anify/anify_screenshot_4.webp';
 import anifys5 from '../assets/anify/anify_screenshot_5.webp';
 import anifys6 from '../assets/anify/anify_screenshot_6.webp';
 import anifys7 from '../assets/anify/anify_screenshot_7.webp';
+import anifyBanner from '../assets/app_bannners/anify.webp';
 
 //gwalls images
 // import gwallsIcon from '../assets/gwalls_icon.webp';
@@ -24,6 +25,8 @@ export const appsData = [
     id: "anify",
     name: "Anify (Free)",
     tagline: "Personalization & Productivity Suite for Android",
+    banner: anifyBanner,
+    previewBanner: anifyBanner,
     screenshot: anifybg,
     screenshots: [anifys1, anifys2, anifys3, anifys4, anifys5, anifys6, anifys7],
     description: "Give your phone a complete makeover with Anify, the ultimate personalization and productivity app for Android. Get instant access to ready-to-use widgets, premium KWGT widget packs, HD wallpapers, trending ringtones, and a powerful focus blocker—all in one place. Whether you want instant widgets or advanced KWGT customization, Anify has you covered.",

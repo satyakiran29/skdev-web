@@ -67,7 +67,7 @@ export default function Footer() {
           Designed & Developed by <a href="https://psatyakiran.in" target="_blank" rel="noreferrer" className="text-gradient" style={{ fontWeight: 600, textDecoration: 'none' }}>Satyakiran</a>
         </div>
         <div style={{ fontSize: '0.775rem', opacity: 0.75, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.35rem', marginTop: '0.2rem' }}>
-          <Clock size={12} color="var(--accent-primary)" /> Last updated: September 1, 2026 at 1:00 AM IST
+          <Clock size={12} color="var(--accent-primary)" /> Last updated: September 9, 2026 at 8:00 PM IST
         </div>
       </div>
     </footer>
