@@ -20,21 +20,20 @@ import {
   Clock,
   Sparkles,
   Award,
-  Globe,
   ChevronDown
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import skdevbanner from '../assets/skdev-banner.webp';
 import { useToast } from '../context/ToastContext';
 
-const GitHubIcon = ({ size = 13, color = '#38bdf8' }) => (
+const GitHubIcon = ({ size = 14, color = '#38bdf8' }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
     <path d="M9 18c-4.51 2-5-2-7-2" />
   </svg>
 );
 
-const LinkedInIcon = ({ size = 13, color = '#38bdf8' }) => (
+const LinkedInIcon = ({ size = 14, color = '#38bdf8' }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
     <rect x="2" y="9" width="4" height="12" />
@@ -79,8 +78,11 @@ const FREELANCE_JSONLD = {
 
 const SERVICES_DATA = [
   {
-    icon: <Code size={28} />,
+    id: 'web',
+    icon: <Code size={20} />,
+    shortTitle: 'Full-Stack Web',
     title: 'Full-Stack Web Development',
+    tagline: 'Modern, ultra-fast web apps engineered with React, Node, and scalable databases.',
     desc: 'Custom, ultra-fast, and responsive web applications built with modern frontend frameworks and robust backend architectures.',
     deliverables: [
       'Single Page Apps (SPA) & SaaS Dashboards',
@@ -89,11 +91,15 @@ const SERVICES_DATA = [
       'Vite & React performance optimization',
       'Vercel, Cloudflare, and custom deployment',
     ],
-    tags: ['React.js', 'Vite', 'Node.js', 'Express', 'Django', 'MongoDB', 'CSS3 / Tailwind'],
+    tags: ['React.js', 'Vite', 'Node.js', 'Express', 'Django', 'MongoDB', 'Tailwind / CSS'],
+    formType: 'Full-Stack Web App',
   },
   {
-    icon: <Smartphone size={28} />,
+    id: 'android',
+    icon: <Smartphone size={20} />,
+    shortTitle: 'Android Apps',
     title: 'Android App Development',
+    tagline: 'High-performance native Android apps, custom widgets, and Play Store publishing.',
     desc: 'Fluid, high-performance native Android applications with custom UI widgets, background services, and modern system integrations.',
     deliverables: [
       'Native Android app architecture (Java / Kotlin)',
@@ -104,10 +110,14 @@ const SERVICES_DATA = [
       'Google Play Store release & compliance guidance',
     ],
     tags: ['Android SDK', 'Kotlin', 'Java', 'Firebase', 'REST APIs', 'Play Console'],
+    formType: 'Native Android App',
   },
   {
-    icon: <Palette size={28} />,
+    id: 'design',
+    icon: <Palette size={20} />,
+    shortTitle: 'UI/UX & Design',
     title: 'UI/UX & Product Design',
+    tagline: 'User-centric interfaces, design systems, and clickable Figma prototypes.',
     desc: 'Modern, aesthetic, and user-centric interfaces crafted with meticulous attention to detail, typography, and micro-interactions.',
     deliverables: [
       'High-fidelity Figma wireframes & mockups',
@@ -117,10 +127,14 @@ const SERVICES_DATA = [
       'Dark mode & glassmorphism aesthetics',
     ],
     tags: ['Figma', 'Prototyping', 'Design Systems', 'Micro-Animations', 'Responsive'],
+    formType: 'UI/UX & Figma Design',
   },
   {
-    icon: <Server size={28} />,
+    id: 'backend',
+    icon: <Server size={20} />,
+    shortTitle: 'Backend & APIs',
     title: 'Backend, APIs & Automation',
+    tagline: 'Secure server logic, database design, REST APIs, and automated pipelines.',
     desc: 'Reliable server-side logic, secure authentication workflows, automated pipelines, and seamless third-party integrations.',
     deliverables: [
       'RESTful API design with Express / Django',
@@ -130,14 +144,18 @@ const SERVICES_DATA = [
       'Serverless functions & webhook handling',
     ],
     tags: ['Node.js', 'Express', 'Python / Django', 'n8n', 'REST APIs', 'JWT'],
+    formType: 'Consultation / Other',
   },
 ];
 
 const PROVEN_APPS_DATA = [
   {
+    id: 'anify',
     title: 'Anify - Ultimate Personalization',
+    shortName: 'Anify (Android)',
     platform: 'Android App (Google Play Store)',
     badge: 'Published on Play Store',
+    tagline: 'Native Android personalization app with custom widgets and wallpapers.',
     desc: 'A feature-packed Android personalization app published on Google Play. Offers ready-to-use home screen widgets, curated HD wallpapers, and trending ringtones—all natively built without requiring third-party tools like KWGT.',
     highlights: [
       'Native Android Architecture & Performance',
@@ -150,9 +168,12 @@ const PROVEN_APPS_DATA = [
     linkText: 'View on Google Play',
   },
   {
+    id: 'aniset',
     title: 'Aniset - Anime KWGT & KLWP',
+    shortName: 'Aniset (KWGT)',
     platform: 'Android App (Google Play Store)',
     badge: 'Published on Play Store',
+    tagline: 'Premium paid Android customization app with complex widget presets.',
     desc: 'A popular Android home screen customization app on Google Play with anime-themed widgets and live wallpapers. Features deep personalization, preset pickers, and optimized rendering engines.',
     highlights: [
       'Intricate KWGT & KLWP Widget Presets',
@@ -165,9 +186,12 @@ const PROVEN_APPS_DATA = [
     linkText: 'View on Google Play',
   },
   {
+    id: 'mernshop',
     title: 'MernShop - Full-Stack eCommerce',
+    shortName: 'MernShop (Web)',
     platform: 'Full-Stack Web App',
     badge: 'Production App',
+    tagline: 'Complete eCommerce solution with cart, PayPal, and admin dashboard.',
     desc: 'Production-ready eCommerce platform featuring product search, user authentication, shopping cart, PayPal checkout integration, and an admin dashboard for inventory and order management.',
     highlights: [
       'Full MERN Stack (MongoDB, Express, React, Node)',
@@ -180,9 +204,12 @@ const PROVEN_APPS_DATA = [
     linkText: 'View Source Code',
   },
   {
+    id: 'skdevshowcase',
     title: 'SkDev Android Apps Showcase',
+    shortName: 'SkDev Showcase',
     platform: 'Web App & Portfolio',
     badge: 'Live Production',
+    tagline: 'Official high-performance web showcase for all SKDev Android products.',
     desc: 'Official web showcase for SKDev Android applications with real-time app store links, feature breakdowns, dynamic QR codes, interactive FAQs, and developer milestone roadmap.',
     highlights: [
       'Vite & React 19 Performance Engine',
@@ -198,12 +225,14 @@ const PROVEN_APPS_DATA = [
 
 const PACKAGES_DATA = [
   {
+    id: 'mvp',
     name: 'MVP Launchpad',
     scope: 'Best for Startups & Quick Launches',
-    desc: 'Turn your idea into a functioning, market-ready MVP in 2–4 weeks.',
+    duration: '2–4 Weeks Delivery',
+    desc: 'Turn your idea into a functioning, market-ready MVP in 2–4 weeks with essential features and rock-solid architecture.',
     features: [
-      'Core feature implementation',
-      'Responsive web or Android app',
+      'Core feature implementation & flows',
+      'Responsive web or native Android app',
       'Authentication & database setup',
       'Deployment & domain configuration',
       '2 weeks post-launch bug support',
@@ -212,9 +241,11 @@ const PACKAGES_DATA = [
     featured: false,
   },
   {
+    id: 'fullstack',
     name: 'Full-Stack Custom App',
     scope: 'Comprehensive End-to-End Build',
-    desc: 'A complete, scalable product built from scratch with custom design and architecture.',
+    duration: '4–8 Weeks Delivery',
+    desc: 'A complete, scalable product built from scratch with custom Figma design, robust backend, and third-party integrations.',
     features: [
       'Full custom UI/UX design in Figma',
       'Frontend & backend architecture',
@@ -227,9 +258,11 @@ const PACKAGES_DATA = [
     featured: true,
   },
   {
+    id: 'retainer',
     name: 'Retainer & Support',
     scope: 'Ongoing Feature Rollouts & Maintenance',
-    desc: 'Dedicated monthly engineering hours for continuous feature development and maintenance.',
+    duration: 'Monthly Commitment',
+    desc: 'Dedicated monthly engineering hours for continuous feature development, performance tuning, and rapid bug fixes.',
     features: [
       'Dedicated monthly sprint hours',
       'Priority bug fixes & security patches',
@@ -246,22 +279,34 @@ const WORKFLOW_STEPS = [
   {
     number: '01',
     title: 'Discovery & Scope',
-    desc: 'We discuss your vision, define core features, evaluate technical feasibility, and agree on clear milestones.',
+    shortTitle: 'Discovery',
+    tagline: 'Understanding your goals & technical feasibility',
+    desc: 'We discuss your vision, define core features, evaluate technical feasibility, establish the project timeline, and agree on clear milestones.',
+    outputs: ['Feature specifications', 'Technical stack selection', 'Milestone & cost breakdown'],
   },
   {
     number: '02',
     title: 'Design & Prototype',
-    desc: 'I create wireframes and interactive prototypes in Figma, establishing the visual identity and user flows.',
+    shortTitle: 'Design',
+    tagline: 'Visual identity & clickable mockups',
+    desc: 'I create wireframes and interactive prototypes in Figma, establishing the visual identity, design tokens, and smooth user flows.',
+    outputs: ['Figma design system', 'Interactive prototype', 'UI asset preparation'],
   },
   {
     number: '03',
     title: 'Agile Development',
-    desc: 'I build your application in focused sprint cycles, providing regular demo links or APK builds for continuous feedback.',
+    shortTitle: 'Development',
+    tagline: 'Iterative sprints & regular demos',
+    desc: 'I build your application in focused sprint cycles, providing regular demo links or APK builds for continuous feedback and transparent progress.',
+    outputs: ['Clean, modular code repository', 'Weekly demo builds / APKs', 'API integrations & database setup'],
   },
   {
     number: '04',
     title: 'Launch & Support',
-    desc: 'Deployment to production (Vercel/Cloudflare or Google Play Store), complete handover of source code, and post-launch warranty.',
+    shortTitle: 'Launch',
+    tagline: 'Production release & source handover',
+    desc: 'Deployment to production (Vercel/Cloudflare or Google Play Store), complete handover of 100% source code, and post-launch warranty.',
+    outputs: ['Live deployment / Play Store live', 'Complete source code & IP handover', 'Post-launch warranty & documentation'],
   },
 ];
 
@@ -310,6 +355,12 @@ const TIMELINES = ['Urgent (< 2 weeks)', '1 Month', '2 - 3 Months', 'Flexible'];
 export default function Freelance() {
   const toast = useToast();
 
+  // Interactive Selection States
+  const [activeServiceIdx, setActiveServiceIdx] = useState(0);
+  const [activeAppIdx, setActiveAppIdx] = useState(0);
+  const [activePackageIdx, setActivePackageIdx] = useState(1);
+  const [activeWorkflowIdx, setActiveWorkflowIdx] = useState(0);
+
   // Form states
   const [selectedType, setSelectedType] = useState('Native Android App');
   const [selectedBudget, setSelectedBudget] = useState('$500 - $1,500 (₹40K - ₹1.25L)');
@@ -323,12 +374,23 @@ export default function Freelance() {
     setOpenFaqIdx(openFaqIdx === idx ? null : idx);
   };
 
+  const handleSelectServiceForForm = (service) => {
+    setSelectedType(service.formType || 'Full-Stack Web App');
+    setProjectDetails((prev) => {
+      const prefix = `Interested in: ${service.title}\n`;
+      return prev.includes(prefix) ? prev : `${prefix}${prev}`;
+    });
+    document.getElementById('inquiry')?.scrollIntoView({ behavior: 'smooth' });
+    toast.success(`Selected "${service.shortTitle}" in project form!`);
+  };
+
   const handlePackageSelect = (packageName) => {
     setProjectDetails((prev) => `I am interested in the ${packageName} package.\n\n${prev}`);
     const inquirySection = document.getElementById('inquiry');
     if (inquirySection) {
       inquirySection.scrollIntoView({ behavior: 'smooth' });
     }
+    toast.success(`Selected "${packageName}" in project form!`);
   };
 
   const buildInquirySummary = () => {
@@ -369,6 +431,11 @@ export default function Freelance() {
     }
   };
 
+  const currentService = SERVICES_DATA[activeServiceIdx];
+  const currentApp = PROVEN_APPS_DATA[activeAppIdx];
+  const currentPackage = PACKAGES_DATA[activePackageIdx];
+  const currentWorkflow = WORKFLOW_STEPS[activeWorkflowIdx];
+
   return (
     <div className="container animate-fade-in" style={{ padding: 'clamp(1rem, 3.5vw, 3rem) 0' }}>
       <SEO
@@ -385,7 +452,7 @@ export default function Freelance() {
         style={{
           textAlign: 'center',
           maxWidth: '860px',
-          margin: '0 auto clamp(2.5rem, 6vw, 4.5rem) auto',
+          margin: '0 auto clamp(2rem, 5vw, 3.5rem) auto',
         }}
       >
         {/* Availability Badge */}
@@ -423,7 +490,7 @@ export default function Freelance() {
         <h1
           style={{
             marginBottom: '1.25rem',
-            fontSize: 'clamp(1.7rem, 6vw, 3.75rem)',
+            fontSize: 'clamp(1.75rem, 6vw, 3.75rem)',
             lineHeight: 1.18,
             overflowWrap: 'break-word',
             wordBreak: 'break-word',
@@ -435,7 +502,7 @@ export default function Freelance() {
 
         <p
           style={{
-            fontSize: 'clamp(0.925rem, 2.75vw, 1.175rem)',
+            fontSize: 'clamp(0.925rem, 2.75vw, 1.15rem)',
             lineHeight: 1.7,
             color: 'var(--text-secondary)',
             marginBottom: '2rem',
@@ -491,11 +558,11 @@ export default function Freelance() {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 145px), 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 140px), 1fr))',
             gap: '0.5rem',
             width: '100%',
             maxWidth: '780px',
-            margin: '0 auto',
+            margin: '0 auto 2rem auto',
           }}
         >
           {[
@@ -526,11 +593,66 @@ export default function Freelance() {
             </div>
           ))}
         </div>
+
+        {/* Quick Section Navigation Bar */}
+        <div
+          className="scroll-pills-container"
+          style={{
+            justifyContent: 'center',
+            maxWidth: '840px',
+            margin: '0 auto',
+            borderTop: '1px solid rgba(255, 255, 255, 0.06)',
+            paddingTop: '1.25rem',
+          }}
+        >
+          <a
+            href="#services"
+            className="scroll-pill-item interactive-tab-btn"
+            style={{ width: 'auto', padding: '0.45rem 0.85rem', fontSize: '0.8rem', borderRadius: '9999px', minHeight: '36px' }}
+          >
+            <Zap size={13} color="#38bdf8" /> Capabilities
+          </a>
+          <a
+            href="#proven-apps"
+            className="scroll-pill-item interactive-tab-btn"
+            style={{ width: 'auto', padding: '0.45rem 0.85rem', fontSize: '0.8rem', borderRadius: '9999px', minHeight: '36px' }}
+          >
+            <Sparkles size={13} color="#38bdf8" /> Apps
+          </a>
+          <a
+            href="#workflow"
+            className="scroll-pill-item interactive-tab-btn"
+            style={{ width: 'auto', padding: '0.45rem 0.85rem', fontSize: '0.8rem', borderRadius: '9999px', minHeight: '36px' }}
+          >
+            <Layers size={13} color="#38bdf8" /> Process
+          </a>
+          <a
+            href="#packages"
+            className="scroll-pill-item interactive-tab-btn"
+            style={{ width: 'auto', padding: '0.45rem 0.85rem', fontSize: '0.8rem', borderRadius: '9999px', minHeight: '36px' }}
+          >
+            <Award size={13} color="#38bdf8" /> Packages
+          </a>
+          <a
+            href="#inquiry"
+            className="scroll-pill-item interactive-tab-btn"
+            style={{ width: 'auto', padding: '0.45rem 0.85rem', fontSize: '0.8rem', borderRadius: '9999px', minHeight: '36px' }}
+          >
+            <Send size={13} color="#38bdf8" /> Inquiry
+          </a>
+          <a
+            href="#faq"
+            className="scroll-pill-item interactive-tab-btn"
+            style={{ width: 'auto', padding: '0.45rem 0.85rem', fontSize: '0.8rem', borderRadius: '9999px', minHeight: '36px' }}
+          >
+            <HelpCircle size={13} color="#38bdf8" /> FAQ
+          </a>
+        </div>
       </section>
 
-      {/* ================= SERVICES SECTION ================= */}
-      <section id="services" style={{ marginBottom: 'clamp(3.5rem, 8vw, 6rem)' }}>
-        <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+      {/* ================= 1. INTERACTIVE SERVICES / CAPABILITIES SECTION ================= */}
+      <section id="services" style={{ marginBottom: 'clamp(3.5rem, 7vw, 5.5rem)' }}>
+        <div style={{ textAlign: 'center', marginBottom: '1.75rem' }}>
           <div
             style={{
               display: 'inline-flex',
@@ -544,91 +666,148 @@ export default function Freelance() {
               marginBottom: '0.5rem',
             }}
           >
-            <Zap size={15} /> Capabilities
+            <Zap size={15} /> Interactive Capabilities
           </div>
-          <h2 style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)', marginBottom: '0.75rem' }}>
+          <h2 style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)', marginBottom: '0.5rem' }}>
             What I Can Build <span className="text-gradient">For You</span>
           </h2>
-          <p style={{ maxWidth: '650px', margin: '0 auto', color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
-            Comprehensive end-to-end engineering and design services tailored to your project's unique requirements.
+          <p style={{ maxWidth: '650px', margin: '0 auto', color: 'var(--text-secondary)', fontSize: '0.925rem' }}>
+            Select a core domain below to inspect specialized deliverables, tech stacks, and capabilities.
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 290px), 1fr))', gap: '1.25rem' }}>
-          {SERVICES_DATA.map((service, index) => (
+        {/* Domain Selector Tabs: 4 equal columns on desktop, 2x2 on mobile */}
+        <div className="tabs-grid-4" style={{ maxWidth: '840px', margin: '0 auto 1.5rem auto' }}>
+          {SERVICES_DATA.map((srv, idx) => {
+            const isSelected = activeServiceIdx === idx;
+            return (
+              <button
+                key={srv.id}
+                type="button"
+                onClick={() => setActiveServiceIdx(idx)}
+                className={`interactive-tab-btn ${isSelected ? 'active' : ''}`}
+              >
+                {srv.icon}
+                <span>{srv.shortTitle}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Active Domain Detail Card */}
+        <div
+          key={currentService.id}
+          className="glass-panel interactive-detail-card"
+          style={{
+            maxWidth: '840px',
+            margin: '0 auto',
+            padding: 'clamp(1.25rem, 4vw, 2.25rem)',
+            borderRadius: '1.5rem',
+            border: '1px solid rgba(56, 189, 248, 0.35)',
+            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.35)',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1.25rem', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
             <div
-              key={index}
-              className="glass-panel"
               style={{
-                padding: 'clamp(1.35rem, 3.5vw, 1.85rem)',
-                borderRadius: '1.25rem',
+                width: '54px',
+                height: '54px',
+                borderRadius: '1rem',
+                backgroundColor: 'rgba(56, 189, 248, 0.15)',
+                color: 'var(--accent-primary)',
                 display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexShrink: 0,
+                border: '1px solid rgba(56, 189, 248, 0.3)',
               }}
             >
-              <div>
-                <div
+              {currentService.icon}
+            </div>
+
+            <div style={{ flex: 1, minWidth: '220px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+                <h3 style={{ fontSize: 'clamp(1.25rem, 3.5vw, 1.6rem)', fontWeight: 700 }}>
+                  {currentService.title}
+                </h3>
+              </div>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.925rem', lineHeight: 1.6, marginTop: '0.35rem', marginBottom: 0 }}>
+                {currentService.desc}
+              </p>
+            </div>
+          </div>
+
+          {/* Key Deliverables */}
+          <div style={{ marginBottom: '1.5rem', backgroundColor: 'rgba(2, 6, 23, 0.4)', padding: '1.15rem', borderRadius: '1rem', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
+            <span
+              style={{
+                fontSize: '0.8rem',
+                fontWeight: 700,
+                color: 'var(--accent-primary)',
+                textTransform: 'uppercase',
+                letterSpacing: '0.06em',
+                display: 'block',
+                marginBottom: '0.75rem',
+              }}
+            >
+              Included Deliverables & Solutions:
+            </span>
+            <ul style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '0.6rem' }}>
+              {currentService.deliverables.map((item, dIdx) => (
+                <li key={dIdx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.55rem', fontSize: '0.875rem', color: '#e2e8f0' }}>
+                  <Check size={16} color="#38bdf8" style={{ marginTop: '2px', flexShrink: 0 }} />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Tech Stack & Action Button */}
+          <div
+            className="interactive-detail-actions"
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: '1rem',
+              paddingTop: '1.25rem',
+              borderTop: '1px solid rgba(255, 255, 255, 0.07)',
+            }}
+          >
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', flex: 1, minWidth: '200px' }}>
+              {currentService.tags.map((tag, tIdx) => (
+                <span
+                  key={tIdx}
                   style={{
-                    width: '52px',
-                    height: '52px',
-                    borderRadius: '0.85rem',
-                    backgroundColor: 'rgba(56, 189, 248, 0.1)',
-                    color: 'var(--accent-primary)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    marginBottom: '1.25rem',
+                    padding: '0.25rem 0.65rem',
+                    borderRadius: '0.4rem',
+                    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                    border: '1px solid rgba(255, 255, 255, 0.09)',
+                    fontSize: '0.75rem',
+                    color: 'var(--text-secondary)',
                   }}
                 >
-                  {service.icon}
-                </div>
-
-                <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.65rem' }}>{service.title}</h3>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.6, marginBottom: '1.25rem' }}>
-                  {service.desc}
-                </p>
-
-                <div style={{ marginBottom: '1.25rem' }}>
-                  <span style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.04em', display: 'block', marginBottom: '0.5rem' }}>
-                    Key Deliverables:
-                  </span>
-                  <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
-                    {service.deliverables.map((item, dIdx) => (
-                      <li key={dIdx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: '0.85rem', color: '#cbd5e1' }}>
-                        <Check size={14} color="#38bdf8" style={{ marginTop: '3px', flexShrink: 0 }} />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem', paddingTop: '1rem', borderTop: '1px solid rgba(255, 255, 255, 0.06)' }}>
-                {service.tags.map((tag, tIdx) => (
-                  <span
-                    key={tIdx}
-                    style={{
-                      padding: '0.2rem 0.55rem',
-                      borderRadius: '0.35rem',
-                      backgroundColor: 'rgba(255, 255, 255, 0.04)',
-                      border: '1px solid rgba(255, 255, 255, 0.08)',
-                      fontSize: '0.725rem',
-                      color: 'var(--text-secondary)',
-                    }}
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
+                  {tag}
+                </span>
+              ))}
             </div>
-          ))}
+
+            <button
+              type="button"
+              onClick={() => handleSelectServiceForForm(currentService)}
+              className="btn btn-primary"
+              style={{ padding: '0.75rem 1.35rem', fontSize: '0.9rem', fontWeight: 700 }}
+            >
+              Request {currentService.shortTitle} <ArrowRight size={16} />
+            </button>
+          </div>
         </div>
       </section>
 
-      {/* ================= PROVEN PRODUCTION APPS ================= */}
-      <section id="proven-apps" style={{ marginBottom: 'clamp(3.5rem, 8vw, 6rem)' }}>
-        <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+      {/* ================= 2. INTERACTIVE PROVEN PRODUCTION APPS ================= */}
+      <section id="proven-apps" style={{ marginBottom: 'clamp(3.5rem, 7vw, 5.5rem)' }}>
+        <div style={{ textAlign: 'center', marginBottom: '1.75rem' }}>
           <div
             style={{
               display: 'inline-flex',
@@ -642,119 +821,162 @@ export default function Freelance() {
               marginBottom: '0.5rem',
             }}
           >
-            <Sparkles size={15} /> Track Record
+            <Sparkles size={15} /> Track Record & Portfolio
           </div>
-          <h2 style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)', marginBottom: '0.75rem' }}>
+          <h2 style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)', marginBottom: '0.5rem' }}>
             Proven Production <span className="text-gradient">Applications</span>
           </h2>
-          <p style={{ maxWidth: '650px', margin: '0 auto', color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
-            Explore live, battle-tested applications I've engineered and published on the Google Play Store and the web.
+          <p style={{ maxWidth: '650px', margin: '0 auto', color: 'var(--text-secondary)', fontSize: '0.925rem' }}>
+            Explore live, battle-tested applications I've engineered and published on Google Play and the web.
           </p>
         </div>
 
-        <div className="grid grid-cols-2" style={{ gap: '1.5rem', marginBottom: '2rem' }}>
-          {PROVEN_APPS_DATA.map((app, idx) => (
-            <div
-              key={idx}
-              className="glass-panel"
+        {/* App Selector Tabs: 4 equal columns on desktop, 2x2 on mobile */}
+        <div className="tabs-grid-4" style={{ maxWidth: '840px', margin: '0 auto 1.5rem auto' }}>
+          {PROVEN_APPS_DATA.map((app, idx) => {
+            const isSelected = activeAppIdx === idx;
+            return (
+              <button
+                key={app.id}
+                type="button"
+                onClick={() => setActiveAppIdx(idx)}
+                className={`interactive-tab-btn ${isSelected ? 'active' : ''}`}
+              >
+                <span>{app.shortName}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Active App Detail Card */}
+        <div
+          key={currentApp.id}
+          className="glass-panel interactive-detail-card"
+          style={{
+            maxWidth: '840px',
+            margin: '0 auto 2rem auto',
+            padding: 'clamp(1.25rem, 4vw, 2.25rem)',
+            borderRadius: '1.5rem',
+            border: '1px solid rgba(56, 189, 248, 0.35)',
+            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.35)',
+          }}
+        >
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.25rem', flexWrap: 'wrap', gap: '0.75rem' }}>
+            <div>
+              <span
+                style={{
+                  fontSize: '0.75rem',
+                  fontWeight: 700,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.06em',
+                  color: 'var(--accent-primary)',
+                }}
+              >
+                {currentApp.platform}
+              </span>
+              <h3 style={{ fontSize: 'clamp(1.25rem, 3.5vw, 1.6rem)', fontWeight: 700, marginTop: '0.2rem' }}>
+                {currentApp.title}
+              </h3>
+            </div>
+            <span
               style={{
-                padding: 'clamp(1.5rem, 3.5vw, 2rem)',
-                borderRadius: '1.25rem',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
+                padding: '0.35rem 0.85rem',
+                borderRadius: '9999px',
+                backgroundColor: 'rgba(56, 189, 248, 0.12)',
+                border: '1px solid rgba(56, 189, 248, 0.3)',
+                color: 'var(--accent-primary)',
+                fontSize: '0.75rem',
+                fontWeight: 600,
               }}
             >
-              <div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem', flexWrap: 'wrap', gap: '0.5rem' }}>
-                  <div>
-                    <span
-                      style={{
-                        fontSize: '0.75rem',
-                        fontWeight: 700,
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.06em',
-                        color: 'var(--accent-primary)',
-                      }}
-                    >
-                      {app.platform}
-                    </span>
-                    <h3 style={{ fontSize: '1.35rem', fontWeight: 700, marginTop: '0.2rem' }}>{app.title}</h3>
-                  </div>
-                  <span
-                    style={{
-                      padding: '0.3rem 0.75rem',
-                      borderRadius: '9999px',
-                      backgroundColor: 'rgba(56, 189, 248, 0.12)',
-                      border: '1px solid rgba(56, 189, 248, 0.3)',
-                      color: 'var(--accent-primary)',
-                      fontSize: '0.75rem',
-                      fontWeight: 600,
-                    }}
-                  >
-                    {app.badge}
-                  </span>
-                </div>
+              {currentApp.badge}
+            </span>
+          </div>
 
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.925rem', lineHeight: 1.6, marginBottom: '1.25rem' }}>
-                  {app.desc}
-                </p>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '0.925rem', lineHeight: 1.65, marginBottom: '1.5rem' }}>
+            {currentApp.desc}
+          </p>
 
-                <div style={{ marginBottom: '1.25rem' }}>
-                  <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
-                    {app.highlights.map((feat, fIdx) => (
-                      <li key={fIdx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: '0.85rem', color: '#cbd5e1' }}>
-                        <CheckCircle size={14} color="#38bdf8" style={{ marginTop: '3px', flexShrink: 0 }} />
-                        <span>{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+          {/* Highlights */}
+          <div style={{ marginBottom: '1.5rem', backgroundColor: 'rgba(2, 6, 23, 0.4)', padding: '1.15rem', borderRadius: '1rem', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
+            <span
+              style={{
+                fontSize: '0.8rem',
+                fontWeight: 700,
+                color: 'var(--accent-primary)',
+                textTransform: 'uppercase',
+                letterSpacing: '0.06em',
+                display: 'block',
+                marginBottom: '0.75rem',
+              }}
+            >
+              Key Architecture & Achievements:
+            </span>
+            <ul style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '0.6rem' }}>
+              {currentApp.highlights.map((feat, fIdx) => (
+                <li key={fIdx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.55rem', fontSize: '0.875rem', color: '#e2e8f0' }}>
+                  <CheckCircle size={16} color="#38bdf8" style={{ marginTop: '2px', flexShrink: 0 }} />
+                  <span>{feat}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-              <div>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem', marginBottom: '1.25rem' }}>
-                  {app.tags.map((tag, tIdx) => (
-                    <span
-                      key={tIdx}
-                      style={{
-                        padding: '0.2rem 0.6rem',
-                        borderRadius: '0.35rem',
-                        backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                        border: '1px solid rgba(255, 255, 255, 0.08)',
-                        fontSize: '0.75rem',
-                        color: 'var(--text-secondary)',
-                      }}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <a
-                  href={app.link}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn btn-secondary"
+          {/* Tech tags & CTA */}
+          <div
+            className="interactive-detail-actions"
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              gap: '1rem',
+              paddingTop: '1.25rem',
+              borderTop: '1px solid rgba(255, 255, 255, 0.07)',
+            }}
+          >
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', flex: 1, minWidth: '200px' }}>
+              {currentApp.tags.map((tag, tIdx) => (
+                <span
+                  key={tIdx}
                   style={{
-                    width: '100%',
-                    justifyContent: 'center',
-                    padding: '0.75rem',
-                    fontSize: '0.9rem',
+                    padding: '0.25rem 0.65rem',
+                    borderRadius: '0.4rem',
+                    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                    border: '1px solid rgba(255, 255, 255, 0.09)',
+                    fontSize: '0.75rem',
+                    color: 'var(--text-secondary)',
                   }}
                 >
-                  {app.linkText} <ExternalLink size={15} />
-                </a>
-              </div>
+                  {tag}
+                </span>
+              ))}
             </div>
-          ))}
+
+            <a
+              href={currentApp.link}
+              target="_blank"
+              rel="noreferrer"
+              className="btn btn-secondary"
+              style={{
+                padding: '0.75rem 1.35rem',
+                fontSize: '0.9rem',
+                fontWeight: 600,
+                color: 'var(--text-primary)',
+              }}
+            >
+              {currentApp.linkText} <ExternalLink size={15} />
+            </a>
+          </div>
         </div>
 
         {/* Developer Profile Banner */}
         <div
           className="glass-panel freelance-banner-mobile-col"
           style={{
-            padding: 'clamp(1.25rem, 3vw, 1.75rem)',
+            maxWidth: '840px',
+            margin: '0 auto',
+            padding: 'clamp(1.15rem, 3vw, 1.6rem)',
             borderRadius: '1.25rem',
             display: 'flex',
             alignItems: 'center',
@@ -779,12 +1001,12 @@ export default function Freelance() {
                 flexShrink: 0,
               }}
             >
-              <Play size={24} />
+              <Play size={22} />
             </div>
             <div>
-              <h4 style={{ fontSize: '1.1rem', fontWeight: 700, margin: 0 }}>Official Google Play Developer Account</h4>
-              <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
-                Explore all published Android applications, updates, and releases directly on the Google Play Store.
+              <h4 style={{ fontSize: '1.05rem', fontWeight: 700, margin: 0 }}>Official Google Play Developer Account</h4>
+              <p style={{ margin: '0.25rem 0 0 0', fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
+                Explore all published Android applications, updates, and releases directly on Google Play.
               </p>
             </div>
           </div>
@@ -793,16 +1015,16 @@ export default function Freelance() {
             target="_blank"
             rel="noreferrer"
             className="btn btn-primary"
-            style={{ padding: '0.7rem 1.4rem', fontSize: '0.9rem' }}
+            style={{ padding: '0.7rem 1.35rem', fontSize: '0.875rem' }}
           >
-            <Play size={16} /> Open Play Console Profile
+            <Play size={15} /> Open Play Console Profile
           </a>
         </div>
       </section>
 
-      {/* ================= WHY WORK WITH ME & PROCESS ================= */}
-      <section style={{ marginBottom: 'clamp(3.5rem, 8vw, 6rem)' }}>
-        <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+      {/* ================= 3. WHY WORK WITH ME & WORKFLOW ================= */}
+      <section id="workflow" style={{ marginBottom: 'clamp(3.5rem, 7vw, 5.5rem)' }}>
+        <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
           <div
             style={{
               display: 'inline-flex',
@@ -816,43 +1038,52 @@ export default function Freelance() {
               marginBottom: '0.5rem',
             }}
           >
-            <Shield size={15} /> Value Proposition
+            <Shield size={15} /> Value & Collaboration
           </div>
-          <h2 style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)', marginBottom: '0.75rem' }}>
+          <h2 style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)', marginBottom: '0.5rem' }}>
             Why Work With <span className="text-gradient">Me?</span>
           </h2>
-          <p style={{ maxWidth: '650px', margin: '0 auto', color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
-            Get agency-quality results with the agility, transparency, and dedication of a solo specialist.
+          <p style={{ maxWidth: '650px', margin: '0 auto', color: 'var(--text-secondary)', fontSize: '0.925rem' }}>
+            Agency-quality execution with the agility, speed, and dedication of a specialized solo engineer.
           </p>
         </div>
 
-        <div className="grid grid-cols-2" style={{ gap: '1.25rem', marginBottom: '3.5rem' }}>
+        {/* 4 Value Props Grid */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))',
+            gap: '1rem',
+            maxWidth: '840px',
+            margin: '0 auto 3rem auto',
+          }}
+        >
           {[
             {
               title: 'Direct Communication',
-              desc: 'Work directly with the engineer building your product—no account managers, no miscommunications, and rapid iterations.',
-              icon: <MessageSquare size={22} />,
+              desc: 'Work directly with the engineer building your product—no middlemen or miscommunications.',
+              icon: <MessageSquare size={20} />,
               color: 'var(--accent-primary)',
               bg: 'rgba(56, 189, 248, 0.1)',
             },
             {
               title: 'Clean, Scalable Code',
-              desc: 'I write production-ready code with modular architecture, strict typing/linting, and maintainable patterns.',
-              icon: <Code size={22} />,
+              desc: 'Production-ready code with modular architecture, strict linting, and maintainable patterns.',
+              icon: <Code size={20} />,
               color: '#34d399',
               bg: 'rgba(52, 211, 153, 0.1)',
             },
             {
               title: 'End-to-End Ownership',
-              desc: 'From initial wireframing and design tokens to cloud deployment and Play Store approval—I handle the entire lifecycle.',
-              icon: <Layers size={22} />,
+              desc: 'From initial Figma wireframes to cloud hosting and Google Play approval—I handle it all.',
+              icon: <Layers size={20} />,
               color: '#a78bfa',
               bg: 'rgba(167, 139, 250, 0.1)',
             },
             {
               title: 'Reliable Timelines',
-              desc: 'Milestone-based delivery with weekly demos so you always know the exact status of your project.',
-              icon: <Clock size={22} />,
+              desc: 'Milestone-based delivery with weekly demos so you always know the exact development status.',
+              icon: <Clock size={20} />,
               color: '#f472b6',
               bg: 'rgba(244, 114, 182, 0.1)',
             },
@@ -861,17 +1092,17 @@ export default function Freelance() {
               key={idx}
               className="glass-panel"
               style={{
-                padding: 'clamp(1.25rem, 3.5vw, 1.75rem)',
-                borderRadius: '1.25rem',
+                padding: '1.25rem',
+                borderRadius: '1.15rem',
                 display: 'flex',
-                gap: '1rem',
+                gap: '0.85rem',
                 alignItems: 'flex-start',
               }}
             >
               <div
                 style={{
-                  width: '44px',
-                  height: '44px',
+                  width: '40px',
+                  height: '40px',
                   borderRadius: '0.75rem',
                   backgroundColor: item.bg,
                   color: item.color,
@@ -884,8 +1115,8 @@ export default function Freelance() {
                 {item.icon}
               </div>
               <div>
-                <h4 style={{ fontSize: '1.05rem', fontWeight: 700, marginBottom: '0.35rem' }}>{item.title}</h4>
-                <p style={{ margin: 0, fontSize: '0.875rem', lineHeight: 1.6, color: 'var(--text-secondary)' }}>
+                <h4 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.25rem' }}>{item.title}</h4>
+                <p style={{ margin: 0, fontSize: '0.85rem', lineHeight: 1.55, color: 'var(--text-secondary)' }}>
                   {item.desc}
                 </p>
               </div>
@@ -893,52 +1124,93 @@ export default function Freelance() {
           ))}
         </div>
 
-        {/* 4-Step Process */}
-        <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-          <h3 style={{ fontSize: 'clamp(1.35rem, 4vw, 1.85rem)', marginBottom: '0.5rem' }}>
-            How We Work Together
+        {/* Interactive 4-Step Process */}
+        <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
+          <h3 style={{ fontSize: 'clamp(1.35rem, 4vw, 1.85rem)', marginBottom: '0.4rem' }}>
+            Interactive Workflow Process
           </h3>
-          <p style={{ maxWidth: '650px', margin: '0 auto', color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
-            A structured, collaborative development process designed to deliver exceptional results on schedule.
+          <p style={{ maxWidth: '600px', margin: '0 auto', color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
+            Tap each milestone step below to explore how we take your project from discovery to deployment.
           </p>
         </div>
 
-        <div className="grid grid-cols-2" style={{ gap: '1.25rem' }}>
-          {WORKFLOW_STEPS.map((step, idx) => (
+        {/* Workflow Step Tabs: 4 equal columns on desktop, 2x2 on mobile */}
+        <div className="tabs-grid-4" style={{ maxWidth: '840px', margin: '0 auto 1.25rem auto' }}>
+          {WORKFLOW_STEPS.map((step, idx) => {
+            const isSelected = activeWorkflowIdx === idx;
+            return (
+              <button
+                key={step.number}
+                type="button"
+                onClick={() => setActiveWorkflowIdx(idx)}
+                className={`interactive-tab-btn ${isSelected ? 'active' : ''}`}
+                style={{ fontSize: '0.85rem' }}
+              >
+                <span style={{ fontFamily: 'monospace', fontWeight: 800 }}>{step.number}</span>
+                <span>{step.shortTitle || step.title.split(' ')[0]}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Active Step Detail Card */}
+        <div
+          key={currentWorkflow.number}
+          className="glass-panel interactive-detail-card"
+          style={{
+            maxWidth: '840px',
+            margin: '0 auto',
+            padding: 'clamp(1.25rem, 4vw, 2rem)',
+            borderRadius: '1.25rem',
+            border: '1px solid rgba(56, 189, 248, 0.35)',
+            position: 'relative',
+            overflow: 'hidden',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1.25rem', flexWrap: 'wrap' }}>
             <div
-              key={idx}
-              className="glass-panel"
               style={{
-                padding: 'clamp(1.25rem, 3vw, 1.75rem)',
-                borderRadius: '1.25rem',
-                position: 'relative',
-                overflow: 'hidden',
+                fontSize: 'clamp(2.5rem, 6vw, 3.5rem)',
+                fontWeight: 900,
+                color: 'rgba(56, 189, 248, 0.25)',
+                lineHeight: 1,
+                fontFamily: 'monospace',
               }}
             >
-              <div
-                style={{
-                  fontSize: '2.5rem',
-                  fontWeight: 900,
-                  color: 'rgba(56, 189, 248, 0.15)',
-                  lineHeight: 1,
-                  marginBottom: '0.75rem',
-                  fontFamily: 'monospace',
-                }}
-              >
-                {step.number}
-              </div>
-              <h4 style={{ fontSize: '1.15rem', fontWeight: 700, marginBottom: '0.45rem' }}>{step.title}</h4>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: 1.6, margin: 0 }}>
-                {step.desc}
-              </p>
+              {currentWorkflow.number}
             </div>
-          ))}
+            <div style={{ flex: 1, minWidth: '220px' }}>
+              <h4 style={{ fontSize: '1.35rem', fontWeight: 700, marginBottom: '0.25rem' }}>
+                {currentWorkflow.title}
+              </h4>
+              <div style={{ fontSize: '0.85rem', color: 'var(--accent-primary)', fontWeight: 600, marginBottom: '0.75rem' }}>
+                {currentWorkflow.tagline}
+              </div>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.65, marginBottom: '1.25rem' }}>
+                {currentWorkflow.desc}
+              </p>
+
+              <div style={{ backgroundColor: 'rgba(2, 6, 23, 0.4)', padding: '0.85rem 1.15rem', borderRadius: '0.75rem', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
+                <span style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--text-primary)', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
+                  Phase Outputs:
+                </span>
+                <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+                  {currentWorkflow.outputs.map((out, oIdx) => (
+                    <li key={oIdx} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.825rem', color: '#cbd5e1' }}>
+                      <CheckCircle size={14} color="#38bdf8" />
+                      <span>{out}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* ================= PACKAGES / PRICING SECTION ================= */}
-      <section style={{ marginBottom: 'clamp(3.5rem, 8vw, 6rem)' }}>
-        <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+      {/* ================= 4. INTERACTIVE PACKAGES / PRICING SECTION ================= */}
+      <section id="packages" style={{ marginBottom: 'clamp(3.5rem, 7vw, 5.5rem)' }}>
+        <div style={{ textAlign: 'center', marginBottom: '1.75rem' }}>
           <div
             style={{
               display: 'inline-flex',
@@ -952,93 +1224,128 @@ export default function Freelance() {
               marginBottom: '0.5rem',
             }}
           >
-            <Award size={15} /> Pricing & Scope
+            <Award size={15} /> Scope & Pricing
           </div>
-          <h2 style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)', marginBottom: '0.75rem' }}>
+          <h2 style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)', marginBottom: '0.5rem' }}>
             Flexible Engagement <span className="text-gradient">Models</span>
           </h2>
-          <p style={{ maxWidth: '650px', margin: '0 auto', color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
-            Choose the model that best fits your project stage and requirements.
+          <p style={{ maxWidth: '650px', margin: '0 auto', color: 'var(--text-secondary)', fontSize: '0.925rem' }}>
+            Select a model below to inspect the included scope, deliverables, and estimated delivery timeframe.
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '1.5rem' }}>
-          {PACKAGES_DATA.map((pkg, idx) => (
-            <div
-              key={idx}
-              className="glass-panel"
-              style={{
-                padding: 'clamp(1.5rem, 4vw, 2.25rem)',
-                borderRadius: '1.5rem',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                position: 'relative',
-                border: pkg.featured ? '1.5px solid var(--accent-primary)' : '1px solid var(--border-color)',
-                backgroundColor: pkg.featured ? 'rgba(56, 189, 248, 0.05)' : 'var(--glass-bg)',
-              }}
-            >
-              <div>
+        {/* Package Selector Tabs: 3 equal columns on desktop, 1 column on mobile */}
+        <div className="tabs-grid-3" style={{ maxWidth: '840px', margin: '0 auto 1.5rem auto' }}>
+          {PACKAGES_DATA.map((pkg, idx) => {
+            const isSelected = activePackageIdx === idx;
+            return (
+              <button
+                key={pkg.id}
+                type="button"
+                onClick={() => setActivePackageIdx(idx)}
+                className={`interactive-tab-btn ${isSelected ? 'active' : ''}`}
+                style={{ position: 'relative' }}
+              >
+                <span>{pkg.name}</span>
                 {pkg.featured && (
                   <span
                     style={{
-                      position: 'absolute',
-                      top: '-12px',
-                      right: '24px',
-                      padding: '0.25rem 0.75rem',
-                      borderRadius: '9999px',
+                      fontSize: '0.65rem',
+                      fontWeight: 800,
                       backgroundColor: 'var(--accent-primary)',
                       color: '#020617',
-                      fontSize: '0.725rem',
-                      fontWeight: 800,
+                      padding: '0.15rem 0.45rem',
+                      borderRadius: '9999px',
                       textTransform: 'uppercase',
-                      letterSpacing: '0.05em',
+                      marginLeft: '0.25rem',
                     }}
                   >
-                    Most Popular
+                    Popular
                   </span>
                 )}
-
-                <h3 style={{ fontSize: '1.35rem', fontWeight: 700, marginBottom: '0.35rem' }}>{pkg.name}</h3>
-                <div style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--accent-primary)', marginBottom: '0.75rem' }}>
-                  {pkg.scope}
-                </div>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
-                  {pkg.desc}
-                </p>
-
-                <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', marginBottom: '2rem' }}>
-                  {pkg.features.map((feat, fIdx) => (
-                    <li key={fIdx} style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', fontSize: '0.85rem', color: '#e2e8f0' }}>
-                      <CheckCircle size={15} color="#38bdf8" style={{ flexShrink: 0 }} />
-                      <span>{feat}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <button
-                type="button"
-                onClick={() => handlePackageSelect(pkg.name)}
-                className={pkg.featured ? 'btn btn-primary' : 'btn btn-secondary'}
-                style={{
-                  width: '100%',
-                  justifyContent: 'center',
-                  padding: '0.8rem',
-                  fontSize: '0.925rem',
-                  fontWeight: 700,
-                }}
-              >
-                {pkg.buttonText}
               </button>
+            );
+          })}
+        </div>
+
+        {/* Active Package Detail Card */}
+        <div
+          key={currentPackage.id}
+          className="glass-panel interactive-detail-card"
+          style={{
+            maxWidth: '840px',
+            margin: '0 auto',
+            padding: 'clamp(1.35rem, 4vw, 2.5rem)',
+            borderRadius: '1.5rem',
+            border: currentPackage.featured ? '1.5px solid var(--accent-primary)' : '1px solid rgba(56, 189, 248, 0.35)',
+            backgroundColor: currentPackage.featured ? 'rgba(56, 189, 248, 0.05)' : 'var(--glass-bg)',
+            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.35)',
+            position: 'relative',
+          }}
+        >
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem', flexWrap: 'wrap', gap: '0.5rem' }}>
+            <div>
+              <div style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--accent-primary)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '0.25rem' }}>
+                {currentPackage.scope}
+              </div>
+              <h3 style={{ fontSize: 'clamp(1.35rem, 3.5vw, 1.85rem)', fontWeight: 800 }}>
+                {currentPackage.name}
+              </h3>
             </div>
-          ))}
+            <span
+              style={{
+                padding: '0.35rem 0.85rem',
+                borderRadius: '9999px',
+                backgroundColor: 'rgba(56, 189, 248, 0.12)',
+                border: '1px solid rgba(56, 189, 248, 0.3)',
+                color: 'var(--accent-primary)',
+                fontSize: '0.8rem',
+                fontWeight: 600,
+              }}
+            >
+              {currentPackage.duration}
+            </span>
+          </div>
+
+          <p style={{ color: 'var(--text-secondary)', fontSize: '0.925rem', lineHeight: 1.65, marginBottom: '1.5rem' }}>
+            {currentPackage.desc}
+          </p>
+
+          {/* Features Checklist */}
+          <div style={{ backgroundColor: 'rgba(2, 6, 23, 0.4)', padding: '1.25rem', borderRadius: '1rem', border: '1px solid rgba(255, 255, 255, 0.05)', marginBottom: '1.75rem' }}>
+            <span style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.75rem' }}>
+              What's Included in {currentPackage.name}:
+            </span>
+            <ul style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '0.65rem' }}>
+              {currentPackage.features.map((feat, fIdx) => (
+                <li key={fIdx} style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', fontSize: '0.875rem', color: '#e2e8f0' }}>
+                  <CheckCircle size={16} color="#38bdf8" style={{ flexShrink: 0 }} />
+                  <span>{feat}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => handlePackageSelect(currentPackage.name)}
+            className={currentPackage.featured ? 'btn btn-primary' : 'btn btn-secondary'}
+            style={{
+              width: '100%',
+              justifyContent: 'center',
+              padding: '0.85rem',
+              fontSize: '0.95rem',
+              fontWeight: 700,
+            }}
+          >
+            {currentPackage.buttonText} <ArrowRight size={18} />
+          </button>
         </div>
       </section>
 
-      {/* ================= INQUIRY / CONTACT FORM ================= */}
-      <section id="inquiry" style={{ marginBottom: 'clamp(3.5rem, 8vw, 6rem)' }}>
-        <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+      {/* ================= 5. INTERACTIVE INQUIRY FORM ================= */}
+      <section id="inquiry" style={{ marginBottom: 'clamp(3.5rem, 7vw, 5.5rem)' }}>
+        <div style={{ textAlign: 'center', marginBottom: '1.75rem' }}>
           <div
             style={{
               display: 'inline-flex',
@@ -1054,10 +1361,10 @@ export default function Freelance() {
           >
             <Send size={15} /> Let's Connect
           </div>
-          <h2 style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)', marginBottom: '0.75rem' }}>
+          <h2 style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)', marginBottom: '0.5rem' }}>
             Start Your <span className="text-gradient">Project</span>
           </h2>
-          <p style={{ maxWidth: '650px', margin: '0 auto', color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
+          <p style={{ maxWidth: '650px', margin: '0 auto', color: 'var(--text-secondary)', fontSize: '0.925rem' }}>
             Tell me about your idea, timeline, and budget. I'll review your details and respond within 24 hours.
           </p>
         </div>
@@ -1072,12 +1379,12 @@ export default function Freelance() {
           }}
         >
           <form>
-            {/* Step 1: Project Type */}
+            {/* Step 1: Project Type (2 cols on mobile) */}
             <div style={{ marginBottom: '1.75rem' }}>
               <label style={{ display: 'block', fontSize: '0.925rem', fontWeight: 700, marginBottom: '0.65rem' }}>
                 1. What type of project are you looking for?
               </label>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 140px), 1fr))', gap: '0.45rem' }}>
+              <div className="chips-grid-2">
                 {PROJECT_TYPES.map((type) => {
                   const isSelected = selectedType === type;
                   return (
@@ -1099,6 +1406,7 @@ export default function Freelance() {
                         justifyContent: 'center',
                         display: 'flex',
                         alignItems: 'center',
+                        minHeight: '44px',
                       }}
                     >
                       {type}
@@ -1108,12 +1416,12 @@ export default function Freelance() {
               </div>
             </div>
 
-            {/* Step 2: Estimated Budget */}
+            {/* Step 2: Estimated Budget (2 cols on mobile) */}
             <div style={{ marginBottom: '1.75rem' }}>
               <label style={{ display: 'block', fontSize: '0.925rem', fontWeight: 700, marginBottom: '0.65rem' }}>
                 2. What is your estimated budget?
               </label>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 140px), 1fr))', gap: '0.45rem' }}>
+              <div className="chips-grid-2">
                 {BUDGET_RANGES.map((budget) => {
                   const isSelected = selectedBudget === budget;
                   return (
@@ -1135,6 +1443,7 @@ export default function Freelance() {
                         justifyContent: 'center',
                         display: 'flex',
                         alignItems: 'center',
+                        minHeight: '44px',
                       }}
                     >
                       {budget}
@@ -1144,12 +1453,12 @@ export default function Freelance() {
               </div>
             </div>
 
-            {/* Step 3: Timeline */}
+            {/* Step 3: Timeline (2 cols on mobile) */}
             <div style={{ marginBottom: '1.75rem' }}>
               <label style={{ display: 'block', fontSize: '0.925rem', fontWeight: 700, marginBottom: '0.65rem' }}>
                 3. Expected timeline or deadline?
               </label>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 130px), 1fr))', gap: '0.45rem' }}>
+              <div className="chips-grid-2">
                 {TIMELINES.map((time) => {
                   const isSelected = selectedTimeline === time;
                   return (
@@ -1171,6 +1480,7 @@ export default function Freelance() {
                         justifyContent: 'center',
                         display: 'flex',
                         alignItems: 'center',
+                        minHeight: '44px',
                       }}
                     >
                       {time}
@@ -1394,9 +1704,9 @@ export default function Freelance() {
         </div>
       </section>
 
-      {/* ================= FREELANCE FAQ ACCORDION ================= */}
-      <section style={{ maxWidth: '820px', margin: '0 auto clamp(2rem, 5vw, 4rem) auto' }}>
-        <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+      {/* ================= 6. FREELANCE FAQ ACCORDION ================= */}
+      <section id="faq" style={{ maxWidth: '820px', margin: '0 auto clamp(2rem, 5vw, 4rem) auto' }}>
+        <div style={{ textAlign: 'center', marginBottom: '1.75rem' }}>
           <div
             style={{
               display: 'inline-flex',
@@ -1416,7 +1726,7 @@ export default function Freelance() {
             Frequently Asked Questions
           </h2>
           <p style={{ margin: 0, color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
-            Have questions before starting? Here are answers to common inquiries.
+            Have questions before starting? Tap any question below to inspect the details.
           </p>
         </div>
 
