@@ -12,6 +12,7 @@ import Roadmap from './pages/Roadmap';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import FAQ from './pages/FAQ';
 import Donate from './pages/Donate';
+import Freelance from './pages/Freelance';
 import UnderDevelopment from './pages/UnderDevelopment';
 
 import AnyaEasterEgg from './components/AnyaEasterEgg';
@@ -55,6 +56,7 @@ function App() {
             <Route path="/apps" element={<AppsSection />} />
             <Route path="/apps/:id" element={<AppDetails />} />
             <Route path="/roadmap" element={<Roadmap />} />
+            <Route path="/freelance" element={<Freelance />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/donate" element={<Donate />} />

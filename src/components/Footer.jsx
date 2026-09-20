@@ -33,6 +33,7 @@ export default function Footer() {
             <NavLink to="/" style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', transition: 'color 0.2s' }}>Home</NavLink>
             <NavLink to="/apps" style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', transition: 'color 0.2s' }}>Apps</NavLink>
             <NavLink to="/roadmap" style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', transition: 'color 0.2s' }}>Roadmap</NavLink>
+            <NavLink to="/freelance" style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', transition: 'color 0.2s' }}>Freelance</NavLink>
             <NavLink to="/faq" style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', transition: 'color 0.2s' }}>FAQ</NavLink>
             <NavLink to="/donate" style={{ fontSize: '0.9rem', color: '#ec4899', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
               Support <Heart size={12} fill="#ec4899" />

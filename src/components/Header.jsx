@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { Play, Mail, Heart, Menu, X, Send, Home as HomeIcon, Grid, Compass, HelpCircle, ChevronRight } from 'lucide-react';
+import { Play, Mail, Heart, Menu, X, Send, Home as HomeIcon, Grid, Compass, HelpCircle, ChevronRight, Briefcase } from 'lucide-react';
 import heroLogo from '../assets/hero.webp';
 
 const InstagramIcon = ({ size = 20 }) => (
@@ -67,6 +67,7 @@ export default function Header() {
     { to: '/', label: 'Home', icon: <HomeIcon size={18} /> },
     { to: '/apps', label: 'Apps', icon: <Grid size={18} /> },
     { to: '/roadmap', label: 'Roadmap', icon: <Compass size={18} /> },
+    { to: '/freelance', label: 'Freelance', icon: <Briefcase size={18} /> },
     { to: '/faq', label: 'FAQ', icon: <HelpCircle size={18} /> },
     { to: '/donate', label: 'Support', icon: <Heart size={18} color="#ec4899" />, special: true },
   ];
@@ -134,6 +135,17 @@ export default function Header() {
               })}
             >
               Roadmap
+            </NavLink>
+            <NavLink
+              to="/freelance"
+              style={({ isActive }) => ({
+                color: isActive ? 'var(--accent-primary)' : 'var(--text-secondary)',
+                fontWeight: isActive ? 600 : 500,
+                fontSize: '0.95rem',
+                transition: 'color 0.2s ease',
+              })}
+            >
+              Freelance
             </NavLink>
             <NavLink
               to="/faq"
