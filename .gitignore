@@ -23,3 +23,4 @@ dist-ssr
 *.sln
 *.sw?
 scripts/generate-meta-pages.js
+scripts/generate-meta-pages.js
