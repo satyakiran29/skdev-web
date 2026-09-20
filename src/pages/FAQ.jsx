@@ -154,7 +154,7 @@ export default function FAQ() {
   const toggle = idx => setOpenIndex(prev => (prev === idx ? null : idx));
 
   return (
-    <div className="container animate-fade-in" style={{ padding: 'clamp(1.5rem, 4vw, 3.5rem) 0' }}>
+    <div className="container animate-fade-in" style={{ paddingTop: 'clamp(1.5rem, 4vw, 3.5rem)', paddingBottom: 'clamp(1.5rem, 4vw, 3.5rem)' }}>
       <SEO
         title="Frequently Asked Questions (FAQ)"
         description="Frequently asked questions about SKDev Android apps, Anify, Aniset, direct redeem code purchases (UPI / PayPal), widget setup, and privacy."

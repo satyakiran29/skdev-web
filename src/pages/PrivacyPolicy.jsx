@@ -3,7 +3,7 @@ import SEO from '../components/SEO';
 
 export default function PrivacyPolicy() {
   return (
-    <div className="container animate-fade-in" style={{ padding: 'clamp(2rem, 5vw, 4rem) 0' }}>
+    <div className="container animate-fade-in" style={{ paddingTop: 'clamp(2rem, 5vw, 4rem)', paddingBottom: 'clamp(2rem, 5vw, 4rem)' }}>
       <SEO
         title="Privacy Policy"
         description="Official SKDev Privacy Policy — how user data, permissions, AccessibilityService API, and third-party services are handled across Anify, Aniset, and SKDev apps."

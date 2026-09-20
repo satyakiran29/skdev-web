@@ -437,7 +437,7 @@ export default function Freelance() {
   const currentWorkflow = WORKFLOW_STEPS[activeWorkflowIdx];
 
   return (
-    <div className="container animate-fade-in" style={{ padding: 'clamp(1rem, 3.5vw, 3rem) 0' }}>
+    <div className="container animate-fade-in" style={{ paddingTop: 'clamp(1.5rem, 4vw, 3rem)', paddingBottom: 'clamp(2.5rem, 6vw, 4.5rem)' }}>
       <SEO
         title="Hire Satyakiran | Freelance Full-Stack & Android Developer"
         description="Hire Satyakiran for high-performance Full-Stack Web Development, native Android app engineering, custom home screen widgets, and modern UI/UX design. Published Google Play apps (Anify, Aniset)."

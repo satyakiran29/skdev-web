@@ -25,7 +25,7 @@ export default function AppsSection() {
   };
 
   return (
-    <div className="container animate-fade-in" style={{ padding: 'clamp(2rem, 5vw, 4rem) 0' }}>
+    <div className="container animate-fade-in" style={{ paddingTop: 'clamp(2rem, 5vw, 4rem)', paddingBottom: 'clamp(2rem, 5vw, 4rem)' }}>
       <SEO
         title="Android Apps & Widgets"
         description="Browse all Android apps by SKDev — featuring Anify (Free personalization suite, Sticker Studio & widgets), Aniset (Anime KWGT & KLWP), and Gwalls."
