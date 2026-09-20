@@ -41,38 +41,150 @@ const LinkedInIcon = ({ size = 14, color = '#38bdf8' }) => (
   </svg>
 );
 
-// JSON-LD structured data for freelance services
+// Comprehensive Schema.org JSON-LD structured data for freelance services
 const FREELANCE_JSONLD = {
   '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
-  name: 'Satyakiran (SKDev) Freelance Web & Mobile App Development',
-  image: 'https://skdev.psatyakiran.in/android-chrome-512x512.png',
-  url: 'https://skdev.psatyakiran.in/freelance',
-  telephone: '',
-  priceRange: '$$',
-  address: {
-    '@type': 'PostalAddress',
-    addressCountry: 'IN',
-  },
-  founder: {
-    '@type': 'Person',
-    name: 'Satyakiran Pampana',
-    alternateName: 'SKDev',
-    url: 'https://skdev.psatyakiran.in',
-  },
-  description:
-    'Hire Satyakiran (SKDev) for production-grade Android application development, full-stack web applications (React, Node, Django), custom home screen widgets, and UI/UX design.',
-  knowsAbout: [
-    'Android App Development',
-    'Kotlin',
-    'Java',
-    'React.js',
-    'Full-Stack Web Development',
-    'UI/UX Design',
-    'Google Play Store Publishing',
-    'Android Widgets',
-    'REST APIs',
-    'Firebase',
+  '@graph': [
+    {
+      '@type': 'ProfessionalService',
+      '@id': 'https://skdev.psatyakiran.in/freelance#service',
+      name: 'Satyakiran (SKDev) Freelance Web & Mobile App Development',
+      image: 'https://skdev.psatyakiran.in/android-chrome-512x512.png',
+      url: 'https://skdev.psatyakiran.in/freelance',
+      telephone: '',
+      priceRange: '$',
+      address: {
+        '@type': 'PostalAddress',
+        addressCountry: 'IN',
+      },
+      founder: {
+        '@type': 'Person',
+        name: 'Satyakiran Pampana',
+        alternateName: 'SKDev',
+        url: 'https://skdev.psatyakiran.in',
+      },
+      description:
+        'Hire Satyakiran (SKDev) for production-grade Android application development, full-stack web applications (React, Node, Django), custom home screen widgets, and UI/UX design.',
+      knowsAbout: [
+        'Android App Development',
+        'Kotlin',
+        'Java',
+        'React.js',
+        'Full-Stack Web Development',
+        'UI/UX Design',
+        'Google Play Store Publishing',
+        'Android Widgets',
+        'REST APIs',
+        'Firebase',
+        'Freelance Software Engineering',
+      ],
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Freelance Development Services',
+        itemListElement: [
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Full-Stack Web Development',
+              description: 'Custom, ultra-fast, and responsive web applications built with modern frontend frameworks and robust backend architectures.',
+            },
+            position: 1,
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Android App Development',
+              description: 'Fluid, high-performance native Android applications with custom UI widgets, background services, and modern system integrations.',
+            },
+            position: 2,
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'UI/UX & Product Design',
+              description: 'Modern, aesthetic, and user-centric interfaces crafted with meticulous attention to detail, typography, and micro-interactions.',
+            },
+            position: 3,
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Home Screen Widgets & Tools',
+              description: 'Specialized Android home screen widgets, live wallpapers, KWGT / KLWP presets, and system UI customization tools.',
+            },
+            position: 4,
+          },
+        ],
+      },
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': 'https://skdev.psatyakiran.in/freelance#faq',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'How does the payment and milestone structure work?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Typically, projects are split into milestones: a 30-50% upfront deposit upon contract signing, intermediate milestone payments upon demo approvals, and the remaining balance upon final deployment and code handover.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Who owns the intellectual property and code?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'You do. Upon final payment, 100% of the intellectual property, source code, Figma design files, and production assets belong entirely to you.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Can you help publish my app to the Google Play Store?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Yes! I handle the entire Play Store submission process, including creating signing keys, setting up Google Play Console store listings, configuring privacy policies, and addressing any policy compliance reviews.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Can you work with an existing codebase?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Yes. I frequently audit, refactor, and add new features to existing React, Node.js, and Android codebases. I will review your repository and provide an upfront feasibility assessment.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What communication channels do you use?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'I communicate directly via Telegram, Email, and Google Meet/Zoom for sync calls. You will have direct developer access throughout the entire engagement.',
+          },
+        },
+      ],
+    },
+    {
+      '@type': 'BreadcrumbList',
+      '@id': 'https://skdev.psatyakiran.in/freelance#breadcrumbs',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: 'https://skdev.psatyakiran.in/',
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Freelance & Hire',
+          item: 'https://skdev.psatyakiran.in/freelance',
+        },
+      ],
+    },
   ],
 };
 
@@ -440,8 +552,8 @@ export default function Freelance() {
     <div className="container animate-fade-in" style={{ paddingTop: 'clamp(1.5rem, 4vw, 3rem)', paddingBottom: 'clamp(2.5rem, 6vw, 4.5rem)' }}>
       <SEO
         title="Hire Satyakiran | Freelance Full-Stack & Android Developer"
-        description="Hire Satyakiran for high-performance Full-Stack Web Development, native Android app engineering, custom home screen widgets, and modern UI/UX design. Published Google Play apps (Anify, Aniset)."
-        keywords="hire satyakiran, freelance full stack developer, freelance android developer, react developer, skdev freelance, anify developer, custom android widgets, hire web developer"
+        description="Hire Satyakiran (SKDev) for high-performance full-stack web applications, native Android development, and modern UI/UX design. Published Play Store apps (Anify, Aniset) and fast turnaround. Request a quote."
+        keywords="hire satyakiran, freelance full stack developer, freelance android developer, react developer, skdev freelance, anify developer, custom android widgets, hire web developer, freelance kotlin developer, play store developer, ui ux designer for hire"
         canonical="/freelance"
         image={skdevbanner}
         jsonLd={FREELANCE_JSONLD}
