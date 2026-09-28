@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import { Send, X, ArrowRight } from 'lucide-react';
+import { Send, X } from 'lucide-react';
 
 export default function BirthdaySaleBanner() {
   const [isVisible, setIsVisible] = useState(() => {
@@ -111,8 +110,10 @@ export default function BirthdaySaleBanner() {
 
       {/* Actions */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexShrink: 0 }}>
-        <NavLink
-          to="/apps/aniset"
+        <a
+          href="https://t.me/skdev1?text=Hi%20Satya%2C%20I'd%20like%20to%20get%20Aniset%20for%20the%20Birthday%20Sale%20via%20UPI%20(%E2%82%B9100)%20or%20PayPal%20(%241.20)!%20%F0%9F%8E%82"
+          target="_blank"
+          rel="noreferrer"
           className="btn btn-primary"
           style={{
             padding: '0.5rem 1rem',
@@ -122,26 +123,9 @@ export default function BirthdaySaleBanner() {
             borderColor: 'rgba(236, 72, 153, 0.4)',
             boxShadow: '0 4px 15px rgba(168, 85, 247, 0.4)',
           }}
-        >
-          <span>Claim Deal</span>
-          <ArrowRight size={14} />
-        </NavLink>
-
-        <a
-          href="https://t.me/skdev1?text=Hi%20Satya%2C%20I'd%20like%20to%20get%20Aniset%20for%20the%20Birthday%20Sale%20via%20UPI%20(%E2%82%B9100)%20or%20PayPal%20(%241.20)!%20%F0%9F%8E%82"
-          target="_blank"
-          rel="noreferrer"
-          className="btn btn-secondary"
-          style={{
-            padding: '0.5rem 0.85rem',
-            fontSize: '0.85rem',
-            gap: '0.35rem',
-            borderColor: 'rgba(168, 85, 247, 0.35)',
-            color: '#d8b4fe',
-          }}
           title="DM on Telegram"
         >
-          <Send size={13} />
+          <Send size={14} />
           <span>DM @skdev1</span>
         </a>
 
