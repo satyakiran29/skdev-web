@@ -78,7 +78,7 @@ export default function AppDetails() {
     },
     offers: {
       '@type': 'Offer',
-      price: app.id === 'anify' ? '0' : '1.68',
+      price: app.id === 'anify' ? '0' : (app.directPurchase?.globalPrice?.replace('$', '') || '1.20'),
       priceCurrency: 'USD',
       availability: 'https://schema.org/InStock',
     },
@@ -396,7 +396,8 @@ export default function AppDetails() {
       {/* ── Direct Purchase Section ── */}
       {app.directPurchase && (
         <div
-          className="glass-panel responsive-panel"
+          id="direct-purchase"
+          className={`glass-panel responsive-panel ${app.directPurchase.isSaleActive ? 'birthday-sale-pulse' : ''}`}
           style={{
             marginBottom: 'clamp(2.5rem, 6vw, 4rem)',
             display: 'flex',
@@ -405,31 +406,80 @@ export default function AppDetails() {
             textAlign: 'center',
             position: 'relative',
             overflow: 'hidden',
+            border: app.directPurchase.isSaleActive ? '1px solid rgba(168, 85, 247, 0.5)' : undefined,
+            background: app.directPurchase.isSaleActive
+              ? 'linear-gradient(135deg, rgba(26, 16, 48, 0.8) 0%, rgba(15, 23, 42, 0.85) 50%, rgba(45, 12, 54, 0.8) 100%)'
+              : undefined,
           }}
         >
-          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(90deg, transparent, var(--accent-primary), transparent)' }} />
+          <div
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              height: '4px',
+              background: app.directPurchase.isSaleActive
+                ? 'linear-gradient(90deg, transparent, #a855f7, #ec4899, transparent)'
+                : 'linear-gradient(90deg, transparent, var(--accent-primary), transparent)',
+            }}
+          />
+
+          {app.directPurchase.isSaleActive && (
+            <div
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.45rem',
+                padding: '0.35rem 0.95rem',
+                borderRadius: '9999px',
+                background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.25), rgba(236, 72, 153, 0.25))',
+                border: '1px solid rgba(168, 85, 247, 0.5)',
+                color: '#f0abfc',
+                fontSize: '0.85rem',
+                fontWeight: 700,
+                marginBottom: '1rem',
+                boxShadow: '0 0 15px rgba(168, 85, 247, 0.3)',
+              }}
+            >
+              🎂 Owner’s Birthday Sale — 29th Sept to 2nd Oct! 🎉
+            </div>
+          )}
 
           <div
             style={{
               width: '56px',
               height: '56px',
               borderRadius: '50%',
-              backgroundColor: 'rgba(56, 189, 248, 0.1)',
+              backgroundColor: app.directPurchase.isSaleActive ? 'rgba(168, 85, 247, 0.15)' : 'rgba(56, 189, 248, 0.1)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               marginBottom: '1.25rem',
-              border: '1px solid rgba(56, 189, 248, 0.25)',
+              border: app.directPurchase.isSaleActive ? '1px solid rgba(168, 85, 247, 0.4)' : '1px solid rgba(56, 189, 248, 0.25)',
+              fontSize: app.directPurchase.isSaleActive ? '1.75rem' : undefined,
             }}
           >
-            <Sparkles color="var(--accent-primary)" size={28} />
+            {app.directPurchase.isSaleActive ? (
+              '🎂'
+            ) : (
+              <Sparkles color="var(--accent-primary)" size={28} />
+            )}
           </div>
 
           <h2 style={{ fontSize: 'clamp(1.4rem, 4vw, 2rem)', marginBottom: '0.75rem', color: 'var(--text-primary)' }}>
-            Direct Purchase (Tax & Fee Removed)
+            {app.directPurchase.isSaleActive ? 'Birthday Special Direct Deal' : 'Direct Purchase (Tax & Fee Removed)'}
           </h2>
           <p style={{ fontSize: 'clamp(0.95rem, 3vw, 1.1rem)', color: 'var(--text-secondary)', maxWidth: '680px', lineHeight: 1.6, marginBottom: '2rem' }}>
-            To cut out Google Play Store fees, get an official <strong style={{ color: 'var(--text-primary)' }}>Play Store redeem code</strong> at a direct discount via UPI or PayPal.
+            {app.directPurchase.isSaleActive ? (
+              <>
+                It’s my birthday! 🥳 To celebrate, I’m bringing you a special deal on <strong style={{ color: '#d8b4fe' }}>Aniset</strong> 💜 — direct official <strong style={{ color: 'var(--text-primary)' }}>Play Store redeem codes</strong> with zero store commission.
+              </>
+            ) : (
+              <>
+                To cut out Google Play Store fees, get an official <strong style={{ color: 'var(--text-primary)' }}>Play Store redeem code</strong> at a direct discount via UPI or PayPal.
+              </>
+            )}
           </p>
 
           {/* Payment Action Cards */}
@@ -446,8 +496,8 @@ export default function AppDetails() {
             {/* India UPI Card */}
             <div
               style={{
-                backgroundColor: 'rgba(0, 0, 0, 0.25)',
-                border: '1px solid rgba(56, 189, 248, 0.3)',
+                backgroundColor: 'rgba(0, 0, 0, 0.35)',
+                border: '1px solid rgba(56, 189, 248, 0.35)',
                 borderRadius: '1.25rem',
                 padding: 'clamp(1.25rem, 3vw, 1.75rem)',
                 textAlign: 'center',
@@ -457,11 +507,23 @@ export default function AppDetails() {
               }}
             >
               <div>
-                <div style={{ display: 'inline-block', backgroundColor: 'rgba(56, 189, 248, 0.12)', color: 'var(--accent-primary)', padding: '0.2rem 0.65rem', borderRadius: '20px', fontSize: '0.75rem', fontWeight: 700, marginBottom: '0.6rem' }}>
-                  INDIA (UPI)
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', backgroundColor: 'rgba(56, 189, 248, 0.12)', color: 'var(--accent-primary)', padding: '0.2rem 0.65rem', borderRadius: '20px', fontSize: '0.75rem', fontWeight: 700, marginBottom: '0.6rem' }}>
+                  <span>INDIA (UPI)</span>
+                  {app.directPurchase.saleDiscount && (
+                    <span style={{ backgroundColor: '#a855f7', color: '#fff', padding: '0.1rem 0.45rem', borderRadius: '12px', fontSize: '0.65rem' }}>
+                      {app.directPurchase.saleDiscount}
+                    </span>
+                  )}
                 </div>
-                <div style={{ fontSize: 'clamp(1.85rem, 5vw, 2.25rem)', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '0.2rem' }}>
-                  {app.directPurchase.inPrice}
+                <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center', gap: '0.5rem', marginBottom: '0.2rem' }}>
+                  {app.directPurchase.originalInPrice && (
+                    <span style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', textDecoration: 'line-through', opacity: 0.6 }}>
+                      {app.directPurchase.originalInPrice}
+                    </span>
+                  )}
+                  <span style={{ fontSize: 'clamp(1.85rem, 5vw, 2.25rem)', fontWeight: 800, color: 'var(--text-primary)' }}>
+                    {app.directPurchase.inPrice}
+                  </span>
                 </div>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.825rem', marginBottom: '1.25rem' }}>
                   Google Pay, PhonePe, Paytm, BHIM
@@ -482,8 +544,8 @@ export default function AppDetails() {
             {/* Global PayPal Card */}
             <div
               style={{
-                backgroundColor: 'rgba(0, 0, 0, 0.25)',
-                border: '1px solid rgba(34, 197, 94, 0.3)',
+                backgroundColor: 'rgba(0, 0, 0, 0.35)',
+                border: '1px solid rgba(34, 197, 94, 0.35)',
                 borderRadius: '1.25rem',
                 padding: 'clamp(1.25rem, 3vw, 1.75rem)',
                 textAlign: 'center',
@@ -493,11 +555,23 @@ export default function AppDetails() {
               }}
             >
               <div>
-                <div style={{ display: 'inline-block', backgroundColor: 'rgba(34, 197, 94, 0.12)', color: '#22c55e', padding: '0.2rem 0.65rem', borderRadius: '20px', fontSize: '0.75rem', fontWeight: 700, marginBottom: '0.6rem' }}>
-                  GLOBAL (PAYPAL)
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', backgroundColor: 'rgba(34, 197, 94, 0.12)', color: '#22c55e', padding: '0.2rem 0.65rem', borderRadius: '20px', fontSize: '0.75rem', fontWeight: 700, marginBottom: '0.6rem' }}>
+                  <span>GLOBAL (PAYPAL)</span>
+                  {app.directPurchase.isSaleActive && (
+                    <span style={{ backgroundColor: '#22c55e', color: '#000', padding: '0.1rem 0.45rem', borderRadius: '12px', fontSize: '0.65rem', fontWeight: 800 }}>
+                      SPECIAL
+                    </span>
+                  )}
                 </div>
-                <div style={{ fontSize: 'clamp(1.85rem, 5vw, 2.25rem)', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '0.2rem' }}>
-                  {app.directPurchase.globalPrice}
+                <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center', gap: '0.5rem', marginBottom: '0.2rem' }}>
+                  {app.directPurchase.originalGlobalPrice && (
+                    <span style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', textDecoration: 'line-through', opacity: 0.6 }}>
+                      {app.directPurchase.originalGlobalPrice}
+                    </span>
+                  )}
+                  <span style={{ fontSize: 'clamp(1.85rem, 5vw, 2.25rem)', fontWeight: 800, color: 'var(--text-primary)' }}>
+                    {app.directPurchase.globalPrice}
+                  </span>
                 </div>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.825rem', marginBottom: '1.25rem' }}>
                   International Cards & PayPal Balance

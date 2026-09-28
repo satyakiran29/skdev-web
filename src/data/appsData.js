@@ -269,12 +269,17 @@ export const appsData = [
     playStoreLink: "https://play.google.com/store/apps/details?id=com.skdev.aniset",
     websiteLink: "https://aniset.psatyakiran.in",
     directPurchase: {
-      inPrice: "₹160",
-      globalPrice: "$1.68",
+      inPrice: "₹100",
+      originalInPrice: "₹160",
+      globalPrice: "$1.20",
+      originalGlobalPrice: "$1.68",
+      isSaleActive: true,
+      saleDiscount: "38% OFF",
+      saleTitle: "🎂 Birthday Special (29th Sept – 2nd Oct!)",
       telegramUser: "skdev1",
       telegramLink: "https://t.me/skdev1",
-      upiMessage: "Hi Satya, I'd like to purchase Aniset via UPI for ₹160. Please share the payment details and redeem code instructions.",
-      paypalMessage: "Hi Satya, I'd like to purchase Aniset via PayPal for $1.68. Please share the payment link and redeem code instructions."
+      upiMessage: "Hi Satya, I'd like to get Aniset for the Birthday Sale via UPI for ₹100! 🎂 Please share the payment details and redeem code instructions.",
+      paypalMessage: "Hi Satya, I'd like to get Aniset for the Birthday Sale via PayPal for $1.20! 🎂 Please share the payment link and redeem code instructions."
     },
     highlights: [
       "Anime-inspired KWGT & KLWP widget designs",

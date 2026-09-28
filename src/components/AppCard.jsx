@@ -77,6 +77,24 @@ export default function AppCard({ app }) {
                   <Smartphone size={10} /> {app.requiresAndroid}
                 </span>
               )}
+              {app.directPurchase?.isSaleActive && (
+                <span
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.25rem',
+                    fontSize: '0.7rem',
+                    fontWeight: 700,
+                    padding: '0.15rem 0.55rem',
+                    borderRadius: '9999px',
+                    background: 'linear-gradient(135deg, #a855f7, #ec4899)',
+                    color: '#fff',
+                    boxShadow: '0 0 12px rgba(168, 85, 247, 0.4)',
+                  }}
+                >
+                  🎂 Birthday Sale: {app.directPurchase.inPrice}
+                </span>
+              )}
             </div>
 
             {app.shortDesc && (

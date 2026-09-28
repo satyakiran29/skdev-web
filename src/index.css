@@ -638,3 +638,27 @@ p { color: var(--text-secondary); margin-bottom: 1rem; overflow-wrap: break-word
   animation: pulse-highlight 1.5s ease-in-out infinite;
   transition: all 0.3s ease;
 }
+
+@keyframes slideUpBanner {
+  0% {
+    opacity: 0;
+    transform: translateY(24px) scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.birthday-sale-pulse {
+  animation: birthdayPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes birthdayPulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(236, 72, 153, 0.45);
+  }
+}
