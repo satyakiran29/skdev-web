@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Send, X } from 'lucide-react';
 
-export default function BirthdaySaleBanner() {
+export default function SaleBanner() {
   const [isVisible, setIsVisible] = useState(() => {
     if (typeof window === 'undefined') return true;
     return !sessionStorage.getItem('skdev_birthday_sale_dismissed_2026');

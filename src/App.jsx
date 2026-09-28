@@ -16,7 +16,7 @@ import Freelance from './pages/Freelance';
 import UnderDevelopment from './pages/UnderDevelopment';
 
 import AnyaEasterEgg from './components/AnyaEasterEgg';
-import BirthdaySaleBanner from './components/BirthdaySaleBanner';
+import SaleBanner from './components/SaleBanner';
 
 // Set this to true to hide the entire production site behind the Under Development landing page
 const IS_UNDER_DEVELOPMENT = false;
@@ -63,7 +63,7 @@ function App() {
             <Route path="/donate" element={<Donate />} />
           </Routes>
         </main>
-        <BirthdaySaleBanner />
+        <SaleBanner />
         <Footer />
         {isEasterEggActive && <AnyaEasterEgg onClose={() => setIsEasterEggActive(false)} />}
       </ToastProvider>
