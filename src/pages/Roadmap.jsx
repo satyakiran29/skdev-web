@@ -20,6 +20,7 @@ import { useToast } from '../context/ToastContext';
 import skdevbanner from '../assets/skdev-banner.webp';
 import anifyIcon from '../assets/anify/anifyicon_new.webp';
 import anisetIcon from '../assets/Aniset_logo.webp';
+import milkyIcon from '../assets/milky/milky-icon.webp';
 
 export default function Roadmap() {
   const toast = useToast();
@@ -140,19 +141,22 @@ export default function Roadmap() {
     },
     {
       id: 4,
-      title: 'Home Launcher — Planning Stage',
-      targetApp: 'Home Launcher',
-      category: 'planning',
-      categoryLabel: '⏳ In Planning',
-      categoryColor: '#f59e0b',
-      priority: 'Planning Stage',
+      title: 'Milky Launcher — Google Play Launch',
+      targetApp: 'Milky Launcher',
+      category: 'in-progress',
+      categoryLabel: '🚀 Launching 19 Nov',
+      categoryColor: '#ec4899',
+      priority: 'Release Target: 19 November 2026',
       partner: {
-        name: '@KBOT09',
-        link: 'https://t.me/KBOT09'
+        name: 'Krishna Vishwakarma (@Spyou)',
+        link: 'https://github.com/Spyou'
       },
-      description: 'Android home launcher project in partnership with @KBOT09. Currently in the planning stage with release date unknown.',
-      eta: 'Planning Stage',
-      progress: 10,
+      app: 'Milky Launcher',
+      appIcon: milkyIcon,
+      appLink: '/apps/milky-launcher',
+      description: 'Android home screen launcher built natively with Jetpack Compose in co-development with Krishna Vishwakarma. Releasing on Google Play on 19 November 2026. Engineered with spring-based spatial motion physics tokens, adaptive circle icon masking, 4-tier instant smart search, modular desktop widgets, and 100% on-device privacy with zero internet permissions.',
+      eta: '19 November 2026',
+      progress: 95,
     },
   ];
 
@@ -258,7 +262,7 @@ export default function Roadmap() {
                 padding: '0.15rem 0.6rem',
                 borderRadius: '9999px'
               }}>
-                <Clock size={12} /> Updated: September 9, 2026 at 8:00 PM IST
+                <Clock size={12} /> Updated: October 18, 2026 at 5:43 PM IST
               </span>
             </div>
           </div>

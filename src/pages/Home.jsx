@@ -48,14 +48,14 @@ const ORG_JSONLD = {
 };
 
 export default function Home() {
-  const featuredApps = appsData.slice(0, 2);
+  const featuredApps = appsData.filter(app => app.id !== 'gwalls');
 
   return (
     <div className="container">
       <SEO
         title="Crafting Digital Experiences"
-        description="Explore Android personalization and productivity suites crafted by indie developer Satyakiran (SKDev) — including Anify, Aniset, and live developer roadmap."
-        keywords="skdev, satyakiran, anify, aniset, sticker studio, kwgt widgets, klwp live wallpapers, android 16, focus lock, blockit, android personalization, indie app developer"
+        description="Explore Android personalization and productivity suites crafted by indie developer Satyakiran (SKDev) — including Anify, Milky Launcher (releasing Nov 19), Aniset, and live developer roadmap."
+        keywords="skdev, satyakiran, milky launcher, jetpack compose, anify, aniset, sticker studio, kwgt widgets, klwp live wallpapers, android 16, focus lock, blockit, android personalization, indie app developer"
         canonical="/"
         image={skdevbanner}
         jsonLd={ORG_JSONLD}
@@ -253,13 +253,13 @@ export default function Home() {
           </NavLink>
         </div>
 
-        <div className="grid grid-cols-2">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(320px, 100%), 1fr))', gap: '1.75rem' }}>
           {featuredApps.map(app => (
             <AppCard key={app.id} app={app} />
           ))}
         </div>
 
-        {appsData.length > 2 && (
+        {appsData.length > featuredApps.length && (
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: '2.5rem' }}>
             <NavLink to="/apps" className="btn btn-secondary" style={{ padding: '0.75rem 2rem' }}>
               Show More Applications ({appsData.length})

@@ -71,6 +71,12 @@ const faqs = [
   },
   {
     category: 'Apps & Widgets',
+    question: 'What is Milky Launcher and when will it release?',
+    answer:
+      'Milky Launcher is an Android home screen launcher built natively with Jetpack Compose by Krishna Vishwakarma (@Spyou) and Satyakiran (skdevs). It features spring-based spatial motion physics tokens, adaptive circle icon masking, 4-tier instant smart search, and modular desktop widgets with 100% on-device privacy (zero internet permissions). It is scheduled to release on Google Play on 19 November 2026. You can explore the live website at https://mlweb-skdev29.vercel.app/ and follow early drops on Telegram: https://t.me/milkylc',
+  },
+  {
+    category: 'Apps & Widgets',
     question: 'Does Gwalls require an internet connection?',
     answer:
       'Yes, Gwalls loads wallpapers from a curated online collection, so an internet connection is required to browse and download. Once a wallpaper is set, it lives locally on your device.',

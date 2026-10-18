@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { ArrowRight, Smartphone, Star } from 'lucide-react';
+import { ArrowRight, Smartphone, Star, Clock } from 'lucide-react';
 
 export default function AppCard({ app }) {
   const avgRating = app.reviews && app.reviews.length > 0
@@ -77,6 +77,43 @@ export default function AppCard({ app }) {
                   <Smartphone size={10} /> {app.requiresAndroid}
                 </span>
               )}
+              {app.status === 'upcoming' && (
+                <span
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.25rem',
+                    fontSize: '0.7rem',
+                    fontWeight: 700,
+                    padding: '0.15rem 0.55rem',
+                    borderRadius: '9999px',
+                    backgroundColor: 'rgba(236, 72, 153, 0.15)',
+                    color: '#f472b6',
+                    border: '1px solid rgba(236, 72, 153, 0.3)',
+                    letterSpacing: '0.02em',
+                  }}
+                >
+                  <Clock size={10} /> Releasing {app.releaseDate || '19 November'}
+                </span>
+              )}
+              {app.id === 'gwalls' && (
+                <span
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.2rem',
+                    fontSize: '0.7rem',
+                    fontWeight: 600,
+                    padding: '0.15rem 0.5rem',
+                    borderRadius: '9999px',
+                    backgroundColor: 'rgba(148, 163, 184, 0.15)',
+                    color: 'var(--text-secondary)',
+                    border: '1px solid rgba(148, 163, 184, 0.25)',
+                  }}
+                >
+                  Discontinued
+                </span>
+              )}
             </div>
 
             {app.shortDesc && (
@@ -85,13 +122,18 @@ export default function AppCard({ app }) {
               </p>
             )}
 
-            {avgRating && (
+            {app.status === 'upcoming' ? (
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', marginTop: '0.35rem', color: '#f472b6', fontSize: '0.8rem', fontWeight: 600 }}>
+                <Clock size={12} />
+                <span>Play Store: {app.releaseDate || '19 November 2026'}</span>
+              </div>
+            ) : avgRating ? (
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', marginTop: '0.35rem', color: '#fbbf24', fontSize: '0.8rem' }}>
                 <Star size={13} fill="currentColor" />
                 <span style={{ fontWeight: 600, color: 'var(--text-primary)' }}>{avgRating}</span>
                 <span style={{ color: 'var(--text-secondary)' }}>({app.reviews.length})</span>
               </div>
-            )}
+            ) : null}
           </div>
         </div>
 

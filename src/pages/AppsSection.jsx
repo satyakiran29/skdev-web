@@ -10,7 +10,7 @@ export default function AppsSection() {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
     name: 'SKDev Android Applications & Personalization Tools',
-    description: 'Explore the full suite of Android apps by SKDev, featuring Anify (Free personalization & productivity suite) and Aniset (Anime KWGT & KLWP widgets).',
+    description: 'Explore the full suite of Android apps by SKDev, featuring Anify (Free personalization & productivity suite), Milky Launcher (Native Jetpack Compose launcher releasing Nov 19), and Aniset (Anime KWGT & KLWP widgets).',
     url: 'https://skdev.psatyakiran.in/apps',
     mainEntity: {
       '@type': 'ItemList',
@@ -28,8 +28,8 @@ export default function AppsSection() {
     <div className="container animate-fade-in" style={{ paddingTop: 'clamp(2rem, 5vw, 4rem)', paddingBottom: 'clamp(2rem, 5vw, 4rem)' }}>
       <SEO
         title="Android Apps & Widgets"
-        description="Browse all Android apps by SKDev — featuring Anify (Free personalization suite, Sticker Studio & widgets), Aniset (Anime KWGT & KLWP), and Gwalls."
-        keywords="android apps, anify, aniset, kwgt widgets, klwp live wallpapers, sticker studio, focus lock, android 16, personalization apps, indie android developer"
+        description="Browse all Android apps by SKDev — featuring Anify (Free personalization suite, Sticker Studio & widgets), Milky Launcher (Native Jetpack Compose launcher releasing 19 Nov), Aniset (Anime KWGT & KLWP), and Gwalls."
+        keywords="android apps, milky launcher, jetpack compose launcher, anify, aniset, kwgt widgets, klwp live wallpapers, sticker studio, focus lock, android 16, personalization apps, indie android developer"
         canonical="/apps"
         image={skdevbanner}
         jsonLd={collectionJsonLd}

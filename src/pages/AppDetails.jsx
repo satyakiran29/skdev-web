@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useParams, Navigate } from 'react-router-dom';
 import { appsData } from '../data/appsData';
-import { Download, Star, Quote, Globe, Clock, CheckCircle2, Ticket, Share2, MessageCircle, QrCode, X, Smartphone, Sparkles, Shield, Send, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react';
+import { Download, Star, Quote, Globe, Clock, CheckCircle2, Ticket, Share2, MessageCircle, QrCode, X, Smartphone, Sparkles, Shield, Send, ChevronLeft, ChevronRight, ZoomIn, Users, ExternalLink } from 'lucide-react';
 import QRCode from 'react-qr-code';
 
 const TwitterIcon = ({ size }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>;
@@ -16,6 +16,32 @@ export default function AppDetails() {
   const [activeScreenshotIndex, setActiveScreenshotIndex] = useState(null);
   const { id } = useParams();
   const app = appsData.find(a => a.id === id);
+
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+  useEffect(() => {
+    if (!app?.targetLaunchDate) return;
+    const target = new Date(app.targetLaunchDate).getTime();
+
+    const calculateTime = () => {
+      const now = new Date().getTime();
+      const diff = target - now;
+      if (diff <= 0) {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+        return;
+      }
+      setTimeLeft({
+        days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+        minutes: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
+        seconds: Math.floor((diff % (1000 * 60)) / 1000)
+      });
+    };
+
+    calculateTime();
+    const interval = setInterval(calculateTime, 1000);
+    return () => clearInterval(interval);
+  }, [app?.targetLaunchDate]);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -165,7 +191,11 @@ export default function AppDetails() {
               </h1>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap', marginTop: '0.4rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', color: '#fbbf24' }}>
-                  {avgRating !== null ? (
+                  {app.status === 'upcoming' ? (
+                    <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem', color: '#f472b6', fontWeight: 600, fontSize: '0.85rem' }}>
+                      <Clock size={14} /> Upcoming Launch
+                    </div>
+                  ) : avgRating !== null ? (
                     <>
                       <Star size={16} fill="currentColor" />
                       <span style={{ color: 'var(--text-primary)', fontWeight: 700, fontSize: '0.95rem' }}>{avgRating.toFixed(1)}</span>
@@ -193,6 +223,24 @@ export default function AppDetails() {
                     <Smartphone size={12} /> {app.requiresAndroid}
                   </span>
                 )}
+                {app.status === 'upcoming' && (
+                  <span
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '0.3rem',
+                      padding: '0.15rem 0.65rem',
+                      borderRadius: '9999px',
+                      backgroundColor: 'rgba(236, 72, 153, 0.15)',
+                      color: '#f472b6',
+                      fontSize: '0.75rem',
+                      fontWeight: 700,
+                      border: '1px solid rgba(236, 72, 153, 0.3)',
+                    }}
+                  >
+                    <Clock size={12} /> Play Store Target: {app.releaseDate || '19 November 2026'}
+                  </span>
+                )}
               </div>
             </div>
           </div>
@@ -204,44 +252,86 @@ export default function AppDetails() {
           {/* Action CTAs */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
-              {app.playStoreLink && app.playStoreLink.toLowerCase() !== "coming soon" ? (
-                <a
-                  href={app.playStoreLink}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn btn-primary mobile-w-full"
-                  style={{ padding: '0.85rem 1.65rem', fontSize: '1rem', flex: '1 1 200px' }}
-                >
-                  <Download size={18} /> Get on Google Play
-                </a>
+              {app.status === 'upcoming' ? (
+                <>
+                  {app.telegramLink && (
+                    <a
+                      href={app.telegramLink}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn btn-primary mobile-w-full"
+                      style={{ padding: '0.85rem 1.65rem', fontSize: '1rem', flex: '1 1 200px' }}
+                    >
+                      <Send size={18} /> Join Telegram Community
+                    </a>
+                  )}
+                  <div
+                    className="btn btn-secondary mobile-w-full"
+                    style={{
+                      padding: '0.85rem 1.65rem',
+                      fontSize: '1rem',
+                      flex: '1 1 180px',
+                      borderColor: 'rgba(236, 72, 153, 0.4)',
+                      color: '#f472b6',
+                      cursor: 'default',
+                    }}
+                  >
+                    <Clock size={18} /> Google Play: {app.releaseDate || '19 November'}
+                  </div>
+                  {app.githubLink && (
+                    <a
+                      href={app.githubLink}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn btn-secondary mobile-w-full"
+                      style={{ padding: '0.85rem 1.4rem', fontSize: '1rem', flex: '1 1 160px' }}
+                    >
+                      <Globe size={18} /> Web Preview
+                    </a>
+                  )}
+                </>
               ) : (
-                <button
-                  disabled
-                  className="btn btn-primary mobile-w-full"
-                  style={{ padding: '0.85rem 1.65rem', fontSize: '1rem', opacity: 0.7, cursor: 'not-allowed', flex: '1 1 200px' }}
-                >
-                  <Clock size={18} /> Coming Soon
-                </button>
-              )}
+                <>
+                  {app.playStoreLink && app.playStoreLink.toLowerCase() !== "coming soon" ? (
+                    <a
+                      href={app.playStoreLink}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn btn-primary mobile-w-full"
+                      style={{ padding: '0.85rem 1.65rem', fontSize: '1rem', flex: '1 1 200px' }}
+                    >
+                      <Download size={18} /> Get on Google Play
+                    </a>
+                  ) : (
+                    <button
+                      disabled
+                      className="btn btn-primary mobile-w-full"
+                      style={{ padding: '0.85rem 1.65rem', fontSize: '1rem', opacity: 0.7, cursor: 'not-allowed', flex: '1 1 200px' }}
+                    >
+                      <Clock size={18} /> Coming Soon
+                    </button>
+                  )}
 
-              {app.websiteLink && app.websiteLink.toLowerCase() !== "coming soon" ? (
-                <a
-                  href={app.websiteLink}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn btn-secondary mobile-w-full"
-                  style={{ padding: '0.85rem 1.65rem', fontSize: '1rem', flex: '1 1 180px' }}
-                >
-                  <Globe size={18} /> Visit Website
-                </a>
-              ) : (
-                <button
-                  disabled
-                  className="btn btn-secondary mobile-w-full"
-                  style={{ padding: '0.85rem 1.65rem', fontSize: '1rem', opacity: 0.7, cursor: 'not-allowed', flex: '1 1 180px' }}
-                >
-                  <Clock size={18} /> Website Soon
-                </button>
+                  {app.websiteLink && app.websiteLink.toLowerCase() !== "coming soon" ? (
+                    <a
+                      href={app.websiteLink}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn btn-secondary mobile-w-full"
+                      style={{ padding: '0.85rem 1.65rem', fontSize: '1rem', flex: '1 1 180px' }}
+                    >
+                      <Globe size={18} /> Visit Website
+                    </a>
+                  ) : (
+                    <button
+                      disabled
+                      className="btn btn-secondary mobile-w-full"
+                      style={{ padding: '0.85rem 1.65rem', fontSize: '1rem', opacity: 0.7, cursor: 'not-allowed', flex: '1 1 180px' }}
+                    >
+                      <Clock size={18} /> Website Soon
+                    </button>
+                  )}
+                </>
               )}
             </div>
 
@@ -318,6 +408,86 @@ export default function AppDetails() {
           </div>
         )}
       </div>
+
+      {/* ── Upcoming Launch Countdown Banner ── */}
+      {app.status === 'upcoming' && (
+        <div
+          className="glass-panel"
+          style={{
+            padding: 'clamp(1.5rem, 4vw, 2.25rem)',
+            marginBottom: 'clamp(2.5rem, 6vw, 4rem)',
+            border: '1px solid rgba(236, 72, 153, 0.35)',
+            background: 'radial-gradient(ellipse at top left, rgba(236, 72, 153, 0.12), transparent 70%), var(--glass-bg)',
+            position: 'relative',
+            overflow: 'hidden',
+          }}
+        >
+          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '3px', background: 'linear-gradient(90deg, #ec4899, #8b5cf6, #38bdf8)' }} />
+          
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1.5rem' }}>
+            <div style={{ flex: '1 1 320px', minWidth: 0 }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', padding: '0.25rem 0.75rem', borderRadius: '9999px', backgroundColor: 'rgba(236, 72, 153, 0.15)', border: '1px solid rgba(236, 72, 153, 0.3)', color: '#f472b6', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.75rem' }}>
+                <Clock size={13} /> Official Google Play Target: {app.releaseDate || '19 November 2026'}
+              </div>
+              <h2 style={{ fontSize: 'clamp(1.4rem, 4vw, 2rem)', margin: '0 0 0.5rem 0', color: 'var(--text-primary)' }}>
+                Releasing on Google Play Store
+              </h2>
+              <p style={{ color: 'var(--text-secondary)', margin: 0, fontSize: '0.95rem', lineHeight: 1.6 }}>
+                Follow active development, test early preview APK builds, and submit feature requests directly to Krishna & Satyakiran.
+              </p>
+            </div>
+
+            {/* Countdown Digits */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', backgroundColor: 'rgba(0, 0, 0, 0.35)', padding: '0.85rem 1.25rem', borderRadius: '1rem', border: '1px solid var(--border-color)' }}>
+              <div style={{ textAlign: 'center', minWidth: '48px' }}>
+                <span style={{ display: 'block', fontSize: '1.75rem', fontWeight: 800, color: 'var(--text-primary)', fontFamily: 'monospace', lineHeight: 1.1 }}>
+                  {String(timeLeft.days).padStart(2, '0')}
+                </span>
+                <span style={{ fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-secondary)' }}>Days</span>
+              </div>
+              <span style={{ fontSize: '1.4rem', fontWeight: 700, color: '#f472b6', marginBottom: '8px' }}>:</span>
+              <div style={{ textAlign: 'center', minWidth: '48px' }}>
+                <span style={{ display: 'block', fontSize: '1.75rem', fontWeight: 800, color: 'var(--text-primary)', fontFamily: 'monospace', lineHeight: 1.1 }}>
+                  {String(timeLeft.hours).padStart(2, '0')}
+                </span>
+                <span style={{ fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-secondary)' }}>Hours</span>
+              </div>
+              <span style={{ fontSize: '1.4rem', fontWeight: 700, color: '#f472b6', marginBottom: '8px' }}>:</span>
+              <div style={{ textAlign: 'center', minWidth: '48px' }}>
+                <span style={{ display: 'block', fontSize: '1.75rem', fontWeight: 800, color: 'var(--text-primary)', fontFamily: 'monospace', lineHeight: 1.1 }}>
+                  {String(timeLeft.minutes).padStart(2, '0')}
+                </span>
+                <span style={{ fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-secondary)' }}>Mins</span>
+              </div>
+              <span style={{ fontSize: '1.4rem', fontWeight: 700, color: '#f472b6', marginBottom: '8px' }}>:</span>
+              <div style={{ textAlign: 'center', minWidth: '48px' }}>
+                <span style={{ display: 'block', fontSize: '1.75rem', fontWeight: 800, color: 'var(--text-primary)', fontFamily: 'monospace', lineHeight: 1.1 }}>
+                  {String(timeLeft.seconds).padStart(2, '0')}
+                </span>
+                <span style={{ fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-secondary)' }}>Secs</span>
+              </div>
+            </div>
+          </div>
+
+          {app.telegramLink && (
+            <div style={{ marginTop: '1.25rem', paddingTop: '1.25rem', borderTop: '1px solid rgba(255, 255, 255, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
+                <CheckCircle2 size={16} color="#22c55e" />
+                <span>Zero Internet permissions. Zero telemetry. 100% on-device private.</span>
+              </div>
+              <a
+                href={app.telegramLink}
+                target="_blank"
+                rel="noreferrer"
+                className="btn btn-primary"
+                style={{ padding: '0.65rem 1.25rem', fontSize: '0.9rem' }}
+              >
+                <Send size={15} /> Join Official Telegram (t.me/milkylc)
+              </a>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* ── Key Highlights ── */}
       {app.highlights && app.highlights.length > 0 && (

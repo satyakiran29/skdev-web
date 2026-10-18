@@ -19,6 +19,12 @@ import anifyBanner from '../assets/app_bannners/anify.webp';
 // import gwallsIcon from '../assets/gwalls_icon.webp';
 import gwallsbg from '../assets/gwalls/gwallsbg.webp';
 
+// Milky Launcher images
+import milkyIcon from '../assets/milky/milky-icon.webp';
+import milkyScreenshot from '../assets/milky/home_screen.png';
+import milkyLogo from '../assets/milky/logo.svg';
+import milkyBanner from '../assets/app_bannners/milky.webp';
+
 
 export const appsData = [
   {
@@ -256,6 +262,140 @@ export const appsData = [
         }
       }
     ]
+  },
+  {
+    id: "milky-launcher",
+    name: "Milky Launcher (Upcoming)",
+    status: "upcoming",
+    releaseDate: "19 November 2026",
+    tagline: "Dark, quiet, and out of the way",
+    banner: milkyBanner,
+    previewBanner: milkyBanner,
+    screenshot: milkyBanner,
+    screenshots: [milkyScreenshot],
+    description: "Dark, quiet, and out of the way. Milky Launcher is an Android home screen launcher built natively with Jetpack Compose by Krishna Vishwakarma (@Spyou) & Satyakiran. Releasing on Google Play on 19 November 2026.",
+    shortDesc: "Native Jetpack Compose Android launcher releasing on Google Play on 19 November 2026.",
+    requiresAndroid: "Android 8.0+",
+    icon: milkyIcon,
+    logo: milkyLogo,
+    playStoreLink: "Coming Soon",
+    targetLaunchDate: "2026-11-19T00:00:00",
+    telegramLink: "https://t.me/milkylc",
+    websiteLink: "https://mlweb-skdev29.vercel.app/",
+    coDevelopers: [
+      {
+        name: "Krishna Vishwakarma",
+        handle: "@Spyou",
+        role: "Lead Android & Compose Architect",
+        bio: "Crafting native Jetpack Compose architectures, multi-tiered search algorithms, and spring-based spatial motion tokens.",
+        avatar: "https://github.com/Spyou.png",
+        github: "https://github.com/Spyou"
+      },
+      {
+        name: "Satyakiran",
+        handle: "skdevs",
+        role: "Design System & Core Contributor",
+        bio: "Building cosmic design tokens, Apple Glass acrylics, desktop widgets suite, and privacy-first systems at skdevs.",
+        avatar: "https://github.com/satyakiran29.png",
+        github: "https://github.com/satyakiran29",
+        website: "https://skdev.psatyakiran.in/"
+      }
+    ],
+    highlights: [
+      "🚀 Target Google Play Release: 19 November 2026",
+      "100% Native Jetpack Compose Architecture",
+      "Zero Internet & Tracking Permissions (100% Private)",
+      "Spring-Based Spatial Motion Physics Tokens",
+      "Adaptive Circle Icon Masking with Specular Rims",
+      "Multi-Tiered Smart Search (Prefix, Word Boundary, Initials & Substring)",
+      "Modular Native Widgets: Sun Tracker, Battery Bottle, Life Calendar & Music",
+      "Cosmic Void, Pure Black AMOLED & Apple Glass Acrylic Themes",
+      "On-Device Biometric Fingerprint & Pattern App Lock"
+    ],
+    features: [
+      {
+        icon: "⚡",
+        title: "Spring-Based Motion Tokens",
+        subtitle: "Spatial Physics with zero robotic linear transitions.",
+        points: [
+          "Spatial springs carry subtle physical bounce (damping 0.82, stiffness 420).",
+          "Opacity and color transitions are tuned to never overshoot.",
+          "Seamless fluid gestures that feel like a natural physical extension of your touch."
+        ]
+      },
+      {
+        icon: "🔍",
+        title: "Multi-Tiered Smart Search",
+        subtitle: "Instant ranking across 4 intelligent tiers with zero lag.",
+        points: [
+          "Exact Prefix → Word Boundary → Initials Matching ('gps' finds Google Play Store) → Substring.",
+          "Fuzzy matching with intelligent web search query fallback.",
+          "Keyboard immediately triggers without frame drops or jitter."
+        ]
+      },
+      {
+        icon: "🎨",
+        title: "Adaptive Circle Masking",
+        subtitle: "A uniform, calm visual system across all manufacturer icons.",
+        points: [
+          "Every app icon is dynamically masked into a clean, uniform circle.",
+          "Subtle specular rim lighting adds depth and premium clarity.",
+          "Supports standard appfilter.xml packs alongside native adaptive masking."
+        ]
+      },
+      {
+        icon: "⏱️",
+        title: "Modular Native Widget Engine",
+        subtitle: "Built-in desktop widgets without third-party battery overhead.",
+        points: [
+          "Astronomical Sun Tracker with real-time day/night curve.",
+          "Battery Bottle Spinner — a playful, interactive battery level gauge.",
+          "Life & Year Progress Calendars and Precision Digital/Analog Clocks.",
+          "Frosted Glass Music Controller with live playback controls."
+        ]
+      },
+      {
+        icon: "🔒",
+        title: "Zero Package Query Permissions & 100% Privacy",
+        subtitle: "Strictly offline with no internet permission required.",
+        points: [
+          "Zero telemetry, zero network tracking, and zero advertising SDKs.",
+          "Uses modern system LauncherApps framework instead of QUERY_ALL_PACKAGES.",
+          "Work profiles display cleanly with native badges and zero battery drain."
+        ]
+      },
+      {
+        icon: "🌌",
+        title: "Cosmic & Apple Glass Themes",
+        subtitle: "Tailor the atmosphere from deep space to frosted acrylics.",
+        points: [
+          "Cosmic Void & Pure Black AMOLED for maximum OLED battery savings.",
+          "Apple Glass translucent frosted acrylic aesthetics with real-time blur.",
+          "Dynamic Material You wallpaper color integration."
+        ]
+      },
+      {
+        icon: "📐",
+        title: "Expressive Grid & Layout Control",
+        subtitle: "Freely customize your canvas layout to your exact taste.",
+        points: [
+          "Columns configurable from 3 to 6; rows from 4 to 8.",
+          "Toggle text labels, dock shelf, and folder groupings.",
+          "Fluid drag-and-drop reordering with tactile haptic feedback."
+        ]
+      },
+      {
+        icon: "🛡️",
+        title: "Biometric & Pattern App Lock",
+        subtitle: "Protect sensitive apps with Android KeyStore security.",
+        points: [
+          "Secure banking, gallery, and private messaging apps behind fingerprint or PIN.",
+          "Discreet pattern lock with anti-peek shielding.",
+          "100% on-device cryptographic verification using Android BiometricPrompt."
+        ]
+      }
+    ],
+    reviews: []
   },
   {
     id: "aniset",
