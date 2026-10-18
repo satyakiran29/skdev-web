@@ -757,13 +757,148 @@ export default function AppDetails() {
         </div>
       )}
 
+      {/* ── Creators & Architects Section ── */}
+      {app.coDevelopers && app.coDevelopers.length > 0 && (
+        <div style={{ marginBottom: 'clamp(2.5rem, 6vw, 4rem)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', marginBottom: '1.25rem' }}>
+            <Users size={22} color="var(--accent-primary)" />
+            <h2 style={{ margin: 0, fontSize: 'clamp(1.35rem, 4vw, 1.85rem)' }}>Creators & Architects</h2>
+          </div>
+          <div className="grid grid-cols-2" style={{ gap: '1.25rem' }}>
+            {app.coDevelopers.map((dev, idx) => (
+              <div
+                key={idx}
+                className="glass-panel"
+                style={{
+                  padding: 'clamp(1.25rem, 3.5vw, 1.75rem)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '1rem',
+                  position: 'relative',
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                  <img
+                    src={dev.avatar}
+                    alt={dev.name}
+                    style={{
+                      width: '56px',
+                      height: '56px',
+                      borderRadius: '50%',
+                      border: '2px solid var(--accent-primary)',
+                      objectFit: 'cover',
+                      backgroundColor: 'var(--bg-secondary)',
+                    }}
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                    }}
+                  />
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <h3 style={{ margin: 0, fontSize: '1.15rem', color: 'var(--text-primary)', fontWeight: 700 }}>
+                      {dev.name}
+                    </h3>
+                    <div style={{ fontSize: '0.85rem', color: 'var(--accent-primary)', fontWeight: 600, marginTop: '2px' }}>
+                      {dev.role}
+                    </div>
+                    {dev.handle && (
+                      <div style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>
+                        {dev.handle}
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {dev.bio && (
+                  <p style={{ margin: 0, color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: 1.55 }}>
+                    {dev.bio}
+                  </p>
+                )}
+
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginTop: 'auto', paddingTop: '0.5rem' }}>
+                  {dev.github && (
+                    <a
+                      href={dev.github}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn btn-secondary mobile-w-full"
+                      style={{ padding: '0.5rem 1rem', fontSize: '0.85rem', justifyContent: 'center' }}
+                    >
+                      <Globe size={14} /> GitHub Profile
+                    </a>
+                  )}
+                  {dev.website && (
+                    <a
+                      href={dev.website}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn btn-secondary mobile-w-full"
+                      style={{ padding: '0.5rem 1rem', fontSize: '0.85rem', justifyContent: 'center' }}
+                    >
+                      <ExternalLink size={14} /> Website
+                    </a>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* ── Reviews & Ratings Section ── */}
       <div style={{ marginBottom: 'clamp(2.5rem, 6vw, 4rem)' }}>
         <h2 style={{ marginBottom: '1.5rem', fontSize: 'clamp(1.35rem, 4vw, 1.85rem)' }}>Ratings & Reviews</h2>
 
-        {/* Rating Breakdown Overview Card */}
-        <div
-          className="glass-panel responsive-panel"
+        {app.status === 'upcoming' ? (
+          <div
+            className="glass-panel responsive-panel"
+            style={{
+              padding: 'clamp(1.5rem, 4vw, 2.5rem)',
+              textAlign: 'center',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '1rem',
+            }}
+          >
+            <div
+              style={{
+                width: '54px',
+                height: '54px',
+                borderRadius: '50%',
+                backgroundColor: 'rgba(236, 72, 153, 0.12)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                border: '1px solid rgba(236, 72, 153, 0.3)',
+              }}
+            >
+              <Clock color="#f472b6" size={26} />
+            </div>
+            <div>
+              <h3 style={{ margin: '0 0 0.5rem 0', fontSize: '1.25rem', color: 'var(--text-primary)' }}>
+                Releasing on Google Play — {app.releaseDate || '19 November 2026'}
+              </h3>
+              <p style={{ margin: 0, color: 'var(--text-secondary)', fontSize: '0.95rem', maxWidth: '580px', lineHeight: 1.6 }}>
+                {app.name} is currently in final testing and polish. User ratings and reviews will open immediately upon public launch on Google Play.
+              </p>
+            </div>
+            {app.telegramLink && (
+              <a
+                href={app.telegramLink}
+                target="_blank"
+                rel="noreferrer"
+                className="btn btn-primary mobile-w-full"
+                style={{ marginTop: '0.5rem', padding: '0.75rem 1.4rem', justifyContent: 'center' }}
+              >
+                <Send size={16} /> Join Early Beta Discussion on Telegram
+              </a>
+            )}
+          </div>
+        ) : (
+          <>
+            {/* Rating Breakdown Overview Card */}
+            <div
+              className="glass-panel responsive-panel"
           style={{
             padding: 'clamp(1.25rem, 3.5vw, 2.5rem)',
             marginBottom: '2rem',
@@ -946,6 +1081,8 @@ export default function AppDetails() {
             <h3 style={{ color: 'var(--text-primary)', marginBottom: '0.4rem' }}>No reviews yet</h3>
             <p style={{ margin: 0, fontSize: '0.9rem' }}>Be the first to leave a review on Google Play after trying out the app!</p>
           </div>
+        )}
+          </>
         )}
       </div>
 
