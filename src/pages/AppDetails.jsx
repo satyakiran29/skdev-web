@@ -260,9 +260,20 @@ export default function AppDetails() {
                       target="_blank"
                       rel="noreferrer"
                       className="btn btn-primary mobile-w-full"
-                      style={{ padding: '0.85rem 1.65rem', fontSize: '1rem', flex: '1 1 200px' }}
+                      style={{ padding: '0.85rem 1.65rem', fontSize: '1rem', flex: '1 1 220px', justifyContent: 'center' }}
                     >
                       <Send size={18} /> Join Telegram Community
+                    </a>
+                  )}
+                  {app.websiteLink && (
+                    <a
+                      href={app.websiteLink}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn btn-secondary mobile-w-full"
+                      style={{ padding: '0.85rem 1.65rem', fontSize: '1rem', flex: '1 1 200px', justifyContent: 'center' }}
+                    >
+                      <Globe size={18} /> Visit Official Website
                     </a>
                   )}
                   <div
@@ -270,25 +281,15 @@ export default function AppDetails() {
                     style={{
                       padding: '0.85rem 1.65rem',
                       fontSize: '1rem',
-                      flex: '1 1 180px',
+                      flex: '1 1 200px',
                       borderColor: 'rgba(236, 72, 153, 0.4)',
                       color: '#f472b6',
                       cursor: 'default',
+                      justifyContent: 'center',
                     }}
                   >
                     <Clock size={18} /> Google Play: {app.releaseDate || '19 November'}
                   </div>
-                  {app.githubLink && (
-                    <a
-                      href={app.githubLink}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="btn btn-secondary mobile-w-full"
-                      style={{ padding: '0.85rem 1.4rem', fontSize: '1rem', flex: '1 1 160px' }}
-                    >
-                      <Globe size={18} /> Web Preview
-                    </a>
-                  )}
                 </>
               ) : (
                 <>
@@ -438,30 +439,30 @@ export default function AppDetails() {
             </div>
 
             {/* Countdown Digits */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', backgroundColor: 'rgba(0, 0, 0, 0.35)', padding: '0.85rem 1.25rem', borderRadius: '1rem', border: '1px solid var(--border-color)' }}>
-              <div style={{ textAlign: 'center', minWidth: '48px' }}>
-                <span style={{ display: 'block', fontSize: '1.75rem', fontWeight: 800, color: 'var(--text-primary)', fontFamily: 'monospace', lineHeight: 1.1 }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 'clamp(0.35rem, 2vw, 0.75rem)', backgroundColor: 'rgba(0, 0, 0, 0.4)', padding: '0.85rem clamp(0.75rem, 3vw, 1.25rem)', borderRadius: '1rem', border: '1px solid var(--border-color)', width: '100%', maxWidth: '420px' }}>
+              <div style={{ textAlign: 'center', minWidth: 'clamp(42px, 12vw, 54px)' }}>
+                <span style={{ display: 'block', fontSize: 'clamp(1.4rem, 5vw, 1.85rem)', fontWeight: 800, color: 'var(--text-primary)', fontFamily: 'monospace', lineHeight: 1.1 }}>
                   {String(timeLeft.days).padStart(2, '0')}
                 </span>
                 <span style={{ fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-secondary)' }}>Days</span>
               </div>
               <span style={{ fontSize: '1.4rem', fontWeight: 700, color: '#f472b6', marginBottom: '8px' }}>:</span>
-              <div style={{ textAlign: 'center', minWidth: '48px' }}>
-                <span style={{ display: 'block', fontSize: '1.75rem', fontWeight: 800, color: 'var(--text-primary)', fontFamily: 'monospace', lineHeight: 1.1 }}>
+              <div style={{ textAlign: 'center', minWidth: 'clamp(42px, 12vw, 54px)' }}>
+                <span style={{ display: 'block', fontSize: 'clamp(1.4rem, 5vw, 1.85rem)', fontWeight: 800, color: 'var(--text-primary)', fontFamily: 'monospace', lineHeight: 1.1 }}>
                   {String(timeLeft.hours).padStart(2, '0')}
                 </span>
                 <span style={{ fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-secondary)' }}>Hours</span>
               </div>
               <span style={{ fontSize: '1.4rem', fontWeight: 700, color: '#f472b6', marginBottom: '8px' }}>:</span>
-              <div style={{ textAlign: 'center', minWidth: '48px' }}>
-                <span style={{ display: 'block', fontSize: '1.75rem', fontWeight: 800, color: 'var(--text-primary)', fontFamily: 'monospace', lineHeight: 1.1 }}>
+              <div style={{ textAlign: 'center', minWidth: 'clamp(42px, 12vw, 54px)' }}>
+                <span style={{ display: 'block', fontSize: 'clamp(1.4rem, 5vw, 1.85rem)', fontWeight: 800, color: 'var(--text-primary)', fontFamily: 'monospace', lineHeight: 1.1 }}>
                   {String(timeLeft.minutes).padStart(2, '0')}
                 </span>
                 <span style={{ fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-secondary)' }}>Mins</span>
               </div>
               <span style={{ fontSize: '1.4rem', fontWeight: 700, color: '#f472b6', marginBottom: '8px' }}>:</span>
-              <div style={{ textAlign: 'center', minWidth: '48px' }}>
-                <span style={{ display: 'block', fontSize: '1.75rem', fontWeight: 800, color: 'var(--text-primary)', fontFamily: 'monospace', lineHeight: 1.1 }}>
+              <div style={{ textAlign: 'center', minWidth: 'clamp(42px, 12vw, 54px)' }}>
+                <span style={{ display: 'block', fontSize: 'clamp(1.4rem, 5vw, 1.85rem)', fontWeight: 800, color: 'var(--text-primary)', fontFamily: 'monospace', lineHeight: 1.1 }}>
                   {String(timeLeft.seconds).padStart(2, '0')}
                 </span>
                 <span style={{ fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-secondary)' }}>Secs</span>
@@ -471,16 +472,16 @@ export default function AppDetails() {
 
           {app.telegramLink && (
             <div style={{ marginTop: '1.25rem', paddingTop: '1.25rem', borderTop: '1px solid rgba(255, 255, 255, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
-                <CheckCircle2 size={16} color="#22c55e" />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', fontSize: '0.875rem' }}>
+                <CheckCircle2 size={16} color="#22c55e" style={{ flexShrink: 0 }} />
                 <span>Zero Internet permissions. Zero telemetry. 100% on-device private.</span>
               </div>
               <a
                 href={app.telegramLink}
                 target="_blank"
                 rel="noreferrer"
-                className="btn btn-primary"
-                style={{ padding: '0.65rem 1.25rem', fontSize: '0.9rem' }}
+                className="btn btn-primary mobile-w-full"
+                style={{ padding: '0.75rem 1.35rem', fontSize: '0.9rem', justifyContent: 'center' }}
               >
                 <Send size={15} /> Join Official Telegram (t.me/milkylc)
               </a>
