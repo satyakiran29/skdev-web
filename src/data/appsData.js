@@ -21,7 +21,7 @@ import gwallsbg from '../assets/gwalls/gwallsbg.webp';
 
 // Milky Launcher images
 import milkyIcon from '../assets/milky/milky-icon.webp';
-import milkyScreenshot from '../assets/milky/home_screen.png';
+import milkyScreenshot from '../assets/milky/home_screen.webp';
 import milkyLogo from '../assets/milky/logo.svg';
 import milkyBanner from '../assets/app_bannners/milky.webp';
 

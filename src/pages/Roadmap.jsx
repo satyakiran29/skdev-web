@@ -16,7 +16,8 @@ import {
   Lightbulb
 } from 'lucide-react';
 import SEO from '../components/SEO';
-import { useToast } from '../context/ToastContext';
+import ProgressPlayground from '../experience/ProgressPlayground';
+import { useToast } from '../context/useToast';
 import skdevbanner from '../assets/skdev-banner.webp';
 import anifyIcon from '../assets/anify/anifyicon_new.webp';
 import anisetIcon from '../assets/Aniset_logo.webp';
@@ -33,8 +34,8 @@ export default function Roadmap() {
       date: 'Early 2023',
       title: 'The Inception & Gwalls Wallpaper App',
       tag: 'Foundation',
-      tagColor: '#38bdf8',
-      icon: <Palette size={20} color="#38bdf8" />,
+      tagColor: 'var(--accent-primary)',
+      icon: <Palette size={20} color="var(--accent-primary)" />,
       description: 'Started the indie Android journey with Gwalls — a clean, ad-free wallpaper app focusing on high-resolution curated aesthetics and total user privacy. Set the foundation for mobile UI personalization.',
       status: 'Completed',
     },
@@ -43,8 +44,8 @@ export default function Roadmap() {
       date: 'December 2023',
       title: 'Launch of Aniset (Anime KWGT & KLWP Suite)',
       tag: 'Release',
-      tagColor: '#ec4899',
-      icon: <Sparkles size={20} color="#ec4899" />,
+      tagColor: 'var(--accent-primary)',
+      icon: <Palette size={20} color="var(--accent-primary)" />,
       app: 'Aniset',
       appIcon: anisetIcon,
       appLink: '/apps/aniset',
@@ -56,8 +57,8 @@ export default function Roadmap() {
       date: '2024',
       title: 'Aniset Major Updates & Community Growth',
       tag: 'Milestone',
-      tagColor: '#a855f7',
-      icon: <Layers size={20} color="#a855f7" />,
+      tagColor: 'var(--accent-secondary)',
+      icon: <Layers size={20} color="var(--accent-secondary)" />,
       app: 'Aniset',
       appIcon: anisetIcon,
       appLink: '/apps/aniset',
@@ -69,8 +70,8 @@ export default function Roadmap() {
       date: 'Mid 2025',
       title: 'Developing Anify: The Standalone Widget Revolution',
       tag: 'Innovation',
-      tagColor: '#22c55e',
-      icon: <Smartphone size={20} color="#22c55e" />,
+      tagColor: 'var(--accent-secondary)',
+      icon: <Smartphone size={20} color="var(--accent-secondary)" />,
       description: 'Recognized the barrier of requiring 3rd-party base apps (like KWGT Pro) for casual users. Began architecting Anify — a fully standalone, native widget suite requiring ZERO companion apps.',
       status: 'Completed',
     },
@@ -79,8 +80,8 @@ export default function Roadmap() {
       date: 'Early 2026',
       title: 'Anify Official Launch & Focus Lock Integration',
       tag: 'Flagship Release',
-      tagColor: '#e11d48',
-      icon: <Flame size={20} color="#e11d48" />,
+      tagColor: 'var(--accent-primary)',
+      icon: <Flame size={20} color="var(--accent-primary)" />,
       app: 'Anify',
       appIcon: anifyIcon,
       appLink: '/apps/anify',
@@ -92,8 +93,8 @@ export default function Roadmap() {
       date: 'August 2026',
       title: 'Anify v1.1.5: Sticker Studio & Android 16 (API 36)',
       tag: 'Latest Release',
-      tagColor: '#22c55e',
-      icon: <CheckCircle2 size={20} color="#22c55e" />,
+      tagColor: 'var(--accent-secondary)',
+      icon: <CheckCircle2 size={20} color="var(--accent-secondary)" />,
       app: 'Anify',
       appIcon: anifyIcon,
       appLink: '/apps/anify',
@@ -109,7 +110,7 @@ export default function Roadmap() {
       targetApp: 'Anify',
       category: 'in-progress',
       categoryLabel: '⚡ Under Development',
-      categoryColor: '#22c55e',
+      categoryColor: 'var(--accent-secondary)',
       priority: 'Active Development',
       description: 'Major upcoming upgrade introducing PC Remote (trackpad & media controls), Dual Screen extension mode, ultra-fast local File Transfer between PC and Android, and refined widget optimizations.',
       eta: 'Under Development',
@@ -121,7 +122,7 @@ export default function Roadmap() {
       targetApp: 'Aniset',
       category: 'in-progress',
       categoryLabel: '⚡ Active Development',
-      categoryColor: '#38bdf8',
+      categoryColor: 'var(--accent-primary)',
       priority: 'Active Sprint',
       description: 'A massive next-generation overhaul of the Aniset suite featuring brand-new anime KWGT presets, modernized KLWP dynamic live wallpaper setups, and expanded launcher compatibility.',
       eta: 'In Progress',
@@ -133,7 +134,7 @@ export default function Roadmap() {
       targetApp: 'Aniset Pro',
       category: 'planned',
       categoryLabel: '👑 After Aniset 2.0',
-      categoryColor: '#ec4899',
+      categoryColor: 'var(--accent-primary)',
       priority: 'Next Phase Flagship',
       description: 'The ultimate premium edition of Aniset launching immediately following the 2.0 release, packed with exclusive pro anime widgets, dynamic themes, and advanced customization modules.',
       eta: 'After Aniset 2.0',
@@ -145,7 +146,7 @@ export default function Roadmap() {
       targetApp: 'Milky Launcher',
       category: 'in-progress',
       categoryLabel: '🚀 Launching 19 Nov',
-      categoryColor: '#ec4899',
+      categoryColor: 'var(--accent-primary)',
       priority: 'Release Target: 19 November 2026',
       partner: {
         name: 'Krishna Vishwakarma (@Spyou)',
@@ -192,7 +193,7 @@ export default function Roadmap() {
   };
 
   return (
-    <div className="container animate-fade-in" style={{ paddingTop: 'clamp(1.5rem, 4vw, 3.5rem)', paddingBottom: 'clamp(1.5rem, 4vw, 3.5rem)' }}>
+    <div className="container animate-fade-in roadmap-page" style={{ paddingTop: 'clamp(1.5rem, 4vw, 3.5rem)', paddingBottom: 'clamp(1.5rem, 4vw, 3.5rem)' }}>
       <SEO
         title="Developer Journey & Public Roadmap"
         description="Explore the evolution of SKDev and track live development sprints for Anify 1.1.6 (PC Remote, Dual Screen, File Transfer), Aniset 2.0, Aniset Pro, and Home Launcher."
@@ -202,48 +203,14 @@ export default function Roadmap() {
         jsonLd={roadmapJsonLd}
       />
 
-      {/* ── Hero Section ── */}
-      <section style={{ textAlign: 'center', maxWidth: '850px', margin: '0 auto clamp(2.5rem, 6vw, 4rem) auto' }}>
-        <div style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: '0.4rem',
-          padding: '0.35rem 0.9rem',
-          borderRadius: '9999px',
-          backgroundColor: 'rgba(56, 189, 248, 0.1)',
-          border: '1px solid rgba(56, 189, 248, 0.25)',
-          color: 'var(--accent-primary)',
-          fontSize: '0.825rem',
-          fontWeight: 600,
-          marginBottom: '1.25rem',
-        }}>
-          <Compass size={15} /> Transparent Indie Development
-        </div>
-
-        <h1 style={{ fontSize: 'clamp(2rem, 6.5vw, 3.5rem)', marginBottom: '1.25rem', lineHeight: 1.15 }}>
-          Developer Journey & <br /><span className="text-gradient">Public Roadmap</span>
-        </h1>
-
-        <p style={{ fontSize: 'clamp(0.95rem, 3vw, 1.15rem)', color: 'var(--text-secondary)', lineHeight: 1.7, marginBottom: '2rem' }}>
-          From simple wallpaper experiments to crafting full-featured Android personalization tools — here is how it started, what’s happening right now, and what’s coming next.
-        </p>
-
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
-          <button onClick={handleSuggestFeature} className="btn btn-primary" style={{ padding: '0.8rem 1.65rem', flex: '1 1 180px', maxWidth: '240px' }}>
-            <Lightbulb size={17} /> Suggest a Feature
-          </button>
-          <a href="https://t.me/skdev29" target="_blank" rel="noreferrer" className="btn btn-secondary" style={{ padding: '0.8rem 1.65rem', flex: '1 1 180px', maxWidth: '240px' }}>
-            <Send size={17} /> Join Updates
-          </a>
-        </div>
-      </section>
+      <ProgressPlayground page items={roadmapItems.filter((item) => item.category === 'in-progress')} onSuggest={handleSuggestFeature} />
 
       {/* ── Section 1: The Public Roadmap ── */}
-      <section style={{ marginBottom: 'clamp(3rem, 7vw, 5rem)' }}>
+      <section data-reveal="true" style={{ marginBottom: 'clamp(3rem, 7vw, 5rem)' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', marginBottom: '1.75rem' }}>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.35rem' }}>
-              <Flame color="#f43f5e" size={22} />
+              <Flame color="var(--accent-primary)" size={22} />
               <h2 style={{ margin: 0, fontSize: 'clamp(1.4rem, 4.5vw, 2.25rem)' }}>What We're Building</h2>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap', marginTop: '0.35rem' }}>
@@ -257,8 +224,8 @@ export default function Roadmap() {
                 fontSize: '0.75rem',
                 fontWeight: 600,
                 color: 'var(--accent-primary)',
-                backgroundColor: 'rgba(56, 189, 248, 0.1)',
-                border: '1px solid rgba(56, 189, 248, 0.25)',
+                backgroundColor: 'rgba(var(--accent-rgb), 0.1)',
+                border: '1px solid rgba(var(--accent-rgb), 0.25)',
                 padding: '0.15rem 0.6rem',
                 borderRadius: '9999px'
               }}>
@@ -268,7 +235,7 @@ export default function Roadmap() {
           </div>
 
           {/* Filter Tabs (Horizontal scrollable pill container on mobile) */}
-          <div className="scroll-pills-container" style={{ backgroundColor: 'rgba(15, 23, 42, 0.7)', padding: '0.35rem', borderRadius: '1rem', border: '1px solid var(--border-color)', width: '100%', maxWidth: 'max-content' }}>
+          <div className="scroll-pills-container" style={{ backgroundColor: 'rgba(24, 19, 29, 0.7)', padding: '0.35rem', borderRadius: '1rem', border: '1px solid var(--border-color)', width: '100%', maxWidth: 'max-content' }}>
             {[
               { id: 'all', label: 'All Items' },
               { id: 'in-progress', label: '⚡ Active Sprints' },
@@ -277,6 +244,8 @@ export default function Roadmap() {
             ].map(tab => (
               <button
                 key={tab.id}
+                type="button"
+                aria-pressed={activeTab === tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 className="scroll-pill-item"
                 style={{
@@ -287,7 +256,7 @@ export default function Roadmap() {
                   fontWeight: 600,
                   cursor: 'pointer',
                   backgroundColor: activeTab === tab.id ? 'var(--accent-primary)' : 'transparent',
-                  color: activeTab === tab.id ? '#0f172a' : 'var(--text-secondary)',
+                  color: activeTab === tab.id ? '#ffffff' : 'var(--text-secondary)',
                   transition: 'all 0.2s ease',
                   whiteSpace: 'nowrap',
                 }}
@@ -324,9 +293,9 @@ export default function Roadmap() {
                     borderRadius: '9999px',
                     fontSize: '0.75rem',
                     fontWeight: 700,
-                    backgroundColor: `${item.categoryColor}20`,
+                    backgroundColor: `color-mix(in srgb, ${item.categoryColor} 12%, transparent)`,
                     color: item.categoryColor,
-                    border: `1px solid ${item.categoryColor}40`
+                    border: `1px solid color-mix(in srgb, ${item.categoryColor} 35%, transparent)`
                   }}>
                     {item.categoryLabel}
                   </span>
@@ -358,10 +327,10 @@ export default function Roadmap() {
                         display: 'inline-flex',
                         alignItems: 'center',
                         gap: '0.25rem',
-                        backgroundColor: 'rgba(56, 189, 248, 0.1)',
+                        backgroundColor: 'rgba(var(--accent-rgb), 0.1)',
                         padding: '0.15rem 0.6rem',
                         borderRadius: '9999px',
-                        border: '1px solid rgba(56, 189, 248, 0.25)',
+                        border: '1px solid rgba(var(--accent-rgb), 0.25)',
                       }}
                     >
                       <Send size={12} /> {item.partner.name}
@@ -399,7 +368,7 @@ export default function Roadmap() {
       </section>
 
       {/* ── Section 2: Interactive Developer Journey Timeline ── */}
-      <section style={{ marginBottom: 'clamp(3rem, 7vw, 5rem)' }}>
+      <section data-reveal="true" style={{ marginBottom: 'clamp(3rem, 7vw, 5rem)' }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', marginBottom: '2rem' }}>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.35rem' }}>
@@ -417,12 +386,14 @@ export default function Roadmap() {
               <button
                 key={year}
                 onClick={() => setSelectedYear(year)}
+                type="button"
+                aria-pressed={selectedYear === year}
                 className="scroll-pill-item"
                 style={{
                   padding: '0.4rem 1rem',
                   borderRadius: '9999px',
                   border: selectedYear === year ? '1px solid var(--accent-primary)' : '1px solid var(--border-color)',
-                  backgroundColor: selectedYear === year ? 'rgba(56, 189, 248, 0.15)' : 'rgba(15, 23, 42, 0.6)',
+                  backgroundColor: selectedYear === year ? 'rgba(var(--accent-rgb), 0.15)' : 'rgba(24, 19, 29, 0.6)',
                   color: selectedYear === year ? 'var(--accent-primary)' : 'var(--text-secondary)',
                   fontSize: '0.85rem',
                   fontWeight: 600,
@@ -451,7 +422,7 @@ export default function Roadmap() {
               }}
             >
               {/* Left Badge */}
-              <div style={{
+                    <div className="roadmap-progress-fill" style={{
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
@@ -463,7 +434,7 @@ export default function Roadmap() {
                   height: '42px',
                   borderRadius: '0.875rem',
                   backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                  border: `1px solid ${milestone.tagColor}40`,
+                  border: `1px solid color-mix(in srgb, ${milestone.tagColor} 35%, transparent)`,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -483,11 +454,11 @@ export default function Roadmap() {
                   <span style={{
                     padding: '0.15rem 0.55rem',
                     borderRadius: '2rem',
-                    backgroundColor: `${milestone.tagColor}15`,
+                    backgroundColor: `color-mix(in srgb, ${milestone.tagColor} 10%, transparent)`,
                     color: milestone.tagColor,
                     fontSize: '0.7rem',
                     fontWeight: 700,
-                    border: `1px solid ${milestone.tagColor}30`
+                    border: `1px solid color-mix(in srgb, ${milestone.tagColor} 30%, transparent)`
                   }}>
                     {milestone.tag}
                   </span>
@@ -516,8 +487,8 @@ export default function Roadmap() {
                       color: 'var(--accent-primary)',
                       padding: '0.3rem 0.75rem',
                       borderRadius: '0.5rem',
-                      backgroundColor: 'rgba(56, 189, 248, 0.08)',
-                      border: '1px solid rgba(56, 189, 248, 0.2)'
+                      backgroundColor: 'rgba(var(--accent-rgb), 0.08)',
+                      border: '1px solid rgba(var(--accent-rgb), 0.2)'
                     }}
                   >
                     {milestone.appIcon && (
@@ -540,8 +511,8 @@ export default function Roadmap() {
             textAlign: 'center',
             maxWidth: '800px',
             margin: '0 auto',
-            background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.7) 100%)',
-            border: '1px solid rgba(56, 189, 248, 0.3)',
+            background: 'linear-gradient(135deg, rgba(24, 19, 29, 0.9) 0%, rgba(43, 36, 51, 0.7) 100%)',
+            border: '1px solid rgba(var(--accent-rgb), 0.3)',
             boxShadow: '0 20px 40px rgba(0, 0, 0, 0.4)'
           }}
         >
@@ -549,8 +520,8 @@ export default function Roadmap() {
             width: '54px',
             height: '54px',
             borderRadius: '1.25rem',
-            backgroundColor: 'rgba(56, 189, 248, 0.1)',
-            border: '1px solid rgba(56, 189, 248, 0.3)',
+            backgroundColor: 'rgba(var(--accent-rgb), 0.1)',
+            border: '1px solid rgba(var(--accent-rgb), 0.3)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',

@@ -1,7 +1,6 @@
-import React, { createContext, useContext, useState, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import { CheckCircle2, AlertCircle, Info, X, Sparkles } from 'lucide-react';
-
-const ToastContext = createContext(null);
+import { ToastContext } from './toastContextBase';
 
 export function ToastProvider({ children }) {
   const [toasts, setToasts] = useState([]);
@@ -34,14 +33,14 @@ export function ToastProvider({ children }) {
   const getIcon = (type) => {
     switch (type) {
       case 'error':
-        return <AlertCircle size={20} color="#ef4444" />;
+        return <AlertCircle size={20} color="var(--accent-primary)" />;
       case 'info':
         return <Info size={20} color="var(--accent-primary)" />;
       case 'sparkle':
-        return <Sparkles size={20} color="#ec4899" />;
+        return <Sparkles size={20} color="var(--accent-primary)" />;
       case 'success':
       default:
-        return <CheckCircle2 size={20} color="#22c55e" />;
+        return <CheckCircle2 size={20} color="var(--accent-secondary)" />;
     }
   };
 
@@ -50,12 +49,12 @@ export function ToastProvider({ children }) {
       case 'error':
         return 'rgba(239, 68, 68, 0.4)';
       case 'info':
-        return 'rgba(56, 189, 248, 0.4)';
+        return 'rgba(var(--accent-rgb), 0.4)';
       case 'sparkle':
-        return 'rgba(236, 72, 153, 0.4)';
+        return 'rgba(var(--accent-rgb), 0.4)';
       case 'success':
       default:
-        return 'rgba(34, 197, 94, 0.4)';
+        return 'rgba(var(--secondary-rgb), 0.4)';
     }
   };
 
@@ -86,12 +85,10 @@ export function ToastProvider({ children }) {
             style={{
               pointerEvents: 'auto',
               width: '100%',
-              background: 'rgba(15, 23, 42, 0.88)',
-              backdropFilter: 'blur(16px)',
-              WebkitBackdropFilter: 'blur(16px)',
+              background: 'var(--bg-secondary)',
               border: `1px solid ${getBorderGlow(t.type)}`,
-              boxShadow: '0 12px 32px rgba(0, 0, 0, 0.5), 0 0 16px rgba(56, 189, 248, 0.15)',
-              borderRadius: '1rem',
+              boxShadow: '0 8px 24px rgba(36, 35, 31, 0.12)',
+              borderRadius: '5px',
               padding: '0.875rem 1.25rem',
               display: 'flex',
               alignItems: 'center',
@@ -129,12 +126,4 @@ export function ToastProvider({ children }) {
       </div>
     </ToastContext.Provider>
   );
-}
-
-export function useToast() {
-  const context = useContext(ToastContext);
-  if (!context) {
-    throw new Error('useToast must be used within a ToastProvider');
-  }
-  return context;
 }

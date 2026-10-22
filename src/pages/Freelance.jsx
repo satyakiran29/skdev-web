@@ -23,17 +23,18 @@ import {
   ChevronDown
 } from 'lucide-react';
 import SEO from '../components/SEO';
+import ContactExperience from '../experience/ContactExperience';
 import skdevbanner from '../assets/skdev-banner.webp';
-import { useToast } from '../context/ToastContext';
+import { useToast } from '../context/useToast';
 
-const GitHubIcon = ({ size = 14, color = '#38bdf8' }) => (
+const GitHubIcon = ({ size = 14, color = 'var(--accent-primary)' }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
     <path d="M9 18c-4.51 2-5-2-7-2" />
   </svg>
 );
 
-const LinkedInIcon = ({ size = 14, color = '#38bdf8' }) => (
+const LinkedInIcon = ({ size = 14, color = 'var(--accent-primary)' }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
     <rect x="2" y="9" width="4" height="12" />
@@ -538,7 +539,7 @@ export default function Freelance() {
     try {
       await navigator.clipboard.writeText(buildInquirySummary());
       toast.success('Inquiry details copied to clipboard!');
-    } catch (err) {
+    } catch {
       toast.error('Failed to copy to clipboard.');
     }
   };
@@ -549,7 +550,7 @@ export default function Freelance() {
   const currentWorkflow = WORKFLOW_STEPS[activeWorkflowIdx];
 
   return (
-    <div className="container animate-fade-in" style={{ paddingTop: 'clamp(1.5rem, 4vw, 3rem)', paddingBottom: 'clamp(2.5rem, 6vw, 4.5rem)' }}>
+    <div className="container animate-fade-in freelance-page" style={{ paddingTop: 'clamp(1.5rem, 4vw, 3rem)', paddingBottom: 'clamp(2.5rem, 6vw, 4.5rem)' }}>
       <SEO
         title="Hire Satyakiran | Freelance Full-Stack & Android Developer"
         description="Hire Satyakiran (SKDev) for high-performance full-stack web applications, native Android development, and modern UI/UX design. Published Play Store apps (Anify, Aniset) and fast turnaround. Request a quote."
@@ -559,211 +560,10 @@ export default function Freelance() {
         jsonLd={FREELANCE_JSONLD}
       />
 
-      {/* ================= HERO SECTION ================= */}
-      <section
-        style={{
-          textAlign: 'center',
-          maxWidth: '860px',
-          margin: '0 auto clamp(2rem, 5vw, 3.5rem) auto',
-        }}
-      >
-        {/* Availability Badge */}
-        <div
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '0.5rem',
-            padding: '0.35rem 0.85rem',
-            borderRadius: '9999px',
-            backgroundColor: 'rgba(52, 211, 153, 0.1)',
-            border: '1px solid rgba(52, 211, 153, 0.3)',
-            color: '#34d399',
-            fontSize: 'clamp(0.75rem, 2.5vw, 0.85rem)',
-            fontWeight: 600,
-            marginBottom: '1.25rem',
-            maxWidth: '100%',
-            lineHeight: 1.4,
-          }}
-        >
-          <span
-            style={{
-              width: '8px',
-              height: '8px',
-              borderRadius: '50%',
-              backgroundColor: '#34d399',
-              boxShadow: '0 0 10px #34d399',
-              display: 'inline-block',
-              flexShrink: 0,
-            }}
-          />
-          Available for New Projects & Contracts
-        </div>
-
-        <h1
-          style={{
-            marginBottom: '1.25rem',
-            fontSize: 'clamp(1.75rem, 6vw, 3.75rem)',
-            lineHeight: 1.18,
-            overflowWrap: 'break-word',
-            wordBreak: 'break-word',
-          }}
-        >
-          Transforming Ideas into <span className="text-gradient">High-Performance</span> <br className="mobile-hidden" />
-          Web & Mobile Apps
-        </h1>
-
-        <p
-          style={{
-            fontSize: 'clamp(0.925rem, 2.75vw, 1.15rem)',
-            lineHeight: 1.7,
-            color: 'var(--text-secondary)',
-            marginBottom: '2rem',
-            maxWidth: '720px',
-            margin: '0 auto 2rem auto',
-            padding: '0 0.5rem',
-          }}
-        >
-          Need a modern React web app, a native Android application, or a sleek UI/UX design?
-          I craft scalable, fast, and visually stunning digital products that delight users and drive results.
-        </p>
-
-        {/* Hero Actions */}
-        <div className="hero-actions-container">
-          <a
-            href="#inquiry"
-            className="btn btn-primary"
-            style={{
-              padding: '0.85rem 1.85rem',
-              fontSize: '1rem',
-              fontWeight: 700,
-              boxShadow: '0 4px 20px rgba(56, 189, 248, 0.3)',
-            }}
-          >
-            <Send size={18} /> Start a Project
-          </a>
-
-          <a
-            href="#proven-apps"
-            className="btn btn-secondary"
-            style={{
-              padding: '0.85rem 1.75rem',
-              fontSize: '1rem',
-            }}
-          >
-            Real-World Apps <ArrowRight size={18} />
-          </a>
-
-          <a
-            href="#services"
-            className="btn btn-secondary"
-            style={{
-              padding: '0.85rem 1.5rem',
-              fontSize: '0.95rem',
-              color: '#38bdf8',
-            }}
-          >
-            Explore Services
-          </a>
-        </div>
-
-        {/* Value Highlights Pill Grid */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 140px), 1fr))',
-            gap: '0.5rem',
-            width: '100%',
-            maxWidth: '780px',
-            margin: '0 auto 2rem auto',
-          }}
-        >
-          {[
-            '⚡ Fast Turnaround & Sprints',
-            '🎯 100% Direct Communication',
-            '🚀 Full Lifecycle (Design to Launch)',
-            '📱 Proven Play Store Apps',
-          ].map((pill, idx) => (
-            <div
-              key={idx}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                textAlign: 'center',
-                gap: '0.4rem',
-                padding: '0.55rem 0.75rem',
-                borderRadius: '0.75rem',
-                backgroundColor: 'rgba(15, 23, 42, 0.65)',
-                border: '1px solid var(--border-color)',
-                fontSize: 'clamp(0.75rem, 2.2vw, 0.8rem)',
-                color: 'var(--text-secondary)',
-                fontWeight: 500,
-                lineHeight: 1.3,
-              }}
-            >
-              {pill}
-            </div>
-          ))}
-        </div>
-
-        {/* Quick Section Navigation Bar */}
-        <div
-          className="scroll-pills-container"
-          style={{
-            justifyContent: 'center',
-            maxWidth: '840px',
-            margin: '0 auto',
-            borderTop: '1px solid rgba(255, 255, 255, 0.06)',
-            paddingTop: '1.25rem',
-          }}
-        >
-          <a
-            href="#services"
-            className="scroll-pill-item interactive-tab-btn"
-            style={{ width: 'auto', padding: '0.45rem 0.85rem', fontSize: '0.8rem', borderRadius: '9999px', minHeight: '36px' }}
-          >
-            <Zap size={13} color="#38bdf8" /> Capabilities
-          </a>
-          <a
-            href="#proven-apps"
-            className="scroll-pill-item interactive-tab-btn"
-            style={{ width: 'auto', padding: '0.45rem 0.85rem', fontSize: '0.8rem', borderRadius: '9999px', minHeight: '36px' }}
-          >
-            <Sparkles size={13} color="#38bdf8" /> Apps
-          </a>
-          <a
-            href="#workflow"
-            className="scroll-pill-item interactive-tab-btn"
-            style={{ width: 'auto', padding: '0.45rem 0.85rem', fontSize: '0.8rem', borderRadius: '9999px', minHeight: '36px' }}
-          >
-            <Layers size={13} color="#38bdf8" /> Process
-          </a>
-          <a
-            href="#packages"
-            className="scroll-pill-item interactive-tab-btn"
-            style={{ width: 'auto', padding: '0.45rem 0.85rem', fontSize: '0.8rem', borderRadius: '9999px', minHeight: '36px' }}
-          >
-            <Award size={13} color="#38bdf8" /> Packages
-          </a>
-          <a
-            href="#inquiry"
-            className="scroll-pill-item interactive-tab-btn"
-            style={{ width: 'auto', padding: '0.45rem 0.85rem', fontSize: '0.8rem', borderRadius: '9999px', minHeight: '36px' }}
-          >
-            <Send size={13} color="#38bdf8" /> Inquiry
-          </a>
-          <a
-            href="#faq"
-            className="scroll-pill-item interactive-tab-btn"
-            style={{ width: 'auto', padding: '0.45rem 0.85rem', fontSize: '0.8rem', borderRadius: '9999px', minHeight: '36px' }}
-          >
-            <HelpCircle size={13} color="#38bdf8" /> FAQ
-          </a>
-        </div>
-      </section>
+      <ContactExperience page />
 
       {/* ================= 1. INTERACTIVE SERVICES / CAPABILITIES SECTION ================= */}
-      <section id="services" style={{ marginBottom: 'clamp(3.5rem, 7vw, 5.5rem)' }}>
+      <section id="services" data-reveal="true" style={{ marginBottom: 'clamp(3.5rem, 7vw, 5.5rem)' }}>
         <div style={{ textAlign: 'center', marginBottom: '1.75rem' }}>
           <div
             style={{
@@ -815,7 +615,7 @@ export default function Freelance() {
             margin: '0 auto',
             padding: 'clamp(1.25rem, 4vw, 2.25rem)',
             borderRadius: '1.5rem',
-            border: '1px solid rgba(56, 189, 248, 0.35)',
+            border: '1px solid rgba(var(--accent-rgb), 0.35)',
             boxShadow: '0 10px 30px rgba(0, 0, 0, 0.35)',
           }}
         >
@@ -825,13 +625,13 @@ export default function Freelance() {
                 width: '54px',
                 height: '54px',
                 borderRadius: '1rem',
-                backgroundColor: 'rgba(56, 189, 248, 0.15)',
+                backgroundColor: 'rgba(var(--accent-rgb), 0.15)',
                 color: 'var(--accent-primary)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 flexShrink: 0,
-                border: '1px solid rgba(56, 189, 248, 0.3)',
+                border: '1px solid rgba(var(--accent-rgb), 0.3)',
               }}
             >
               {currentService.icon}
@@ -850,7 +650,7 @@ export default function Freelance() {
           </div>
 
           {/* Key Deliverables */}
-          <div style={{ marginBottom: '1.5rem', backgroundColor: 'rgba(2, 6, 23, 0.4)', padding: '1.15rem', borderRadius: '1rem', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
+          <div style={{ marginBottom: '1.5rem', backgroundColor: 'rgba(16, 13, 19, 0.4)', padding: '1.15rem', borderRadius: '1rem', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
             <span
               style={{
                 fontSize: '0.8rem',
@@ -866,8 +666,8 @@ export default function Freelance() {
             </span>
             <ul style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '0.6rem' }}>
               {currentService.deliverables.map((item, dIdx) => (
-                <li key={dIdx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.55rem', fontSize: '0.875rem', color: '#e2e8f0' }}>
-                  <Check size={16} color="#38bdf8" style={{ marginTop: '2px', flexShrink: 0 }} />
+                <li key={dIdx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.55rem', fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
+                  <Check size={16} color="var(--accent-primary)" style={{ marginTop: '2px', flexShrink: 0 }} />
                   <span>{item}</span>
                 </li>
               ))}
@@ -918,7 +718,7 @@ export default function Freelance() {
       </section>
 
       {/* ================= 2. INTERACTIVE PROVEN PRODUCTION APPS ================= */}
-      <section id="proven-apps" style={{ marginBottom: 'clamp(3.5rem, 7vw, 5.5rem)' }}>
+      <section id="proven-apps" data-reveal="true" style={{ marginBottom: 'clamp(3.5rem, 7vw, 5.5rem)' }}>
         <div style={{ textAlign: 'center', marginBottom: '1.75rem' }}>
           <div
             style={{
@@ -969,7 +769,7 @@ export default function Freelance() {
             margin: '0 auto 2rem auto',
             padding: 'clamp(1.25rem, 4vw, 2.25rem)',
             borderRadius: '1.5rem',
-            border: '1px solid rgba(56, 189, 248, 0.35)',
+            border: '1px solid rgba(var(--accent-rgb), 0.35)',
             boxShadow: '0 10px 30px rgba(0, 0, 0, 0.35)',
           }}
         >
@@ -994,8 +794,8 @@ export default function Freelance() {
               style={{
                 padding: '0.35rem 0.85rem',
                 borderRadius: '9999px',
-                backgroundColor: 'rgba(56, 189, 248, 0.12)',
-                border: '1px solid rgba(56, 189, 248, 0.3)',
+                backgroundColor: 'rgba(var(--accent-rgb), 0.12)',
+                border: '1px solid rgba(var(--accent-rgb), 0.3)',
                 color: 'var(--accent-primary)',
                 fontSize: '0.75rem',
                 fontWeight: 600,
@@ -1010,7 +810,7 @@ export default function Freelance() {
           </p>
 
           {/* Highlights */}
-          <div style={{ marginBottom: '1.5rem', backgroundColor: 'rgba(2, 6, 23, 0.4)', padding: '1.15rem', borderRadius: '1rem', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
+          <div style={{ marginBottom: '1.5rem', backgroundColor: 'rgba(16, 13, 19, 0.4)', padding: '1.15rem', borderRadius: '1rem', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
             <span
               style={{
                 fontSize: '0.8rem',
@@ -1026,8 +826,8 @@ export default function Freelance() {
             </span>
             <ul style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '0.6rem' }}>
               {currentApp.highlights.map((feat, fIdx) => (
-                <li key={fIdx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.55rem', fontSize: '0.875rem', color: '#e2e8f0' }}>
-                  <CheckCircle size={16} color="#38bdf8" style={{ marginTop: '2px', flexShrink: 0 }} />
+                <li key={fIdx} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.55rem', fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
+                  <CheckCircle size={16} color="var(--accent-primary)" style={{ marginTop: '2px', flexShrink: 0 }} />
                   <span>{feat}</span>
                 </li>
               ))}
@@ -1095,8 +895,8 @@ export default function Freelance() {
             justifyContent: 'space-between',
             flexWrap: 'wrap',
             gap: '1.25rem',
-            border: '1px solid rgba(56, 189, 248, 0.25)',
-            backgroundColor: 'rgba(15, 23, 42, 0.7)',
+            border: '1px solid rgba(var(--accent-rgb), 0.25)',
+            backgroundColor: 'rgba(24, 19, 29, 0.7)',
           }}
         >
           <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
@@ -1105,7 +905,7 @@ export default function Freelance() {
                 width: '48px',
                 height: '48px',
                 borderRadius: '50%',
-                backgroundColor: 'rgba(56, 189, 248, 0.12)',
+                backgroundColor: 'rgba(var(--accent-rgb), 0.12)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -1135,7 +935,7 @@ export default function Freelance() {
       </section>
 
       {/* ================= 3. WHY WORK WITH ME & WORKFLOW ================= */}
-      <section id="workflow" style={{ marginBottom: 'clamp(3.5rem, 7vw, 5.5rem)' }}>
+      <section id="workflow" data-reveal="true" style={{ marginBottom: 'clamp(3.5rem, 7vw, 5.5rem)' }}>
         <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
           <div
             style={{
@@ -1176,28 +976,28 @@ export default function Freelance() {
               desc: 'Work directly with the engineer building your product—no middlemen or miscommunications.',
               icon: <MessageSquare size={20} />,
               color: 'var(--accent-primary)',
-              bg: 'rgba(56, 189, 248, 0.1)',
+              bg: 'rgba(var(--accent-rgb), 0.1)',
             },
             {
               title: 'Clean, Scalable Code',
               desc: 'Production-ready code with modular architecture, strict linting, and maintainable patterns.',
               icon: <Code size={20} />,
-              color: '#34d399',
-              bg: 'rgba(52, 211, 153, 0.1)',
+              color: 'var(--accent-secondary)',
+              bg: 'rgba(var(--secondary-rgb), 0.1)',
             },
             {
               title: 'End-to-End Ownership',
               desc: 'From initial Figma wireframes to cloud hosting and Google Play approval—I handle it all.',
               icon: <Layers size={20} />,
-              color: '#a78bfa',
+              color: 'var(--accent-secondary)',
               bg: 'rgba(167, 139, 250, 0.1)',
             },
             {
               title: 'Reliable Timelines',
               desc: 'Milestone-based delivery with weekly demos so you always know the exact development status.',
               icon: <Clock size={20} />,
-              color: '#f472b6',
-              bg: 'rgba(244, 114, 182, 0.1)',
+              color: 'var(--accent-primary)',
+              bg: 'rgba(var(--accent-rgb), 0.1)',
             },
           ].map((item, idx) => (
             <div
@@ -1274,7 +1074,7 @@ export default function Freelance() {
             margin: '0 auto',
             padding: 'clamp(1.25rem, 4vw, 2rem)',
             borderRadius: '1.25rem',
-            border: '1px solid rgba(56, 189, 248, 0.35)',
+            border: '1px solid rgba(var(--accent-rgb), 0.35)',
             position: 'relative',
             overflow: 'hidden',
           }}
@@ -1284,7 +1084,7 @@ export default function Freelance() {
               style={{
                 fontSize: 'clamp(2.5rem, 6vw, 3.5rem)',
                 fontWeight: 900,
-                color: 'rgba(56, 189, 248, 0.25)',
+                color: 'rgba(var(--accent-rgb), 0.25)',
                 lineHeight: 1,
                 fontFamily: 'monospace',
               }}
@@ -1302,14 +1102,14 @@ export default function Freelance() {
                 {currentWorkflow.desc}
               </p>
 
-              <div style={{ backgroundColor: 'rgba(2, 6, 23, 0.4)', padding: '0.85rem 1.15rem', borderRadius: '0.75rem', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
+              <div style={{ backgroundColor: 'rgba(16, 13, 19, 0.4)', padding: '0.85rem 1.15rem', borderRadius: '0.75rem', border: '1px solid rgba(255, 255, 255, 0.05)' }}>
                 <span style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--text-primary)', letterSpacing: '0.05em', display: 'block', marginBottom: '0.5rem' }}>
                   Phase Outputs:
                 </span>
                 <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
                   {currentWorkflow.outputs.map((out, oIdx) => (
-                    <li key={oIdx} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.825rem', color: '#cbd5e1' }}>
-                      <CheckCircle size={14} color="#38bdf8" />
+                    <li key={oIdx} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.825rem', color: 'var(--text-secondary)' }}>
+                      <CheckCircle size={14} color="var(--accent-primary)" />
                       <span>{out}</span>
                     </li>
                   ))}
@@ -1321,7 +1121,7 @@ export default function Freelance() {
       </section>
 
       {/* ================= 4. INTERACTIVE PACKAGES / PRICING SECTION ================= */}
-      <section id="packages" style={{ marginBottom: 'clamp(3.5rem, 7vw, 5.5rem)' }}>
+      <section id="packages" data-reveal="true" style={{ marginBottom: 'clamp(3.5rem, 7vw, 5.5rem)' }}>
         <div style={{ textAlign: 'center', marginBottom: '1.75rem' }}>
           <div
             style={{
@@ -1365,7 +1165,7 @@ export default function Freelance() {
                       fontSize: '0.65rem',
                       fontWeight: 800,
                       backgroundColor: 'var(--accent-primary)',
-                      color: '#020617',
+                      color: 'var(--text-primary)',
                       padding: '0.15rem 0.45rem',
                       borderRadius: '9999px',
                       textTransform: 'uppercase',
@@ -1389,8 +1189,8 @@ export default function Freelance() {
             margin: '0 auto',
             padding: 'clamp(1.35rem, 4vw, 2.5rem)',
             borderRadius: '1.5rem',
-            border: currentPackage.featured ? '1.5px solid var(--accent-primary)' : '1px solid rgba(56, 189, 248, 0.35)',
-            backgroundColor: currentPackage.featured ? 'rgba(56, 189, 248, 0.05)' : 'var(--glass-bg)',
+            border: currentPackage.featured ? '1.5px solid var(--accent-primary)' : '1px solid rgba(var(--accent-rgb), 0.35)',
+            backgroundColor: currentPackage.featured ? 'rgba(var(--accent-rgb), 0.05)' : 'var(--glass-bg)',
             boxShadow: '0 10px 30px rgba(0, 0, 0, 0.35)',
             position: 'relative',
           }}
@@ -1408,8 +1208,8 @@ export default function Freelance() {
               style={{
                 padding: '0.35rem 0.85rem',
                 borderRadius: '9999px',
-                backgroundColor: 'rgba(56, 189, 248, 0.12)',
-                border: '1px solid rgba(56, 189, 248, 0.3)',
+                backgroundColor: 'rgba(var(--accent-rgb), 0.12)',
+                border: '1px solid rgba(var(--accent-rgb), 0.3)',
                 color: 'var(--accent-primary)',
                 fontSize: '0.8rem',
                 fontWeight: 600,
@@ -1424,14 +1224,14 @@ export default function Freelance() {
           </p>
 
           {/* Features Checklist */}
-          <div style={{ backgroundColor: 'rgba(2, 6, 23, 0.4)', padding: '1.25rem', borderRadius: '1rem', border: '1px solid rgba(255, 255, 255, 0.05)', marginBottom: '1.75rem' }}>
+          <div style={{ backgroundColor: 'rgba(16, 13, 19, 0.4)', padding: '1.25rem', borderRadius: '1rem', border: '1px solid rgba(255, 255, 255, 0.05)', marginBottom: '1.75rem' }}>
             <span style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--text-primary)', textTransform: 'uppercase', letterSpacing: '0.05em', display: 'block', marginBottom: '0.75rem' }}>
               What's Included in {currentPackage.name}:
             </span>
             <ul style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '0.65rem' }}>
               {currentPackage.features.map((feat, fIdx) => (
-                <li key={fIdx} style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', fontSize: '0.875rem', color: '#e2e8f0' }}>
-                  <CheckCircle size={16} color="#38bdf8" style={{ flexShrink: 0 }} />
+                <li key={fIdx} style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', fontSize: '0.875rem', color: 'var(--text-secondary)' }}>
+                  <CheckCircle size={16} color="var(--accent-primary)" style={{ flexShrink: 0 }} />
                   <span>{feat}</span>
                 </li>
               ))}
@@ -1456,7 +1256,7 @@ export default function Freelance() {
       </section>
 
       {/* ================= 5. INTERACTIVE INQUIRY FORM ================= */}
-      <section id="inquiry" style={{ marginBottom: 'clamp(3.5rem, 7vw, 5.5rem)' }}>
+      <section id="inquiry" data-reveal="true" style={{ marginBottom: 'clamp(3.5rem, 7vw, 5.5rem)' }}>
         <div style={{ textAlign: 'center', marginBottom: '1.75rem' }}>
           <div
             style={{
@@ -1509,9 +1309,9 @@ export default function Freelance() {
                         borderRadius: '0.65rem',
                         fontSize: 'clamp(0.775rem, 2.5vw, 0.85rem)',
                         fontWeight: isSelected ? 700 : 500,
-                        backgroundColor: isSelected ? 'rgba(56, 189, 248, 0.15)' : 'rgba(255, 255, 255, 0.04)',
-                        border: isSelected ? '1px solid #38bdf8' : '1px solid var(--border-color)',
-                        color: isSelected ? '#38bdf8' : 'var(--text-secondary)',
+                        backgroundColor: isSelected ? 'rgba(var(--accent-rgb), 0.15)' : 'rgba(255, 255, 255, 0.04)',
+                        border: isSelected ? '1px solid var(--accent-primary)' : '1px solid var(--border-color)',
+                        color: isSelected ? 'var(--accent-primary)' : 'var(--text-secondary)',
                         cursor: 'pointer',
                         transition: 'all 0.15s ease',
                         textAlign: 'center',
@@ -1546,9 +1346,9 @@ export default function Freelance() {
                         borderRadius: '0.65rem',
                         fontSize: 'clamp(0.775rem, 2.5vw, 0.85rem)',
                         fontWeight: isSelected ? 700 : 500,
-                        backgroundColor: isSelected ? 'rgba(56, 189, 248, 0.15)' : 'rgba(255, 255, 255, 0.04)',
-                        border: isSelected ? '1px solid #38bdf8' : '1px solid var(--border-color)',
-                        color: isSelected ? '#38bdf8' : 'var(--text-secondary)',
+                        backgroundColor: isSelected ? 'rgba(var(--accent-rgb), 0.15)' : 'rgba(255, 255, 255, 0.04)',
+                        border: isSelected ? '1px solid var(--accent-primary)' : '1px solid var(--border-color)',
+                        color: isSelected ? 'var(--accent-primary)' : 'var(--text-secondary)',
                         cursor: 'pointer',
                         transition: 'all 0.15s ease',
                         textAlign: 'center',
@@ -1583,9 +1383,9 @@ export default function Freelance() {
                         borderRadius: '0.65rem',
                         fontSize: 'clamp(0.775rem, 2.5vw, 0.85rem)',
                         fontWeight: isSelected ? 700 : 500,
-                        backgroundColor: isSelected ? 'rgba(56, 189, 248, 0.15)' : 'rgba(255, 255, 255, 0.04)',
-                        border: isSelected ? '1px solid #38bdf8' : '1px solid var(--border-color)',
-                        color: isSelected ? '#38bdf8' : 'var(--text-secondary)',
+                        backgroundColor: isSelected ? 'rgba(var(--accent-rgb), 0.15)' : 'rgba(255, 255, 255, 0.04)',
+                        border: isSelected ? '1px solid var(--accent-primary)' : '1px solid var(--border-color)',
+                        color: isSelected ? 'var(--accent-primary)' : 'var(--text-secondary)',
                         cursor: 'pointer',
                         transition: 'all 0.15s ease',
                         textAlign: 'center',
@@ -1609,6 +1409,9 @@ export default function Freelance() {
                   Your Name
                 </label>
                 <input
+                  id="inquiry-name"
+                  aria-label="Your Name"
+                  autoComplete="name"
                   type="text"
                   placeholder="e.g. Alex"
                   value={clientName}
@@ -1617,7 +1420,7 @@ export default function Freelance() {
                     width: '100%',
                     padding: '0.75rem 1rem',
                     borderRadius: '0.65rem',
-                    backgroundColor: 'rgba(2, 6, 23, 0.6)',
+                    backgroundColor: 'rgba(16, 13, 19, 0.6)',
                     border: '1px solid var(--border-color)',
                     color: 'var(--text-primary)',
                     outline: 'none',
@@ -1630,6 +1433,8 @@ export default function Freelance() {
                   Email or Telegram Handle
                 </label>
                 <input
+                  id="inquiry-contact"
+                  aria-label="Email or Telegram Handle"
                   type="text"
                   placeholder="e.g. alex@company.com or @alex_tg"
                   value={clientContact}
@@ -1638,7 +1443,7 @@ export default function Freelance() {
                     width: '100%',
                     padding: '0.75rem 1rem',
                     borderRadius: '0.65rem',
-                    backgroundColor: 'rgba(2, 6, 23, 0.6)',
+                    backgroundColor: 'rgba(16, 13, 19, 0.6)',
                     border: '1px solid var(--border-color)',
                     color: 'var(--text-primary)',
                     outline: 'none',
@@ -1653,6 +1458,8 @@ export default function Freelance() {
                 Project Overview & Requirements
               </label>
               <textarea
+                id="inquiry-details"
+                aria-label="Project Overview & Requirements"
                 rows={4}
                 placeholder="Describe your project, goals, key features, or link to references/designs..."
                 value={projectDetails}
@@ -1661,7 +1468,7 @@ export default function Freelance() {
                   width: '100%',
                   padding: '0.75rem 1rem',
                   borderRadius: '0.65rem',
-                  backgroundColor: 'rgba(2, 6, 23, 0.6)',
+                  backgroundColor: 'rgba(16, 13, 19, 0.6)',
                   border: '1px solid var(--border-color)',
                   color: 'var(--text-primary)',
                   outline: 'none',
@@ -1691,8 +1498,8 @@ export default function Freelance() {
                   fontSize: '0.925rem',
                   fontWeight: 700,
                   gap: '0.5rem',
-                  backgroundColor: '#0284c7',
-                  borderColor: '#38bdf8',
+                  backgroundColor: 'var(--accent-primary)',
+                  borderColor: 'var(--accent-primary)',
                 }}
               >
                 <Send size={16} /> Send via Telegram
@@ -1754,7 +1561,7 @@ export default function Freelance() {
                   color: 'var(--text-secondary)',
                 }}
               >
-                <Send size={13} color="#38bdf8" /> Telegram: @skdev29
+                <Send size={13} color="var(--accent-primary)" /> Telegram: @skdev29
               </a>
 
               <a
@@ -1771,7 +1578,7 @@ export default function Freelance() {
                   color: 'var(--text-secondary)',
                 }}
               >
-                <Mail size={13} color="#38bdf8" /> satyakiran296@gmail.com
+                <Mail size={13} color="var(--accent-primary)" /> satyakiran296@gmail.com
               </a>
 
               <a
@@ -1790,7 +1597,7 @@ export default function Freelance() {
                   color: 'var(--text-secondary)',
                 }}
               >
-                <LinkedInIcon size={13} color="#38bdf8" /> LinkedIn
+                <LinkedInIcon size={13} color="var(--accent-primary)" /> LinkedIn
               </a>
 
               <a
@@ -1809,7 +1616,7 @@ export default function Freelance() {
                   color: 'var(--text-secondary)',
                 }}
               >
-                <GitHubIcon size={13} color="#38bdf8" /> GitHub
+                <GitHubIcon size={13} color="var(--accent-primary)" /> GitHub
               </a>
             </div>
           </form>
@@ -1817,7 +1624,7 @@ export default function Freelance() {
       </section>
 
       {/* ================= 6. FREELANCE FAQ ACCORDION ================= */}
-      <section id="faq" style={{ maxWidth: '820px', margin: '0 auto clamp(2rem, 5vw, 4rem) auto' }}>
+      <section id="faq" data-reveal="true" style={{ maxWidth: '820px', margin: '0 auto clamp(2rem, 5vw, 4rem) auto' }}>
         <div style={{ textAlign: 'center', marginBottom: '1.75rem' }}>
           <div
             style={{
@@ -1854,8 +1661,8 @@ export default function Freelance() {
                   borderRadius: '1rem',
                   overflow: 'hidden',
                   cursor: 'pointer',
-                  border: isOpen ? '1px solid rgba(56, 189, 248, 0.4)' : '1px solid var(--border-color)',
-                  background: isOpen ? 'rgba(15, 23, 42, 0.9)' : 'var(--glass-bg)',
+                  border: isOpen ? '1px solid rgba(var(--accent-rgb), 0.4)' : '1px solid var(--border-color)',
+                  background: isOpen ? 'rgba(24, 19, 29, 0.9)' : 'var(--glass-bg)',
                   transition: 'border-color 0.25s ease, background 0.25s ease',
                 }}
               >
@@ -1891,7 +1698,7 @@ export default function Freelance() {
                       borderRadius: '50%',
                       background: isOpen ? 'var(--accent-primary)' : 'var(--bg-secondary)',
                       border: '1px solid var(--border-color)',
-                      color: isOpen ? '#0f172a' : 'var(--text-secondary)',
+                      color: isOpen ? 'var(--text-primary)' : 'var(--text-secondary)',
                       transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
                       transition: 'transform 0.3s ease, background 0.25s ease, color 0.25s ease',
                       flexShrink: 0,

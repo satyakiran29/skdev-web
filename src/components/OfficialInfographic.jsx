@@ -27,7 +27,7 @@ export default function OfficialInfographic() {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          borderTop: '3px solid #ef4444'
+          borderTop: '3px solid var(--accent-primary)'
         }}>
           {/* Subtle Red background glow */}
           <div style={{
@@ -51,20 +51,20 @@ export default function OfficialInfographic() {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: '#ef4444',
+                color: 'var(--accent-primary)',
                 flexShrink: 0,
               }}>
                 <ShieldAlert size={22} />
               </div>
               <div>
                 <h3 style={{ fontSize: '1.15rem', color: 'var(--text-primary)', margin: 0 }}>Modded APKs & Leaks</h3>
-                <span style={{ fontSize: '0.75rem', color: '#f87171', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>The Risks</span>
+                <span style={{ fontSize: '0.75rem', color: 'var(--accent-primary)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>The Risks</span>
               </div>
             </div>
 
             <ul style={{ display: 'flex', flexDirection: 'column', gap: '1.15rem', padding: 0 }}>
               <li style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
-                <AlertTriangle size={17} color="#f87171" style={{ flexShrink: 0, marginTop: '3px' }} />
+                <AlertTriangle size={17} color="var(--accent-primary)" style={{ flexShrink: 0, marginTop: '3px' }} />
                 <div>
                   <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '0.2rem', fontSize: '0.925rem' }}>Malware & Hidden Trackers</strong>
                   <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
@@ -74,7 +74,7 @@ export default function OfficialInfographic() {
               </li>
 
               <li style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
-                <Ban size={17} color="#f87171" style={{ flexShrink: 0, marginTop: '3px' }} />
+                <Ban size={17} color="var(--accent-primary)" style={{ flexShrink: 0, marginTop: '3px' }} />
                 <div>
                   <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '0.2rem', fontSize: '0.925rem' }}>No Automatic Updates</strong>
                   <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
@@ -84,7 +84,7 @@ export default function OfficialInfographic() {
               </li>
 
               <li style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
-                <ShieldAlert size={17} color="#f87171" style={{ flexShrink: 0, marginTop: '3px' }} />
+                <ShieldAlert size={17} color="var(--accent-primary)" style={{ flexShrink: 0, marginTop: '3px' }} />
                 <div>
                   <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '0.2rem', fontSize: '0.925rem' }}>Security Sandbox Breaches</strong>
                   <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
@@ -105,8 +105,8 @@ export default function OfficialInfographic() {
             gap: '0.6rem',
             alignItems: 'flex-start'
           }}>
-            <Info size={15} color="#ef4444" style={{ flexShrink: 0, marginTop: '2px' }} />
-            <span style={{ fontSize: '0.8rem', color: '#f87171', lineHeight: 1.4 }}>
+            <Info size={15} color="var(--accent-primary)" style={{ flexShrink: 0, marginTop: '2px' }} />
+            <span style={{ fontSize: '0.8rem', color: 'var(--accent-primary)', lineHeight: 1.4 }}>
               Modding takes away resources needed to build, maintain, and pay for backend wallpaper and widget servers.
             </span>
           </div>
@@ -120,7 +120,7 @@ export default function OfficialInfographic() {
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          borderTop: '3px solid #22c55e'
+          borderTop: '3px solid var(--accent-secondary)'
         }}>
           {/* Subtle Green background glow */}
           <div style={{
@@ -129,7 +129,7 @@ export default function OfficialInfographic() {
             right: '-50px',
             width: '150px',
             height: '150px',
-            background: 'radial-gradient(circle, rgba(34, 197, 94, 0.15) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(var(--secondary-rgb), 0.15) 0%, transparent 70%)',
             pointerEvents: 'none'
           }} />
 
@@ -139,25 +139,25 @@ export default function OfficialInfographic() {
                 width: '44px',
                 height: '44px',
                 borderRadius: '12px',
-                backgroundColor: 'rgba(34, 197, 94, 0.1)',
-                border: '1px solid rgba(34, 197, 94, 0.2)',
+                backgroundColor: 'rgba(var(--secondary-rgb), 0.1)',
+                border: '1px solid rgba(var(--secondary-rgb), 0.2)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: '#22c55e',
+                color: 'var(--accent-secondary)',
                 flexShrink: 0,
               }}>
                 <ShieldCheck size={22} />
               </div>
               <div>
                 <h3 style={{ fontSize: '1.15rem', color: 'var(--text-primary)', margin: 0 }}>Official Play Store Release</h3>
-                <span style={{ fontSize: '0.75rem', color: '#4ade80', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>The Benefits</span>
+                <span style={{ fontSize: '0.75rem', color: 'var(--accent-secondary)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>The Benefits</span>
               </div>
             </div>
 
             <ul style={{ display: 'flex', flexDirection: 'column', gap: '1.15rem', padding: 0 }}>
               <li style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
-                <ShieldCheck size={17} color="#4ade80" style={{ flexShrink: 0, marginTop: '3px' }} />
+                <ShieldCheck size={17} color="var(--accent-secondary)" style={{ flexShrink: 0, marginTop: '3px' }} />
                 <div>
                   <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '0.2rem', fontSize: '0.925rem' }}>100% Secure & Play-Protected</strong>
                   <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
@@ -167,7 +167,7 @@ export default function OfficialInfographic() {
               </li>
 
               <li style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
-                <RefreshCw size={17} color="#4ade80" style={{ flexShrink: 0, marginTop: '3px' }} />
+                <RefreshCw size={17} color="var(--accent-secondary)" style={{ flexShrink: 0, marginTop: '3px' }} />
                 <div>
                   <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '0.2rem', fontSize: '0.925rem' }}>Automatic Cloud Updates</strong>
                   <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
@@ -177,7 +177,7 @@ export default function OfficialInfographic() {
               </li>
 
               <li style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
-                <Heart size={17} color="#4ade80" style={{ flexShrink: 0, marginTop: '3px' }} />
+                <Heart size={17} color="var(--accent-secondary)" style={{ flexShrink: 0, marginTop: '3px' }} />
                 <div>
                   <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '0.2rem', fontSize: '0.925rem' }}>Direct Support & Indie Fuel</strong>
                   <p style={{ margin: 0, fontSize: '0.875rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
@@ -192,14 +192,14 @@ export default function OfficialInfographic() {
             marginTop: '2rem',
             padding: '0.875rem',
             borderRadius: '12px',
-            backgroundColor: 'rgba(34, 197, 94, 0.05)',
-            border: '1px solid rgba(34, 197, 94, 0.1)',
+            backgroundColor: 'rgba(var(--secondary-rgb), 0.05)',
+            border: '1px solid rgba(var(--secondary-rgb), 0.1)',
             display: 'flex',
             gap: '0.6rem',
             alignItems: 'flex-start'
           }}>
-            <Sparkles size={15} color="#22c55e" style={{ flexShrink: 0, marginTop: '2px' }} />
-            <span style={{ fontSize: '0.8rem', color: '#4ade80', lineHeight: 1.4 }}>
+            <Sparkles size={15} color="var(--accent-secondary)" style={{ flexShrink: 0, marginTop: '2px' }} />
+            <span style={{ fontSize: '0.8rem', color: 'var(--accent-secondary)', lineHeight: 1.4 }}>
               Tip: Direct purchase is available if you want to bypass Play Store fees at a discount!
             </span>
           </div>

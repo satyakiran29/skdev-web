@@ -3,7 +3,7 @@ import { Heart, Coffee, CreditCard, Copy, CheckCircle2, QrCode, Smartphone, Exte
 import QRCode from 'react-qr-code';
 import SEO from '../components/SEO';
 import skdevbanner from '../assets/skdev-banner.webp';
-import { useToast } from '../context/ToastContext';
+import { useToast } from '../context/useToast';
 
 export default function Donate() {
   const toast = useToast();
@@ -34,9 +34,9 @@ export default function Donate() {
       />
 
       {/* Hero Header */}
-      <div style={{ textAlign: 'center', marginBottom: 'clamp(2.5rem, 6vw, 4rem)' }}>
-        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem', color: '#ec4899' }}>
-          <Heart size={48} fill="currentColor" style={{ filter: 'drop-shadow(0 0 12px rgba(236,72,153,0.4))' }} />
+      <div className="editorial-intro" style={{ textAlign: 'center', marginBottom: 'clamp(2.5rem, 6vw, 4rem)' }}>
+        <div style={{ display: 'flex', justifyContent: 'flex-start', marginBottom: '1rem', color: 'var(--accent-primary)' }}>
+          <Heart size={48} fill="currentColor" style={{ filter: 'drop-shadow(0 0 12px rgba(var(--accent-rgb), 0.4))' }} />
         </div>
         <h1 style={{ marginBottom: '1rem', fontSize: 'clamp(2rem, 6.5vw, 3.25rem)' }}>
           Support My <span className="text-gradient">Work</span>
@@ -67,7 +67,7 @@ export default function Donate() {
             }}
           >
             <div>
-              <div style={{ width: '56px', height: '56px', backgroundColor: 'rgba(56, 189, 248, 0.1)', borderRadius: '50%', marginBottom: '1.25rem', color: 'var(--accent-primary)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ width: '56px', height: '56px', backgroundColor: 'rgba(var(--accent-rgb), 0.1)', borderRadius: '50%', marginBottom: '1.25rem', color: 'var(--accent-primary)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Coffee size={28} />
               </div>
               <h3 style={{ fontSize: 'clamp(1.25rem, 3.5vw, 1.5rem)', marginBottom: '0.5rem', fontWeight: 700 }}>
@@ -98,8 +98,8 @@ export default function Donate() {
                     viewBox={`0 0 256 256`}
                   />
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', marginTop: '0.6rem', fontSize: '0.65rem', fontWeight: 800, color: '#0f172a', letterSpacing: '0.05em' }}>
-                  <QrCode size={12} color="#0284c7" /> SCAN WITH ANY UPI APP
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', marginTop: '0.6rem', fontSize: '0.65rem', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '0.05em' }}>
+                  <QrCode size={12} color="var(--accent-primary)" /> SCAN WITH ANY UPI APP
                 </div>
               </div>
             </div>
@@ -155,7 +155,7 @@ export default function Donate() {
             }}
           >
             <div>
-              <div style={{ width: '56px', height: '56px', backgroundColor: 'rgba(139, 92, 246, 0.1)', borderRadius: '50%', marginBottom: '1.25rem', color: '#8b5cf6', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ width: '56px', height: '56px', backgroundColor: 'rgba(var(--secondary-rgb), 0.1)', borderRadius: '50%', marginBottom: '1.25rem', color: 'var(--accent-secondary)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
                 <CreditCard size={28} />
               </div>
               <h3 style={{ fontSize: 'clamp(1.25rem, 3.5vw, 1.5rem)', marginBottom: '0.5rem', fontWeight: 700 }}>
@@ -186,8 +186,8 @@ export default function Donate() {
                     viewBox={`0 0 256 256`}
                   />
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', marginTop: '0.6rem', fontSize: '0.65rem', fontWeight: 800, color: '#0f172a', letterSpacing: '0.05em' }}>
-                  <QrCode size={12} color="#8b5cf6" /> SCAN TO PAY VIA PAYPAL
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', marginTop: '0.6rem', fontSize: '0.65rem', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '0.05em' }}>
+                  <QrCode size={12} color="var(--accent-secondary)" /> SCAN TO PAY VIA PAYPAL
                 </div>
               </div>
             </div>
@@ -202,8 +202,8 @@ export default function Donate() {
                   width: '100%',
                   padding: '0.85rem 1.25rem',
                   fontSize: '0.95rem',
-                  background: 'linear-gradient(135deg, #003087 0%, #009cde 100%)',
-                  boxShadow: '0 4px 14px rgba(0, 48, 135, 0.35)',
+                  background: 'var(--accent-primary)',
+                  boxShadow: 'none',
                   gap: '0.45rem',
                 }}
               >

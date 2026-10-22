@@ -140,7 +140,7 @@ export default function FAQ() {
     const parts = text.split(new RegExp(`(${query})`, 'gi'));
     return parts.map((part, i) =>
       part.toLowerCase() === query.toLowerCase() ? (
-        <span key={i} style={{ backgroundColor: 'rgba(56, 189, 248, 0.3)', color: 'var(--accent-primary)', borderRadius: '2px', padding: '0 2px', fontWeight: 600 }}>{part}</span>
+        <span key={i} style={{ backgroundColor: 'rgba(var(--accent-rgb), 0.3)', color: 'var(--accent-primary)', borderRadius: '2px', padding: '0 2px', fontWeight: 600 }}>{part}</span>
       ) : (
         part
       )
@@ -171,11 +171,11 @@ export default function FAQ() {
       />
 
       {/* ── Hero ── */}
-      <div style={{ textAlign: 'center', marginBottom: 'clamp(2rem, 5vw, 3rem)' }}>
+      <div className="editorial-intro faq-intro" style={{ textAlign: 'center', marginBottom: 'clamp(2rem, 5vw, 3rem)' }}>
         <div style={{
           display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
           width: '56px', height: '56px', borderRadius: '50%',
-          background: 'rgba(56,189,248,0.1)', border: '1px solid rgba(56,189,248,0.2)',
+          background: 'rgba(var(--accent-rgb), 0.1)', border: '1px solid rgba(var(--accent-rgb), 0.2)',
           color: 'var(--accent-primary)', marginBottom: '1.25rem',
         }}>
           <HelpCircle size={26} />
@@ -192,6 +192,7 @@ export default function FAQ() {
           <Search size={18} style={{ position: 'absolute', left: '1.15rem', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-secondary)' }} />
           <input
             type="text"
+            aria-label="Search frequently asked questions"
             placeholder="Search questions or answers..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
@@ -200,7 +201,7 @@ export default function FAQ() {
               padding: '0.85rem 2.75rem 0.85rem 3rem',
               borderRadius: '9999px',
               border: '1px solid var(--border-color)',
-              backgroundColor: 'rgba(15, 23, 42, 0.7)',
+              backgroundColor: 'rgba(24, 19, 29, 0.7)',
               color: 'var(--text-primary)',
               fontSize: '1rem',
               outline: 'none',
@@ -227,6 +228,8 @@ export default function FAQ() {
           {CATEGORIES.map(cat => (
             <button
               key={cat}
+              type="button"
+              aria-pressed={activeCategory === cat}
               onClick={() => { setActiveCategory(cat); setOpenIndex(null); }}
               className="scroll-pill-item"
               style={{
@@ -239,9 +242,9 @@ export default function FAQ() {
                 transition: 'all 0.2s ease',
                 whiteSpace: 'nowrap',
                 borderColor:     activeCategory === cat ? 'var(--accent-primary)' : 'var(--border-color)',
-                backgroundColor: activeCategory === cat ? 'var(--accent-primary)' : 'rgba(15, 23, 42, 0.6)',
-                color:           activeCategory === cat ? '#0f172a' : 'var(--text-secondary)',
-                boxShadow:       activeCategory === cat ? '0 4px 14px rgba(56,189,248,0.25)' : 'none',
+                backgroundColor: activeCategory === cat ? 'var(--accent-primary)' : 'var(--bg-secondary)',
+                color:           activeCategory === cat ? '#ffffff' : 'var(--text-secondary)',
+                boxShadow:       activeCategory === cat ? '0 4px 14px rgba(var(--accent-rgb), 0.25)' : 'none',
               }}
             >
               {cat}
@@ -266,15 +269,14 @@ export default function FAQ() {
               style={{
                 padding: 0,
                 overflow: 'hidden',
-                cursor: 'pointer',
                 border: isOpen ? '1px solid var(--accent-primary)' : '1px solid var(--glass-border)',
                 transition: 'border-color 0.25s ease, box-shadow 0.25s ease',
-                boxShadow: isOpen ? '0 0 0 3px rgba(56,189,248,0.08)' : 'none',
+                boxShadow: isOpen ? '0 0 0 3px rgba(var(--accent-rgb), 0.08)' : 'none',
               }}
-              onClick={() => toggle(idx)}
             >
               {/* Header */}
-              <div style={{
+              <button type="button" aria-expanded={isOpen} aria-controls={`faq-answer-${idx}`} onClick={() => toggle(idx)} style={{
+                width: '100%', textAlign: 'left', color: 'inherit', background: 'transparent', border: 0, cursor: 'pointer',
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
@@ -287,9 +289,9 @@ export default function FAQ() {
                     background: isOpen ? 'var(--accent-primary)' : 'var(--border-color)',
                     transition: 'background 0.25s ease',
                   }} />
-                  <h3 style={{ fontSize: 'clamp(0.95rem, 3vw, 1.05rem)', margin: 0, fontWeight: 600, lineHeight: 1.4 }}>
+                  <span style={{ fontSize: 'clamp(0.95rem, 3vw, 1.05rem)', margin: 0, fontWeight: 600, lineHeight: 1.4 }}>
                     {highlightText(faq.question, searchQuery)}
-                  </h3>
+                  </span>
                 </div>
                 <div style={{
                   flexShrink: 0,
@@ -298,16 +300,16 @@ export default function FAQ() {
                   borderRadius: '50%',
                   background: isOpen ? 'var(--accent-primary)' : 'var(--bg-secondary)',
                   border: '1px solid var(--border-color)',
-                  color: isOpen ? '#0f172a' : 'var(--text-secondary)',
+                  color: isOpen ? '#ffffff' : 'var(--text-secondary)',
                   transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
                   transition: 'transform 0.3s ease, background 0.25s ease, color 0.25s ease',
                 }}>
                   <ChevronDown size={15} />
                 </div>
-              </div>
+              </button>
 
               {/* Body — CSS grid expand */}
-              <div style={{
+              <div id={`faq-answer-${idx}`} role="region" aria-label={faq.question} inert={!isOpen} style={{
                 display: 'grid',
                 gridTemplateRows: isOpen ? '1fr' : '0fr',
                 transition: 'grid-template-rows 0.3s ease',
@@ -334,8 +336,8 @@ export default function FAQ() {
       <div className="glass-panel responsive-panel" style={{
         maxWidth: '820px', margin: 'clamp(2.5rem, 6vw, 4rem) auto 0',
         textAlign: 'center',
-        background: 'linear-gradient(135deg, rgba(56,189,248,0.05) 0%, rgba(139,92,246,0.05) 100%)',
-        border: '1px solid rgba(56,189,248,0.15)',
+        background: 'linear-gradient(135deg, rgba(var(--accent-rgb), 0.05) 0%, rgba(var(--secondary-rgb), 0.05) 100%)',
+        border: '1px solid rgba(var(--accent-rgb), 0.15)',
         position: 'relative', overflow: 'hidden',
       }}>
         <div style={{

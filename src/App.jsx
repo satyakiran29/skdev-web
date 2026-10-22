@@ -14,8 +14,13 @@ import FAQ from './pages/FAQ';
 import Donate from './pages/Donate';
 import Freelance from './pages/Freelance';
 import UnderDevelopment from './pages/UnderDevelopment';
+import NotFound from './pages/NotFound';
 
 import AnyaEasterEgg from './components/AnyaEasterEgg';
+import PageTransitions from './experience/PageTransitions';
+import Pointer from './experience/Pointer';
+import './experience/experience.css';
+import './experience/playground.css';
 
 // Set this to true to hide the entire production site behind the Under Development landing page
 const IS_UNDER_DEVELOPMENT = false;
@@ -50,8 +55,9 @@ function App() {
     <BrowserRouter>
       <ToastProvider>
         <Header />
-        <main className="main-content">
-          <Routes>
+        <Pointer />
+        <main className="main-content" id="main-content" tabIndex={-1}>
+          <PageTransitions><Routes>
             <Route path="/" element={<Home />} />
             <Route path="/apps" element={<AppsSection />} />
             <Route path="/apps/:id" element={<AppDetails />} />
@@ -60,7 +66,8 @@ function App() {
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/donate" element={<Donate />} />
-          </Routes>
+            <Route path="*" element={<NotFound />} />
+          </Routes></PageTransitions>
         </main>
         <Footer />
         {isEasterEggActive && <AnyaEasterEgg onClose={() => setIsEasterEggActive(false)} />}

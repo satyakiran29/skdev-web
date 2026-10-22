@@ -9,7 +9,7 @@ export default function AppCard({ app }) {
 
   return (
     <div
-      className="glass-panel"
+      className="glass-panel product-card"
       style={{
         padding: 'clamp(1.25rem, 3.5vw, 2rem)',
         display: 'flex',
@@ -22,11 +22,17 @@ export default function AppCard({ app }) {
     >
       <div>
         {app.screenshot && (
-          <div style={{ position: 'relative', marginBottom: '1.25rem', overflow: 'hidden', borderRadius: '1rem' }}>
+          <NavLink
+            to={`/apps/${app.id}`}
+            className="product-card__media"
+            aria-label={`Explore ${app.name} preview`}
+          >
             <img
+              className="product-card__preview"
               src={app.screenshot}
               alt={`${app.name} preview`}
               loading="lazy"
+              decoding="async"
               style={{
                 width: '100%',
                 height: 'auto',
@@ -36,7 +42,10 @@ export default function AppCard({ app }) {
                 transition: 'transform 0.3s ease',
               }}
             />
-          </div>
+            <span className="product-card__inspect" aria-hidden="true">
+              <span>Explore</span><ArrowRight size={14} />
+            </span>
+          </NavLink>
         )}
 
         {/* App Header Row */}
@@ -69,9 +78,9 @@ export default function AppCard({ app }) {
                     fontWeight: 600,
                     padding: '0.15rem 0.5rem',
                     borderRadius: '9999px',
-                    backgroundColor: 'rgba(56, 189, 248, 0.1)',
+                    backgroundColor: 'rgba(var(--accent-rgb), 0.1)',
                     color: 'var(--accent-primary)',
-                    border: '1px solid rgba(56, 189, 248, 0.25)',
+                    border: '1px solid rgba(var(--accent-rgb), 0.25)',
                   }}
                 >
                   <Smartphone size={10} /> {app.requiresAndroid}
@@ -87,9 +96,9 @@ export default function AppCard({ app }) {
                     fontWeight: 700,
                     padding: '0.15rem 0.55rem',
                     borderRadius: '9999px',
-                    backgroundColor: 'rgba(236, 72, 153, 0.15)',
-                    color: '#f472b6',
-                    border: '1px solid rgba(236, 72, 153, 0.3)',
+                    backgroundColor: 'rgba(var(--accent-rgb), 0.15)',
+                    color: 'var(--accent-primary)',
+                    border: '1px solid rgba(var(--accent-rgb), 0.3)',
                     letterSpacing: '0.02em',
                   }}
                 >
@@ -116,19 +125,13 @@ export default function AppCard({ app }) {
               )}
             </div>
 
-            {app.shortDesc && (
-              <p style={{ margin: '0.2rem 0 0 0', fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
-                {app.shortDesc}
-              </p>
-            )}
-
             {app.status === 'upcoming' ? (
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', marginTop: '0.35rem', color: '#f472b6', fontSize: '0.8rem', fontWeight: 600 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', marginTop: '0.35rem', color: 'var(--accent-primary)', fontSize: '0.8rem', fontWeight: 600 }}>
                 <Clock size={12} />
                 <span>Play Store: {app.releaseDate || '19 November 2026'}</span>
               </div>
             ) : avgRating ? (
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', marginTop: '0.35rem', color: '#fbbf24', fontSize: '0.8rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', marginTop: '0.35rem', color: 'var(--accent-primary)', fontSize: '0.8rem' }}>
                 <Star size={13} fill="currentColor" />
                 <span style={{ fontWeight: 600, color: 'var(--text-primary)' }}>{avgRating}</span>
                 <span style={{ color: 'var(--text-secondary)' }}>({app.reviews.length})</span>
@@ -138,7 +141,7 @@ export default function AppCard({ app }) {
         </div>
 
         <p style={{ marginBottom: '1.5rem', color: 'var(--text-secondary)', fontSize: '0.925rem', lineHeight: 1.6 }}>
-          {app.description}
+          {app.shortDesc || app.description}
         </p>
       </div>
 

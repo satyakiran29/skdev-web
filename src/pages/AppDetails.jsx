@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { useParams, Navigate } from 'react-router-dom';
 import { appsData } from '../data/appsData';
@@ -8,12 +8,17 @@ import QRCode from 'react-qr-code';
 const TwitterIcon = ({ size }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>;
 const LinkedinIcon = ({ size }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>;
 import SEO from '../components/SEO';
-import { useToast } from '../context/ToastContext';
+import { useToast } from '../context/useToast';
+import useModalDialog from '../components/useModalDialog';
 
 export default function AppDetails() {
   const toast = useToast();
   const [isQrModalOpen, setIsQrModalOpen] = useState(false);
   const [activeScreenshotIndex, setActiveScreenshotIndex] = useState(null);
+  const qrDialog = useRef(null);
+  const screenshotDialog = useRef(null);
+  useModalDialog(isQrModalOpen, qrDialog, () => setIsQrModalOpen(false));
+  useModalDialog(activeScreenshotIndex !== null, screenshotDialog, () => setActiveScreenshotIndex(null));
   const { id } = useParams();
   const app = appsData.find(a => a.id === id);
 
@@ -56,20 +61,16 @@ export default function AppDetails() {
     };
 
     if (activeScreenshotIndex !== null) {
-      document.body.style.overflow = 'hidden';
       window.addEventListener('keydown', handleKeyDown);
-    } else {
-      document.body.style.overflow = '';
     }
 
     return () => {
-      document.body.style.overflow = '';
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [activeScreenshotIndex, app?.screenshots]);
 
   if (!app) {
-    return <Navigate to="/apps" />;
+    return <Navigate to="/apps" replace />;
   }
 
   // Calculate average rating and distribution
@@ -102,12 +103,13 @@ export default function AppDetails() {
       name: 'Satyakiran',
       url: 'https://skdev.psatyakiran.in',
     },
-    offers: {
+    ...(app.id === 'anify' && app.playStoreLink ? { offers: {
       '@type': 'Offer',
-      price: app.id === 'anify' ? '0' : '1.68',
+      price: '0',
       priceCurrency: 'USD',
       availability: 'https://schema.org/InStock',
-    },
+      url: app.playStoreLink,
+    } } : {}),
     ...(app.playStoreLink && app.playStoreLink.toLowerCase() !== 'coming soon'
       ? { downloadUrl: app.playStoreLink }
       : {}),
@@ -124,7 +126,7 @@ export default function AppDetails() {
       : {}),
   };
 
-  const appKeywords = `${app.name}, ${app.tagline}, ${app.shortDesc || ''}, android personalization, android widgets, skdev`.toLowerCase();
+  const appKeywords = `${app.name}, ${app.tagline || ''}, ${app.shortDesc || ''}, android personalization, android widgets, skdev`.toLowerCase();
 
   const handleShare = async () => {
     const shareData = {
@@ -141,8 +143,10 @@ export default function AppDetails() {
       }
     } catch (err) {
       if (err.name !== 'AbortError') {
-        await navigator.clipboard.writeText(window.location.href);
-        toast.success(`Copied ${app.name} link to clipboard!`);
+        try {
+          await navigator.clipboard.writeText(window.location.href);
+          toast.success(`Copied ${app.name} link to clipboard!`);
+        } catch { toast.error('Unable to share automatically. Copy the page address from your browser.'); }
       }
     }
   };
@@ -150,7 +154,7 @@ export default function AppDetails() {
   return (
     <div className="container animate-fade-in" style={{ paddingTop: 'clamp(1.5rem, 4vw, 3.5rem)', paddingBottom: 'clamp(1.5rem, 4vw, 3.5rem)' }}>
       <SEO
-        title={`${app.name} — ${app.tagline}`}
+        title={`${app.name}${app.tagline ? ` — ${app.tagline}` : ''}`}
         description={app.shortDesc || app.description.slice(0, 160)}
         keywords={appKeywords}
         canonical={`/apps/${app.id}`}
@@ -180,7 +184,7 @@ export default function AppDetails() {
                 height: 'clamp(60px, 12vw, 84px)',
                 borderRadius: '1.25rem',
                 objectFit: 'cover',
-                border: '2px solid rgba(56, 189, 248, 0.3)',
+                border: '2px solid rgba(var(--accent-rgb), 0.3)',
                 boxShadow: 'var(--shadow-md)',
                 flexShrink: 0,
               }}
@@ -190,9 +194,9 @@ export default function AppDetails() {
                 {app.name}
               </h1>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap', marginTop: '0.4rem' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', color: '#fbbf24' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', color: 'var(--accent-primary)' }}>
                   {app.status === 'upcoming' ? (
-                    <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem', color: '#f472b6', fontWeight: 600, fontSize: '0.85rem' }}>
+                    <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem', color: 'var(--accent-primary)', fontWeight: 600, fontSize: '0.85rem' }}>
                       <Clock size={14} /> Upcoming Launch
                     </div>
                   ) : avgRating !== null ? (
@@ -213,11 +217,11 @@ export default function AppDetails() {
                       gap: '0.3rem',
                       padding: '0.15rem 0.6rem',
                       borderRadius: '9999px',
-                      backgroundColor: 'rgba(56, 189, 248, 0.1)',
+                      backgroundColor: 'rgba(var(--accent-rgb), 0.1)',
                       color: 'var(--accent-primary)',
                       fontSize: '0.75rem',
                       fontWeight: 600,
-                      border: '1px solid rgba(56, 189, 248, 0.25)',
+                      border: '1px solid rgba(var(--accent-rgb), 0.25)',
                     }}
                   >
                     <Smartphone size={12} /> {app.requiresAndroid}
@@ -231,11 +235,11 @@ export default function AppDetails() {
                       gap: '0.3rem',
                       padding: '0.15rem 0.65rem',
                       borderRadius: '9999px',
-                      backgroundColor: 'rgba(236, 72, 153, 0.15)',
-                      color: '#f472b6',
+                      backgroundColor: 'rgba(var(--accent-rgb), 0.15)',
+                      color: 'var(--accent-primary)',
                       fontSize: '0.75rem',
                       fontWeight: 700,
-                      border: '1px solid rgba(236, 72, 153, 0.3)',
+                      border: '1px solid rgba(var(--accent-rgb), 0.3)',
                     }}
                   >
                     <Clock size={12} /> Play Store Target: {app.releaseDate || '19 November 2026'}
@@ -282,8 +286,8 @@ export default function AppDetails() {
                       padding: '0.85rem 1.65rem',
                       fontSize: '1rem',
                       flex: '1 1 200px',
-                      borderColor: 'rgba(236, 72, 153, 0.4)',
-                      color: '#f472b6',
+                      borderColor: 'rgba(var(--accent-rgb), 0.4)',
+                      color: 'var(--accent-primary)',
                       cursor: 'default',
                       justifyContent: 'center',
                     }}
@@ -362,7 +366,7 @@ export default function AppDetails() {
                 target="_blank"
                 rel="noreferrer"
                 className="btn-icon btn-secondary"
-                style={{ padding: '0.5rem', color: '#25D366', minHeight: '38px', minWidth: '38px' }}
+                style={{ padding: '0.5rem', color: 'var(--accent-secondary)', minHeight: '38px', minWidth: '38px' }}
                 title="Share on WhatsApp"
               >
                 <MessageCircle size={16} />
@@ -373,7 +377,7 @@ export default function AppDetails() {
                 target="_blank"
                 rel="noreferrer"
                 className="btn-icon btn-secondary"
-                style={{ padding: '0.5rem', color: '#1DA1F2', minHeight: '38px', minWidth: '38px' }}
+                style={{ padding: '0.5rem', color: 'var(--accent-primary)', minHeight: '38px', minWidth: '38px' }}
                 title="Share on Twitter"
               >
                 <TwitterIcon size={16} />
@@ -384,7 +388,7 @@ export default function AppDetails() {
                 target="_blank"
                 rel="noreferrer"
                 className="btn-icon btn-secondary"
-                style={{ padding: '0.5rem', color: '#0A66C2', minHeight: '38px', minWidth: '38px' }}
+                style={{ padding: '0.5rem', color: 'var(--accent-primary)', minHeight: '38px', minWidth: '38px' }}
                 title="Share on LinkedIn"
               >
                 <LinkedinIcon size={16} />
@@ -417,17 +421,17 @@ export default function AppDetails() {
           style={{
             padding: 'clamp(1.5rem, 4vw, 2.25rem)',
             marginBottom: 'clamp(2.5rem, 6vw, 4rem)',
-            border: '1px solid rgba(236, 72, 153, 0.35)',
-            background: 'radial-gradient(ellipse at top left, rgba(236, 72, 153, 0.12), transparent 70%), var(--glass-bg)',
+            border: '1px solid rgba(var(--accent-rgb), 0.35)',
+            background: 'radial-gradient(ellipse at top left, rgba(var(--accent-rgb), 0.12), transparent 70%), var(--glass-bg)',
             position: 'relative',
             overflow: 'hidden',
           }}
         >
-          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '3px', background: 'linear-gradient(90deg, #ec4899, #8b5cf6, #38bdf8)' }} />
+          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '3px', background: 'linear-gradient(90deg, var(--accent-primary), var(--accent-secondary), var(--accent-primary))' }} />
           
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1.5rem' }}>
             <div style={{ flex: '1 1 320px', minWidth: 0 }}>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', padding: '0.25rem 0.75rem', borderRadius: '9999px', backgroundColor: 'rgba(236, 72, 153, 0.15)', border: '1px solid rgba(236, 72, 153, 0.3)', color: '#f472b6', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.75rem' }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', padding: '0.25rem 0.75rem', borderRadius: '9999px', backgroundColor: 'rgba(var(--accent-rgb), 0.15)', border: '1px solid rgba(var(--accent-rgb), 0.3)', color: 'var(--accent-primary)', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.75rem' }}>
                 <Clock size={13} /> Official Google Play Target: {app.releaseDate || '19 November 2026'}
               </div>
               <h2 style={{ fontSize: 'clamp(1.4rem, 4vw, 2rem)', margin: '0 0 0.5rem 0', color: 'var(--text-primary)' }}>
@@ -446,21 +450,21 @@ export default function AppDetails() {
                 </span>
                 <span style={{ fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-secondary)' }}>Days</span>
               </div>
-              <span style={{ fontSize: '1.4rem', fontWeight: 700, color: '#f472b6', marginBottom: '8px' }}>:</span>
+              <span style={{ fontSize: '1.4rem', fontWeight: 700, color: 'var(--accent-primary)', marginBottom: '8px' }}>:</span>
               <div style={{ textAlign: 'center', minWidth: 'clamp(42px, 12vw, 54px)' }}>
                 <span style={{ display: 'block', fontSize: 'clamp(1.4rem, 5vw, 1.85rem)', fontWeight: 800, color: 'var(--text-primary)', fontFamily: 'monospace', lineHeight: 1.1 }}>
                   {String(timeLeft.hours).padStart(2, '0')}
                 </span>
                 <span style={{ fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-secondary)' }}>Hours</span>
               </div>
-              <span style={{ fontSize: '1.4rem', fontWeight: 700, color: '#f472b6', marginBottom: '8px' }}>:</span>
+              <span style={{ fontSize: '1.4rem', fontWeight: 700, color: 'var(--accent-primary)', marginBottom: '8px' }}>:</span>
               <div style={{ textAlign: 'center', minWidth: 'clamp(42px, 12vw, 54px)' }}>
                 <span style={{ display: 'block', fontSize: 'clamp(1.4rem, 5vw, 1.85rem)', fontWeight: 800, color: 'var(--text-primary)', fontFamily: 'monospace', lineHeight: 1.1 }}>
                   {String(timeLeft.minutes).padStart(2, '0')}
                 </span>
                 <span style={{ fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-secondary)' }}>Mins</span>
               </div>
-              <span style={{ fontSize: '1.4rem', fontWeight: 700, color: '#f472b6', marginBottom: '8px' }}>:</span>
+              <span style={{ fontSize: '1.4rem', fontWeight: 700, color: 'var(--accent-primary)', marginBottom: '8px' }}>:</span>
               <div style={{ textAlign: 'center', minWidth: 'clamp(42px, 12vw, 54px)' }}>
                 <span style={{ display: 'block', fontSize: 'clamp(1.4rem, 5vw, 1.85rem)', fontWeight: 800, color: 'var(--text-primary)', fontFamily: 'monospace', lineHeight: 1.1 }}>
                   {String(timeLeft.seconds).padStart(2, '0')}
@@ -473,7 +477,7 @@ export default function AppDetails() {
           {app.telegramLink && (
             <div style={{ marginTop: '1.25rem', paddingTop: '1.25rem', borderTop: '1px solid rgba(255, 255, 255, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', fontSize: '0.875rem' }}>
-                <CheckCircle2 size={16} color="#22c55e" style={{ flexShrink: 0 }} />
+                <CheckCircle2 size={16} color="var(--accent-secondary)" style={{ flexShrink: 0 }} />
                 <span>Zero Internet permissions. Zero telemetry. 100% on-device private.</span>
               </div>
               <a
@@ -585,12 +589,12 @@ export default function AppDetails() {
               width: '56px',
               height: '56px',
               borderRadius: '50%',
-              backgroundColor: 'rgba(56, 189, 248, 0.1)',
+              backgroundColor: 'rgba(var(--accent-rgb), 0.1)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               marginBottom: '1.25rem',
-              border: '1px solid rgba(56, 189, 248, 0.25)',
+              border: '1px solid rgba(var(--accent-rgb), 0.25)',
             }}
           >
             <Sparkles color="var(--accent-primary)" size={28} />
@@ -618,7 +622,7 @@ export default function AppDetails() {
             <div
               style={{
                 backgroundColor: 'rgba(0, 0, 0, 0.25)',
-                border: '1px solid rgba(56, 189, 248, 0.3)',
+                border: '1px solid rgba(var(--accent-rgb), 0.3)',
                 borderRadius: '1.25rem',
                 padding: 'clamp(1.25rem, 3vw, 1.75rem)',
                 textAlign: 'center',
@@ -628,7 +632,7 @@ export default function AppDetails() {
               }}
             >
               <div>
-                <div style={{ display: 'inline-block', backgroundColor: 'rgba(56, 189, 248, 0.12)', color: 'var(--accent-primary)', padding: '0.2rem 0.65rem', borderRadius: '20px', fontSize: '0.75rem', fontWeight: 700, marginBottom: '0.6rem' }}>
+                <div style={{ display: 'inline-block', backgroundColor: 'rgba(var(--accent-rgb), 0.12)', color: 'var(--accent-primary)', padding: '0.2rem 0.65rem', borderRadius: '20px', fontSize: '0.75rem', fontWeight: 700, marginBottom: '0.6rem' }}>
                   INDIA (UPI)
                 </div>
                 <div style={{ fontSize: 'clamp(1.85rem, 5vw, 2.25rem)', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '0.2rem' }}>
@@ -654,7 +658,7 @@ export default function AppDetails() {
             <div
               style={{
                 backgroundColor: 'rgba(0, 0, 0, 0.25)',
-                border: '1px solid rgba(34, 197, 94, 0.3)',
+                border: '1px solid rgba(var(--secondary-rgb), 0.3)',
                 borderRadius: '1.25rem',
                 padding: 'clamp(1.25rem, 3vw, 1.75rem)',
                 textAlign: 'center',
@@ -664,7 +668,7 @@ export default function AppDetails() {
               }}
             >
               <div>
-                <div style={{ display: 'inline-block', backgroundColor: 'rgba(34, 197, 94, 0.12)', color: '#22c55e', padding: '0.2rem 0.65rem', borderRadius: '20px', fontSize: '0.75rem', fontWeight: 700, marginBottom: '0.6rem' }}>
+                <div style={{ display: 'inline-block', backgroundColor: 'rgba(var(--secondary-rgb), 0.12)', color: 'var(--accent-secondary)', padding: '0.2rem 0.65rem', borderRadius: '20px', fontSize: '0.75rem', fontWeight: 700, marginBottom: '0.6rem' }}>
                   GLOBAL (PAYPAL)
                 </div>
                 <div style={{ fontSize: 'clamp(1.85rem, 5vw, 2.25rem)', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '0.2rem' }}>
@@ -680,7 +684,7 @@ export default function AppDetails() {
                 target="_blank"
                 rel="noreferrer"
                 className="btn btn-secondary"
-                style={{ width: '100%', justifyContent: 'center', gap: '0.4rem', fontSize: '0.925rem', padding: '0.75rem', borderColor: 'rgba(34, 197, 94, 0.4)', color: '#22c55e' }}
+                style={{ width: '100%', justifyContent: 'center', gap: '0.4rem', fontSize: '0.925rem', padding: '0.75rem', borderColor: 'rgba(var(--secondary-rgb), 0.4)', color: 'var(--accent-secondary)' }}
               >
                 <Send size={15} /> Buy with PayPal ({app.directPurchase.globalPrice})
               </a>
@@ -690,13 +694,13 @@ export default function AppDetails() {
           {/* Steps & Verification Info */}
           <div style={{ backgroundColor: 'rgba(0,0,0,0.2)', borderRadius: '1rem', padding: 'clamp(1rem, 3vw, 1.5rem)', border: '1px solid var(--border-color)', width: '100%', maxWidth: '650px', textAlign: 'left' }}>
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', marginBottom: '0.75rem' }}>
-              <CheckCircle2 color="#22c55e" size={18} style={{ flexShrink: 0, marginTop: '2px' }} />
+              <CheckCircle2 color="var(--accent-secondary)" size={18} style={{ flexShrink: 0, marginTop: '2px' }} />
               <p style={{ color: 'var(--text-secondary)', margin: 0, fontSize: '0.9rem', lineHeight: 1.5 }}>
                 Tap either button above to open a <strong style={{ color: 'var(--text-primary)' }}>pre-filled Telegram message</strong> directly to <strong style={{ color: 'var(--accent-primary)' }}>@{app.directPurchase.telegramUser || 'skdev1'}</strong>.
               </p>
             </div>
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
-              <Ticket color="#ec4899" size={18} style={{ flexShrink: 0, marginTop: '2px' }} />
+              <Ticket color="var(--accent-primary)" size={18} style={{ flexShrink: 0, marginTop: '2px' }} />
               <p style={{ color: 'var(--text-secondary)', margin: 0, fontSize: '0.9rem', lineHeight: 1.5 }}>
                 After quick payment verification, you will receive an official <strong style={{ color: 'var(--text-primary)' }}>Play Store Redeem Code</strong> for lifetime access.
               </p>
@@ -717,10 +721,13 @@ export default function AppDetails() {
 
           <div className="screenshots-container">
             {app.screenshots.map((img, idx) => (
-              <div
+              <button
                 key={idx}
+                type="button"
+                aria-label={`Open screenshot ${idx + 1} of ${app.name}`}
                 onClick={() => setActiveScreenshotIndex(idx)}
                 style={{
+                  padding: 0, border: 0, background: 'transparent',
                   flex: '0 0 auto',
                   scrollSnapAlign: 'start',
                   cursor: 'zoom-in',
@@ -731,7 +738,7 @@ export default function AppDetails() {
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-3px)';
-                  e.currentTarget.style.boxShadow = '0 10px 20px rgba(56, 189, 248, 0.25)';
+                  e.currentTarget.style.boxShadow = '0 10px 20px rgba(var(--accent-rgb), 0.25)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
@@ -751,7 +758,7 @@ export default function AppDetails() {
                     display: 'block',
                   }}
                 />
-              </div>
+              </button>
             ))}
           </div>
         </div>
@@ -865,14 +872,14 @@ export default function AppDetails() {
                 width: '54px',
                 height: '54px',
                 borderRadius: '50%',
-                backgroundColor: 'rgba(236, 72, 153, 0.12)',
+                backgroundColor: 'rgba(var(--accent-rgb), 0.12)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                border: '1px solid rgba(236, 72, 153, 0.3)',
+                border: '1px solid rgba(var(--accent-rgb), 0.3)',
               }}
             >
-              <Clock color="#f472b6" size={26} />
+              <Clock color="var(--accent-primary)" size={26} />
             </div>
             <div>
               <h3 style={{ margin: '0 0 0.5rem 0', fontSize: '1.25rem', color: 'var(--text-primary)' }}>
@@ -913,13 +920,13 @@ export default function AppDetails() {
             <div style={{ fontSize: 'clamp(3.5rem, 8vw, 4.5rem)', fontWeight: 800, lineHeight: 1, color: 'var(--text-primary)', marginBottom: '0.5rem' }}>
               {avgRating !== null ? avgRating.toFixed(1) : '—'}
             </div>
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '0.35rem', color: '#fbbf24', marginBottom: '0.5rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '0.35rem', color: 'var(--accent-primary)', marginBottom: '0.5rem' }}>
               {[1, 2, 3, 4, 5].map(star => (
                 <Star
                   key={star}
                   size={20}
-                  fill={avgRating && star <= Math.round(avgRating) ? '#fbbf24' : 'none'}
-                  color={avgRating && star <= Math.round(avgRating) ? '#fbbf24' : 'var(--border-color)'}
+                  fill={avgRating && star <= Math.round(avgRating) ? 'var(--accent-primary)' : 'none'}
+                  color={avgRating && star <= Math.round(avgRating) ? 'var(--accent-primary)' : 'var(--border-color)'}
                 />
               ))}
             </div>
@@ -936,7 +943,7 @@ export default function AppDetails() {
               return (
                 <div key={stars} style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', fontSize: '0.85rem' }}>
                   <span style={{ width: '24px', display: 'flex', alignItems: 'center', gap: '0.2rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
-                    {stars} <Star size={11} fill="#fbbf24" color="#fbbf24" />
+                    {stars} <Star size={11} fill="var(--accent-primary)" color="var(--accent-primary)" />
                   </span>
                   <div
                     style={{
@@ -952,7 +959,7 @@ export default function AppDetails() {
                       style={{
                         width: `${percentage}%`,
                         height: '100%',
-                        background: 'linear-gradient(90deg, #f59e0b, #fbbf24)',
+                        background: 'linear-gradient(90deg, var(--accent-primary), var(--accent-primary))',
                         borderRadius: '4px',
                         transition: 'width 0.5s ease',
                       }}
@@ -1016,7 +1023,7 @@ export default function AppDetails() {
               <div key={review.id} className="glass-panel" style={{ padding: 'clamp(1.25rem, 3.5vw, 1.75rem)', display: 'flex', flexDirection: 'column' }}>
                 <div className="flex-between" style={{ marginBottom: '1rem', alignItems: 'flex-start' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                    <div style={{ width: '38px', height: '38px', borderRadius: '50%', background: 'var(--accent-primary)', color: '#0f172a', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold' }}>
+                    <div style={{ width: '38px', height: '38px', borderRadius: '50%', background: 'var(--accent-primary)', color: 'var(--text-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold' }}>
                       {review.user.charAt(0)}
                     </div>
                     <div>
@@ -1032,7 +1039,7 @@ export default function AppDetails() {
                       </div>
                     </div>
                   </div>
-                  <div style={{ display: 'flex', color: '#fbbf24' }}>
+                  <div style={{ display: 'flex', color: 'var(--accent-primary)' }}>
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} size={14} fill={i < review.rating ? 'currentColor' : 'none'} color={i < review.rating ? 'currentColor' : 'var(--border-color)'} />
                     ))}
@@ -1049,8 +1056,8 @@ export default function AppDetails() {
                   <div
                     style={{
                       marginTop: 'auto',
-                      backgroundColor: 'rgba(56, 189, 248, 0.06)',
-                      border: '1px solid rgba(56, 189, 248, 0.2)',
+                      backgroundColor: 'rgba(var(--accent-rgb), 0.06)',
+                      border: '1px solid rgba(var(--accent-rgb), 0.2)',
                       borderRadius: '0.875rem',
                       padding: '0.875rem 1rem',
                       fontSize: '0.875rem',
@@ -1089,6 +1096,11 @@ export default function AppDetails() {
       {/* ── QR Code Modal (Portaled) ── */}
       {isQrModalOpen && createPortal(
         <div
+          ref={qrDialog}
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Download ${app.name} using a QR code`}
+          tabIndex={-1}
           style={{
             position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
             backgroundColor: 'rgba(0, 0, 0, 0.82)',
@@ -1145,7 +1157,12 @@ export default function AppDetails() {
       {/* ── Fullscreen Screenshot Lightbox Modal (Portaled) ── */}
       {activeScreenshotIndex !== null && app.screenshots && createPortal(
         <div
-          className="animate-fade-in"
+          ref={screenshotDialog}
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${app.name} screenshot viewer`}
+          tabIndex={-1}
+          className="animate-fade-in screenshot-lightbox"
           style={{
             position: 'fixed',
             inset: 0,
@@ -1182,7 +1199,7 @@ export default function AppDetails() {
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '0.5rem',
-                backgroundColor: 'rgba(15, 23, 42, 0.85)',
+                backgroundColor: 'rgba(24, 19, 29, 0.85)',
                 border: '1px solid var(--border-color)',
                 padding: '0.4rem 1rem',
                 borderRadius: '9999px',
@@ -1202,7 +1219,7 @@ export default function AppDetails() {
               onClick={() => setActiveScreenshotIndex(null)}
               className="btn-icon"
               style={{
-                backgroundColor: 'rgba(15, 23, 42, 0.85)',
+                backgroundColor: 'rgba(24, 19, 29, 0.85)',
                 border: '1px solid var(--border-color)',
                 padding: '0.5rem',
                 color: 'var(--text-primary)',
@@ -1244,8 +1261,8 @@ export default function AppDetails() {
                 height: 'auto',
                 objectFit: 'contain',
                 borderRadius: '1.25rem',
-                border: '1px solid rgba(56, 189, 248, 0.3)',
-                boxShadow: '0 25px 60px -15px rgba(0, 0, 0, 0.9), 0 0 30px rgba(56, 189, 248, 0.25)',
+                border: '1px solid rgba(var(--accent-rgb), 0.3)',
+                boxShadow: '0 25px 60px -15px rgba(0, 0, 0, 0.9), 0 0 30px rgba(var(--accent-rgb), 0.25)',
                 animation: 'fadeIn 0.2s ease-out',
                 userSelect: 'none',
               }}
@@ -1266,7 +1283,7 @@ export default function AppDetails() {
                   left: 'clamp(0.25rem, 2vw, 1.5rem)',
                   top: '50%',
                   transform: 'translateY(-50%)',
-                  backgroundColor: 'rgba(15, 23, 42, 0.85)',
+                  backgroundColor: 'rgba(24, 19, 29, 0.85)',
                   border: '1px solid var(--border-color)',
                   padding: '0.65rem',
                   borderRadius: '50%',
@@ -1297,7 +1314,7 @@ export default function AppDetails() {
                   right: 'clamp(0.25rem, 2vw, 1.5rem)',
                   top: '50%',
                   transform: 'translateY(-50%)',
-                  backgroundColor: 'rgba(15, 23, 42, 0.85)',
+                  backgroundColor: 'rgba(24, 19, 29, 0.85)',
                   border: '1px solid var(--border-color)',
                   padding: '0.65rem',
                   borderRadius: '50%',
@@ -1322,7 +1339,7 @@ export default function AppDetails() {
                 display: 'flex',
                 gap: '0.5rem',
                 padding: '0.35rem 0.65rem',
-                backgroundColor: 'rgba(15, 23, 42, 0.85)',
+                backgroundColor: 'rgba(24, 19, 29, 0.85)',
                 backdropFilter: 'blur(8px)',
                 borderRadius: '9999px',
                 border: '1px solid var(--border-color)',

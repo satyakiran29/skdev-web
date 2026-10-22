@@ -28,6 +28,7 @@ export default function SEO({
   image = DEFAULT_IMAGE,
   type = 'website',
   jsonLd,
+  noindex = false,
 }) {
   const fullTitle = title ? `${title} | ${SITE_NAME}` : DEFAULT_TITLE;
   const canonicalUrl = `${BASE_URL}${canonical}`;
@@ -52,6 +53,7 @@ export default function SEO({
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
       <meta name="author" content="Satyakiran" />
+      {noindex && <meta name="robots" content="noindex, follow" />}
       <link rel="canonical" href={canonicalUrl} />
 
       {/* Open Graph */}
