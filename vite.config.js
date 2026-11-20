@@ -10,11 +10,11 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'favicon-32x32.png', 'favicon-16x16.png'],
       manifest: {
-        name: 'SKDev — Independent by Design',
+        name: 'skdev — Crafting Digital Experiences',
         short_name: 'skdev',
         description: 'Indie developer crafting clean, practical apps focused on performance and real user needs.',
-        theme_color: '#efefea',
-        background_color: '#efefea',
+        theme_color: '#0f0f11',
+        background_color: '#0f0f11',
         display: 'standalone',
         icons: [
           {

@@ -145,7 +145,7 @@ export default function AnyaEasterEgg({ onClose }) {
           style={{
             marginTop: '8px',
             padding: '3px 8px',
-            background: 'var(--accent-primary)',
+            background: '#ef4444',
             border: '2px solid #fff',
             color: '#fff',
             fontSize: '0.65rem',
