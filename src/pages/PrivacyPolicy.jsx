@@ -3,67 +3,64 @@ import SEO from '../components/SEO';
 
 export default function PrivacyPolicy() {
   return (
-    <div className="container animate-fade-in" style={{ paddingTop: 'clamp(2rem, 5vw, 4rem)', paddingBottom: 'clamp(2rem, 5vw, 4rem)' }}>
+    <div className="container animate-fade-in" style={{ paddingTop: '48px', paddingBottom: '64px' }}>
       <SEO
         title="Privacy Policy"
         description="Official SKDev Privacy Policy — how user data, permissions, AccessibilityService API, and third-party services are handled across Anify, Aniset, and SKDev apps."
         keywords="skdev privacy policy, anify privacy, aniset privacy, accessibility service android privacy, indie developer data policy"
         canonical="/privacy"
       />
-      <div className="glass-panel responsive-panel" style={{ maxWidth: '900px', margin: '0 auto' }}>
-        <h1 style={{ marginBottom: '2rem', textAlign: 'center', fontSize: 'clamp(2rem, 5vw, 3rem)' }}>
-          Privacy <span className="text-gradient">Policy</span>
+      <div className="app-card responsive-panel" style={{ maxWidth: '820px', margin: '0 auto' }}>
+        <h1 style={{ marginBottom: '24px', textAlign: 'center', fontSize: 'clamp(1.75rem, 4vw, 2.5rem)' }}>
+          Privacy Policy
         </h1>
         
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', color: 'var(--text-secondary)', lineHeight: 1.8 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', color: 'var(--text-secondary)', lineHeight: 1.7, fontSize: '0.925rem' }}>
           <section>
-            <p><strong>Effective Date:</strong> {new Date().toLocaleDateString()}</p>
+            <p className="font-mono" style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+              Effective Date: {new Date().toLocaleDateString()}
+            </p>
             <p>
-              At SKDev, we consider the privacy of our users to be extremely important. This Privacy Policy document describes in detail the types of personal information is collected and recorded by our applications and how we use it.
+              At SKDev, privacy is foundational. This Privacy Policy outlines what information is processed when using our applications and how it is handled.
             </p>
           </section>
 
           <section>
-            <h3 style={{ color: 'var(--text-primary)', marginBottom: '1rem' }}>Information Collection And Use</h3>
+            <h3 style={{ color: 'var(--text-primary)', marginBottom: '8px', fontSize: '1.05rem' }}>
+              Information Collection and Usage
+            </h3>
             <p>
-              We prioritize privacy and strive to collect minimal personal information. 
-              Our applications, such as Aniset and Anify Widget, handle most operations locally on your device. 
-              Any external services we use (like AdMob for advertising or Firebase for basic analytics) may collect standard anonymous usage data to help us improve the app experience.
+              Our personalization apps (Aniset, Anify, and Milky Launcher) prioritize local on-device operation. Milky Launcher requires zero internet permissions and operates strictly offline.
+            </p>
+            <p>
+              Anify is free and ad-supported; AdMob SDK may collect standard anonymized diagnostic information to deliver relevant ads in accordance with Google Play policies.
             </p>
           </section>
 
           <section>
-            <h3 style={{ color: 'var(--text-primary)', marginBottom: '1rem' }}>Log Data</h3>
+            <h3 style={{ color: 'var(--text-primary)', marginBottom: '8px', fontSize: '1.05rem' }}>
+              AccessibilityService API Policy
+            </h3>
             <p>
-              Like many app developers, we may collect information that your device sends whenever you use our apps ("Log Data"). This Log Data may include information such as your device's Internet Protocol ("IP") address, device name, operating system version, the configuration of the app when utilizing our Service, the time and date of your use of the Service, and other statistics.
+              Anify utilizes Android's AccessibilityService API strictly to deliver its optional BlockIt focus lock feature. When enabled by the user, it detects when a designated distracting application is foregrounded to display a restriction screen. The AccessibilityService API is never used to collect personal data, monitor keystrokes, or transmit browsing history.
             </p>
           </section>
 
           <section>
-            <h3 style={{ color: 'var(--text-primary)', marginBottom: '1rem' }}>Third-Party Partners</h3>
+            <h3 style={{ color: 'var(--text-primary)', marginBottom: '8px', fontSize: '1.05rem' }}>
+              Diagnostic and Crash Logs
+            </h3>
             <p>
-              We may use third-party Service Providers to monitor and analyze the use of our Service or to serve advertisements. For instance, Google AdMob may use device identifiers to personalize content and ads. You can generally opt-out of personalized advertising within your device settings.
+              When a user voluntarily triggers the "Report Logs" action in Anify, diagnostic error logs are prepared locally for the user to review and send directly via email to satyakiran296@gmail.com for debugging.
             </p>
           </section>
 
           <section>
-            <h3 style={{ color: 'var(--text-primary)', marginBottom: '1rem' }}>Security</h3>
+            <h3 style={{ color: 'var(--text-primary)', marginBottom: '8px', fontSize: '1.05rem' }}>
+              Contact
+            </h3>
             <p>
-              We value your trust in providing us your Personal Information, thus we are striving to use commercially acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and reliable, and we cannot guarantee its absolute security.
-            </p>
-          </section>
-
-          <section>
-            <h3 style={{ color: 'var(--text-primary)', marginBottom: '1rem' }}>Changes to This Privacy Policy</h3>
-            <p>
-              We may update our Privacy Policy from time to time. Thus, we advise you to review this page periodically for any changes. We will notify you of any changes by posting the new Privacy Policy on this page. These changes are effective immediately, after they are posted on this page.
-            </p>
-          </section>
-
-          <section>
-            <h3 style={{ color: 'var(--text-primary)', marginBottom: '1rem' }}>Contact Us</h3>
-            <p>
-              If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us at <strong>satyakiran296@gmail.com</strong>.
+              For privacy inquiries or technical clarification: <strong>satyakiran296@gmail.com</strong>.
             </p>
           </section>
         </div>

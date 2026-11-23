@@ -82,7 +82,7 @@ export function ToastProvider({ children }) {
         {toasts.map((t) => (
           <div
             key={t.id}
-            className="animate-fade-in"
+            className="toast-anim"
             style={{
               pointerEvents: 'auto',
               width: '100%',

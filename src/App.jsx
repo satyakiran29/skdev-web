@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { ToastProvider } from './context/ToastContext';
@@ -19,6 +19,29 @@ import AnyaEasterEgg from './components/AnyaEasterEgg';
 
 // Set this to true to hide the entire production site behind the Under Development landing page
 const IS_UNDER_DEVELOPMENT = false;
+
+function AnimatedRoutes() {
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [location.pathname]);
+
+  return (
+    <div key={location.pathname} className="page-transition animate-page-enter">
+      <Routes location={location}>
+        <Route path="/" element={<Home />} />
+        <Route path="/apps" element={<AppsSection />} />
+        <Route path="/apps/:id" element={<AppDetails />} />
+        <Route path="/roadmap" element={<Roadmap />} />
+        <Route path="/freelance" element={<Freelance />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/faq" element={<FAQ />} />
+        <Route path="/donate" element={<Donate />} />
+      </Routes>
+    </div>
+  );
+}
 
 function App() {
   const [isEasterEggActive, setIsEasterEggActive] = React.useState(false);
@@ -51,16 +74,7 @@ function App() {
       <ToastProvider>
         <Header />
         <main className="main-content">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/apps" element={<AppsSection />} />
-            <Route path="/apps/:id" element={<AppDetails />} />
-            <Route path="/roadmap" element={<Roadmap />} />
-            <Route path="/freelance" element={<Freelance />} />
-            <Route path="/privacy" element={<PrivacyPolicy />} />
-            <Route path="/faq" element={<FAQ />} />
-            <Route path="/donate" element={<Donate />} />
-          </Routes>
+          <AnimatedRoutes />
         </main>
         <Footer />
         {isEasterEggActive && <AnyaEasterEgg onClose={() => setIsEasterEggActive(false)} />}

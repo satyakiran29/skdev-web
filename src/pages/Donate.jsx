@@ -24,57 +24,82 @@ export default function Donate() {
   };
 
   return (
-    <div className="container animate-fade-in" style={{ paddingTop: 'clamp(1.5rem, 4vw, 3.5rem)', paddingBottom: 'clamp(1.5rem, 4vw, 3.5rem)' }}>
+    <div className="container animate-fade-in" style={{ paddingTop: '48px', paddingBottom: '64px' }}>
       <SEO
         title="Support SKDev — Donate & Sponsor"
-        description="Love SKDev apps? Support indie Android development behind Aniset and Anify via UPI (India) or PayPal (Global)."
+        description="Support indie Android development behind Aniset and Anify via UPI (India) or PayPal (Global)."
         keywords="support skdev, donate indie developer, upi donate satyakiran, paypal skdev, sponsor android developer"
         canonical="/donate"
         image={skdevbanner}
       />
 
       {/* Hero Header */}
-      <div style={{ textAlign: 'center', marginBottom: 'clamp(2.5rem, 6vw, 4rem)' }}>
-        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem', color: '#ec4899' }}>
-          <Heart size={48} fill="currentColor" style={{ filter: 'drop-shadow(0 0 12px rgba(236,72,153,0.4))' }} />
+      <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px' }}>
+          <div
+            style={{
+              width: '44px',
+              height: '44px',
+              borderRadius: 'var(--radius-md)',
+              backgroundColor: 'var(--bg-raised)',
+              border: '1px solid var(--border-subtle)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: 'var(--accent-primary)',
+            }}
+          >
+            <Heart size={22} />
+          </div>
         </div>
-        <h1 style={{ marginBottom: '1rem', fontSize: 'clamp(2rem, 6.5vw, 3.25rem)' }}>
-          Support My <span className="text-gradient">Work</span>
+        <h1 style={{ marginBottom: '12px', fontSize: 'clamp(2rem, 5vw, 2.75rem)' }}>
+          Support indie development
         </h1>
-        <p style={{ fontSize: 'clamp(0.95rem, 3vw, 1.125rem)', maxWidth: '650px', margin: '0 auto', lineHeight: 1.7, color: 'var(--text-secondary)' }}>
-          If you enjoy my apps, setups, and widgets, consider supporting indie development! Contributions directly fund Google Play licenses, cloud servers, and keep projects private and ad-free.
+        <p style={{ fontSize: '1rem', maxWidth: '580px', margin: '0 auto', lineHeight: 1.65, color: 'var(--text-secondary)' }}>
+          Contributions directly fund Google Play developer licenses, diagnostic infrastructure, and keep development independent and private.
         </p>
       </div>
 
       {/* Payment Options Section */}
       <div>
-        <h2 style={{ textAlign: 'center', marginBottom: 'clamp(1.5rem, 4vw, 2.5rem)', fontSize: 'clamp(1.4rem, 4vw, 2rem)' }}>
-          Payment Methods
+        <h2 style={{ textAlign: 'center', marginBottom: '28px', fontSize: '1.35rem' }}>
+          Payment methods
         </h2>
-        <div className="grid grid-cols-2" style={{ gap: 'clamp(1.25rem, 3vw, 2rem)' }}>
+        <div className="grid grid-cols-2 stagger-grid" style={{ gap: '20px' }}>
           
           {/* UPI Section for Indian Users */}
           <div
-            className="glass-panel responsive-panel"
+            className="app-card responsive-panel"
             style={{
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
               textAlign: 'center',
-              padding: 'clamp(1.5rem, 3.5vw, 2.5rem)',
-              borderRadius: '1.5rem',
               justifyContent: 'space-between',
             }}
           >
             <div>
-              <div style={{ width: '56px', height: '56px', backgroundColor: 'rgba(56, 189, 248, 0.1)', borderRadius: '50%', marginBottom: '1.25rem', color: 'var(--accent-primary)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Coffee size={28} />
+              <div
+                style={{
+                  width: '44px',
+                  height: '44px',
+                  backgroundColor: 'var(--bg-raised)',
+                  border: '1px solid var(--border-subtle)',
+                  borderRadius: 'var(--radius-md)',
+                  marginBottom: '16px',
+                  color: 'var(--accent-primary)',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+              >
+                <Coffee size={20} />
               </div>
-              <h3 style={{ fontSize: 'clamp(1.25rem, 3.5vw, 1.5rem)', marginBottom: '0.5rem', fontWeight: 700 }}>
-                Indian Users (UPI)
+              <h3 style={{ fontSize: '1.15rem', marginBottom: '6px', fontWeight: 600 }}>
+                India (UPI)
               </h3>
-              <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', fontSize: '0.9rem', lineHeight: 1.6 }}>
-                Instant zero-fee direct transfer via Google Pay, PhonePe, Paytm, or BHIM.
+              <p style={{ color: 'var(--text-secondary)', marginBottom: '20px', fontSize: '0.875rem', lineHeight: 1.5 }}>
+                Direct zero-fee transfer via Google Pay, PhonePe, Paytm, or BHIM.
               </p>
 
               {/* QR Code Container */}
@@ -83,12 +108,11 @@ export default function Donate() {
                 flexDirection: 'column',
                 alignItems: 'center',
                 backgroundColor: '#ffffff',
-                padding: '1rem',
-                borderRadius: '1.25rem',
-                boxShadow: '0 10px 25px rgba(0, 0, 0, 0.25)',
-                margin: '0 auto 1.5rem auto',
+                padding: '16px',
+                borderRadius: 'var(--radius-lg)',
+                margin: '0 auto 20px auto',
                 width: '100%',
-                maxWidth: '200px'
+                maxWidth: '190px'
               }}>
                 <div style={{ height: 'auto', margin: '0 auto', maxWidth: '100%', width: '100%' }}>
                   <QRCode
@@ -98,44 +122,43 @@ export default function Donate() {
                     viewBox={`0 0 256 256`}
                   />
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', marginTop: '0.6rem', fontSize: '0.65rem', fontWeight: 800, color: '#0f172a', letterSpacing: '0.05em' }}>
-                  <QrCode size={12} color="#0284c7" /> SCAN WITH ANY UPI APP
+                <div style={{ display: 'flex', alignItems: 'center', gap: '5px', marginTop: '8px', fontSize: '0.7rem', color: '#0b0d14' }} className="font-mono">
+                  <QrCode size={12} /> Scan with UPI app
                 </div>
               </div>
             </div>
 
-            <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '0.75rem', marginTop: 'auto' }}>
-              {/* 1-Tap Mobile UPI Intent Trigger */}
+            <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '10px', marginTop: 'auto' }}>
               <a
                 href={upiUri}
                 className="btn btn-primary mobile-w-full"
-                style={{ width: '100%', padding: '0.85rem 1.25rem', fontSize: '0.95rem', gap: '0.45rem' }}
+                style={{ width: '100%' }}
               >
-                <Smartphone size={16} /> Open in Any UPI App
+                <Smartphone size={15} /> Open in UPI app
               </a>
 
               {/* Copy UPI ID Bar */}
               <div style={{
                 width: '100%',
-                padding: '0.65rem 0.875rem',
-                backgroundColor: 'rgba(0,0,0,0.3)',
-                borderRadius: '0.875rem',
-                border: '1px solid var(--border-color)',
+                padding: '8px 12px',
+                backgroundColor: 'var(--bg-raised)',
+                borderRadius: 'var(--radius-md)',
+                border: '1px solid var(--border-subtle)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
               }}>
-                <span style={{ fontFamily: 'monospace', fontSize: 'clamp(0.8rem, 3vw, 0.95rem)', color: 'var(--text-primary)', wordBreak: 'break-all' }}>
+                <span className="font-mono tabular-nums" style={{ fontSize: '0.85rem', color: 'var(--text-primary)' }}>
                   psatyakiran1@oksbi
                 </span>
                 <button
                   onClick={handleCopyUPI}
                   className="btn-icon"
-                  style={{ backgroundColor: 'rgba(255, 255, 255, 0.08)', minWidth: '34px', minHeight: '34px', padding: '0.35rem' }}
+                  style={{ width: '30px', height: '30px' }}
                   title="Copy UPI ID"
                   aria-label="Copy UPI ID to clipboard"
                 >
-                  {copiedUPI ? <CheckCircle2 size={16} color="#10b981" /> : <Copy size={16} />}
+                  {copiedUPI ? <CheckCircle2 size={15} style={{ color: 'var(--color-positive)' }} /> : <Copy size={15} />}
                 </button>
               </div>
             </div>
@@ -143,26 +166,37 @@ export default function Donate() {
 
           {/* PayPal Section for Global Users */}
           <div
-            className="glass-panel responsive-panel"
+            className="app-card responsive-panel"
             style={{
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
               textAlign: 'center',
-              padding: 'clamp(1.5rem, 3.5vw, 2.5rem)',
-              borderRadius: '1.5rem',
               justifyContent: 'space-between',
             }}
           >
             <div>
-              <div style={{ width: '56px', height: '56px', backgroundColor: 'rgba(139, 92, 246, 0.1)', borderRadius: '50%', marginBottom: '1.25rem', color: '#8b5cf6', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
-                <CreditCard size={28} />
+              <div
+                style={{
+                  width: '44px',
+                  height: '44px',
+                  backgroundColor: 'var(--bg-raised)',
+                  border: '1px solid var(--border-subtle)',
+                  borderRadius: 'var(--radius-md)',
+                  marginBottom: '16px',
+                  color: 'var(--text-primary)',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}
+              >
+                <CreditCard size={20} />
               </div>
-              <h3 style={{ fontSize: 'clamp(1.25rem, 3.5vw, 1.5rem)', marginBottom: '0.5rem', fontWeight: 700 }}>
-                Global Users (PayPal)
+              <h3 style={{ fontSize: '1.15rem', marginBottom: '6px', fontWeight: 600 }}>
+                Global (PayPal)
               </h3>
-              <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem', fontSize: '0.9rem', lineHeight: 1.6 }}>
-                Secure international transactions using your PayPal balance, debit, or credit card.
+              <p style={{ color: 'var(--text-secondary)', marginBottom: '20px', fontSize: '0.875rem', lineHeight: 1.5 }}>
+                International transfer using PayPal balance, debit, or credit card.
               </p>
 
               {/* PayPal QR Code Container */}
@@ -171,12 +205,11 @@ export default function Donate() {
                 flexDirection: 'column',
                 alignItems: 'center',
                 backgroundColor: '#ffffff',
-                padding: '1rem',
-                borderRadius: '1.25rem',
-                boxShadow: '0 10px 25px rgba(0, 0, 0, 0.25)',
-                margin: '0 auto 1.5rem auto',
+                padding: '16px',
+                borderRadius: 'var(--radius-lg)',
+                margin: '0 auto 20px auto',
                 width: '100%',
-                maxWidth: '200px'
+                maxWidth: '190px'
               }}>
                 <div style={{ height: 'auto', margin: '0 auto', maxWidth: '100%', width: '100%' }}>
                   <QRCode
@@ -186,8 +219,8 @@ export default function Donate() {
                     viewBox={`0 0 256 256`}
                   />
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', marginTop: '0.6rem', fontSize: '0.65rem', fontWeight: 800, color: '#0f172a', letterSpacing: '0.05em' }}>
-                  <QrCode size={12} color="#8b5cf6" /> SCAN TO PAY VIA PAYPAL
+                <div style={{ display: 'flex', alignItems: 'center', gap: '5px', marginTop: '8px', fontSize: '0.7rem', color: '#0b0d14' }} className="font-mono">
+                  <QrCode size={12} /> Scan with PayPal
                 </div>
               </div>
             </div>
@@ -197,17 +230,10 @@ export default function Donate() {
                 href="https://paypal.me/skdev029"
                 target="_blank"
                 rel="noreferrer"
-                className="btn btn-primary"
-                style={{
-                  width: '100%',
-                  padding: '0.85rem 1.25rem',
-                  fontSize: '0.95rem',
-                  background: 'linear-gradient(135deg, #003087 0%, #009cde 100%)',
-                  boxShadow: '0 4px 14px rgba(0, 48, 135, 0.35)',
-                  gap: '0.45rem',
-                }}
+                className="btn btn-secondary"
+                style={{ width: '100%' }}
               >
-                <ExternalLink size={16} /> Donate via PayPal
+                <ExternalLink size={15} /> Open PayPal.me
               </a>
             </div>
           </div>

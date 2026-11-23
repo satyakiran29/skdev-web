@@ -1,14 +1,14 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { ArrowRight, Download, Send, MessageCircle, Sparkles } from 'lucide-react';
+import { ArrowRight, Download, Send, MessageCircle } from 'lucide-react';
 import AppCard from '../components/AppCard';
 import { appsData } from '../data/appsData';
 import SEO from '../components/SEO';
 import OfficialInfographic from '../components/OfficialInfographic';
 import skdevbanner from '../assets/skdev-banner.webp';
 
-const InstagramIcon = ({ size = 18 }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+const InstagramIcon = ({ size = 15 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
@@ -53,62 +53,53 @@ export default function Home() {
   return (
     <div className="container">
       <SEO
-        title="Crafting Digital Experiences"
-        description="Explore Android personalization and productivity suites crafted by indie developer Satyakiran (SKDev) — including Anify, Milky Launcher (releasing Nov 19), Aniset, and live developer roadmap."
+        title="Android Personalization & System Tools"
+        description="Explore Android personalization and productivity suites crafted by indie developer Satyakiran (SKDev) — including Anify, Milky Launcher, Aniset, and live developer roadmap."
         keywords="skdev, satyakiran, milky launcher, jetpack compose, anify, aniset, sticker studio, kwgt widgets, klwp live wallpapers, android 16, focus lock, blockit, android personalization, indie app developer"
         canonical="/"
         image={skdevbanner}
         jsonLd={ORG_JSONLD}
       />
+
       {/* Hero Section */}
       <section
         style={{
-          padding: 'clamp(3rem, 7vw, 6rem) 0 clamp(2rem, 5vw, 4rem) 0',
+          padding: '80px 0 48px 0',
           textAlign: 'center',
-          maxWidth: '820px',
+          maxWidth: '760px',
           margin: '0 auto',
         }}
         className="animate-fade-in"
       >
-        {/* Subtle Badge */}
-        <div
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '0.4rem',
-            padding: '0.35rem 0.9rem',
-            borderRadius: '9999px',
-            backgroundColor: 'rgba(56, 189, 248, 0.1)',
-            border: '1px solid rgba(56, 189, 248, 0.25)',
-            color: 'var(--accent-primary)',
-            fontSize: '0.825rem',
-            fontWeight: 600,
-            marginBottom: '1.25rem',
-          }}
-        >
-          <Sparkles size={14} /> Indie Android Creator
+        {/* Technical signature telemetry badge */}
+        <div style={{ marginBottom: '20px' }}>
+          <span className="tech-badge">
+            <span className="status-dot" /> Android · Indie Developer
+          </span>
         </div>
 
         <h1
           style={{
-            marginBottom: '1.25rem',
-            fontSize: 'clamp(2.25rem, 7.5vw, 3.85rem)',
-            lineHeight: 1.15,
+            marginBottom: '16px',
+            fontSize: 'clamp(2.2rem, 5.5vw, 3.25rem)',
+            letterSpacing: '-0.02em',
+            color: 'var(--text-primary)',
           }}
         >
-          Crafting Digital <br /> <span className="text-gradient">Experiences</span>
+          Android personalization and system tools
         </h1>
 
         <p
           style={{
-            fontSize: 'clamp(0.95rem, 3.5vw, 1.2rem)',
-            marginBottom: '2rem',
-            padding: '0 0.5rem',
+            fontSize: '1.05rem',
+            marginBottom: '32px',
             color: 'var(--text-secondary)',
             lineHeight: 1.65,
+            maxWidth: '620px',
+            margin: '0 auto 32px auto',
           }}
         >
-          Clean, aesthetic, and battery-friendly Android personalization suites built for real user needs.
+          Independent Android suites built for performance, privacy, and deep home screen customization.
         </p>
 
         {/* Primary CTAs */}
@@ -116,22 +107,17 @@ export default function Home() {
           style={{
             display: 'flex',
             justifyContent: 'center',
-            gap: '0.75rem',
+            gap: '12px',
             flexWrap: 'wrap',
-            marginBottom: '1.5rem',
+            marginBottom: '28px',
           }}
         >
           <NavLink
             to="/apps"
             className="btn btn-primary"
-            style={{
-              padding: '0.85rem 1.75rem',
-              fontSize: '1rem',
-              flex: '1 1 200px',
-              maxWidth: '280px',
-            }}
+            style={{ minWidth: '160px' }}
           >
-            Explore All Apps <ArrowRight size={18} />
+            Explore apps <ArrowRight size={16} />
           </NavLink>
 
           <a
@@ -139,24 +125,19 @@ export default function Home() {
             target="_blank"
             rel="noreferrer"
             className="btn btn-secondary"
-            style={{
-              padding: '0.85rem 1.75rem',
-              fontSize: '1rem',
-              flex: '1 1 200px',
-              maxWidth: '280px',
-            }}
+            style={{ minWidth: '160px' }}
           >
-            Google Play <Download size={18} />
+            Google Play <Download size={16} />
           </a>
         </div>
 
-        {/* Community & Social Quick Links Strip */}
+        {/* Community & Social Links Strip */}
         <div
           style={{
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            gap: '0.6rem',
+            gap: '8px',
             flexWrap: 'wrap',
           }}
         >
@@ -166,14 +147,13 @@ export default function Home() {
             rel="noreferrer"
             className="btn btn-secondary"
             style={{
-              padding: '0.45rem 0.95rem',
-              fontSize: '0.85rem',
-              minHeight: '38px',
-              borderRadius: '9999px',
-              backgroundColor: 'rgba(15, 23, 42, 0.6)',
+              height: '34px',
+              padding: '0 12px',
+              fontSize: '0.8rem',
+              color: 'var(--text-secondary)',
             }}
           >
-            <Send size={15} color="var(--accent-primary)" /> Updates Channel
+            <Send size={14} style={{ color: 'var(--text-muted)' }} /> Updates
           </a>
           <a
             href="https://t.me/skdev_chat"
@@ -181,14 +161,13 @@ export default function Home() {
             rel="noreferrer"
             className="btn btn-secondary"
             style={{
-              padding: '0.45rem 0.95rem',
-              fontSize: '0.85rem',
-              minHeight: '38px',
-              borderRadius: '9999px',
-              backgroundColor: 'rgba(15, 23, 42, 0.6)',
+              height: '34px',
+              padding: '0 12px',
+              fontSize: '0.8rem',
+              color: 'var(--text-secondary)',
             }}
           >
-            <MessageCircle size={15} color="#34d399" /> Community Chat
+            <MessageCircle size={14} style={{ color: 'var(--text-muted)' }} /> Community
           </a>
           <a
             href="https://www.instagram.com/skdev29/"
@@ -196,42 +175,40 @@ export default function Home() {
             rel="noreferrer"
             className="btn btn-secondary"
             style={{
-              padding: '0.45rem 0.95rem',
-              fontSize: '0.85rem',
-              minHeight: '38px',
-              borderRadius: '9999px',
-              backgroundColor: 'rgba(15, 23, 42, 0.6)',
+              height: '34px',
+              padding: '0 12px',
+              fontSize: '0.8rem',
+              color: 'var(--text-secondary)',
             }}
           >
-            <InstagramIcon size={15} /> Instagram
+            <InstagramIcon size={14} /> Instagram
           </a>
         </div>
       </section>
 
       {/* Featured Apps Section */}
-      <section style={{ padding: 'clamp(2rem, 5vw, 4rem) 0' }} className="animate-fade-in delay-200">
+      <section style={{ padding: '48px 0 32px 0' }} className="animate-fade-in">
         <div
           className="flex-between"
           style={{
-            marginBottom: '2rem',
+            marginBottom: '24px',
             alignItems: 'flex-end',
-            gap: '1rem',
+            gap: '16px',
           }}
         >
           <div>
-            <span
+            <div
+              className="font-mono"
               style={{
-                fontSize: '0.8rem',
-                fontWeight: 700,
-                color: 'var(--accent-primary)',
-                textTransform: 'uppercase',
-                letterSpacing: '0.05em',
+                fontSize: '0.75rem',
+                color: 'var(--text-muted)',
+                marginBottom: '4px',
               }}
             >
-              Curated Highlights
-            </span>
-            <h2 style={{ margin: '0.25rem 0 0 0', fontSize: 'clamp(1.5rem, 4vw, 2.25rem)' }}>
-              Featured Applications
+              Curated suites
+            </div>
+            <h2 style={{ margin: 0, fontSize: 'clamp(1.4rem, 3.5vw, 1.85rem)' }}>
+              Featured applications
             </h2>
           </div>
           <NavLink
@@ -239,33 +216,21 @@ export default function Home() {
             style={{
               display: 'inline-flex',
               alignItems: 'center',
-              gap: '0.35rem',
+              gap: '6px',
               color: 'var(--accent-primary)',
-              fontWeight: 600,
-              fontSize: '0.95rem',
-              flexShrink: 0,
-              padding: '0.35rem 0.75rem',
-              borderRadius: '0.5rem',
-              backgroundColor: 'rgba(56, 189, 248, 0.1)',
+              fontSize: '0.875rem',
+              fontWeight: 500,
             }}
           >
-            See All <ArrowRight size={15} />
+            See all <ArrowRight size={14} />
           </NavLink>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(320px, 100%), 1fr))', gap: '1.75rem' }}>
+        <div className="stagger-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(320px, 100%), 1fr))', gap: '20px' }}>
           {featuredApps.map(app => (
             <AppCard key={app.id} app={app} />
           ))}
         </div>
-
-        {appsData.length > featuredApps.length && (
-          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '2.5rem' }}>
-            <NavLink to="/apps" className="btn btn-secondary" style={{ padding: '0.75rem 2rem' }}>
-              Show More Applications ({appsData.length})
-            </NavLink>
-          </div>
-        )}
       </section>
 
       {/* Official vs Modded App Education Infographic */}

@@ -44,7 +44,7 @@ const routes = [
   {
     path: 'apps/milky-launcher',
     title: 'Milky Launcher (Upcoming) — Dark, quiet, and out of the way | SKDev',
-    description: 'Dark, quiet, and out of the way. Milky Launcher is an Android home screen launcher built natively with Jetpack Compose by Krishna Vishwakarma (@Spyou) & Satyakiran. Releasing on Google Play on 19 November 2026.',
+    description: 'Dark, quiet, and out of the way. Milky Launcher is an Android home screen launcher built natively with Jetpack Compose by Krishna Vishwakarma (@Spyou) & Satyakiran. Releasing on Google Play on 25 December 2026.',
     keywords: 'milky launcher, android launcher, jetpack compose launcher, minimal launcher, privacy launcher, spring physics, skdev, android customization',
     canonical: `${BASE_URL}/apps/milky-launcher`,
     image: `${BASE_URL}/app_banners/milky.webp`,

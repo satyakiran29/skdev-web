@@ -42,76 +42,76 @@ export const appsData = [
     playStoreLink: "https://play.google.com/store/apps/details?id=com.skdev.anify",
     websiteLink: "https://anify.psatyakiran.in/",
     highlights: [
-      "🎨 Sticker Studio: Telegram → WhatsApp conversion & 1-tap export",
-      "Ready-to-use widgets (No KWGT required)",
-      "Premium KWGT widget packs & copyright/removal requests",
-      "BlockIt – Enhanced Focus Lock UI & controls",
-      "Automatic crash reports & device diagnostics",
-      "Targeting Android 16 (API 36) • Android 7.0+ Supported",
-      "HD & Aesthetic Wallpapers + Live Calendars",
-      "Trending Ringtones & Sound Effects",
-      "Free with Ads"
+      "Sticker Studio: Telegram to WhatsApp conversion and 1-tap export",
+      "Ready-to-use widgets (no companion app required)",
+      "KWGT widget packs and removal requests",
+      "BlockIt: Focus Lock controls and app restrictor",
+      "Automatic diagnostics and crash reports",
+      "Targeting Android 16 (API 36) • Android 7.0+ supported",
+      "Curated wallpapers and live calendars",
+      "Ringtones and sound effects",
+      "Free, ad-supported"
     ],
     features: [
       {
-        icon: "🎨",
+        icon: "palette",
         title: "Sticker Studio (Telegram → WhatsApp)",
         subtitle: "Convert and export Telegram sticker packs directly into WhatsApp in 1-tap.",
         points: [
-          "Instant Conversion: Seamlessly convert any Telegram sticker packs to WhatsApp-ready formats.",
+          "Instant Conversion: Convert Telegram sticker packs to WhatsApp-ready formats.",
           "One-Tap Export: Send created packs straight to WhatsApp without third-party converters.",
           "High-fidelity rendering with transparent PNG/WebP background preservation."
         ]
       },
       {
-        icon: "📱",
+        icon: "smartphone",
         title: "Ready-to-Use Widgets (No KWGT Required)",
-        subtitle: "Add gorgeous home screen widgets in seconds—no setup hassle or companion apps needed.",
+        subtitle: "Add home screen widgets in seconds—no companion apps needed.",
         points: [
-          "Aesthetic Clocks & Anisets: Sleek Nothing-style designs, anime-inspired time widgets, and custom clocks.",
-          "Real-Time System Monitors: Track CPU usage with dot-graph visualization, battery levels, and live network speed/data usage (Wi-Fi/Mobile).",
-          "Smart Utilities: Manage Bluetooth devices, track the sun's path, enable Caffeine mode, create sticky notes, and control music with interactive playback widgets.",
-          "Fun Widgets: Spin the Bottle and display animated GIFs right on your launcher."
+          "Aesthetic Clocks & Anisets: Minimal clock designs, anime-inspired time widgets, and custom dials.",
+          "Real-Time System Monitors: Track CPU usage with dot-graph visualization, battery levels, and live network speed/data usage.",
+          "Smart Utilities: Manage Bluetooth devices, track the sun's path, enable Caffeine mode, create sticky notes, and control music.",
+          "Interactive Widgets: Wheel spinner and animated GIFs on your launcher."
         ]
       },
       {
-        icon: "🎨",
+        icon: "palette",
         title: "Premium KWGT Widget Packs",
-        subtitle: "Take customization to the next level with beautifully crafted KWGT widget packs (Requires KWGT & KWGT Pro).",
+        subtitle: "Advanced customization with beautifully crafted KWGT widget packs (Requires KWGT & KWGT Pro).",
         points: [
-          "Modern and aesthetic widget designs with anime-inspired layouts.",
-          "Minimal & Nothing-style widgets with regular updates.",
-          "One-tap seamless import directly into the KWGT app."
+          "Curated widget designs with anime-inspired layouts.",
+          "Minimal and Nothing-style widgets with regular updates.",
+          "One-tap import directly into the KWGT app."
         ]
       },
       {
-        icon: "🔒",
+        icon: "lock",
         title: "BlockIt – Focus Lock & App Blocker",
-        subtitle: "Stay productive and reclaim your time using built-in focus tools powered via Android's AccessibilityService API.",
+        subtitle: "Built-in focus tools powered via Android's AccessibilityService API.",
         points: [
-          "Lockdown Mode: Instantly block distracting apps during work or study sessions.",
-          "Focus Reports: Track focus duration with an intuitive 7-day activity chart.",
+          "Lockdown Mode: Temporarily restrict distracting apps during work or study sessions.",
+          "Focus Reports: Track focus duration with a 7-day activity chart.",
           "Anti-Impulse Protection: 3-second 'Hold to Give Up' confirmation barrier.",
           "Safe Whitelisting: Essential system apps remain accessible for emergencies."
         ]
       },
       {
-        icon: "🖼️",
-        title: "HD Wallpapers & Trending Ringtones",
+        icon: "image",
+        title: "Curated Wallpapers & Audio",
         subtitle: "Curated collection of aesthetic visuals and audio personalization.",
         points: [
-          "AMOLED, Minimal, Anime, Aesthetic, and Abstract wallpaper styles.",
+          "AMOLED, Minimal, Anime, and Abstract wallpaper collections.",
           "Life Calendar Live Wallpaper & Auto Wallpaper Changer.",
-          "Trending ringtones, notification sounds, and alarm tones updated regularly."
+          "Ringtones, notification sounds, and alarm tones."
         ]
       },
       {
-        icon: "⚡",
-        title: "Smooth UI & Battery Optimized",
-        subtitle: "Built with modern Material Design principles for fluid responsiveness.",
+        icon: "zap",
+        title: "Battery Optimized Architecture",
+        subtitle: "Built with modern Android guidelines for fluid responsiveness.",
         points: [
-          "Fast, clean interface with fluid animations and immersive Dark Mode.",
-          "Anify is completely free and supported by ads, helping continuously deliver new widgets, wallpapers, ringtones, and features."
+          "Lightweight interface with fluid transitions and native dark theme.",
+          "Anify is completely free and supported by non-intrusive ads."
         ]
       }
     ],
@@ -126,7 +126,7 @@ export const appsData = [
         developerResponse: {
           author: "Satya Kiran",
           date: "11 August 2026",
-          comment: "Thank you so much for the amazing 5-star review! ❤️ I’m really glad you’re enjoying the widgets and wallpapers. Your feedback means a lot and motivates me to keep improving the app! 🚀✨"
+          comment: "Thank you for the review. I am glad you are enjoying the widgets and wallpapers. Your feedback is appreciated."
         }
       },
       {
@@ -138,7 +138,7 @@ export const appsData = [
         developerResponse: {
           author: "Satya Kiran",
           date: "17 May 2026",
-          comment: "Thanks for your valuable feedback 🙂"
+          comment: "Thanks for your valuable feedback."
         }
       },
       {
@@ -174,7 +174,7 @@ export const appsData = [
         developerResponse: {
           author: "Satya Kiran",
           date: "10 August 2026",
-          comment: "Thank you so much for the 5★ review! ❤️ I really appreciate the support. I’m not planning to discontinue the app anytime soon! 😄 If you have any ideas, feature requests, or find any bugs, feel free to join my Telegram community and tell me directly. Your feedback really helps me improve the app! 🚀❤️"
+          comment: "Thank you for the review and support. I am actively maintaining the app. If you have any feature ideas or notice any issues, feel free to join the Telegram community."
         }
       },
       {
@@ -186,7 +186,7 @@ export const appsData = [
         developerResponse: {
           author: "Satya Kiran",
           date: "10 August 2026",
-          comment: "Thank you so much, sis! ❤️ Really glad you’re enjoying the app! Your support means a lot to me. 🥹✨"
+          comment: "Thank you for the support, glad you are enjoying the app."
         }
       },
       {
@@ -198,7 +198,7 @@ export const appsData = [
         developerResponse: {
           author: "Satya Kiran",
           date: "20 July 2026",
-          comment: "Thank you so much for your kind words and for coming from our Telegram community to support Anify! ❤️ Your encouragement means a lot and motivates me to keep improving the app. I hope you'll continue to enjoy future updates. Thanks again for being part of the journey! ✨"
+          comment: "Thank you for your kind words and for coming from our Telegram community to support Anify. I hope you will continue to enjoy future updates."
         }
       },
       {
@@ -210,7 +210,7 @@ export const appsData = [
         developerResponse: {
           author: "Satya Kiran",
           date: "9 May 2026",
-          comment: "Thanks for your valuable feedback Anify v1.0.8 is still in early access, and I’m actively adding new features and improvements. Version 1.1.0 will be the first stable major release. After that, new live wallpapers will be added regularly. For suggestions or support: satyakiran296@gmail.com"
+          comment: "Thanks for your feedback. We are actively adding improvements and more live wallpapers will be included in upcoming releases."
         }
       },
       {
@@ -222,7 +222,7 @@ export const appsData = [
         developerResponse: {
           author: "Satya Kiran",
           date: "16 June 2026",
-          comment: "Hi, please update to the latest version of the app and let us know which version you're using. The app also has a Report Logs option—please tap it and send the logs to satyakiran296@gmail.com so we can investigate the crash and help resolve the issue as quickly as possible."
+          comment: "Please update to the latest version. The app also includes a Report Logs feature under diagnostics—please tap it and send the details to satyakiran296@gmail.com so we can investigate and fix this quickly."
         }
       },
       {
@@ -234,7 +234,7 @@ export const appsData = [
         developerResponse: {
           author: "Satya Kiran",
           date: "28 April 2026",
-          comment: "Thanks for your valuable feedback ☺️"
+          comment: "Thanks for your valuable feedback."
         }
       },
       {
@@ -246,7 +246,7 @@ export const appsData = [
         developerResponse: {
           author: "Satya Kiran",
           date: "23 July 2026",
-          comment: "Thanks for your valuable feedback 😃"
+          comment: "Thanks for your valuable feedback."
         }
       },
       {
@@ -258,7 +258,7 @@ export const appsData = [
         developerResponse: {
           author: "Satya Kiran",
           date: "9 May 2026",
-          comment: "Thanks for your valuable feedback 😃"
+          comment: "Thanks for your valuable feedback."
         }
       }
     ]
@@ -267,19 +267,19 @@ export const appsData = [
     id: "milky-launcher",
     name: "Milky Launcher (Upcoming)",
     status: "upcoming",
-    releaseDate: "19 November 2026",
+    releaseDate: "25 December 2026",
     tagline: "Dark, quiet, and out of the way",
     banner: milkyBanner,
     previewBanner: milkyBanner,
     screenshot: milkyBanner,
     screenshots: [milkyScreenshot],
-    description: "Dark, quiet, and out of the way. Milky Launcher is an Android home screen launcher built natively with Jetpack Compose by Krishna Vishwakarma (@Spyou) & Satyakiran. Releasing on Google Play on 19 November 2026.",
-    shortDesc: "Native Jetpack Compose Android launcher releasing on Google Play on 19 November 2026.",
+    description: "Dark, quiet, and out of the way. Milky Launcher is an Android home screen launcher built natively with Jetpack Compose by Krishna Vishwakarma (@Spyou) & Satyakiran. Releasing on Google Play on 25 December 2026.",
+    shortDesc: "Native Jetpack Compose Android launcher releasing on Google Play on 25 December 2026.",
     requiresAndroid: "Android 8.0+",
     icon: milkyIcon,
     logo: milkyLogo,
     playStoreLink: "Coming Soon",
-    targetLaunchDate: "2026-11-19T00:00:00",
+    targetLaunchDate: "2026-12-25T00:00:00",
     telegramLink: "https://t.me/milkylc",
     websiteLink: "https://mlweb-skdev29.vercel.app/",
     coDevelopers: [
@@ -302,60 +302,60 @@ export const appsData = [
       }
     ],
     highlights: [
-      "🚀 Target Google Play Release: 19 November 2026",
+      "Target Google Play Release: 25 December 2026",
       "100% Native Jetpack Compose Architecture",
-      "Zero Internet & Tracking Permissions (100% Private)",
-      "Spring-Based Spatial Motion Physics Tokens",
-      "Adaptive Circle Icon Masking with Specular Rims",
-      "Multi-Tiered Smart Search (Prefix, Word Boundary, Initials & Substring)",
-      "Modular Native Widgets: Sun Tracker, Battery Bottle, Life Calendar & Music",
-      "Cosmic Void, Pure Black AMOLED & Apple Glass Acrylic Themes",
-      "On-Device Biometric Fingerprint & Pattern App Lock"
+      "Zero internet & tracking permissions (100% private)",
+      "Spring-based spatial motion physics tokens",
+      "Adaptive circle icon masking with specular rims",
+      "Multi-tiered smart search (prefix, word boundary, initials & substring)",
+      "Modular native widgets: Sun Tracker, Battery Bottle, Life Calendar & Music",
+      "AMOLED and acrylic glass theme presets",
+      "On-device biometric fingerprint & pattern app lock"
     ],
     features: [
       {
-        icon: "⚡",
+        icon: "zap",
         title: "Spring-Based Motion Tokens",
-        subtitle: "Spatial Physics with zero robotic linear transitions.",
+        subtitle: "Spatial physics with natural tactile transitions.",
         points: [
-          "Spatial springs carry subtle physical bounce (damping 0.82, stiffness 420).",
-          "Opacity and color transitions are tuned to never overshoot.",
-          "Seamless fluid gestures that feel like a natural physical extension of your touch."
+          "Spatial springs tuned with calibrated physical bounce (damping 0.82, stiffness 420).",
+          "Opacity and color transitions tuned to never overshoot.",
+          "Fluid gestures designed for responsive tactile interaction."
         ]
       },
       {
-        icon: "🔍",
+        icon: "search",
         title: "Multi-Tiered Smart Search",
-        subtitle: "Instant ranking across 4 intelligent tiers with zero lag.",
+        subtitle: "Instant ranking across 4 tiers with zero lag.",
         points: [
           "Exact Prefix → Word Boundary → Initials Matching ('gps' finds Google Play Store) → Substring.",
-          "Fuzzy matching with intelligent web search query fallback.",
-          "Keyboard immediately triggers without frame drops or jitter."
+          "Fuzzy matching with query fallback.",
+          "Instant keyboard response without dropped frames."
         ]
       },
       {
-        icon: "🎨",
+        icon: "palette",
         title: "Adaptive Circle Masking",
-        subtitle: "A uniform, calm visual system across all manufacturer icons.",
+        subtitle: "A uniform, calm visual system across all app icons.",
         points: [
           "Every app icon is dynamically masked into a clean, uniform circle.",
-          "Subtle specular rim lighting adds depth and premium clarity.",
-          "Supports standard appfilter.xml packs alongside native adaptive masking."
+          "Subtle rim lighting for optical clarity.",
+          "Supports standard appfilter.xml icon packs alongside native adaptive masking."
         ]
       },
       {
-        icon: "⏱️",
+        icon: "clock",
         title: "Modular Native Widget Engine",
         subtitle: "Built-in desktop widgets without third-party battery overhead.",
         points: [
           "Astronomical Sun Tracker with real-time day/night curve.",
-          "Battery Bottle Spinner — a playful, interactive battery level gauge.",
-          "Life & Year Progress Calendars and Precision Digital/Analog Clocks.",
-          "Frosted Glass Music Controller with live playback controls."
+          "Battery level gauge with tactile readout.",
+          "Life and year progress calendars with digital/analog clocks.",
+          "Music controller with live playback controls."
         ]
       },
       {
-        icon: "🔒",
+        icon: "lock",
         title: "Zero Package Query Permissions & 100% Privacy",
         subtitle: "Strictly offline with no internet permission required.",
         points: [
@@ -365,19 +365,19 @@ export const appsData = [
         ]
       },
       {
-        icon: "🌌",
-        title: "Cosmic & Apple Glass Themes",
-        subtitle: "Tailor the atmosphere from deep space to frosted acrylics.",
+        icon: "palette",
+        title: "Deep Space & Acrylic Themes",
+        subtitle: "Tailor the atmosphere from pure black to frosted acrylics.",
         points: [
-          "Cosmic Void & Pure Black AMOLED for maximum OLED battery savings.",
-          "Apple Glass translucent frosted acrylic aesthetics with real-time blur.",
+          "Pure Black AMOLED for OLED battery conservation.",
+          "Translucent acrylic surface aesthetics with blur.",
           "Dynamic Material You wallpaper color integration."
         ]
       },
       {
-        icon: "📐",
+        icon: "grid",
         title: "Expressive Grid & Layout Control",
-        subtitle: "Freely customize your canvas layout to your exact taste.",
+        subtitle: "Configure your canvas layout to your exact preference.",
         points: [
           "Columns configurable from 3 to 6; rows from 4 to 8.",
           "Toggle text labels, dock shelf, and folder groupings.",
@@ -385,11 +385,11 @@ export const appsData = [
         ]
       },
       {
-        icon: "🛡️",
+        icon: "shield",
         title: "Biometric & Pattern App Lock",
         subtitle: "Protect sensitive apps with Android KeyStore security.",
         points: [
-          "Secure banking, gallery, and private messaging apps behind fingerprint or PIN.",
+          "Secure banking, gallery, and messaging apps behind fingerprint or PIN.",
           "Discreet pattern lock with anti-peek shielding.",
           "100% on-device cryptographic verification using Android BiometricPrompt."
         ]
@@ -427,34 +427,34 @@ export const appsData = [
     ],
     features: [
       {
-        icon: "✨",
+        icon: "palette",
         title: "Anime-Inspired Designs",
-        subtitle: "Iconic characters, scenes, and aesthetic themes.",
+        subtitle: "Themed widgets with aesthetic character art.",
         points: [
-          "Beautifully crafted widgets featuring iconic characters and anime series elements.",
-          "Captivating aesthetics that transform your home screen into a true anime wonderland."
+          "Crafted widgets featuring iconic anime motifs and timepieces.",
+          "Distinctive layouts that personalize your home screen."
         ]
       },
       {
-        icon: "🖼️",
+        icon: "image",
         title: "Curated Wallpaper Section",
         subtitle: "High-resolution backgrounds matching widget palettes.",
         points: [
-          "Curated selection of high-quality anime wallpapers designed to complement the widgets.",
-          "Set the perfect aesthetic mood for your launcher with breathtaking anime art."
+          "Curated selection of high-quality wallpapers designed to complement the widgets.",
+          "Balanced tone and palettes matched for launcher readability."
         ]
       },
       {
-        icon: "🎨",
-        title: "Customization Galore",
-        subtitle: "Tailor every widget to match your unique style.",
+        icon: "sliders",
+        title: "Deep Customization",
+        subtitle: "Tailor every widget to match your setup.",
         points: [
           "Extensive options to adjust colors, fonts, and layout elements.",
-          "Create a truly personalized and unique home screen experience."
+          "Personalized home screen configuration."
         ]
       },
       {
-        icon: "⚙️",
+        icon: "settings",
         title: "KWGT & KLWP Integration",
         subtitle: "Full power of KWGT widgets & KLWP dynamic wallpapers.",
         points: [
@@ -463,12 +463,12 @@ export const appsData = [
         ]
       },
       {
-        icon: "🔄",
-        title: "User-Friendly & Regular Updates",
-        subtitle: "Simple setup with continuous aesthetic additions.",
+        icon: "refresh-cw",
+        title: "Reliable Maintenance & Updates",
+        subtitle: "Simple setup with continuous design additions.",
         points: [
-          "Effortlessly browse and apply widgets with just a few taps.",
-          "Dedicated updates bringing fresh anime aesthetics and designs."
+          "Browse and apply widgets with straightforward configuration.",
+          "Periodic updates bringing new widgets and typography tweaks."
         ]
       }
     ],
@@ -518,7 +518,7 @@ export const appsData = [
         developerResponse: {
           author: "Satya Kiran",
           date: "13 September 2024",
-          comment: "Thanks for review 😃"
+          comment: "Thanks for the review."
         }
       },
       {
@@ -530,7 +530,7 @@ export const appsData = [
         developerResponse: {
           author: "Satya Kiran",
           date: "7 November 2024",
-          comment: "Thanks for your review"
+          comment: "Thanks for your review."
         }
       },
       {
@@ -542,7 +542,7 @@ export const appsData = [
         developerResponse: {
           author: "Satya Kiran",
           date: "26 December 2023",
-          comment: "Thanks for postive feedback"
+          comment: "Thanks for the positive feedback."
         }
       },
       {
@@ -554,7 +554,7 @@ export const appsData = [
         developerResponse: {
           author: "Satya Kiran",
           date: "15 August 2026",
-          comment: "Thank you for downloading our app! We will keep working on it!"
+          comment: "Thank you for using the app."
         }
       },
       {
@@ -566,7 +566,7 @@ export const appsData = [
         developerResponse: {
           author: "Satya Kiran",
           date: "20 February 2026",
-          comment: "Thanks for review 😃"
+          comment: "Thanks for the review."
         }
       }
     ]

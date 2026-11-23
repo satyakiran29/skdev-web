@@ -568,35 +568,10 @@ export default function Freelance() {
         }}
       >
         {/* Availability Badge */}
-        <div
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '0.5rem',
-            padding: '0.35rem 0.85rem',
-            borderRadius: '9999px',
-            backgroundColor: 'rgba(52, 211, 153, 0.1)',
-            border: '1px solid rgba(52, 211, 153, 0.3)',
-            color: '#34d399',
-            fontSize: 'clamp(0.75rem, 2.5vw, 0.85rem)',
-            fontWeight: 600,
-            marginBottom: '1.25rem',
-            maxWidth: '100%',
-            lineHeight: 1.4,
-          }}
-        >
-          <span
-            style={{
-              width: '8px',
-              height: '8px',
-              borderRadius: '50%',
-              backgroundColor: '#34d399',
-              boxShadow: '0 0 10px #34d399',
-              display: 'inline-block',
-              flexShrink: 0,
-            }}
-          />
-          Available for New Projects & Contracts
+        <div style={{ marginBottom: '20px' }}>
+          <span className="tech-badge positive">
+            <span className="status-dot" /> Available for new projects & contracts
+          </span>
         </div>
 
         <h1
@@ -633,13 +608,12 @@ export default function Freelance() {
             href="#inquiry"
             className="btn btn-primary"
             style={{
-              padding: '0.85rem 1.85rem',
-              fontSize: '1rem',
-              fontWeight: 700,
-              boxShadow: '0 4px 20px rgba(56, 189, 248, 0.3)',
+              padding: '0 24px',
+              height: '44px',
+              fontSize: '0.95rem',
             }}
           >
-            <Send size={18} /> Start a Project
+            <Send size={16} /> Start a Project
           </a>
 
           <a

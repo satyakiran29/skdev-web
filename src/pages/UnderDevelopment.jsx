@@ -10,74 +10,72 @@ export default function UnderDevelopment() {
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
-      padding: '2rem',
-      textAlign: 'center'
+      padding: '32px 16px',
+      textAlign: 'center',
+      backgroundColor: 'var(--bg-primary)'
     }}>
-      <div className="glass-panel animate-fade-in" style={{
-        padding: 'clamp(2rem, 5vw, 4rem)',
-        maxWidth: '600px',
+      <div className="app-card responsive-panel animate-fade-in" style={{
+        maxWidth: '520px',
         width: '100%',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        gap: '2rem'
+        gap: '24px'
       }}>
-        
         {/* Logo */}
         <div style={{ position: 'relative' }}>
           <img 
             src={heroLogo} 
             alt="SKDev Logo" 
             style={{ 
-              width: '100px', 
-              height: '100px', 
+              width: '84px', 
+              height: '84px', 
               objectFit: 'cover', 
               borderRadius: '50%', 
-              background: 'var(--bg-secondary)',
-              border: '3px solid var(--border-color)',
-              boxShadow: 'var(--shadow-lg)'
+              background: 'var(--bg-raised)',
+              border: '2px solid var(--border-subtle)',
             }} 
           />
           <div style={{
             position: 'absolute',
-            bottom: '-10px',
-            right: '-10px',
+            bottom: '-4px',
+            right: '-4px',
             backgroundColor: 'var(--accent-primary)',
-            borderRadius: '50%',
-            padding: '0.5rem',
-            color: '#fff',
-            boxShadow: 'var(--shadow-md)'
+            borderRadius: 'var(--radius-sm)',
+            padding: '6px',
+            color: '#07080d',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
           }}>
-            <Hammer size={24} />
+            <Hammer size={16} />
           </div>
         </div>
 
         {/* Text Content */}
         <div>
-          <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', marginBottom: '1rem' }}>
-            Under <span className="text-gradient">Development</span>
+          <h1 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.25rem)', marginBottom: '8px' }}>
+            Under Development
           </h1>
-          <p style={{ fontSize: '1.125rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-            We're currently working hard behind the scenes to craft a completely fresh, premium web experience. 
-            SKDev's new portal will launch soon!
+          <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0 }}>
+            We are working behind the scenes on the portal updates. Full access will be restored shortly.
           </p>
         </div>
 
         {/* Interaction */}
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem', width: '100%' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--accent-primary)', fontWeight: 600 }}>
-            <Rocket size={18} /> Coming very soon
-          </div>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px', width: '100%' }}>
+          <span className="tech-badge">
+            <Rocket size={12} /> Maintenance in progress
+          </span>
           
           <a 
             href="mailto:satyakiran296@gmail.com" 
             className="btn btn-primary" 
-            style={{ width: '100%', maxWidth: '300px', margin: '1rem auto 0 auto' }}
+            style={{ width: '100%', maxWidth: '260px' }}
           >
-            <Mail size={18} /> Contact Developer
+            <Mail size={15} /> Contact Developer
           </a>
         </div>
-
       </div>
     </div>
   );

@@ -2,8 +2,60 @@ import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { useParams, Navigate } from 'react-router-dom';
 import { appsData } from '../data/appsData';
-import { Download, Star, Quote, Globe, Clock, CheckCircle2, Ticket, Share2, MessageCircle, QrCode, X, Smartphone, Sparkles, Shield, Send, ChevronLeft, ChevronRight, ZoomIn, Users, ExternalLink } from 'lucide-react';
+import {
+  Download,
+  Star,
+  Quote,
+  Globe,
+  Clock,
+  CheckCircle2,
+  Ticket,
+  Share2,
+  MessageCircle,
+  QrCode,
+  X,
+  Smartphone,
+  Shield,
+  Send,
+  ChevronLeft,
+  ChevronRight,
+  ZoomIn,
+  Users,
+  ExternalLink,
+  Palette,
+  Lock,
+  Image as ImageIcon,
+  Zap,
+  Search,
+  Sliders,
+  Settings,
+  RefreshCw,
+  Grid as GridIcon
+} from 'lucide-react';
 import QRCode from 'react-qr-code';
+
+const renderFeatureIcon = (iconName) => {
+  const iconProps = { size: 18, color: 'var(--accent-primary)', strokeWidth: 1.5 };
+  switch (iconName) {
+    case 'palette': return <Palette {...iconProps} />;
+    case 'smartphone': return <Smartphone {...iconProps} />;
+    case 'lock': return <Lock {...iconProps} />;
+    case 'image': return <ImageIcon {...iconProps} />;
+    case 'zap': return <Zap {...iconProps} />;
+    case 'search': return <Search {...iconProps} />;
+    case 'clock': return <Clock {...iconProps} />;
+    case 'grid': return <GridIcon {...iconProps} />;
+    case 'shield': return <Shield {...iconProps} />;
+    case 'sliders': return <Sliders {...iconProps} />;
+    case 'settings': return <Settings {...iconProps} />;
+    case 'refresh-cw': return <RefreshCw {...iconProps} />;
+    default:
+      if (typeof iconName === 'string' && iconName.length <= 4) {
+        return <span style={{ fontSize: '1.1rem' }}>{iconName}</span>;
+      }
+      return <Smartphone {...iconProps} />;
+  }
+};
 
 const TwitterIcon = ({ size }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>;
 const LinkedinIcon = ({ size }) => <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>;
@@ -224,21 +276,8 @@ export default function AppDetails() {
                   </span>
                 )}
                 {app.status === 'upcoming' && (
-                  <span
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '0.3rem',
-                      padding: '0.15rem 0.65rem',
-                      borderRadius: '9999px',
-                      backgroundColor: 'rgba(236, 72, 153, 0.15)',
-                      color: '#f472b6',
-                      fontSize: '0.75rem',
-                      fontWeight: 700,
-                      border: '1px solid rgba(236, 72, 153, 0.3)',
-                    }}
-                  >
-                    <Clock size={12} /> Play Store Target: {app.releaseDate || '19 November 2026'}
+                  <span className="tech-badge">
+                    <span className="status-dot" /> Play Store Target: {app.releaseDate || '25 December 2026'}
                   </span>
                 )}
               </div>
@@ -282,13 +321,11 @@ export default function AppDetails() {
                       padding: '0.85rem 1.65rem',
                       fontSize: '1rem',
                       flex: '1 1 200px',
-                      borderColor: 'rgba(236, 72, 153, 0.4)',
-                      color: '#f472b6',
                       cursor: 'default',
                       justifyContent: 'center',
                     }}
                   >
-                    <Clock size={18} /> Google Play: {app.releaseDate || '19 November'}
+                    <Clock size={18} /> Google Play: {app.releaseDate || '25 December 2026'}
                   </div>
                 </>
               ) : (
@@ -413,67 +450,64 @@ export default function AppDetails() {
       {/* ── Upcoming Launch Countdown Banner ── */}
       {app.status === 'upcoming' && (
         <div
-          className="glass-panel"
+          className="app-card"
           style={{
-            padding: 'clamp(1.5rem, 4vw, 2.25rem)',
-            marginBottom: 'clamp(2.5rem, 6vw, 4rem)',
-            border: '1px solid rgba(236, 72, 153, 0.35)',
-            background: 'radial-gradient(ellipse at top left, rgba(236, 72, 153, 0.12), transparent 70%), var(--glass-bg)',
+            padding: '28px',
+            marginBottom: '40px',
             position: 'relative',
-            overflow: 'hidden',
           }}
         >
-          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '3px', background: 'linear-gradient(90deg, #ec4899, #8b5cf6, #38bdf8)' }} />
-          
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1.5rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '20px' }}>
             <div style={{ flex: '1 1 320px', minWidth: 0 }}>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', padding: '0.25rem 0.75rem', borderRadius: '9999px', backgroundColor: 'rgba(236, 72, 153, 0.15)', border: '1px solid rgba(236, 72, 153, 0.3)', color: '#f472b6', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.75rem' }}>
-                <Clock size={13} /> Official Google Play Target: {app.releaseDate || '19 November 2026'}
+              <div style={{ marginBottom: '10px' }}>
+                <span className="tech-badge">
+                  <span className="status-dot" /> Play Store Target: {app.releaseDate || '25 December 2026'}
+                </span>
               </div>
-              <h2 style={{ fontSize: 'clamp(1.4rem, 4vw, 2rem)', margin: '0 0 0.5rem 0', color: 'var(--text-primary)' }}>
+              <h2 style={{ fontSize: 'clamp(1.3rem, 3.5vw, 1.75rem)', margin: '0 0 8px 0', color: 'var(--text-primary)', fontWeight: 600 }}>
                 Releasing on Google Play Store
               </h2>
-              <p style={{ color: 'var(--text-secondary)', margin: 0, fontSize: '0.95rem', lineHeight: 1.6 }}>
+              <p style={{ color: 'var(--text-secondary)', margin: 0, fontSize: '0.9rem', lineHeight: 1.6 }}>
                 Follow active development, test early preview APK builds, and submit feature requests directly to Krishna & Satyakiran.
               </p>
             </div>
 
             {/* Countdown Digits */}
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 'clamp(0.35rem, 2vw, 0.75rem)', backgroundColor: 'rgba(0, 0, 0, 0.4)', padding: '0.85rem clamp(0.75rem, 3vw, 1.25rem)', borderRadius: '1rem', border: '1px solid var(--border-color)', width: '100%', maxWidth: '420px' }}>
-              <div style={{ textAlign: 'center', minWidth: 'clamp(42px, 12vw, 54px)' }}>
-                <span style={{ display: 'block', fontSize: 'clamp(1.4rem, 5vw, 1.85rem)', fontWeight: 800, color: 'var(--text-primary)', fontFamily: 'monospace', lineHeight: 1.1 }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', backgroundColor: 'var(--bg-raised)', padding: '12px 18px', borderRadius: '10px', border: '1px solid var(--border-subtle)', width: '100%', maxWidth: '380px' }}>
+              <div style={{ textAlign: 'center', minWidth: '48px' }}>
+                <span style={{ display: 'block', fontSize: '1.6rem', fontWeight: 600, color: 'var(--text-primary)', lineHeight: 1.1 }} className="font-mono tabular-nums">
                   {String(timeLeft.days).padStart(2, '0')}
                 </span>
-                <span style={{ fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-secondary)' }}>Days</span>
+                <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>Days</span>
               </div>
-              <span style={{ fontSize: '1.4rem', fontWeight: 700, color: '#f472b6', marginBottom: '8px' }}>:</span>
-              <div style={{ textAlign: 'center', minWidth: 'clamp(42px, 12vw, 54px)' }}>
-                <span style={{ display: 'block', fontSize: 'clamp(1.4rem, 5vw, 1.85rem)', fontWeight: 800, color: 'var(--text-primary)', fontFamily: 'monospace', lineHeight: 1.1 }}>
+              <span style={{ fontSize: '1.2rem', color: 'var(--text-muted)', marginBottom: '12px' }}>:</span>
+              <div style={{ textAlign: 'center', minWidth: '48px' }}>
+                <span style={{ display: 'block', fontSize: '1.6rem', fontWeight: 600, color: 'var(--text-primary)', lineHeight: 1.1 }} className="font-mono tabular-nums">
                   {String(timeLeft.hours).padStart(2, '0')}
                 </span>
-                <span style={{ fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-secondary)' }}>Hours</span>
+                <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>Hours</span>
               </div>
-              <span style={{ fontSize: '1.4rem', fontWeight: 700, color: '#f472b6', marginBottom: '8px' }}>:</span>
-              <div style={{ textAlign: 'center', minWidth: 'clamp(42px, 12vw, 54px)' }}>
-                <span style={{ display: 'block', fontSize: 'clamp(1.4rem, 5vw, 1.85rem)', fontWeight: 800, color: 'var(--text-primary)', fontFamily: 'monospace', lineHeight: 1.1 }}>
+              <span style={{ fontSize: '1.2rem', color: 'var(--text-muted)', marginBottom: '12px' }}>:</span>
+              <div style={{ textAlign: 'center', minWidth: '48px' }}>
+                <span style={{ display: 'block', fontSize: '1.6rem', fontWeight: 600, color: 'var(--text-primary)', lineHeight: 1.1 }} className="font-mono tabular-nums">
                   {String(timeLeft.minutes).padStart(2, '0')}
                 </span>
-                <span style={{ fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-secondary)' }}>Mins</span>
+                <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>Mins</span>
               </div>
-              <span style={{ fontSize: '1.4rem', fontWeight: 700, color: '#f472b6', marginBottom: '8px' }}>:</span>
-              <div style={{ textAlign: 'center', minWidth: 'clamp(42px, 12vw, 54px)' }}>
-                <span style={{ display: 'block', fontSize: 'clamp(1.4rem, 5vw, 1.85rem)', fontWeight: 800, color: 'var(--text-primary)', fontFamily: 'monospace', lineHeight: 1.1 }}>
+              <span style={{ fontSize: '1.2rem', color: 'var(--text-muted)', marginBottom: '12px' }}>:</span>
+              <div style={{ textAlign: 'center', minWidth: '48px' }}>
+                <span style={{ display: 'block', fontSize: '1.6rem', fontWeight: 600, color: 'var(--text-primary)', lineHeight: 1.1 }} className="font-mono tabular-nums">
                   {String(timeLeft.seconds).padStart(2, '0')}
                 </span>
-                <span style={{ fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-secondary)' }}>Secs</span>
+                <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>Secs</span>
               </div>
             </div>
           </div>
 
           {app.telegramLink && (
-            <div style={{ marginTop: '1.25rem', paddingTop: '1.25rem', borderTop: '1px solid rgba(255, 255, 255, 0.08)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-secondary)', fontSize: '0.875rem' }}>
-                <CheckCircle2 size={16} color="#22c55e" style={{ flexShrink: 0 }} />
+            <div style={{ marginTop: '20px', paddingTop: '16px', borderTop: '1px solid var(--border-subtle)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-secondary)', fontSize: '0.85rem' }}>
+                <CheckCircle2 size={15} style={{ color: 'var(--color-positive)', flexShrink: 0 }} />
                 <span>Zero Internet permissions. Zero telemetry. 100% on-device private.</span>
               </div>
               <a
@@ -481,9 +515,9 @@ export default function AppDetails() {
                 target="_blank"
                 rel="noreferrer"
                 className="btn btn-primary mobile-w-full"
-                style={{ padding: '0.75rem 1.35rem', fontSize: '0.9rem', justifyContent: 'center' }}
+                style={{ padding: '0 16px', height: '38px', fontSize: '0.85rem' }}
               >
-                <Send size={15} /> Join Official Telegram (t.me/milkylc)
+                <Send size={14} /> Telegram (t.me/milkylc)
               </a>
             </div>
           )}
@@ -494,7 +528,7 @@ export default function AppDetails() {
       {app.highlights && app.highlights.length > 0 && (
         <div style={{ marginBottom: 'clamp(2.5rem, 6vw, 4rem)' }}>
           <h2 style={{ marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: 'clamp(1.35rem, 4vw, 1.85rem)' }}>
-            <Sparkles size={22} color="var(--accent-primary)" /> Key Highlights
+            <CheckCircle2 size={20} color="var(--accent-primary)" /> Key Highlights
           </h2>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem' }}>
             {app.highlights.map((h, i) => (
@@ -506,13 +540,13 @@ export default function AppDetails() {
                   gap: '0.45rem',
                   backgroundColor: 'var(--bg-secondary)',
                   border: '1px solid var(--border-color)',
-                  padding: '0.5rem 1rem',
-                  borderRadius: '9999px',
-                  fontSize: '0.9rem',
+                  padding: '0.45rem 0.85rem',
+                  borderRadius: '6px',
+                  fontSize: '0.875rem',
                   color: 'var(--text-primary)',
                 }}
               >
-                <CheckCircle2 size={15} color="var(--accent-primary)" style={{ flexShrink: 0 }} />
+                <CheckCircle2 size={14} color="var(--accent-primary)" style={{ flexShrink: 0 }} />
                 <span>{h}</span>
               </div>
             ))}
@@ -526,10 +560,24 @@ export default function AppDetails() {
           <h2 style={{ marginBottom: '1.5rem', fontSize: 'clamp(1.35rem, 4vw, 1.85rem)' }}>Features & Capabilities</h2>
           <div className="grid grid-cols-2" style={{ gap: '1.25rem' }}>
             {app.features.map((feat, idx) => (
-              <div key={idx} className="glass-panel" style={{ padding: 'clamp(1.25rem, 3.5vw, 2rem)', display: 'flex', flexDirection: 'column' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
-                  <span style={{ fontSize: '1.65rem' }}>{feat.icon}</span>
-                  <h3 style={{ fontSize: '1.2rem', margin: 0, color: 'var(--text-primary)' }}>{feat.title}</h3>
+              <div key={idx} className="app-card" style={{ padding: '24px', display: 'flex', flexDirection: 'column' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
+                  <div
+                    style={{
+                      width: '36px',
+                      height: '36px',
+                      borderRadius: '8px',
+                      backgroundColor: 'var(--bg-raised)',
+                      border: '1px solid var(--border-subtle)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      flexShrink: 0,
+                    }}
+                  >
+                    {renderFeatureIcon(feat.icon)}
+                  </div>
+                  <h3 style={{ fontSize: '1.05rem', margin: 0, color: 'var(--text-primary)', fontWeight: 600 }}>{feat.title}</h3>
                 </div>
                 {feat.subtitle && (
                   <p style={{ color: 'var(--text-secondary)', fontSize: '0.925rem', marginBottom: '1rem', lineHeight: 1.5 }}>
@@ -582,18 +630,18 @@ export default function AppDetails() {
 
           <div
             style={{
-              width: '56px',
-              height: '56px',
-              borderRadius: '50%',
-              backgroundColor: 'rgba(56, 189, 248, 0.1)',
+              width: '48px',
+              height: '48px',
+              borderRadius: '12px',
+              backgroundColor: 'var(--bg-raised)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               marginBottom: '1.25rem',
-              border: '1px solid rgba(56, 189, 248, 0.25)',
+              border: '1px solid var(--border-subtle)',
             }}
           >
-            <Sparkles color="var(--accent-primary)" size={28} />
+            <Ticket color="var(--accent-primary)" size={24} />
           </div>
 
           <h2 style={{ fontSize: 'clamp(1.4rem, 4vw, 2rem)', marginBottom: '0.75rem', color: 'var(--text-primary)' }}>
@@ -876,7 +924,7 @@ export default function AppDetails() {
             </div>
             <div>
               <h3 style={{ margin: '0 0 0.5rem 0', fontSize: '1.25rem', color: 'var(--text-primary)' }}>
-                Releasing on Google Play — {app.releaseDate || '19 November 2026'}
+                Releasing on Google Play — {app.releaseDate || '25 December 2026'}
               </h3>
               <p style={{ margin: 0, color: 'var(--text-secondary)', fontSize: '0.95rem', maxWidth: '580px', lineHeight: 1.6 }}>
                 {app.name} is currently in final testing and polish. User ratings and reviews will open immediately upon public launch on Google Play.
@@ -899,189 +947,189 @@ export default function AppDetails() {
             {/* Rating Breakdown Overview Card */}
             <div
               className="glass-panel responsive-panel"
-          style={{
-            padding: 'clamp(1.25rem, 3.5vw, 2.5rem)',
-            marginBottom: '2rem',
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(min(260px, 100%), 1fr))',
-            gap: 'clamp(1.5rem, 3vw, 2.5rem)',
-            alignItems: 'center',
-          }}
-        >
-          {/* Average Rating Score */}
-          <div style={{ textAlign: 'center', padding: '0 0.5rem' }}>
-            <div style={{ fontSize: 'clamp(3.5rem, 8vw, 4.5rem)', fontWeight: 800, lineHeight: 1, color: 'var(--text-primary)', marginBottom: '0.5rem' }}>
-              {avgRating !== null ? avgRating.toFixed(1) : '—'}
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '0.35rem', color: '#fbbf24', marginBottom: '0.5rem' }}>
-              {[1, 2, 3, 4, 5].map(star => (
-                <Star
-                  key={star}
-                  size={20}
-                  fill={avgRating && star <= Math.round(avgRating) ? '#fbbf24' : 'none'}
-                  color={avgRating && star <= Math.round(avgRating) ? '#fbbf24' : 'var(--border-color)'}
-                />
-              ))}
-            </div>
-            <p style={{ margin: 0, color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
-              Based on {totalReviews} {totalReviews === 1 ? 'review' : 'reviews'}
-            </p>
-          </div>
-
-          {/* Star Distribution Bars */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-            {[5, 4, 3, 2, 1].map(stars => {
-              const count = ratingCounts[stars] || 0;
-              const percentage = totalReviews > 0 ? (count / totalReviews) * 100 : 0;
-              return (
-                <div key={stars} style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', fontSize: '0.85rem' }}>
-                  <span style={{ width: '24px', display: 'flex', alignItems: 'center', gap: '0.2rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
-                    {stars} <Star size={11} fill="#fbbf24" color="#fbbf24" />
-                  </span>
-                  <div
-                    style={{
-                      flex: 1,
-                      height: '7px',
-                      backgroundColor: 'rgba(255, 255, 255, 0.08)',
-                      borderRadius: '4px',
-                      overflow: 'hidden',
-                      position: 'relative',
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: `${percentage}%`,
-                        height: '100%',
-                        background: 'linear-gradient(90deg, #f59e0b, #fbbf24)',
-                        borderRadius: '4px',
-                        transition: 'width 0.5s ease',
-                      }}
+              style={{
+                padding: 'clamp(1.25rem, 3.5vw, 2.5rem)',
+                marginBottom: '2rem',
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(260px, 100%), 1fr))',
+                gap: 'clamp(1.5rem, 3vw, 2.5rem)',
+                alignItems: 'center',
+              }}
+            >
+              {/* Average Rating Score */}
+              <div style={{ textAlign: 'center', padding: '0 0.5rem' }}>
+                <div style={{ fontSize: 'clamp(3.5rem, 8vw, 4.5rem)', fontWeight: 800, lineHeight: 1, color: 'var(--text-primary)', marginBottom: '0.5rem' }}>
+                  {avgRating !== null ? avgRating.toFixed(1) : '—'}
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'center', gap: '0.35rem', color: '#fbbf24', marginBottom: '0.5rem' }}>
+                  {[1, 2, 3, 4, 5].map(star => (
+                    <Star
+                      key={star}
+                      size={20}
+                      fill={avgRating && star <= Math.round(avgRating) ? '#fbbf24' : 'none'}
+                      color={avgRating && star <= Math.round(avgRating) ? '#fbbf24' : 'var(--border-color)'}
                     />
-                  </div>
-                  <span style={{ width: '28px', textAlign: 'right', color: 'var(--text-secondary)', fontSize: '0.75rem' }}>
-                    {count}
-                  </span>
+                  ))}
                 </div>
-              );
-            })}
-          </div>
+                <p style={{ margin: 0, color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
+                  Based on {totalReviews} {totalReviews === 1 ? 'review' : 'reviews'}
+                </p>
+              </div>
 
-          {/* Call to Action: Review on Play Store */}
-          <div
-            style={{
-              backgroundColor: 'rgba(0, 0, 0, 0.25)',
-              border: '1px solid var(--border-color)',
-              borderRadius: '1.25rem',
-              padding: '1.5rem',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              textAlign: 'center',
-            }}
-          >
-            <h3 style={{ fontSize: '1.15rem', marginBottom: '0.4rem', color: 'var(--text-primary)' }}>
-              Share Your Experience
-            </h3>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', lineHeight: 1.5, marginBottom: '1rem' }}>
-              Enjoying {app.name}? Your feedback helps other users and supports ongoing development!
-            </p>
-            {app.playStoreLink && app.playStoreLink.toLowerCase() !== 'coming soon' ? (
-              <a
-                href={app.playStoreLink}
-                target="_blank"
-                rel="noreferrer"
-                className="btn btn-primary"
-                style={{ justifyContent: 'center', gap: '0.4rem', padding: '0.7rem 1.25rem', fontSize: '0.9rem' }}
-              >
-                <Star size={15} fill="currentColor" /> Write Play Store Review
-              </a>
-            ) : (
-              <a
-                href="https://t.me/skdev_chat"
-                target="_blank"
-                rel="noreferrer"
-                className="btn btn-secondary"
-                style={{ justifyContent: 'center', gap: '0.4rem', padding: '0.7rem 1.25rem', fontSize: '0.9rem' }}
-              >
-                <MessageCircle size={15} /> Feedback in Chat
-              </a>
-            )}
-          </div>
-        </div>
-
-        {/* User Reviews Grid */}
-        {app.reviews && app.reviews.length > 0 ? (
-          <div className="grid grid-cols-2" style={{ gap: '1.25rem' }}>
-            {app.reviews.map(review => (
-              <div key={review.id} className="glass-panel" style={{ padding: 'clamp(1.25rem, 3.5vw, 1.75rem)', display: 'flex', flexDirection: 'column' }}>
-                <div className="flex-between" style={{ marginBottom: '1rem', alignItems: 'flex-start' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                    <div style={{ width: '38px', height: '38px', borderRadius: '50%', background: 'var(--accent-primary)', color: '#0f172a', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold' }}>
-                      {review.user.charAt(0)}
-                    </div>
-                    <div>
-                      <span style={{ fontWeight: 600, fontSize: '1rem', display: 'block' }}>{review.user}</span>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
-                        <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>Verified User</span>
-                        {review.date && (
-                          <>
-                            <span style={{ fontSize: '0.75rem', color: 'var(--border-color)' }}>•</span>
-                            <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>{review.date}</span>
-                          </>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                  <div style={{ display: 'flex', color: '#fbbf24' }}>
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} size={14} fill={i < review.rating ? 'currentColor' : 'none'} color={i < review.rating ? 'currentColor' : 'var(--border-color)'} />
-                    ))}
-                  </div>
-                </div>
-
-                <div style={{ position: 'relative', paddingLeft: '1.5rem', marginBottom: review.developerResponse ? '1rem' : 0 }}>
-                  <Quote size={16} color="var(--text-secondary)" style={{ position: 'absolute', left: 0, top: '2px', opacity: 0.3 }} />
-                  <p style={{ margin: 0, fontStyle: 'italic', fontSize: '0.95rem', color: 'var(--text-primary)', lineHeight: 1.6 }}>"{review.comment}"</p>
-                </div>
-
-                {/* Developer Response Bubble */}
-                {review.developerResponse && (
-                  <div
-                    style={{
-                      marginTop: 'auto',
-                      backgroundColor: 'rgba(56, 189, 248, 0.06)',
-                      border: '1px solid rgba(56, 189, 248, 0.2)',
-                      borderRadius: '0.875rem',
-                      padding: '0.875rem 1rem',
-                      fontSize: '0.875rem',
-                      lineHeight: 1.5,
-                    }}
-                  >
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.3rem', flexWrap: 'wrap', gap: '0.25rem' }}>
-                      <span style={{ fontWeight: 600, color: 'var(--accent-primary)', fontSize: '0.8rem' }}>
-                        💬 Response from {review.developerResponse.author || 'Developer'}
+              {/* Star Distribution Bars */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                {[5, 4, 3, 2, 1].map(stars => {
+                  const count = ratingCounts[stars] || 0;
+                  const percentage = totalReviews > 0 ? (count / totalReviews) * 100 : 0;
+                  return (
+                    <div key={stars} style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', fontSize: '0.85rem' }}>
+                      <span style={{ width: '24px', display: 'flex', alignItems: 'center', gap: '0.2rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
+                        {stars} <Star size={11} fill="#fbbf24" color="#fbbf24" />
                       </span>
-                      {review.developerResponse.date && (
-                        <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>
-                          {review.developerResponse.date}
-                        </span>
-                      )}
+                      <div
+                        style={{
+                          flex: 1,
+                          height: '7px',
+                          backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                          borderRadius: '4px',
+                          overflow: 'hidden',
+                          position: 'relative',
+                        }}
+                      >
+                        <div
+                          style={{
+                            width: `${percentage}%`,
+                            height: '100%',
+                            background: 'linear-gradient(90deg, #f59e0b, #fbbf24)',
+                            borderRadius: '4px',
+                            transition: 'width 0.5s ease',
+                          }}
+                        />
+                      </div>
+                      <span style={{ width: '28px', textAlign: 'right', color: 'var(--text-secondary)', fontSize: '0.75rem' }}>
+                        {count}
+                      </span>
                     </div>
-                    <p style={{ margin: 0, color: 'var(--text-primary)', opacity: 0.95 }}>
-                      {review.developerResponse.comment}
-                    </p>
-                  </div>
+                  );
+                })}
+              </div>
+
+              {/* Call to Action: Review on Play Store */}
+              <div
+                style={{
+                  backgroundColor: 'rgba(0, 0, 0, 0.25)',
+                  border: '1px solid var(--border-color)',
+                  borderRadius: '1.25rem',
+                  padding: '1.5rem',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  textAlign: 'center',
+                }}
+              >
+                <h3 style={{ fontSize: '1.15rem', marginBottom: '0.4rem', color: 'var(--text-primary)' }}>
+                  Share Your Experience
+                </h3>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', lineHeight: 1.5, marginBottom: '1rem' }}>
+                  Enjoying {app.name}? Your feedback helps other users and supports ongoing development!
+                </p>
+                {app.playStoreLink && app.playStoreLink.toLowerCase() !== 'coming soon' ? (
+                  <a
+                    href={app.playStoreLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn btn-primary"
+                    style={{ justifyContent: 'center', gap: '0.4rem', padding: '0.7rem 1.25rem', fontSize: '0.9rem' }}
+                  >
+                    <Star size={15} fill="currentColor" /> Write Play Store Review
+                  </a>
+                ) : (
+                  <a
+                    href="https://t.me/skdev_chat"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn btn-secondary"
+                    style={{ justifyContent: 'center', gap: '0.4rem', padding: '0.7rem 1.25rem', fontSize: '0.9rem' }}
+                  >
+                    <MessageCircle size={15} /> Feedback in Chat
+                  </a>
                 )}
               </div>
-            ))}
-          </div>
-        ) : (
-          <div className="glass-panel" style={{ padding: '2.5rem', textAlign: 'center', color: 'var(--text-secondary)' }}>
-            <Star size={32} color="var(--text-secondary)" style={{ opacity: 0.4, marginBottom: '0.75rem' }} />
-            <h3 style={{ color: 'var(--text-primary)', marginBottom: '0.4rem' }}>No reviews yet</h3>
-            <p style={{ margin: 0, fontSize: '0.9rem' }}>Be the first to leave a review on Google Play after trying out the app!</p>
-          </div>
-        )}
+            </div>
+
+            {/* User Reviews Grid */}
+            {app.reviews && app.reviews.length > 0 ? (
+              <div className="grid grid-cols-2" style={{ gap: '1.25rem' }}>
+                {app.reviews.map(review => (
+                  <div key={review.id} className="glass-panel" style={{ padding: 'clamp(1.25rem, 3.5vw, 1.75rem)', display: 'flex', flexDirection: 'column' }}>
+                    <div className="flex-between" style={{ marginBottom: '1rem', alignItems: 'flex-start' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                        <div style={{ width: '38px', height: '38px', borderRadius: '50%', background: 'var(--accent-primary)', color: '#0f172a', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold' }}>
+                          {review.user.charAt(0)}
+                        </div>
+                        <div>
+                          <span style={{ fontWeight: 600, fontSize: '1rem', display: 'block' }}>{review.user}</span>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+                            <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>Verified User</span>
+                            {review.date && (
+                              <>
+                                <span style={{ fontSize: '0.75rem', color: 'var(--border-color)' }}>•</span>
+                                <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>{review.date}</span>
+                              </>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                      <div style={{ display: 'flex', color: '#fbbf24' }}>
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} size={14} fill={i < review.rating ? 'currentColor' : 'none'} color={i < review.rating ? 'currentColor' : 'var(--border-color)'} />
+                        ))}
+                      </div>
+                    </div>
+
+                    <div style={{ position: 'relative', paddingLeft: '1.5rem', marginBottom: review.developerResponse ? '1rem' : 0 }}>
+                      <Quote size={16} color="var(--text-secondary)" style={{ position: 'absolute', left: 0, top: '2px', opacity: 0.3 }} />
+                      <p style={{ margin: 0, fontStyle: 'italic', fontSize: '0.95rem', color: 'var(--text-primary)', lineHeight: 1.6 }}>"{review.comment}"</p>
+                    </div>
+
+                    {/* Developer Response Bubble */}
+                    {review.developerResponse && (
+                      <div
+                        style={{
+                          marginTop: 'auto',
+                          backgroundColor: 'rgba(56, 189, 248, 0.06)',
+                          border: '1px solid rgba(56, 189, 248, 0.2)',
+                          borderRadius: '0.875rem',
+                          padding: '0.875rem 1rem',
+                          fontSize: '0.875rem',
+                          lineHeight: 1.5,
+                        }}
+                      >
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.3rem', flexWrap: 'wrap', gap: '0.25rem' }}>
+                          <span style={{ fontWeight: 600, color: 'var(--accent-primary)', fontSize: '0.8rem' }}>
+                            Response from {review.developerResponse.author || 'Developer'}
+                          </span>
+                          {review.developerResponse.date && (
+                            <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>
+                              {review.developerResponse.date}
+                            </span>
+                          )}
+                        </div>
+                        <p style={{ margin: 0, color: 'var(--text-primary)', opacity: 0.95 }}>
+                          {review.developerResponse.comment}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="glass-panel" style={{ padding: '2.5rem', textAlign: 'center', color: 'var(--text-secondary)' }}>
+                <Star size={32} color="var(--text-secondary)" style={{ opacity: 0.4, marginBottom: '0.75rem' }} />
+                <h3 style={{ color: 'var(--text-primary)', marginBottom: '0.4rem' }}>No reviews yet</h3>
+                <p style={{ margin: 0, fontSize: '0.9rem' }}>Be the first to leave a review on Google Play after trying out the app!</p>
+              </div>
+            )}
           </>
         )}
       </div>

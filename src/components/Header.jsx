@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { Play, Mail, Heart, Menu, X, Send, Home as HomeIcon, Grid, Compass, HelpCircle, ChevronRight, Briefcase } from 'lucide-react';
+import { Play, Mail, Heart, Menu, X, Send, Grid, Compass, HelpCircle, ChevronRight, Briefcase } from 'lucide-react';
 import heroLogo from '../assets/hero.webp';
 
-const InstagramIcon = ({ size = 20 }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+const InstagramIcon = ({ size = 16 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
@@ -17,12 +17,10 @@ export default function Header() {
   const [lastClickTime, setLastClickTime] = useState(0);
   const location = useLocation();
 
-  // Close menu automatically on route change
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location]);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -34,7 +32,6 @@ export default function Header() {
     };
   }, [isMobileMenuOpen]);
 
-  // Handle ESC key to close mobile menu
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape' && isMobileMenuOpen) {
@@ -64,127 +61,133 @@ export default function Header() {
   };
 
   const navLinks = [
-    { to: '/', label: 'Home', icon: <HomeIcon size={18} /> },
-    { to: '/apps', label: 'Apps', icon: <Grid size={18} /> },
-    { to: '/roadmap', label: 'Roadmap', icon: <Compass size={18} /> },
-    { to: '/freelance', label: 'Freelance', icon: <Briefcase size={18} /> },
-    { to: '/faq', label: 'FAQ', icon: <HelpCircle size={18} /> },
-    { to: '/donate', label: 'Support', icon: <Heart size={18} color="#ec4899" />, special: true },
+    { to: '/apps', label: 'Apps', icon: <Grid size={16} /> },
+    { to: '/roadmap', label: 'Roadmap', icon: <Compass size={16} /> },
+    { to: '/freelance', label: 'Freelance', icon: <Briefcase size={16} /> },
+    { to: '/faq', label: 'FAQ', icon: <HelpCircle size={16} /> },
+    { to: '/donate', label: 'Support', icon: <Heart size={16} /> },
   ];
 
   return (
     <>
       <header
-        className="glass-panel"
         style={{
           position: 'fixed',
-          top: 'clamp(0.5rem, 2vw, 1rem)',
-          left: 'clamp(0.5rem, 3vw, 1.25rem)',
-          right: 'clamp(0.5rem, 3vw, 1.25rem)',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: '56px',
           zIndex: 90,
-          padding: 'clamp(0.65rem, 2vw, 0.875rem) clamp(0.875rem, 3vw, 1.75rem)',
-          borderRadius: 'clamp(1rem, 3vw, 1.25rem)',
-          backgroundColor: 'rgba(15, 23, 42, 0.88)',
-          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.4)',
+          backgroundColor: 'var(--bg-deep)',
+          borderBottom: '1px solid var(--border-subtle)',
+          display: 'flex',
+          alignItems: 'center',
         }}
       >
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div
+          className="container"
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            height: '100%',
+          }}
+        >
           {/* Logo & Brand */}
           <NavLink
             to="/"
             onClick={handleLogoClick}
-            style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', flexShrink: 0, textDecoration: 'none' }}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '10px',
+              textDecoration: 'none',
+              color: 'var(--text-primary)',
+            }}
           >
             <img
               src={heroLogo}
-              alt="SKDev Logo"
+              alt="SKDev logo"
               style={{
-                width: '34px',
-                height: '34px',
-                objectFit: 'cover',
+                width: '28px',
+                height: '28px',
                 borderRadius: '50%',
-                background: 'var(--bg-secondary)',
-                border: '1.5px solid rgba(56, 189, 248, 0.4)',
+                objectFit: 'cover',
+                border: '1px solid var(--border-subtle)',
               }}
             />
-            <span className="text-gradient" style={{ fontSize: '1.35rem', fontWeight: 800, letterSpacing: '-0.02em' }}>
-              Skdev
+            <span
+              style={{
+                fontSize: '0.95rem',
+                fontWeight: 600,
+                letterSpacing: '-0.01em',
+                color: 'var(--text-primary)',
+              }}
+            >
+              SKDev
             </span>
           </NavLink>
 
           {/* Desktop Navigation */}
-          <nav className="desktop-nav" style={{ gap: '1.25rem', alignItems: 'center' }}>
-            <NavLink
-              to="/apps"
-              style={({ isActive }) => ({
-                color: isActive ? 'var(--accent-primary)' : 'var(--text-secondary)',
-                fontWeight: isActive ? 600 : 500,
-                fontSize: '0.95rem',
-                transition: 'color 0.2s ease',
-              })}
-            >
-              Apps
-            </NavLink>
-            <NavLink
-              to="/roadmap"
-              style={({ isActive }) => ({
-                color: isActive ? 'var(--accent-primary)' : 'var(--text-secondary)',
-                fontWeight: isActive ? 600 : 500,
-                fontSize: '0.95rem',
-                transition: 'color 0.2s ease',
-              })}
-            >
-              Roadmap
-            </NavLink>
-            <NavLink
-              to="/freelance"
-              style={({ isActive }) => ({
-                color: isActive ? 'var(--accent-primary)' : 'var(--text-secondary)',
-                fontWeight: isActive ? 600 : 500,
-                fontSize: '0.95rem',
-                transition: 'color 0.2s ease',
-              })}
-            >
-              Freelance
-            </NavLink>
-            <NavLink
-              to="/faq"
-              style={({ isActive }) => ({
-                color: isActive ? 'var(--accent-primary)' : 'var(--text-secondary)',
-                fontWeight: isActive ? 600 : 500,
-                fontSize: '0.95rem',
-                transition: 'color 0.2s ease',
-              })}
-            >
-              FAQ
-            </NavLink>
-            <NavLink
-              to="/donate"
-              style={({ isActive }) => ({
-                color: isActive ? '#ec4899' : 'var(--text-secondary)',
-                fontWeight: isActive ? 700 : 500,
-                fontSize: '0.95rem',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.35rem',
-                transition: 'color 0.2s ease',
-              })}
-            >
-              Support <Heart size={14} className={location.pathname === '/donate' ? 'fill-current' : ''} />
-            </NavLink>
+          <nav className="desktop-nav" style={{ gap: '24px', alignItems: 'center' }}>
+            {navLinks.map((link) => (
+              <NavLink
+                key={link.to}
+                to={link.to}
+                style={({ isActive }) => ({
+                  color: isActive ? 'var(--text-primary)' : 'var(--text-secondary)',
+                  fontWeight: isActive ? 500 : 400,
+                  fontSize: '0.875rem',
+                  transition: 'color 140ms cubic-bezier(0.22, 1, 0.36, 1)',
+                })}
+              >
+                {link.label}
+              </NavLink>
+            ))}
 
-            <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', marginLeft: '0.5rem', borderLeft: '1px solid var(--border-color)', paddingLeft: '0.75rem' }}>
-              <a href="https://t.me/skdev29" target="_blank" rel="noreferrer" className="btn-icon" title="Telegram Channel">
-                <Send size={17} />
+            <div
+              style={{
+                display: 'flex',
+                gap: '4px',
+                alignItems: 'center',
+                marginLeft: '8px',
+                borderLeft: '1px solid var(--border-subtle)',
+                paddingLeft: '16px',
+              }}
+            >
+              <a
+                href="https://play.google.com/store/apps/dev?id=9166037782169864125"
+                target="_blank"
+                rel="noreferrer"
+                className="btn-icon"
+                title="Google Play"
+              >
+                <Play size={15} />
               </a>
-              <a href="https://play.google.com/store/apps/dev?id=9166037782169864125" target="_blank" rel="noreferrer" className="btn-icon" title="Play Store Profile">
-                <Play size={17} />
+              <a
+                href="https://t.me/skdev29"
+                target="_blank"
+                rel="noreferrer"
+                className="btn-icon"
+                title="Telegram updates"
+              >
+                <Send size={15} />
               </a>
-              <a href="https://www.instagram.com/skdev29/" target="_blank" rel="noreferrer" className="btn-icon" title="Instagram Profile">
-                <InstagramIcon size={17} />
+              <a
+                href="https://www.instagram.com/skdev29/"
+                target="_blank"
+                rel="noreferrer"
+                className="btn-icon"
+                title="Instagram"
+              >
+                <InstagramIcon size={15} />
               </a>
-              <a href="mailto:satyakiran296@gmail.com" className="btn-icon" title="Email Developer">
-                <Mail size={17} />
+              <a
+                href="mailto:satyakiran296@gmail.com"
+                className="btn-icon"
+                title="Email"
+              >
+                <Mail size={15} />
               </a>
             </div>
           </nav>
@@ -193,35 +196,50 @@ export default function Header() {
           <button
             className="mobile-menu-btn btn-icon"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-            style={{
-              backgroundColor: isMobileMenuOpen ? 'rgba(56, 189, 248, 0.15)' : 'rgba(255, 255, 255, 0.05)',
-              border: '1px solid var(--border-color)',
-              color: isMobileMenuOpen ? 'var(--accent-primary)' : 'var(--text-primary)',
-            }}
+            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
           >
-            {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
+            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
 
-        {/* Mobile Animated Dropdown Sheet */}
+        {/* Mobile Dropdown */}
         {isMobileMenuOpen && (
           <div
-            className="animate-fade-in"
             style={{
+              position: 'absolute',
+              top: '56px',
+              left: 0,
+              right: 0,
+              backgroundColor: 'var(--bg-deep)',
+              borderBottom: '1px solid var(--border-subtle)',
+              padding: '16px 20px',
               display: 'flex',
               flexDirection: 'column',
-              gap: '0.5rem',
-              paddingTop: '1rem',
-              marginTop: '0.875rem',
-              borderTop: '1px solid rgba(255, 255, 255, 0.08)',
-              animation: 'slideDown 0.25s ease-out',
+              gap: '8px',
+              animation: 'slideDown 180ms cubic-bezier(0.22, 1, 0.36, 1)',
             }}
           >
-            {/* Route Navigation Items */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+              <NavLink
+                to="/"
+                onClick={() => setIsMobileMenuOpen(false)}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  padding: '10px 12px',
+                  borderRadius: '6px',
+                  fontSize: '0.9rem',
+                  color: location.pathname === '/' ? 'var(--text-primary)' : 'var(--text-secondary)',
+                  backgroundColor: location.pathname === '/' ? 'var(--bg-raised)' : 'transparent',
+                }}
+              >
+                Home
+                <ChevronRight size={15} style={{ color: 'var(--text-muted)' }} />
+              </NavLink>
+
               {navLinks.map((item) => {
-                const isActive = item.to === '/' ? location.pathname === '/' : location.pathname.startsWith(item.to);
+                const isActive = location.pathname.startsWith(item.to);
                 return (
                   <NavLink
                     key={item.to}
@@ -231,88 +249,71 @@ export default function Header() {
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'space-between',
-                      padding: '0.75rem 1rem',
-                      borderRadius: '0.75rem',
-                      fontSize: '1rem',
-                      fontWeight: isActive ? 700 : 500,
-                      backgroundColor: isActive ? 'rgba(56, 189, 248, 0.12)' : 'transparent',
-                      color: item.special ? '#ec4899' : (isActive ? 'var(--accent-primary)' : 'var(--text-primary)'),
-                      border: isActive ? '1px solid rgba(56, 189, 248, 0.25)' : '1px solid transparent',
-                      transition: 'all 0.15s ease',
+                      padding: '10px 12px',
+                      borderRadius: '6px',
+                      fontSize: '0.9rem',
+                      color: isActive ? 'var(--text-primary)' : 'var(--text-secondary)',
+                      backgroundColor: isActive ? 'var(--bg-raised)' : 'transparent',
                     }}
                   >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                       {item.icon}
                       <span>{item.label}</span>
                     </div>
-                    <ChevronRight size={16} style={{ opacity: isActive ? 1 : 0.4 }} />
+                    <ChevronRight size={15} style={{ color: 'var(--text-muted)' }} />
                   </NavLink>
                 );
               })}
             </div>
 
-            {/* Mobile Social Bar */}
             <div
               style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(4, 1fr)',
-                gap: '0.5rem',
-                paddingTop: '1rem',
-                marginTop: '0.5rem',
-                borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+                display: 'flex',
+                gap: '8px',
+                paddingTop: '12px',
+                marginTop: '4px',
+                borderTop: '1px solid var(--border-subtle)',
               }}
             >
-              <a
-                href="https://t.me/skdev29"
-                target="_blank"
-                rel="noreferrer"
-                className="btn btn-secondary"
-                style={{ padding: '0.6rem', minHeight: '40px', borderRadius: '0.75rem', fontSize: '0.8rem', gap: '0.3rem' }}
-                title="Telegram"
-              >
-                <Send size={16} />
-              </a>
               <a
                 href="https://play.google.com/store/apps/dev?id=9166037782169864125"
                 target="_blank"
                 rel="noreferrer"
                 className="btn btn-secondary"
-                style={{ padding: '0.6rem', minHeight: '40px', borderRadius: '0.75rem', fontSize: '0.8rem', gap: '0.3rem' }}
-                title="Play Store"
+                style={{ flex: 1, height: '36px', fontSize: '0.8rem', padding: '0 8px' }}
               >
-                <Play size={16} />
+                <Play size={14} /> Play
               </a>
               <a
-                href="https://www.instagram.com/skdev29/"
+                href="https://t.me/skdev29"
                 target="_blank"
                 rel="noreferrer"
                 className="btn btn-secondary"
-                style={{ padding: '0.6rem', minHeight: '40px', borderRadius: '0.75rem', fontSize: '0.8rem', gap: '0.3rem' }}
-                title="Instagram"
+                style={{ flex: 1, height: '36px', fontSize: '0.8rem', padding: '0 8px' }}
               >
-                <InstagramIcon size={16} />
+                <Send size={14} /> Updates
               </a>
               <a
                 href="mailto:satyakiran296@gmail.com"
                 className="btn btn-secondary"
-                style={{ padding: '0.6rem', minHeight: '40px', borderRadius: '0.75rem', fontSize: '0.8rem', gap: '0.3rem' }}
-                title="Email Developer"
+                style={{ flex: 1, height: '36px', fontSize: '0.8rem', padding: '0 8px' }}
               >
-                <Mail size={16} />
+                <Mail size={14} /> Email
               </a>
             </div>
           </div>
         )}
       </header>
 
-      {/* Dimmed backdrop when mobile menu is open for easy dismissal */}
+      {/* Dimmed backdrop */}
       {isMobileMenuOpen && (
         <div
           onClick={() => setIsMobileMenuOpen(false)}
+          className="animate-fade-in"
           style={{
             position: 'fixed',
             inset: 0,
-            backgroundColor: 'rgba(2, 6, 23, 0.7)',
+            backgroundColor: 'rgba(7, 8, 13, 0.65)',
             backdropFilter: 'blur(4px)',
             WebkitBackdropFilter: 'blur(4px)',
             zIndex: 80,
